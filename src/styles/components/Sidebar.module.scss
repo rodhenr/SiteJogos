@@ -2,9 +2,8 @@
   background-color: #131315;
   box-sizing: border-box;
   display: flex;
+  flex: 0 0 250px;
   flex-direction: column;
   height: 100%;
-  padding: 56px 32px;
-  position: fixed;
-  width: 250px;
+  padding: 32px;
 }

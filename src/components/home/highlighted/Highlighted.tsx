@@ -1,5 +1,7 @@
+import styles from "../../../styles/components/Highlighted.module.scss";
+
 function Highlighted() {
-  return <div>Highlighted</div>;
+  return <div className={styles.container}></div>;
 }
 
 export default Highlighted;

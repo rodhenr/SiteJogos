@@ -1,9 +1,17 @@
-import React from 'react'
+import styles from "../../styles/components/Button.module.scss";
+import HomeIcon from "@mui/icons-material/Home";
 
-function Button() {
-  return (
-    <div>Button</div>
-  )
+interface IProps {
+  title: string;
 }
 
-export default Button
+function Button({ title }: IProps) {
+  return (
+    <div className={styles.container}>
+      <HomeIcon sx={{ color: "#6A6A84" }} />
+      <p>{title}</p>
+    </div>
+  );
+}
+
+export default Button;

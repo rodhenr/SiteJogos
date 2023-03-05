@@ -1,0 +1,12 @@
+.container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+
+  p {
+    font-family: "Roboto Condensed", sans-serif;
+    font-size: 20px;
+    margin: 0;
+  }
+}

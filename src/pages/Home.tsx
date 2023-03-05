@@ -1,3 +1,8 @@
+import Help from "../components/home/help/Help";
+import Highlighted from "../components/home/highlighted/Highlighted";
+import Ranking from "../components/home/ranking/Ranking";
+import Recent from "../components/home/recent/Recent";
+import Menu from "../components/menu/Menu";
 import Sidebar from "../components/sidebar/Sidebar";
 import styles from "../styles/components/Home.module.scss";
 
@@ -6,15 +11,15 @@ function Home() {
     <div className={styles.container}>
       <Sidebar />
       <div className={styles.mainContainer}>
-        <div className={styles.topMenu}></div>
+        <Menu />
         <div className={styles.main}>
-          <div className={styles.highlight}></div>
+          <Highlighted />
           <div className={styles.infos}>
             <div className={styles.double}>
-              <div className={styles.recentMatch}></div>
-              <div className={styles.help}></div>
+              <Recent />
+              <Help />
             </div>
-            <div className={styles.ranking}></div>
+            <Ranking />
           </div>
         </div>
       </div>

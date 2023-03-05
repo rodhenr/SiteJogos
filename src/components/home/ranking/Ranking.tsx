@@ -1,9 +1,7 @@
-import React from 'react'
+import styles from "../../../styles/components/Ranking.module.scss";
 
 function Ranking() {
-  return (
-    <div>Ranking</div>
-  )
+  return <div className={styles.container}></div>;
 }
 
-export default Ranking
+export default Ranking;

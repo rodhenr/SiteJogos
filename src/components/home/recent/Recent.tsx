@@ -1,7 +1,7 @@
-import React from "react";
+import styles from "../../../styles/components/Recent.module.scss";
 
 function Recent() {
-  return <div>Recent</div>;
+  return <div className={styles.container}></div>;
 }
 
 export default Recent;

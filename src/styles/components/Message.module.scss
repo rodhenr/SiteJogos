@@ -5,15 +5,27 @@
   padding: 8px 16px;
 
   p {
+    color: #fff;
     margin: 0;
+  }
+}
+
+.userInfo {
+  align-items: center;
+  display: flex;
+  gap: 8px;
+
+  p {
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 12px;
   }
 }
 
 .avatar {
   border-radius: 50%;
   box-sizing: border-box;
-  height: 24px;
-  width: 24px;
+  height: 22px;
+  width: 22px;
 }
 
 .notRead {

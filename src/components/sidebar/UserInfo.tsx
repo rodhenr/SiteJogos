@@ -11,7 +11,7 @@ function UserInfo() {
         className={styles.avatar}
         style={{ border: "2px solid green" }}
       />
-      <ExpInfo />
+      <ExpInfo exp={1150} maxExpLevel={13500} />
     </div>
   );
 }
