@@ -1,4 +1,4 @@
-import styles from "../../styles/components/SidebarUserOptionsItem.module.scss";
+import styles from "./styles/SidebarUserOptionsItem.module.scss";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
 interface IProps {

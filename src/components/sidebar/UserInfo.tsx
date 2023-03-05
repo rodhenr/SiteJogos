@@ -1,5 +1,5 @@
 import ExpInfo from "./ExpInfo";
-import styles from "../../styles/components/UserInfo.module.scss";
+import styles from "./styles/UserInfo.module.scss";
 
 function UserInfo() {
   return (

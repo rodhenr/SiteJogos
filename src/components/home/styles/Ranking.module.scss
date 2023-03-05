@@ -1,0 +1,34 @@
+.container {
+  background-color: #1b1e23;
+  border-radius: 10px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  height: 420px;
+  min-width: 250px;
+  padding: 16px;
+}
+
+.playersContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.buttonMore {
+  align-items: center;
+  align-self: center;
+  background-color: #ff4c29;
+  border-radius: 30px;
+  display: flex;
+  height: 30px;
+  justify-content: center;
+  margin-top: 24px;
+  width: 70%;
+
+  p {
+    color: #fff;
+    font-size: 13px;
+  }
+}

@@ -1,4 +1,4 @@
-import styles from "../../styles/components/Messages.module.scss";
+import styles from "./styles/Messages.module.scss";
 import Message from "./Message";
 
 function Messages() {

@@ -1,4 +1,4 @@
-import styles from "../../styles/components/Menu.module.scss";
+import styles from "./styles/Menu.module.scss";
 import Button from "./Button";
 import SearchBar from "./SearchBar";
 

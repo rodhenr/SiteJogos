@@ -1,6 +1,6 @@
 import SidebarUserOptionItem from "./SidebarUserOptionItem";
 
-import styles from "../../styles/components/SidebarUserOptions.module.scss";
+import styles from "./styles/SidebarUserOptions.module.scss";
 
 function SidebarUserOptions() {
   return (

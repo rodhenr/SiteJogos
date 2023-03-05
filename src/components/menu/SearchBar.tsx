@@ -1,4 +1,4 @@
-import styles from "../../styles/components/SearchBar.module.scss";
+import styles from "./styles/SearchBar.module.scss";
 import SearchIcon from "@mui/icons-material/Search";
 
 function SearchBar() {

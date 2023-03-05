@@ -1,4 +1,4 @@
-import styles from "../../../styles/components/Recent.module.scss";
+import styles from "./styles/Recent.module.scss";
 
 function Recent() {
   return <div className={styles.container}></div>;

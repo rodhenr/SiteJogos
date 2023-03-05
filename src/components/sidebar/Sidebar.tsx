@@ -1,7 +1,8 @@
-import styles from "../../styles/components/Sidebar.module.scss";
 import Messages from "./Messages";
 import SidebarUserOptions from "./SidebarUserOptions";
 import UserInfo from "./UserInfo";
+
+import styles from "./styles/Sidebar.module.scss";
 
 function Sidebar() {
   return (

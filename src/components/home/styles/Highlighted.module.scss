@@ -1,8 +1,11 @@
 .container {
   background-color: #1b1e23;
   border-radius: 10px;
+  box-sizing: border-box;
   display: flex;
+  flex-direction: column;
   height: 230px;
   margin: 32px 0;
+  padding: 16px;
   width: 100%;
 }

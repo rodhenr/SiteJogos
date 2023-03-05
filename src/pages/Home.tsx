@@ -1,10 +1,11 @@
-import Help from "../components/home/help/Help";
-import Highlighted from "../components/home/highlighted/Highlighted";
-import Ranking from "../components/home/ranking/Ranking";
-import Recent from "../components/home/recent/Recent";
+import Help from "../components/home/Help";
+import Highlighted from "../components/home/Highlighted";
+import Ranking from "../components/home/Ranking";
+import Recent from "../components/home/Recent";
 import Menu from "../components/menu/Menu";
 import Sidebar from "../components/sidebar/Sidebar";
-import styles from "../styles/components/Home.module.scss";
+
+import styles from "./styles/Home.module.scss";
 
 function Home() {
   return (

@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../../styles/components/ExpInfo.module.scss";
+import styles from "./styles/ExpInfo.module.scss";
 
 interface IProps {
   exp: number;

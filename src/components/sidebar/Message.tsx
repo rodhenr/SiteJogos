@@ -1,4 +1,4 @@
-import styles from "../../styles/components/Message.module.scss";
+import styles from "./styles/Message.module.scss";
 
 interface IProps {
   notRead: number;
