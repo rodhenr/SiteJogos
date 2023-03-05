@@ -1,0 +1,38 @@
+.container {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  margin-top: 16px;
+}
+
+.title {
+  font-family: "Nunito", sans-serif;
+  font-size: 10px;
+}
+
+.messages {
+  background-color: #181a1d;
+  border-radius: 15px;
+  height: 200px;
+  position: relative;
+  width: 100%;
+}
+
+.allMessages {
+  align-items: center;
+  background-color: #ff4c29;
+  border-radius: 15px;
+  bottom: -12px;
+  display: flex;
+  height: 30px;
+  justify-content: center;
+  left: 17px;
+  position: absolute;
+  width: 150px;
+
+  p {
+    color: #fff;
+    font-size: 12px;
+    margin: 0;
+  }
+}

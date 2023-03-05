@@ -1,0 +1,27 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 4px;
+
+  p {
+    font-size: 12px;
+  }
+}
+
+.expBar {
+  background-color: #fff;
+  border-radius: 2px;
+  height: 5px;
+  overflow: hidden;
+}
+
+.exp {
+  background-color: #1a0daf;
+  height: 100%;
+  z-index: 100;
+}

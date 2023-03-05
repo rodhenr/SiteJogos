@@ -1,0 +1,20 @@
+.container {
+  align-items: flex-start;
+  border-bottom: 1px solid #222222;
+  display: flex;
+  flex-direction: column;
+
+  p {
+    margin: 0;
+  }
+}
+
+.title {
+  font-family: "Nunito", sans-serif;
+  font-size: 10px;
+}
+
+.optionsContainer {
+  gap: 24px;
+  margin: 16px 0 24px 0;
+}
