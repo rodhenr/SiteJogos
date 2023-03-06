@@ -1,7 +1,7 @@
 import Title from "./Title";
+import RankingItem from "./RankingItem";
 
 import styles from "./styles/Ranking.module.scss";
-import RankingItem from "./RankingItem";
 
 function Ranking() {
   const fakeData = [

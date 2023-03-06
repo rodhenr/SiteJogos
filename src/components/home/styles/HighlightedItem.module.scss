@@ -1,0 +1,13 @@
+.container {
+  border-radius: 10px;
+  display: flex;
+  flex: 1;
+  max-height: 160px;
+  overflow: hidden;
+}
+
+.image {
+  height: auto;
+  max-width: 100%;
+  object-fit: cover;
+}

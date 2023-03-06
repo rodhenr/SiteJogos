@@ -1,7 +1,28 @@
 .container {
   background-color: #1b1e23;
   border-radius: 10px;
+  box-sizing: border-box;
   display: flex;
-  flex: 2;
-  height: 220px;
+  flex-direction: column;
+  flex: 1;
+  height: 420px;
+  min-width: 250px;
+  padding: 16px;
+}
+
+.header {
+  display: flex;
+  margin-bottom: 8px;
+
+  p {
+    color: "#FFF";
+    flex: 1;
+    font-size: 12px;
+  }
+}
+
+.items {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }

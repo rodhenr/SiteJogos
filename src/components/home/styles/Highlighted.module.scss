@@ -7,5 +7,9 @@
   height: 230px;
   margin: 32px 0;
   padding: 16px;
-  width: 100%;
+}
+
+.cardsContainer {
+  display: flex;
+  gap: 8px;
 }

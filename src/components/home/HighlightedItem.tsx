@@ -1,11 +1,16 @@
-import React from 'react'
+import styles from "./styles/HighlightedItem.module.scss";
 
-function HighlightedItem() {
-  return (
-    <div>
-      
-    </div>
-  )
+interface IProps {
+  url: string;
+  name: string;
 }
 
-export default HighlightedItem
+function HighlightedItem({ url, name }: IProps) {
+  return (
+    <div className={styles.container}>
+      <img src={url} alt={name} className={styles.image} />
+    </div>
+  );
+}
+
+export default HighlightedItem;
