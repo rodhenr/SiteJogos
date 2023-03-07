@@ -1,17 +1,25 @@
 .container {
   align-items: center;
   background-color: #242329;
-  border-radius: 15px;
+  border-radius: 8px;
   box-sizing: border-box;
   display: flex;
+  flex: 1;
   gap: 12px;
-  height: 40px;
+  height: 45px;
   padding: 0 16px;
-  width: 350px;
+
+  @media (min-width: 600px) {
+    width: 350px;
+  }
 }
 
 .title {
   color: #6a6a84;
-  font-size: 12;
+  font-size: 11px;
   margin: 0;
+
+  @media (min-width: 600px) {
+    font-size: 12px;
+  }
 }

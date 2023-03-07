@@ -1,15 +1,32 @@
 .container {
   background-color: #1b1e23;
   border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
+    rgba(0, 0, 0, 0.22) 0px 15px 12px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   height: 230px;
-  margin: 32px 0;
+  margin: 16px 0;
   padding: 16px;
+
+  @media (min-width: 600px) {
+    display: flex;
+    flex-direction: column;
+    margin: 32px 0;
+  }
 }
 
 .cardsContainer {
-  display: flex;
-  gap: 8px;
+  display: grid;
+  gap: 8px 16px;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  height: 150px;
+
+  @media (min-width: 600px) {
+    display: flex;
+    gap: 8px;
+    height: auto;
+  }
 }

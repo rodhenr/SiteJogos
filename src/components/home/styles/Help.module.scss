@@ -1,8 +1,13 @@
 .container {
   background-color: #1b1e23;
   border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
+    rgba(0, 0, 0, 0.22) 0px 15px 12px;
   display: flex;
   flex: 1;
-  margin-top: 32px;
   padding: 16px;
+
+  @media (min-width: 600px) {
+    margin-top: 32px;
+  }
 }

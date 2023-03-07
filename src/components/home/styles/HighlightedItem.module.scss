@@ -8,6 +8,11 @@
 
 .image {
   height: auto;
-  max-width: 100%;
   object-fit: cover;
+  opacity: 0.7;
+  width: 100%;
+
+  @media (min-width: 600px) {
+    max-width: 100%;
+  }
 }
