@@ -1,17 +1,9 @@
 .container {
   align-items: center;
-  background-color: #242329;
-  border-radius: 8px;
   box-sizing: border-box;
   display: flex;
   flex: 1;
-  gap: 12px;
-  height: 45px;
-  padding: 0 16px;
-
-  @media (min-width: 600px) {
-    width: 350px;
-  }
+  position: relative;
 }
 
 .title {
@@ -22,4 +14,30 @@
   @media (min-width: 600px) {
     font-size: 12px;
   }
+}
+
+.input {
+  background-color: #242329;
+  border: none;
+  border-radius: 11px;
+  color: #6a6a84;
+  height: 40px;
+  padding: 0 32px;
+  width: 100%;
+
+  &::placeholder {
+    color: #6a6a84;
+  }
+
+  @media (min-width: 600px) {
+    width: 350px;
+  }
+}
+
+.icon {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  padding: 0 6px;
+  position: absolute;
 }

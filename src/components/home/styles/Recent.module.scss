@@ -7,9 +7,18 @@
   display: flex;
   flex-direction: column;
   flex: 1;
+  font-family: "Space Grotesk", sans-serif;
   height: 420px;
   min-width: 250px;
-  padding: 16px;
+  padding: 8px;
+
+  p {
+    color: #6a6a84;
+  }
+
+  @media (min-width: 600px) {
+    padding: 16px;
+  }
 }
 
 .header {

@@ -16,8 +16,13 @@ function RankingItem({ position, player, level }: IProps) {
       ? "#E58832"
       : "#232323";
 
+  const color = position < 4 ? "#000" : "#6a6a84";
+
   return (
-    <div className={styles.container} style={{ backgroundColor: bColor }}>
+    <div
+      className={styles.container}
+      style={{ backgroundColor: bColor, color: color }}
+    >
       <div className={styles.playerInfo}>
         <p>{position}.</p>
         <p>{player}</p>

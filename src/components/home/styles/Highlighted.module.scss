@@ -8,12 +8,17 @@
   flex-direction: column;
   height: 230px;
   margin: 16px 0;
-  padding: 16px;
+  padding: 8px;
+
+  p {
+    color: #6a6a84;
+  }
 
   @media (min-width: 600px) {
     display: flex;
     flex-direction: column;
     margin: 32px 0;
+    padding: 16px;
   }
 }
 
