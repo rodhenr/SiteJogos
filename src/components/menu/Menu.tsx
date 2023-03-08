@@ -31,7 +31,7 @@ function Menu() {
     </>
   );
 
-  if (windowWidth > 600) {
+  if (windowWidth > 1024) {
     render = (
       <>
         <SearchBar />

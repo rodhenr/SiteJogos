@@ -12,7 +12,10 @@
 
   @media (min-width: 600px) {
     flex: 1;
-    height: 420px;
+  }
+
+  @media (min-width: 1024px) {
+    justify-content: space-between;
     min-width: 250px;
     padding: 16px;
   }

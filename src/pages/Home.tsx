@@ -35,7 +35,7 @@ function Home() {
     </>
   );
 
-  if (windowWidth > 600) {
+  if (windowWidth > 1024) {
     render = (
       <>
         <div className={styles.double}>
@@ -49,7 +49,7 @@ function Home() {
 
   return (
     <div className={styles.container}>
-      {windowWidth < 600 && (
+      {windowWidth < 1024 && (
         <div className={styles.mobileOptions}>
           <Drawer />
         </div>
