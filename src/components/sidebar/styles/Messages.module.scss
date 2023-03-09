@@ -13,12 +13,21 @@
   color: #6a6a84;
   font-family: "Nunito", sans-serif;
   font-size: 10px;
+
+  @media (min-width: 1024px) {
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  @media (min-width: 1400px) {
+    font-size: 14px;
+  }
 }
 
-.messages {
+.messagesContainer {
   background-color: #181a1d;
   border-radius: 15px;
-  height: 185px;
+  height: 230px;
   margin-top: 16px;
   position: relative;
   width: 100%;
@@ -32,17 +41,21 @@
   align-items: center;
   background-color: #ff4c29;
   border-radius: 15px;
-  bottom: -12px;
+  bottom: -15px;
   display: flex;
   height: 30px;
   justify-content: center;
-  left: 17px;
+  left: calc((100% - 160px) / 2);
   position: absolute;
-  width: 150px;
+  width: 160px;
 
   p {
     color: #fff;
     font-size: 11px;
     margin: 0;
+  }
+
+  &:hover {
+    cursor: pointer;
   }
 }

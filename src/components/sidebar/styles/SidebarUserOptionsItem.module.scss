@@ -1,10 +1,29 @@
 .container {
+  align-items: center;
+  box-sizing: border-box;
+  cursor: pointer;
   display: flex;
   gap: 8px;
-  margin: 0 0 12px 0;
+  padding: 6px 2px;
 
   p {
     margin: 0;
+  }
+
+  &:hover {
+    background-color: #15171a;
+    border-radius: 5px;
+
+    svg,
+    p {
+      color: #ff4c29;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    svg {
+      font-size: 22px;
+    }
   }
 }
 
@@ -12,4 +31,12 @@
   color: #fff;
   font-family: "Montserrat", sans-serif;
   font-size: 14px;
+
+  @media (min-width: 1024px) {
+    font-size: 16px;
+  }
+
+  @media (min-width: 1400px) {
+    font-size: 18px;
+  }
 }

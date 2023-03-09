@@ -1,17 +1,33 @@
 import ExpInfo from "./ExpInfo";
+
+import Avatar from "@mui/material/Avatar";
+
+import { fakeData } from "../../data/fakeData";
+
 import styles from "./styles/UserInfo.module.scss";
 
 function UserInfo() {
   return (
     <div className={styles.container}>
-      <p className={styles.userName}>RODRIGO HENRIQUE</p>
-      <img
-        src="https://i.pinimg.com/originals/ba/b5/fe/bab5fe8516e2eead05dcbcb0fe78c102.jpg"
-        alt="user avatar"
-        className={styles.avatar}
-        style={{ border: "2px solid green" }}
+      <p className={styles.username}>{fakeData.user.username.toUpperCase()}</p>
+      <Avatar
+        alt="User Avatar"
+        src={fakeData.user.avatar}
+        sx={{
+          alignSelf: "center",
+          border: "2px solid green",
+          borderRadius: "50%",
+          boxSizing: "border-box",
+          height: "80px",
+          margin: "8px 0",
+          width: "80px",
+        }}
       />
-      <ExpInfo exp={1150} maxExpLevel={13500} />
+      <ExpInfo
+        exp={fakeData.user.expLevel}
+        level={fakeData.user.level}
+        maxExpLevel={fakeData.user.maxExpLevel}
+      />
     </div>
   );
 }

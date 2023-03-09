@@ -13,7 +13,6 @@ function Home() {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   useEffect(() => {
-    console.log(windowWidth);
     const handleWindowResize = () => {
       setWindowWidth(window.innerWidth);
     };

@@ -4,21 +4,17 @@ interface IProps {
   time: string;
   game: string;
   user: string;
-  result: string;
+  win: boolean;
 }
 
-function RecentItem({ time, game, user, result }: IProps) {
+function RecentItem({ time, game, user, win }: IProps) {
   return (
     <div className={styles.container}>
       <p>{time}</p>
       <p>{game}</p>
       <p>{user}</p>
-      <p
-        style={
-          result === "DERROTA" ? { color: "#FE3434" } : { color: "#11C318" }
-        }
-      >
-        {result}
+      <p style={win ? { color: "#11C318" } : { color: "#FE3434" }}>
+        {win ? "VITÓRIA" : "DERROTA"}
       </p>
     </div>
   );

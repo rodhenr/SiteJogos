@@ -19,22 +19,36 @@
     font-family: "Source Sans Pro", sans-serif;
     font-size: 12px;
   }
-}
 
-.avatar {
-  border-radius: 50%;
-  box-sizing: border-box;
-  height: 22px;
-  width: 22px;
+  &:hover {
+    p {
+      color: #ff4c29;
+      cursor: pointer;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    p {
+      font-size: 13px;
+    }
+  }
+
+  @media (min-width: 1400px) {
+    p {
+      font-size: 14px;
+    }
+  }
 }
 
 .notRead {
-  align-items: center;
-  background-color: #262424;
-  border-radius: 50%;
-  display: flex;
-  font-size: 10px;
-  height: 20px;
-  justify-content: center;
-  width: 20px;
+  font-size: 12px;
+
+  svg {
+    color: #fff;
+    font-size: 20px;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
 }

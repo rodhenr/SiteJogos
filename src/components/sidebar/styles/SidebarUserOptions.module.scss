@@ -1,6 +1,5 @@
 .container {
   align-items: flex-start;
-  border-bottom: 1px solid #222222;
   display: flex;
   flex-direction: column;
 
@@ -13,9 +12,21 @@
   color: #6a6a84;
   font-family: "Nunito", sans-serif;
   font-size: 10px;
+
+  @media (min-width: 1024px) {
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  @media (min-width: 1400px) {
+    font-size: 14px;
+  }
 }
 
 .optionsContainer {
-  gap: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
   margin: 16px 0 24px 0;
+  width: 100%;
 }

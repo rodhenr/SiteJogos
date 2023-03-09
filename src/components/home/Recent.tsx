@@ -1,44 +1,13 @@
+import { fakeData } from "../../data/fakeData";
+
+import { v4 as uuidv4 } from "uuid";
+
 import Title from "./Title";
-
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
-
-import styles from "./styles/Recent.module.scss";
 import RecentItem from "./RecentItem";
 
-function Recent() {
-  const fakeData = [
-    {
-      time: "04/03/2023 12:22",
-      game: "JOGO DA VELHA",
-      user: "RODRIGO HENRIQUE",
-      result: "VITÓRIA",
-    },
-    {
-      time: "04/03/2023 12:22",
-      game: "YAHTZEE",
-      user: "OUTRO USUÁRIO",
-      result: "DERROTA",
-    },
-    {
-      time: "04/03/2023 12:22",
-      game: "UNO",
-      user: "UM USUÁRIO",
-      result: "VITÓRIA",
-    },
-    {
-      time: "04/03/2023 12:22",
-      game: "JOKENPO",
-      user: "OUTRO OUTRO",
-      result: "DERROTA",
-    },
-  ];
+import styles from "./styles/Recent.module.scss";
 
+function Recent() {
   return (
     <div className={styles.container}>
       <Title title={"PARTIDAS RECENTES"} />
@@ -50,13 +19,14 @@ function Recent() {
           <p>RESULTADO</p>
         </div>
         <div className={styles.items}>
-          {fakeData.map((item) => {
+          {fakeData.recentMatches.map((match) => {
             return (
               <RecentItem
-                time={item.time}
-                game={item.game}
-                user={item.user}
-                result={item.result}
+                game={match.game}
+                key={uuidv4()}
+                time={match.time}
+                user={match.nameLastUser}
+                win={match.win}
               />
             );
           })}

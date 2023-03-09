@@ -1,16 +1,27 @@
-import styles from "./styles/Messages.module.scss";
+import { fakeData } from "../../data/fakeData";
+
+import { v4 as uuidv4 } from "uuid";
+
 import Message from "./Message";
+
+import styles from "./styles/Messages.module.scss";
 
 function Messages() {
   return (
     <div className={styles.container}>
       <p className={styles.title}>MENSAGENS</p>
-      <div className={styles.messages}>
+      <div className={styles.messagesContainer}>
         <div className={styles.recentMessages}>
-          <Message notRead={0} userName={"Rodrigo"} />
-          <Message notRead={2} userName={"Usuário"} />
-          <Message notRead={1} userName={"Pessoa"} />
-          <Message notRead={4} userName={"Teste"} />
+          {fakeData.user.messages.map((message: any) => {
+            return (
+              <Message
+                avatar={message.userAvatar}
+                key={uuidv4()}
+                name={message.username}
+                notRead={message.notRead}
+              />
+            );
+          })}
         </div>
         <div className={styles.allMessages}>
           <p>TODAS MENSAGENS</p>

@@ -1,19 +1,18 @@
 import styles from "./styles/SidebarUserOptionsItem.module.scss";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
 interface IProps {
+  Icon: any;
   title: string;
-  iconName: string;
 }
 
-function SidebarOptionItem({ title, iconName }: IProps) {
+function SidebarOptionItem({ Icon, title }: IProps) {
   return (
     <div className={styles.container}>
-      <AccountCircleIcon
+      <Icon
         sx={{
           alignSelf: "center",
           color: "#FFF",
-          fontSize: 17,
+          fontSize: 26,
         }}
       />
       <p className={styles.title}>{title}</p>

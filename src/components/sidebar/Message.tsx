@@ -1,25 +1,37 @@
+import Badge from "@mui/material/Badge";
+import MailIcon from "@mui/icons-material/Mail";
+import Avatar from "@mui/material/Avatar";
+
 import styles from "./styles/Message.module.scss";
 
 interface IProps {
+  avatar: string;
+  name: string;
   notRead: number;
-  userName: string;
 }
 
-function Message({ notRead, userName }: IProps) {
+function Message({ avatar, name, notRead }: IProps) {
   return (
     <div className={styles.container}>
       <div className={styles.userInfo}>
-        <img
-          src="https://i.pinimg.com/originals/ba/b5/fe/bab5fe8516e2eead05dcbcb0fe78c102.jpg"
+        <Avatar
+          src={avatar}
           alt="user avatar"
-          className={styles.avatar}
+          sx={{
+            borderRadius: "50%",
+            boxsizing: "border-box",
+            height: "35px",
+            width: "35px",
+          }}
         />
-        <p>{userName}</p>
+        <p>{name.substring(0, 18)}</p>
       </div>
 
       {notRead > 0 && (
         <div className={styles.notRead}>
-          <p>{notRead}</p>
+          <Badge badgeContent={notRead} color="primary">
+            <MailIcon color="action"  />
+          </Badge>
         </div>
       )}
     </div>
