@@ -1,15 +1,15 @@
 import styles from "./styles/Button.module.scss";
-import HomeIcon from "@mui/icons-material/Home";
 
 interface IProps {
+  Icon: any;
   title: string;
 }
 
-function Button({ title }: IProps) {
+function Button({ Icon, title }: IProps) {
   return (
     <div className={styles.container}>
-      <HomeIcon sx={{ color: "#6A6A84" }} />
-      <p>{title}</p>
+      <Icon sx={{ color: "#6A6A84" }} />
+      <p>{title.toUpperCase()}</p>
     </div>
   );
 }

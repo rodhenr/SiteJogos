@@ -12,10 +12,6 @@
   min-width: 250px;
   padding: 8px;
 
-  p {
-    color: #6a6a84;
-  }
-
   @media (min-width: 1024px) {
     padding: 16px;
   }
@@ -24,7 +20,21 @@
 .tableContainer {
   p {
     font-family: "Roboto Condensed";
-    font-size: 10px;
+    font-size: 9px;
+  }
+
+  @media (min-width: 600px) {
+    padding: 6px;
+
+    p {
+      font-size: 11px;
+    }
+  }
+
+  @media (min-width: 1400px) {
+    p {
+      font-size: 13px;
+    }
   }
 }
 
@@ -33,7 +43,7 @@
   margin-bottom: 8px;
 
   p {
-    color: "#FFF";
+    color: #6a6a84;
     flex: 1;
     font-size: 12px;
   }

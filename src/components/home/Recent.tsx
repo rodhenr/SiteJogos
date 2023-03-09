@@ -2,6 +2,8 @@ import { fakeData } from "../../data/fakeData";
 
 import { v4 as uuidv4 } from "uuid";
 
+import TvIcon from "@mui/icons-material/Tv";
+
 import Title from "./Title";
 import RecentItem from "./RecentItem";
 
@@ -10,7 +12,7 @@ import styles from "./styles/Recent.module.scss";
 function Recent() {
   return (
     <div className={styles.container}>
-      <Title title={"PARTIDAS RECENTES"} />
+      <Title Icon={TvIcon} title={"PARTIDAS RECENTES"} />
       <div className={styles.tableContainer}>
         <div className={styles.header}>
           <p>DATA/HORA</p>

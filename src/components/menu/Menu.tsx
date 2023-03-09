@@ -1,10 +1,24 @@
-import styles from "./styles/Menu.module.scss";
+import { useEffect, useState } from "react";
+
+import HomeIcon from "@mui/icons-material/Home";
+import SportsEsportsIcon from "@mui/icons-material/SportsEsports";
+import StarsIcon from "@mui/icons-material/Stars";
+import HelpIcon from "@mui/icons-material/Help";
+
 import Button from "./Button";
 import SearchBar from "./SearchBar";
-import { useEffect, useState } from "react";
+
+import styles from "./styles/Menu.module.scss";
 
 function Menu() {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  const titles = [
+    { icon: HomeIcon, name: "Inicio" },
+    { icon: SportsEsportsIcon, name: "Jogos" },
+    { icon: StarsIcon, name: "Recordes" },
+    { icon: HelpIcon, name: "Faq" },
+  ];
 
   useEffect(() => {
     const handleWindowResize = () => {
@@ -21,10 +35,9 @@ function Menu() {
   let render = (
     <>
       <div className={styles.buttonsContainer}>
-        <Button title={"HOME"} />
-        <Button title={"JOGOS"} />
-        <Button title={"RECORDES"} />
-        <Button title={"FAQ"} />
+        {titles.map((title) => {
+          return <Button Icon={title.icon} title={title.name} />;
+        })}
       </div>
       <SearchBar />
     </>
@@ -35,10 +48,9 @@ function Menu() {
       <>
         <SearchBar />
         <div className={styles.buttonsContainer}>
-          <Button title={"HOME"} />
-          <Button title={"JOGOS"} />
-          <Button title={"RECORDES"} />
-          <Button title={"FAQ"} />
+          {titles.map((title) => {
+            return <Button Icon={title.icon} title={title.name} />;
+          })}
         </div>
       </>
     );

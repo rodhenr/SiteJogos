@@ -12,7 +12,7 @@ function RecentItem({ time, game, user, win }: IProps) {
     <div className={styles.container}>
       <p>{time}</p>
       <p>{game}</p>
-      <p>{user}</p>
+      <p>{user.substring(0, 40)}</p>
       <p style={win ? { color: "#11C318" } : { color: "#FE3434" }}>
         {win ? "VITÓRIA" : "DERROTA"}
       </p>

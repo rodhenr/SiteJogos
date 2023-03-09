@@ -9,4 +9,34 @@
     font-size: 20px;
     margin: 0;
   }
+
+  @media (min-width: 1200px) {
+    svg {
+      font-size: 26px;
+    }
+
+    p {
+      font-size: 22px;
+    }
+  }
+
+  @media (min-width: 1400px) {
+    svg {
+      font-size: 28px;
+    }
+
+    p {
+      font-size: 24px;
+    }
+  }
+
+  @media (min-width: 1700px) {
+    svg {
+      font-size: 30px;
+    }
+
+    p {
+      font-size: 26px;
+    }
+  }
 }

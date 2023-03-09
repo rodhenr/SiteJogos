@@ -25,7 +25,7 @@ function RankingItem({ position, player, level }: IProps) {
     >
       <div className={styles.playerInfo}>
         <p>{position}.</p>
-        <p>{player}</p>
+        <p>{player.substring(0, 40)}</p>
       </div>
       <p>NÍVEL {level}</p>
     </div>

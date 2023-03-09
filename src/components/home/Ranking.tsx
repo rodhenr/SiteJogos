@@ -2,6 +2,8 @@ import { fakeData } from "../../data/fakeData";
 
 import { v4 as uuidv4 } from "uuid";
 
+import BoltIcon from "@mui/icons-material/Bolt";
+
 import Title from "./Title";
 import RankingItem from "./RankingItem";
 
@@ -11,7 +13,7 @@ function Ranking() {
   return (
     <div className={styles.container}>
       <div>
-        <Title title={"RANKING"} />
+        <Title Icon={BoltIcon} title={"RANKING"} />
         <div className={styles.playersContainer}>
           {fakeData.playerRanking.map((rank) => (
             <RankingItem
