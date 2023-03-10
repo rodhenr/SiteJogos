@@ -2,6 +2,30 @@
   border-radius: 10px;
   display: flex;
   overflow: hidden;
+  position: relative;
+
+  &::before {
+    border: 3px solid #ff4c29;
+    border-radius: 10px;
+    box-sizing: border-box;
+    content: "";
+    height: 100%;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+  }
+
+  &:hover {
+    cursor: pointer;
+    opacity: 0.8;
+
+    &::before {
+      animation: borderShowing 0.2s forwards;
+    }
+  }
 
   @media (min-width: 1024px) {
     flex: 1;
@@ -16,5 +40,23 @@
 
   @media (min-width: 1024px) {
     max-width: 100%;
+  }
+}
+
+@keyframes borderShowing {
+  20% {
+    opacity: 0.2;
+  }
+  40% {
+    opacity: 0.4;
+  }
+  60% {
+    opacity: 0.6;
+  }
+  80% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 1;
   }
 }

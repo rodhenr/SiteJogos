@@ -14,10 +14,10 @@ function Menu() {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   const titles = [
-    { icon: HomeIcon, name: "Inicio" },
-    { icon: SportsEsportsIcon, name: "Jogos" },
-    { icon: StarsIcon, name: "Recordes" },
-    { icon: HelpIcon, name: "Faq" },
+    { icon: HomeIcon, name: "Inicio", route: "/" },
+    { icon: SportsEsportsIcon, name: "Jogos", route: "/jogos" },
+    { icon: StarsIcon, name: "Recordes", route: "/recordes" },
+    { icon: HelpIcon, name: "Faq", route: "/faq" },
   ];
 
   useEffect(() => {
@@ -36,7 +36,9 @@ function Menu() {
     <>
       <div className={styles.buttonsContainer}>
         {titles.map((title) => {
-          return <Button Icon={title.icon} title={title.name} />;
+          return (
+            <Button Icon={title.icon} route={title.route} title={title.name} />
+          );
         })}
       </div>
       <SearchBar />
@@ -49,7 +51,13 @@ function Menu() {
         <SearchBar />
         <div className={styles.buttonsContainer}>
           {titles.map((title) => {
-            return <Button Icon={title.icon} title={title.name} />;
+            return (
+              <Button
+                Icon={title.icon}
+                route={title.route}
+                title={title.name}
+              />
+            );
           })}
         </div>
       </>
