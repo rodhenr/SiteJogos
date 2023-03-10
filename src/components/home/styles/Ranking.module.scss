@@ -10,6 +10,10 @@
   font-family: "Space Grotesk", sans-serif;
   padding: 8px;
 
+  &:hover {
+    background-color: #171a1f;
+  }
+
   @media (min-width: 600px) {
     flex: 1;
   }

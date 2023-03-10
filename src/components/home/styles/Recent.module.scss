@@ -12,6 +12,10 @@
   min-width: 250px;
   padding: 8px;
 
+  &:hover {
+    background-color: #171a1f;
+  }
+
   @media (min-width: 1024px) {
     padding: 16px;
   }
@@ -46,6 +50,7 @@
     color: #6a6a84;
     flex: 1;
     font-size: 12px;
+    text-align: center;
   }
 
   @media (min-width: 1400px) {

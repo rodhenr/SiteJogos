@@ -25,6 +25,10 @@
     &::before {
       animation: borderShowing 0.2s forwards;
     }
+
+    img {
+      transform: scale(1.05);
+    }
   }
 
   @media (min-width: 1024px) {

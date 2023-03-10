@@ -12,6 +12,10 @@
     color: #6a6a84;
   }
 
+  &:hover {
+    background-color: #171a1f;
+  }
+
   @media (min-width: 1024px) {
     margin-top: 32px;
     padding: 16px;

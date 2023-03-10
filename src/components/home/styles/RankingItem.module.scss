@@ -11,6 +11,12 @@
     max-width: 100%;
   }
 
+  &:hover {
+    cursor: pointer;
+    opacity: 0.75;
+    transform: scaleX(1.02);
+  }
+
   @media (min-width: 1024px) {
     p {
       font-size: 11.5px;
