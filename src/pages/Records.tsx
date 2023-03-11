@@ -1,9 +1,14 @@
-import React from 'react'
+import React from "react";
+import Layout from "../layouts/Layout";
 
 function Records() {
   return (
-    <div>Records</div>
-  )
+    <div>
+      <Layout>
+        <div></div>
+      </Layout>
+    </div>
+  );
 }
 
-export default Records
+export default Records;

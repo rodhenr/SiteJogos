@@ -1,6 +1,6 @@
-import Messages from "../components/sidebar/Messages";
-import SidebarUserOptions from "../components/sidebar/SidebarUserOptions";
-import UserInfo from "../components/sidebar/UserInfo";
+import Messages from "./Messages";
+import SidebarUserOptions from "./SidebarUserOptions";
+import UserInfo from "./UserInfo";
 
 import Divider from "@mui/material/Divider";
 

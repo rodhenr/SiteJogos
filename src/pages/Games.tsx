@@ -1,4 +1,4 @@
-import Sidebar from "../layouts/Sidebar";
+import Sidebar from "../components/sidebar/Sidebar";
 import Menu from "../components/menu/Menu";
 
 import { fakeData } from "../data/fakeData";

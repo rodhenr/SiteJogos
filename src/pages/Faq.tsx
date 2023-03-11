@@ -1,9 +1,13 @@
-import React from 'react'
+import Layout from "../layouts/Layout";
 
 function Faq() {
   return (
-    <div>Faq</div>
-  )
+    <div>
+      <Layout>
+        <div></div>
+      </Layout>
+    </div>
+  );
 }
 
-export default Faq
+export default Faq;
