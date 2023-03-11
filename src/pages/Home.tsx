@@ -4,7 +4,7 @@ import Highlighted from "../components/home/Highlighted";
 import Ranking from "../components/home/Ranking";
 import Recent from "../components/home/Recent";
 import Menu from "../components/menu/Menu";
-import Sidebar from "../components/sidebar/Sidebar";
+import Sidebar from "../layouts/Sidebar";
 import Drawer from "../components/home/Drawer";
 
 import styles from "./styles/Home.module.scss";
