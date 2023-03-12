@@ -11,6 +11,7 @@
   height: 420px;
   min-width: 250px;
   padding: 8px;
+  transition: background-color 0.3s;
 
   &:hover {
     background-color: #171a1f;
@@ -22,6 +23,8 @@
 }
 
 .tableContainer {
+  flex: 1;
+
   p {
     font-family: "Roboto Condensed";
     font-size: 9px;

@@ -47,8 +47,10 @@ function Home() {
   return (
     <div className={styles.container}>
       <Layout>
-        <Highlighted />
-        <div className={styles.infos}>{render}</div>
+        <div className={styles.containerCards}>
+          <Highlighted />
+          <div className={styles.infos}>{render}</div>
+        </div>
       </Layout>
     </div>
   );

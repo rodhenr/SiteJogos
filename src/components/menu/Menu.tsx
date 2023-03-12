@@ -16,6 +16,7 @@ function Menu() {
   const titles = [
     { icon: HomeIcon, name: "Inicio", route: "/" },
     { icon: SportsEsportsIcon, name: "Jogos", route: "/jogos" },
+    { icon: StarsIcon, name: "Ranking", route: "/ranking" },
     { icon: StarsIcon, name: "Recordes", route: "/recordes" },
     { icon: HelpIcon, name: "Faq", route: "/faq" },
   ];

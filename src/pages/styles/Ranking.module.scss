@@ -1,0 +1,56 @@
+.container {
+  display: flex;
+  flex: 1;
+  gap: 8px;
+  max-height: 100%;
+}
+
+.mainRanking {
+  background-color: #1b1e23;
+  border-radius: 10px;
+  box-sizing: border-box;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
+    rgba(0, 0, 0, 0.22) 0px 15px 12px;
+  display: flex;
+  flex: 2;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+}
+
+.rankingTitle {
+  color: #6a6a84;
+  font-size: 22px;
+  text-align: center;
+}
+
+.ranking {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 4px;
+  overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.playerInfo {
+  align-items: center;
+  background-color: #1b1e23;
+  border-radius: 10px;
+  box-sizing: border-box;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
+    rgba(0, 0, 0, 0.22) 0px 15px 12px;
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  padding: 8px 16px;
+}
+
+.noPlayerSelected {
+  color: #6a6a84;
+  font-size: 25px;
+  text-align: center;
+}

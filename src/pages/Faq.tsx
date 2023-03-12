@@ -1,10 +1,16 @@
 import Layout from "../layouts/Layout";
 
+import styles from "./styles/Faq.module.scss";
+
 function Faq() {
   return (
     <div>
       <Layout>
-        <div></div>
+        <div className={styles.container}>
+          <div>
+            <p>CONTEUDO</p>
+          </div>
+        </div>
       </Layout>
     </div>
   );

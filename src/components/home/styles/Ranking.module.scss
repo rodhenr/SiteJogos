@@ -9,6 +9,7 @@
   flex: 2;
   font-family: "Space Grotesk", sans-serif;
   padding: 8px;
+  transition: background-color 0.3s;
 
   &:hover {
     background-color: #171a1f;
@@ -40,10 +41,16 @@
   height: 30px;
   justify-content: center;
   margin-top: 24px;
+  transition: background-color 0.3s;
   width: 70%;
 
   p {
     color: #fff;
     font-size: 13px;
+  }
+
+  &:hover {
+    background-color: #f13a15;
+    cursor: pointer;
   }
 }
