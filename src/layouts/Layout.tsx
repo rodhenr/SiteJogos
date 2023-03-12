@@ -1,6 +1,7 @@
 import { Drawer } from "@mui/material";
 import { useEffect, useState } from "react";
 import Menu from "../components/menu/Menu";
+import HistoryModal from "../components/sidebar/HistoryModal";
 import Sidebar from "../components/sidebar/Sidebar";
 
 import styles from "./styles/Layout.module.scss";
@@ -36,6 +37,7 @@ function Layout({ children }: IProps) {
         <Menu />
         <div className={styles.main}>{children}</div>
       </div>
+      <HistoryModal />
     </div>
   );
 }

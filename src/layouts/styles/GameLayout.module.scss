@@ -1,0 +1,50 @@
+.container {
+  background-color: #1b1e23;
+  border-radius: 10px;
+  box-sizing: border-box;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
+    rgba(0, 0, 0, 0.22) 0px 15px 12px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 16px;
+  overflow-y: auto;
+  padding: 16px;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.gameContainer {
+  background-color: white;
+  flex: 1;
+
+  @media (min-width: 1400px) {
+    min-height: 450px;
+  }
+}
+
+.rulesContainer {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+
+  h1 {
+    color: white;
+    margin: 0 0 8px 0;
+  }
+}
+
+.rules {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  p {
+    color: white;
+  }
+}
+
+.rule {
+}

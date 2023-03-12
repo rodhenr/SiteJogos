@@ -1,3 +1,10 @@
+import { useDispatch } from "react-redux";
+import {
+  changeHistoryModal,
+  changeProfileModal,
+  changeRecordsModal,
+} from "../../store/slices/modalSlice";
+
 import styles from "./styles/SidebarUserOptionsItem.module.scss";
 
 interface IProps {
@@ -6,8 +13,20 @@ interface IProps {
 }
 
 function SidebarOptionItem({ Icon, title }: IProps) {
+  const dispatch = useDispatch();
+
+  const handleClick = () => {
+    if (title === "Histórico") {
+      dispatch(changeHistoryModal(true));
+    } else if (title === "Meu Perfil") {
+      dispatch(changeProfileModal(true));
+    } else if (title === "Meus Recordes") {
+      dispatch(changeRecordsModal(true));
+    }
+  };
+
   return (
-    <div className={styles.container}>
+    <div className={styles.container} onClick={handleClick}>
       <Icon
         sx={{
           alignSelf: "center",

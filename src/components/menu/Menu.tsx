@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 
+import { v4 as uuidv4 } from "uuid";
+
 import HomeIcon from "@mui/icons-material/Home";
 import SportsEsportsIcon from "@mui/icons-material/SportsEsports";
 import StarsIcon from "@mui/icons-material/Stars";
@@ -38,7 +40,12 @@ function Menu() {
       <div className={styles.buttonsContainer}>
         {titles.map((title) => {
           return (
-            <Button Icon={title.icon} route={title.route} title={title.name} />
+            <Button
+              Icon={title.icon}
+              key={uuidv4()}
+              route={title.route}
+              title={title.name}
+            />
           );
         })}
       </div>
@@ -55,6 +62,7 @@ function Menu() {
             return (
               <Button
                 Icon={title.icon}
+                key={uuidv4()}
                 route={title.route}
                 title={title.name}
               />

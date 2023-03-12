@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import styles from "./styles/GamesPageItem.module.scss";
 
 interface IProps {
@@ -6,8 +7,14 @@ interface IProps {
 }
 
 function GamesPageItem({ name, image }: IProps) {
+  const navigate = useNavigate();
+
+  const handleGameNavigate = () => {
+    navigate(`/jogos/${name.replace(/\s+/g, "-")}`);
+  };
+
   return (
-    <div className={styles.container}>
+    <div className={styles.container} onClick={handleGameNavigate}>
       <div className={styles.imageContainer}>
         <img alt={name} src={image} />
       </div>

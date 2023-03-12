@@ -1,0 +1,22 @@
+.container {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.matchContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.match {
+  color: #6a6a84;
+  display: flex;
+  justify-content: space-between;
+  padding: 2px 4px;
+
+  p {
+    font-size: 13px;
+  }
+}
