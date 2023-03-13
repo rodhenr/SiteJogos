@@ -1,0 +1,12 @@
+.friend {
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: #2e2c2c;
+    cursor: pointer;
+  }
+}
+
+.inputMessage {
+  flex: 1;
+}

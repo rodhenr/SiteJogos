@@ -25,6 +25,7 @@ function UserInfo() {
       />
       <ExpInfo
         exp={fakeData.user.expLevel}
+        isModal={false}
         level={fakeData.user.level}
         maxExpLevel={fakeData.user.maxExpLevel}
       />

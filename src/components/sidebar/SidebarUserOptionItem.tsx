@@ -2,7 +2,7 @@ import { useDispatch } from "react-redux";
 import {
   changeHistoryModal,
   changeProfileModal,
-  changeRecordsModal,
+  changeMessagesModal,
 } from "../../store/slices/modalSlice";
 
 import styles from "./styles/SidebarUserOptionsItem.module.scss";
@@ -20,8 +20,8 @@ function SidebarOptionItem({ Icon, title }: IProps) {
       dispatch(changeHistoryModal(true));
     } else if (title === "Meu Perfil") {
       dispatch(changeProfileModal(true));
-    } else if (title === "Meus Recordes") {
-      dispatch(changeRecordsModal(true));
+    } else if (title === "Mensagens") {
+      dispatch(changeMessagesModal(true));
     }
   };
 

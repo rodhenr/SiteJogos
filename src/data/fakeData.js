@@ -3,8 +3,9 @@ export const fakeData = {
     avatar:
       "https://i.pinimg.com/originals/ba/b5/fe/bab5fe8516e2eead05dcbcb0fe78c102.jpg",
     username: "Usário de teste",
-    userID: 0,
+    userID: "sd65a-sd4as-5f425",
     level: 29,
+    ranking: 1,
     expLevel: 6000,
     maxExpLevel: 13500,
     messages: [
@@ -74,6 +75,23 @@ export const fakeData = {
       { game: "Yahtzee", date: "2023-01-01", win: false },
       { game: "Yahtzee", date: "2023-01-01", win: false },
       { game: "Yahtzee", date: "2023-01-01", win: true },
+    ],
+    friends: [
+      { userName: "Pessoa1", userID: "01", image: "" },
+      { userName: "Pessoa1", userID: "01", image: "" },
+      { userName: "Pessoa1", userID: "01", image: "" },
+      { userName: "Pessoa1", userID: "01", image: "" },
+      { userName: "Pessoa1", userID: "01", image: "" },
+      { userName: "Pessoa1", userID: "01", image: "" },
+      { userName: "Pessoa1", userID: "01", image: "" },
+      { userName: "Pessoa1", userID: "01", image: "" },
+    ],
+    statistics: [
+      { game: "Uno", wins: 22, loses: 12 },
+      { game: "Uno", wins: 22, loses: 12 },
+      { game: "Uno", wins: 22, loses: 12 },
+      { game: "Uno", wins: 22, loses: 12 },
+      { game: "Uno", wins: 22, loses: 12 },
     ],
   },
   highlightedGames: [

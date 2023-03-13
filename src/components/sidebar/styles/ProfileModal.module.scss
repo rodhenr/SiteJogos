@@ -1,0 +1,31 @@
+.container {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.friendsContainer {
+  flex: 1;
+}
+
+.friendAvatar {
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.statisticsContainer {
+  flex: 1;
+}
+
+.statisticsItems {
+}
+
+.statistic {
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: #ffffff;
+    cursor: pointer;
+  }
+}

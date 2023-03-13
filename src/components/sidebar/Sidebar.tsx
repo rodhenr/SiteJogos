@@ -10,9 +10,8 @@ function Sidebar() {
   return (
     <div className={styles.container}>
       <UserInfo />
-      <SidebarUserOptions />
       <Divider sx={{ backgroundColor: "#454550" }} />
-      <Messages />
+      <SidebarUserOptions />
     </div>
   );
 }

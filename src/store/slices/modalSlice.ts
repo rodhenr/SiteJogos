@@ -4,13 +4,13 @@ import { RootState } from "../store";
 interface IModalState {
   historyModal: boolean;
   profileModal: boolean;
-  recordsModal: boolean;
+  messagesModal: boolean;
 }
 
 const initialState: IModalState = {
   historyModal: false,
   profileModal: false,
-  recordsModal: false,
+  messagesModal: false,
 };
 
 const modalSlice = createSlice({
@@ -20,22 +20,22 @@ const modalSlice = createSlice({
     changeHistoryModal: (state, action) => {
       state.historyModal = action.payload;
       state.profileModal = false;
-      state.recordsModal = false;
+      state.messagesModal = false;
     },
     changeProfileModal: (state, action) => {
       state.historyModal = false;
       state.profileModal = action.payload;
-      state.recordsModal = false;
+      state.messagesModal = false;
     },
-    changeRecordsModal: (state, action) => {
+    changeMessagesModal: (state, action) => {
       state.historyModal = false;
       state.profileModal = false;
-      state.recordsModal = action.payload;
+      state.messagesModal = action.payload;
     },
   },
 });
 
-export const { changeHistoryModal, changeProfileModal, changeRecordsModal } =
+export const { changeHistoryModal, changeMessagesModal, changeProfileModal } =
   modalSlice.actions;
 
 export const selectHistoryModalState = (state: RootState) =>
@@ -43,8 +43,5 @@ export const selectHistoryModalState = (state: RootState) =>
 
 export const selectProfileModalState = (state: RootState) =>
   state.modals.profileModal;
-
-export const selectRecordsModalState = (state: RootState) =>
-  state.modals.recordsModal;
 
 export default modalSlice.reducer;

@@ -23,6 +23,12 @@
   }
 }
 
+.info.modal {
+  p {
+    font-size: 16px;
+  }
+}
+
 .expBar {
   background-color: #fff;
   display: inline-block;
@@ -37,6 +43,11 @@
   @media (min-width: 1400px) {
     height: 13px;
   }
+}
+
+.expBar.modal {
+  height: 18px;
+  width: 100%;
 }
 
 .exp {

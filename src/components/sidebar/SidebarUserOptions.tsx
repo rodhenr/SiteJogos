@@ -1,6 +1,6 @@
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import HistoryIcon from "@mui/icons-material/History";
-import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
+import Mail from "@mui/icons-material/Mail";
 
 import SidebarUserOptionItem from "./SidebarUserOptionItem";
 
@@ -12,8 +12,8 @@ function SidebarUserOptions() {
       <p className={styles.title}>MENU</p>
       <div className={styles.optionsContainer}>
         <SidebarUserOptionItem Icon={AccountCircleIcon} title={"Meu Perfil"} />
-        <SidebarUserOptionItem Icon={EmojiEventsIcon} title={"Meus Recordes"} />
         <SidebarUserOptionItem Icon={HistoryIcon} title={"Histórico"} />
+        <SidebarUserOptionItem Icon={Mail} title={"Mensagens"} />
       </div>
     </div>
   );

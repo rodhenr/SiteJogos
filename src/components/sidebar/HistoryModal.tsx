@@ -55,6 +55,7 @@ function HistoryModal() {
           </Typography>
           <Box
             bgcolor={"#111316"}
+            borderRadius={"10px"}
             color={"white"}
             display={"flex"}
             justifyContent="center"
