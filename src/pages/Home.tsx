@@ -25,10 +25,8 @@ function Home() {
   let render = (
     <>
       <Recent />
-      <div className={styles.double}>
-        <Ranking />
-        <Help />
-      </div>
+      <Ranking />
+      <Help />
     </>
   );
 

@@ -1,5 +1,8 @@
-import { Drawer } from "@mui/material";
 import { useEffect, useState } from "react";
+
+import { Drawer } from "@mui/material";
+import MenuIcon from "@mui/icons-material/Menu";
+
 import Menu from "../components/menu/Menu";
 import HistoryModal from "../components/sidebar/HistoryModal";
 import MessagesModal from "../components/sidebar/MessagesModal";
@@ -30,6 +33,7 @@ function Layout({ children }: IProps) {
     <div className={styles.container}>
       {windowWidth < 1024 ? (
         <div className={styles.mobileOptions}>
+          <MenuIcon />
           <Drawer />
         </div>
       ) : (

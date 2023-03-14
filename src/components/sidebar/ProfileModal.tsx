@@ -3,7 +3,7 @@ import { RootState } from "../../store/store";
 
 import { v4 as uuidv4 } from "uuid";
 
-import { Avatar, Box, Modal, Popover, Typography } from "@mui/material";
+import { Avatar, Box, Modal, Tooltip, Typography } from "@mui/material";
 
 import { fakeData } from "../../data/fakeData";
 
@@ -12,7 +12,6 @@ import { changeProfileModal } from "../../store/slices/modalSlice";
 import ExpInfo from "./ExpInfo";
 
 import styles from "./styles/ProfileModal.module.scss";
-import { useState } from "react";
 
 const style = {
   backgroundColor: "#1b1e23",
@@ -33,8 +32,6 @@ const style = {
 };
 
 function ProfileModal() {
-  const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
-
   const profileState = useSelector(
     (state: RootState) => state.modals.profileModal
   );
@@ -43,16 +40,6 @@ function ProfileModal() {
   const handleClose = () => {
     dispatch(changeProfileModal(false));
   };
-
-  const handlePopoverOpen = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handlePopoverClose = () => {
-    setAnchorEl(null);
-  };
-
-  const open = Boolean(anchorEl);
 
   return (
     <div>
@@ -124,12 +111,13 @@ function ProfileModal() {
             <Box display={"flex"} gap={1}>
               {fakeData.user.friends.map((friend) => {
                 return (
-                  <Avatar
-                    alt={friend.userName}
-                    className={styles.friendAvatar}
-                    key={uuidv4()}
-                    src={friend.image}
-                  />
+                  <Tooltip key={uuidv4()} title={friend.userName}>
+                    <Avatar
+                      alt={friend.userName}
+                      className={styles.friendAvatar}
+                      src={friend.image}
+                    />
+                  </Tooltip>
                 );
               })}
             </Box>
@@ -202,6 +190,7 @@ function ProfileModal() {
                 })}
               </Box>
             </Box>
+            <Box minHeight={"20px"}></Box>
           </Box>
         </Box>
       </Modal>
