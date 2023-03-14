@@ -1,6 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 
+import { v4 as uuidv4 } from "uuid";
+
 import { Box, Modal, Typography } from "@mui/material";
 
 import { fakeData } from "../../data/fakeData";
@@ -83,7 +85,7 @@ function HistoryModal() {
           <Box className={styles.matchContainer}>
             {fakeData.user.history.map((match) => {
               return (
-                <Box className={styles.match}>
+                <Box className={styles.match} key={uuidv4()}>
                   <Typography
                     id="modal-modal-description"
                     sx={{ flex: 1, textAlign: "center" }}

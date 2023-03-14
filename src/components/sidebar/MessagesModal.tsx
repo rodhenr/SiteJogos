@@ -1,6 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 
+import { v4 as uuidv4 } from "uuid";
+
 import { Avatar, Box, Modal, Typography } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 
@@ -59,6 +61,7 @@ function MessagesModal() {
                     color={"#6A6A84"}
                     display={"flex"}
                     gap={1}
+                    key={uuidv4()}
                     p={"6px 4px"}
                   >
                     <Avatar alt={friend.userName} src={friend.image} />

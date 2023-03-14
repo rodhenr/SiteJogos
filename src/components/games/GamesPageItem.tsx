@@ -4,13 +4,14 @@ import styles from "./styles/GamesPageItem.module.scss";
 interface IProps {
   image: string;
   name: string;
+  url: string;
 }
 
-function GamesPageItem({ name, image }: IProps) {
+function GamesPageItem({ image, name, url }: IProps) {
   const navigate = useNavigate();
 
   const handleGameNavigate = () => {
-    navigate(`/jogos/${name.replace(/\s+/g, "-")}`);
+    navigate(`/jogos/${url}`);
   };
 
   return (

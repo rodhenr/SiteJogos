@@ -1,6 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 
+import { v4 as uuidv4 } from "uuid";
+
 import { Avatar, Box, Modal, Popover, Typography } from "@mui/material";
 
 import { fakeData } from "../../data/fakeData";
@@ -122,38 +124,12 @@ function ProfileModal() {
             <Box display={"flex"} gap={1}>
               {fakeData.user.friends.map((friend) => {
                 return (
-                  <>
-                    <Avatar
-                      alt={friend.userName}
-                      className={styles.friendAvatar}
-                      key={friend.userID}
-                      src={friend.image}
-                      aria-owns={open ? "mouse-over-popover" : undefined}
-                      aria-haspopup="true"
-                      onMouseEnter={handlePopoverOpen}
-                      onMouseLeave={handlePopoverClose}
-                    />
-                    <Popover
-                      id="mouse-over-popover"
-                      sx={{
-                        pointerEvents: "none",
-                      }}
-                      open={open}
-                      anchorEl={anchorEl}
-                      anchorOrigin={{
-                        vertical: "bottom",
-                        horizontal: "left",
-                      }}
-                      transformOrigin={{
-                        vertical: "top",
-                        horizontal: "left",
-                      }}
-                      onClose={handlePopoverClose}
-                      disableRestoreFocus
-                    >
-                      <Typography sx={{ p: 1 }}>{friend.userName}</Typography>
-                    </Popover>
-                  </>
+                  <Avatar
+                    alt={friend.userName}
+                    className={styles.friendAvatar}
+                    key={uuidv4()}
+                    src={friend.image}
+                  />
                 );
               })}
             </Box>
@@ -208,6 +184,7 @@ function ProfileModal() {
                       className={styles.statistic}
                       display={"flex"}
                       justifyContent={"space-between"}
+                      key={uuidv4()}
                       padding={"2px 0"}
                       textAlign={"center"}
                     >

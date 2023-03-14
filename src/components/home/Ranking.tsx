@@ -28,6 +28,7 @@ function Ranking() {
               key={uuidv4()}
               level={rank.level}
               player={rank.username}
+              playerID={"0"}
               position={rank.position}
             />
           ))}

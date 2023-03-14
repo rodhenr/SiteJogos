@@ -34,4 +34,8 @@
 .playerInfo {
   display: flex;
   gap: 4px;
+
+  p {
+    font-size: 16px !important;
+  }
 }

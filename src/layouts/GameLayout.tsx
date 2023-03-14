@@ -1,5 +1,7 @@
 import Layout from "./Layout";
 
+import { v4 as uuidv4 } from "uuid";
+
 import styles from "./styles/GameLayout.module.scss";
 
 interface IProps {
@@ -17,7 +19,7 @@ function GameLayout({ children, rules }: IProps) {
           <div className={styles.rules}>
             {rules.map((rule, index) => {
               return (
-                <div className={styles.rule}>
+                <div className={styles.rule} key={uuidv4()}>
                   <p>
                     {index + 1} - {rule}
                   </p>

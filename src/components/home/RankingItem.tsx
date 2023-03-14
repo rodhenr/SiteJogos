@@ -1,12 +1,13 @@
 import styles from "./styles/RankingItem.module.scss";
 
 interface IProps {
-  position: number;
-  player: string;
   level: number;
+  player: string;
+  playerID: string;
+  position: number;
 }
 
-function RankingItem({ position, player, level }: IProps) {
+function RankingItem({ level, player, playerID, position }: IProps) {
   const bColor =
     position === 1
       ? "#E5D432"
@@ -18,6 +19,8 @@ function RankingItem({ position, player, level }: IProps) {
 
   const color = position < 4 ? "#000" : "#6a6a84";
 
+  const handleClick = () => {};
+
   return (
     <div
       className={styles.container}
@@ -25,7 +28,7 @@ function RankingItem({ position, player, level }: IProps) {
     >
       <div className={styles.playerInfo}>
         <p>{position}.</p>
-        <p>{player.substring(0, 40)}</p>
+        <p className={styles.playerName}>{player.substring(0, 40)}</p>
       </div>
       <p>NÍVEL {level}</p>
     </div>

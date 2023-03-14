@@ -17,6 +17,7 @@ function Games() {
                 image={game.image}
                 key={uuidv4()}
                 name={game.name}
+                url={game.url}
               />
             );
           })}

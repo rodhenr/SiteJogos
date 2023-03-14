@@ -16,7 +16,12 @@ function Highlighted() {
       <div className={styles.cardsContainer}>
         {fakeData.highlightedGames.map((game) => {
           return (
-            <HighlightedItem key={uuidv4()} name={game.name} url={game.image} />
+            <HighlightedItem
+              key={uuidv4()}
+              image={game.image}
+              name={game.name}
+              url={game.url}
+            />
           );
         })}
       </div>
