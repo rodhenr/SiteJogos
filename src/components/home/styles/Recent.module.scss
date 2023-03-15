@@ -25,23 +25,8 @@
 .tableContainer {
   flex: 1;
 
-  p {
-    font-family: "Roboto Condensed";
-    font-size: 10px;
-  }
-
-  @media (min-width: 600px) {
+  @media (min-width: 550px) {
     padding: 6px;
-
-    p {
-      font-size: 11px;
-    }
-  }
-
-  @media (min-width: 1400px) {
-    p {
-      font-size: 13px;
-    }
   }
 }
 
@@ -56,9 +41,15 @@
     text-align: center;
   }
 
+  @media (min-width: 750px) {
+    p {
+      font-size: 14px;
+    }
+  }
+
   @media (min-width: 1400px) {
     p {
-      font-size: 13px;
+      font-size: 15px;
     }
   }
 }
