@@ -9,6 +9,7 @@ import Uno from "./pages/games/Uno";
 import Jokenpo from "./pages/games/Jokenpo";
 import TicTacToe from "./pages/games/TicTacToe";
 import Yahtzee from "./pages/games/Yahtzee";
+import NotFound from "./pages/NotFound";
 
 function App() {
   return (
@@ -19,12 +20,14 @@ function App() {
         <Route path="ranking" element={<Ranking />} />
         <Route path="recordes" element={<Records />} />
         <Route path="faq" element={<Faq />} />
+        <Route path="*" element={<NotFound />} />
       </Route>
       <Route path="/jogos/*">
         <Route path="uno" element={<Uno />} />
         <Route path="jokenpo" element={<Jokenpo />} />
         <Route path="tictactoe" element={<TicTacToe />} />
         <Route path="yahtzee" element={<Yahtzee />} />
+        <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
   );
