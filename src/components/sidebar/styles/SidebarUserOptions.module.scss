@@ -2,9 +2,15 @@
   align-items: flex-start;
   display: flex;
   flex-direction: column;
+  margin-top: 16px;
 
   p {
+    font-size: 14px;
     margin: 0;
+  }
+
+  @media (min-width: 1024px) {
+    margin-top: 0;
   }
 }
 

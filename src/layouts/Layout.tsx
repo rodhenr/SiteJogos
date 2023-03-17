@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 
-import { Drawer } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 
 import Menu from "../components/menu/Menu";
@@ -8,6 +7,7 @@ import HistoryModal from "../components/sidebar/HistoryModal";
 import MessagesModal from "../components/sidebar/MessagesModal";
 import ProfileModal from "../components/sidebar/ProfileModal";
 import Sidebar from "../components/sidebar/Sidebar";
+import DrawerMenu from "../components/home/DrawerMenu";
 
 import styles from "./styles/Layout.module.scss";
 
@@ -33,8 +33,7 @@ function Layout({ children }: IProps) {
     <div className={styles.container}>
       {windowWidth < 1024 ? (
         <div className={styles.mobileOptions}>
-          <MenuIcon />
-          <Drawer />
+          <DrawerMenu />
         </div>
       ) : (
         <Sidebar />

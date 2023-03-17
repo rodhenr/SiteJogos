@@ -11,23 +11,6 @@ import { changeHistoryModal } from "../../store/slices/modalSlice";
 
 import styles from "./styles/HistoryModal.module.scss";
 
-const style = {
-  backgroundColor: "#1b1e23",
-  border: "2px solid #000",
-  boxShadow: 24,
-  display: "flex",
-  flexDirection: "column",
-  gap: "8px",
-  left: "50%",
-  maxHeight: "400px",
-  overflowY: "auto",
-  p: 2,
-  position: "absolute" as "absolute",
-  top: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 400,
-};
-
 function HistoryModal() {
   const historyState = useSelector(
     (state: RootState) => state.modals.historyModal
@@ -46,7 +29,7 @@ function HistoryModal() {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box className={styles.container} sx={style}>
+        <Box className={styles.container}>
           <Typography
             id="modal-modal-title"
             variant="h6"
@@ -58,29 +41,15 @@ function HistoryModal() {
           <Box
             bgcolor={"#111316"}
             borderRadius={"10px"}
+            className={styles.matchesTitle}
             color={"white"}
             display={"flex"}
             justifyContent="center"
             padding={"4px 0"}
           >
-            <Typography
-              id="modal-modal-description"
-              sx={{ flex: 1, fontSize: "15px", textAlign: "center" }}
-            >
-              DATA
-            </Typography>
-            <Typography
-              id="modal-modal-description"
-              sx={{ flex: 1, fontSize: "15px", textAlign: "center" }}
-            >
-              JOGO
-            </Typography>
-            <Typography
-              id="modal-modal-description"
-              sx={{ flex: 1, fontSize: "15px", textAlign: "center" }}
-            >
-              RESULTADO
-            </Typography>
+            <p>DATA</p>
+            <p>JOGO</p>
+            <p>RESULTADO</p>
           </Box>
           <Box className={styles.matchContainer}>
             {fakeData.user.history.map((match) => {

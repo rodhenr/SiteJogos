@@ -12,22 +12,6 @@ import { changeMessagesModal } from "../../store/slices/modalSlice";
 
 import styles from "./styles/MessagesModal.module.scss";
 
-const style = {
-  backgroundColor: "#1b1e23",
-  border: "2px solid #000",
-  boxShadow: 24,
-  boxSizing: "border-box",
-  display: "flex",
-  gap: "8px",
-  left: "50%",
-  height: "600px",
-  overflowY: "auto",
-  position: "absolute" as "absolute",
-  top: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 900,
-};
-
 function MessagesModal() {
   const historyState = useSelector(
     (state: RootState) => state.modals.messagesModal
@@ -46,12 +30,12 @@ function MessagesModal() {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box className={styles.container} sx={style}>
+        <Box className={styles.container}>
           <Box bgcolor={"#221B1B"} flex={1}>
             <Typography color={"#FFF"} textAlign={"center"} m={2}>
               AMIGOS
             </Typography>
-            <Box display={"flex"} flexDirection={"column"} gap={1} p={1}>
+            <Box className={styles.friendsContainer}>
               {fakeData.user.friends.map((friend) => {
                 return (
                   <Box
@@ -71,14 +55,9 @@ function MessagesModal() {
               })}
             </Box>
           </Box>
-          <Box
-            bgcolor={"#6b6b6b"}
-            display={"flex"}
-            flex={3}
-            flexDirection={"column"}
-          >
-            <Box flex={"1"}></Box>
-            <Box bgcolor={"#FFF"} display={"flex"} width={"100%"}>
+          <Box className={styles.messageContainer}>
+            <Box flex={1}></Box>
+            <Box className={styles.inputContainer}>
               <input className={styles.inputMessage} type="text" />
               <Box borderRadius={"50%"} display={"flex"}>
                 <SendIcon />

@@ -1,7 +1,67 @@
 .container {
+  background-color: #1b1e23;
+  border: 2px solid #000;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  left: 50%;
+  max-height: 700px;
+  overflow-y: auto;
+  padding: 8px;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 80vw;
+
   &::-webkit-scrollbar {
     display: none;
   }
+
+  @media (min-width: 1024px) {
+    padding: 16px;
+    width: 800px;
+  }
+}
+
+.ranking {
+  color: #ff4c29;
+  font-size: 25px;
+  font-weight: 600;
+  width: 100%;
+}
+
+.userInfoContainer {
+  display: flex;
+  gap: 8px;
+}
+
+.avatar {
+  height: 60px !important;
+  width: 60px !important;
+
+  @media (min-width: 600px) {
+    height: 70px !important;
+    width: 70px !important;
+  }
+}
+
+.idNameContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  p {
+    color: white;
+  }
+}
+
+.userName {
+  font-size: 22px;
+}
+
+.userID {
+  font-size: 13px;
 }
 
 .friendsContainer {
@@ -14,8 +74,28 @@
   }
 }
 
+.friends {
+  flex-wrap: wrap;
+}
+
 .statisticsContainer {
   flex: 1;
+}
+
+.statisticsTitle {
+  justify-content: center;
+  width: 100%;
+
+  p {
+    flex: 1;
+    font-size: 13px;
+  }
+
+  @media (min-width: 600px) {
+    p {
+      font-size: 17px;
+    }
+  }
 }
 
 .statisticsItems {

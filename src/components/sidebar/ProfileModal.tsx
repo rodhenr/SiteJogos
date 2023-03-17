@@ -13,24 +13,6 @@ import ExpInfo from "./ExpInfo";
 
 import styles from "./styles/ProfileModal.module.scss";
 
-const style = {
-  backgroundColor: "#1b1e23",
-  border: "2px solid #000",
-  boxShadow: 24,
-  boxSizing: "border-box",
-  display: "flex",
-  flexDirection: "column",
-  gap: "16px",
-  left: "50%",
-  maxHeight: "700px",
-  overflowY: "auto",
-  p: 2,
-  position: "absolute" as "absolute",
-  top: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 800,
-};
-
 function ProfileModal() {
   const profileState = useSelector(
     (state: RootState) => state.modals.profileModal
@@ -49,7 +31,7 @@ function ProfileModal() {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box className={styles.container} sx={style}>
+        <Box className={styles.container} sx={{ boxShadow: 24 }}>
           <Box
             display={"flex"}
             fontFamily={"Roboto Condensed"}
@@ -59,29 +41,23 @@ function ProfileModal() {
               alignItems={"center"}
               color={"#6A6A84"}
               display={"flex"}
+              flexDirection={"column"}
               sx={{ gap: 1 }}
             >
-              <Avatar
-                alt="User Avatar"
-                src={fakeData.user.avatar}
-                sx={{ height: 70, width: 70 }}
-              />
-              <Box>
-                <Typography sx={{ color: "#FFF", fontSize: "24px" }}>
-                  {fakeData.user.username.toUpperCase()}
-                </Typography>
-                <Typography sx={{ color: "#FFF", fontSize: "16px" }}>
-                  ID: {fakeData.user.userID}
-                </Typography>
+              <p className={styles.ranking}>RANKING #{fakeData.user.ranking}</p>
+              <Box className={styles.userInfoContainer}>
+                <Avatar
+                  alt="User Avatar"
+                  className={styles.avatar}
+                  src={fakeData.user.avatar}
+                />
+                <Box className={styles.idNameContainer}>
+                  <p className={styles.userName}>
+                    {fakeData.user.username.toUpperCase()}
+                  </p>
+                  <p className={styles.userID}>ID: {fakeData.user.userID}</p>
+                </Box>
               </Box>
-            </Box>
-            <Box>
-              <Typography
-                color={"#ff4c29"}
-                sx={{ fontSize: "22px", fontWeight: 600 }}
-              >
-                RANKING #{fakeData.user.ranking}
-              </Typography>
             </Box>
           </Box>
           <Box className={styles.expbar} color={"#6A6A84"}>
@@ -97,7 +73,6 @@ function ProfileModal() {
             display={"flex"}
             flexDirection={"column"}
             gap={1}
-            minHeight={100}
           >
             <Typography
               sx={{
@@ -108,7 +83,7 @@ function ProfileModal() {
             >
               AMIGOS
             </Typography>
-            <Box display={"flex"} gap={1}>
+            <Box className={styles.friends} display={"flex"} gap={1}>
               {fakeData.user.friends.map((friend) => {
                 return (
                   <Tooltip key={uuidv4()} title={friend.userName}>
@@ -142,20 +117,15 @@ function ProfileModal() {
               <Box
                 bgcolor={"#323131"}
                 borderRadius={2}
+                className={styles.statisticsTitle}
                 display={"flex"}
                 justifyContent={"center"}
                 paddingY={"4px"}
                 textAlign={"center"}
               >
-                <Typography flex={1} fontSize={"17px"}>
-                  JOGO
-                </Typography>
-                <Typography flex={1} fontSize={"17px"}>
-                  VITÓRIAS
-                </Typography>
-                <Typography flex={1} fontSize={"17px"}>
-                  DERROTAS
-                </Typography>
+                <p>JOGO</p>
+                <p>VITÓRIAS</p>
+                <p>DERROTAS</p>
               </Box>
               <Box
                 className={styles.statisticsItems}
