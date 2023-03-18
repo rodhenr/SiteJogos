@@ -1,0 +1,44 @@
+.container {
+  align-items: center;
+  background-color: #373738;
+  border: 2px solid #000;
+  box-shadow: 24;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  left: 50%;
+  height: 350px;
+  overflow-y: auto;
+  padding: 16px;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 60vw;
+
+  @media (min-width: 1024px) {
+    width: 600px;
+  }
+}
+
+.title {
+  color: white;
+  margin: 0;
+}
+
+.fields {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.inputButton {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  justify-content: center;
+  width: 100%;
+
+  input {
+    width: 100%;
+  }
+}

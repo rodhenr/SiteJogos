@@ -1,17 +1,16 @@
 import { useState } from "react";
 
-import MenuIcon from "@mui/icons-material/Menu";
-import {
-  Drawer,
-  Divider,
-  List,
-  ListItemButton,
-  ListItemText,
-} from "@mui/material";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store/store";
 
-import styles from "./styles/Drawer.module.scss";
+import MenuIcon from "@mui/icons-material/Menu";
+import { Drawer, Divider, List } from "@mui/material";
+
+import Auth from "../sidebar/Auth";
 import UserInfo from "../sidebar/UserInfo";
 import SidebarUserOptions from "../sidebar/SidebarUserOptions";
+
+import styles from "./styles/Drawer.module.scss";
 
 function DrawerMenu() {
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -20,17 +19,31 @@ function DrawerMenu() {
     setDrawerOpen(!drawerOpen);
   };
 
+  const token = useSelector((state: RootState) => state.token.token);
+
+  let render = (
+    <List className={styles.containerSidebar} sx={{ height: "100%" }}>
+      <Auth />
+    </List>
+  );
+
+  if (token) {
+    render = (
+      <List className={styles.containerSidebar} sx={{ height: "100%" }}>
+        <UserInfo />
+        <Divider sx={{ backgroundColor: "#454550" }} />
+        <SidebarUserOptions />
+      </List>
+    );
+  }
+
   return (
     <div className={styles.container}>
       <div className={styles.menuIcon} onClick={toggleDrawer}>
         <MenuIcon sx={{ color: "#FFF", fontSize: "32px" }} />
       </div>
       <Drawer anchor="left" open={drawerOpen} onClose={toggleDrawer}>
-        <List className={styles.containerSidebar} sx={{ height: "100%" }}>
-          <UserInfo />
-          <Divider sx={{ backgroundColor: "#454550" }} />
-          <SidebarUserOptions />
-        </List>
+        {render}
       </Drawer>
     </div>
   );

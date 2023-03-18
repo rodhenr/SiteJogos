@@ -16,8 +16,11 @@
   gap: 12px;
   justify-content: space-between;
 
-  @media (min-width: 1024) {
-    flex-direction: row;
+  @media (min-width: 1024px) {
     justify-content: center;
+  }
+
+  @media (min-width: 1400px) {
+    gap: 24px;
   }
 }
