@@ -9,10 +9,8 @@ import Divider from "@mui/material/Divider";
 
 import styles from "./styles/Sidebar.module.scss";
 
-
-
 function Sidebar() {
-  const token = useSelector((state: RootState) => state.token.token);
+  const token = useSelector((state: RootState) => state.auth.token);
 
   let render = (
     <div className={styles.container}>

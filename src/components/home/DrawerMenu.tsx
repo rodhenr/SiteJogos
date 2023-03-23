@@ -19,7 +19,7 @@ function DrawerMenu() {
     setDrawerOpen(!drawerOpen);
   };
 
-  const token = useSelector((state: RootState) => state.token.token);
+  const token = useSelector((state: RootState) => state.auth.token);
 
   let render = (
     <List className={styles.containerSidebar} sx={{ height: "100%" }}>
