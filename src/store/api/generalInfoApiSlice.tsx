@@ -4,16 +4,22 @@ import { IRanking, IRecentMatches } from "../slices/generalInfoSlice";
 
 export const generalInfoApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    getPlayerRanking: builder.query<IRanking[], void>({
-      query: () => ({
+    getPlayerRanking: builder.query<IRanking[], number>({
+      query: (limit) => ({
         url: "/api/info/ranking",
         method: "GET",
+        params: {
+          limit,
+        },
       }),
     }),
-    getRecentMatches: builder.query<IRecentMatches[], void>({
-      query: () => ({
+    getRecentMatches: builder.query<IRecentMatches[], number>({
+      query: (limit) => ({
         url: "/api/info/recent",
         method: "GET",
+        params: {
+          limit,
+        },
       }),
     }),
   }),
