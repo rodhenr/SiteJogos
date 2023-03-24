@@ -3,7 +3,7 @@ import styles from "./styles/RankingItem.module.scss";
 interface IProps {
   level: number;
   player: string;
-  playerID: string;
+  playerID: number;
   position: number;
 }
 

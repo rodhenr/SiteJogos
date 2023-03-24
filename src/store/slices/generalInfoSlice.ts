@@ -4,6 +4,7 @@ export interface IRanking {
   id: number;
   name: string;
   level: number;
+  position: number;
 }
 
 export interface IRecentMatches {
@@ -18,11 +19,13 @@ export interface IRecentMatches {
 interface IInitialState {
   ranking: IRanking[] | [];
   recentMatches: IRecentMatches[] | [];
+  selectedUserID: number | null;
 }
 
 const initialState: IInitialState = {
   ranking: [],
   recentMatches: [],
+  selectedUserID: null,
 };
 
 const generalInfoSlice = createSlice({
@@ -35,9 +38,13 @@ const generalInfoSlice = createSlice({
     setRecentMatches: (state, action: PayloadAction<IRecentMatches[]>) => {
       state.recentMatches = action.payload;
     },
+    setUserID: (state, action: PayloadAction<number | null>) => {
+      state.selectedUserID = action.payload;
+    },
   },
 });
 
-export const { setRankingInfo, setRecentMatches } = generalInfoSlice.actions;
+export const { setRankingInfo, setRecentMatches, setUserID } =
+  generalInfoSlice.actions;
 
 export default generalInfoSlice.reducer;

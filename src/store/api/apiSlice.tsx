@@ -7,7 +7,7 @@ import type {
 
 import type { RootState } from "../store";
 
-import { addToken, IPayloadToken, removeToken } from "../slices/authSlice";
+import { addToken, removeToken } from "../slices/authSlice";
 
 const baseApiQuery = fetchBaseQuery({
   baseUrl: "http://localhost:8080/",
@@ -37,7 +37,7 @@ const baseQueryWithReauth: BaseQueryFn<
     );
     if (refreshResult.data) {
       //const data = refreshResult.data
-      const data = {username: "teste", token: "aaaa"};
+      const data = { username: "teste", token: "aaaa" };
       api.dispatch(addToken(data));
       result = await baseApiQuery(args, api, extraOptions);
     } else {

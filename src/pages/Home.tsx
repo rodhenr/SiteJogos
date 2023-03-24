@@ -20,26 +20,7 @@ import styles from "./styles/Home.module.scss";
 import Layout from "../layouts/Layout";
 
 function Home() {
-  const dispatch = useDispatch();
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  const { data: dataRanking } = useGetPlayerRankingQuery(5);
-  const { data: dataMatches } = useGetRecentMatchesQuery(5);
-
-  useEffect(() => {
-    if (!dataRanking) {
-      dispatch(setRankingInfo([]));
-    } else {
-      dispatch(setRankingInfo(dataRanking));
-    }
-  }, [dataRanking, dispatch]);
-
-  useEffect(() => {
-    if (!dataMatches) {
-      dispatch(setRecentMatches([]));
-    } else {
-      dispatch(setRecentMatches(dataMatches));
-    }
-  }, [dataMatches, dispatch]);
 
   useEffect(() => {
     const handleWindowResize = () => {

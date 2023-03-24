@@ -1,6 +1,7 @@
-import { useNavigate } from "react-router-dom";
+import { useGetPlayerRankingQuery } from "../../store/api/generalInfoApiSlice";
+import { IRanking } from "../../store/slices/generalInfoSlice";
 
-import { fakeData } from "../../data/fakeData";
+import { useNavigate } from "react-router-dom";
 
 import { v4 as uuidv4 } from "uuid";
 
@@ -13,6 +14,7 @@ import styles from "./styles/Ranking.module.scss";
 
 function Ranking() {
   const navigate = useNavigate();
+  const { data, isSuccess, isLoading } = useGetPlayerRankingQuery(10);
 
   const handleNavigateRanking = () => {
     navigate("/ranking");
@@ -20,23 +22,28 @@ function Ranking() {
 
   return (
     <div className={styles.container}>
-      <div>
-        <Title Icon={BoltIcon} title={"RANKING"} />
-        <div className={styles.playersContainer}>
-          {fakeData.playerRanking.slice(0, 10).map((rank) => (
-            <RankingItem
-              key={uuidv4()}
-              level={rank.level}
-              player={rank.username}
-              playerID={"0"}
-              position={rank.position}
-            />
-          ))}
-        </div>
-      </div>
-      <div className={styles.buttonMore} onClick={handleNavigateRanking}>
-        <p>VER RANKING GERAL</p>
-      </div>
+      {isLoading && <div></div>}
+      {isSuccess && (
+        <>
+          <div>
+            <Title Icon={BoltIcon} title={"RANKING"} />
+            <div className={styles.playersContainer}>
+              {data.map((rank: IRanking) => (
+                <RankingItem
+                  key={uuidv4()}
+                  level={rank.level}
+                  player={rank.name}
+                  playerID={rank.id}
+                  position={rank.position}
+                />
+              ))}
+            </div>
+          </div>
+          <div className={styles.buttonMore} onClick={handleNavigateRanking}>
+            <p>VER RANKING GERAL</p>
+          </div>
+        </>
+      )}
     </div>
   );
 }
