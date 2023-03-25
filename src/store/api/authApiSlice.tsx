@@ -1,3 +1,5 @@
+import { ITokenData } from "../slices/authSlice";
+
 import { apiSlice } from "./apiSlice";
 
 interface IRegister {
@@ -15,11 +17,6 @@ interface ILoginData {
   password: string;
 }
 
-interface ILoginSuccess {
-  username: string;
-  token: string;
-}
-
 export const generalInfoApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     registerUser: builder.mutation<void, IRegister>({
@@ -29,9 +26,9 @@ export const generalInfoApiSlice = apiSlice.injectEndpoints({
         body: { ...data },
       }),
     }),
-    login: builder.mutation<ILoginSuccess, ILoginData>({
+    login: builder.mutation<ITokenData, ILoginData>({
       query: (data) => ({
-        url: "/api/auth/auth",
+        url: "/api/auth/login",
         method: "POST",
         body: { ...data },
       }),

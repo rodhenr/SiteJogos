@@ -1,34 +1,42 @@
-import ExpInfo from "./ExpInfo";
+import { useGetPlayerBasicInfoQuery } from "../../store/api/userInfoSlice";
 
 import Avatar from "@mui/material/Avatar";
 
-import { fakeData } from "../../data/fakeData";
+import ExpInfo from "./ExpInfo";
 
 import styles from "./styles/UserInfo.module.scss";
 
 function UserInfo() {
+  const { data, isSuccess, isLoading, isError } = useGetPlayerBasicInfoQuery();
+
   return (
     <div className={styles.container}>
-      <p className={styles.username}>{fakeData.user.username.toUpperCase()}</p>
-      <Avatar
-        alt="User Avatar"
-        src={fakeData.user.avatar}
-        sx={{
-          alignSelf: "center",
-          border: "2px solid green",
-          borderRadius: "50%",
-          boxSizing: "border-box",
-          height: "80px",
-          margin: "8px 0",
-          width: "80px",
-        }}
-      />
-      <ExpInfo
-        exp={fakeData.user.expLevel}
-        isModal={false}
-        level={fakeData.user.level}
-        maxExpLevel={fakeData.user.maxExpLevel}
-      />
+      {isLoading && <div></div>}
+      {isError && <div>Erro...</div>}
+      {isSuccess && (
+        <>
+          <p className={styles.username}>{data.name.toUpperCase()}</p>
+          <Avatar
+            alt="User Avatar"
+            src={data.avatar}
+            sx={{
+              alignSelf: "center",
+              border: "2px solid green",
+              borderRadius: "50%",
+              boxSizing: "border-box",
+              height: "80px",
+              margin: "8px 0",
+              width: "80px",
+            }}
+          />
+          <ExpInfo
+            exp={data.experience}
+            isModal={false}
+            level={data.level}
+            maxExpLevel={data.maxExperience}
+          />
+        </>
+      )}
     </div>
   );
 }

@@ -8,7 +8,7 @@ interface IProps {
 }
 
 function ExpInfo({ exp, isModal, level, maxExpLevel }: IProps) {
-  const barExpWidth = (exp / maxExpLevel) * 220; //width expBar
+  const widthUserExp = exp / maxExpLevel === 0 ? 1 : (exp / maxExpLevel) * 220; //width expBar
 
   return (
     <div className={styles.container}>
@@ -21,7 +21,7 @@ function ExpInfo({ exp, isModal, level, maxExpLevel }: IProps) {
       <div
         className={isModal ? `${styles.expBar} ${styles.modal}` : styles.expBar}
       >
-        <div className={styles.exp} style={{ width: barExpWidth }} />
+        <div className={styles.exp} style={{ width: widthUserExp }} />
       </div>
     </div>
   );

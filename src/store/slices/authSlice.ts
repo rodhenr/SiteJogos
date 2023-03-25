@@ -1,8 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-export interface IPayloadToken {
+export interface ITokenData {
   username: string;
-  token: string;
+  accessToken: string;
 }
 
 interface IAuthSlice {
@@ -19,8 +19,8 @@ const authSlice = createSlice({
   name: "authSlice",
   initialState,
   reducers: {
-    addToken: (state, action: PayloadAction<IPayloadToken>) => {
-      state.token = action.payload.token;
+    addToken: (state, action: PayloadAction<ITokenData>) => {
+      state.token = action.payload.accessToken;
       state.username = action.payload.username;
     },
     removeToken: (state) => {

@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { IError, useLoginMutation } from "../../store/api/authApiSlice";
 import { changeLoginModal } from "../../store/slices/modalSlice";
+import { addToken } from "../../store/slices/authSlice";
 
 import { Button, Modal, TextField } from "@mui/material";
 
@@ -36,10 +37,13 @@ function LoginModal() {
 
   const handleLogin = async () => {
     try {
-      await login({
+      const reqData = await login({
         user: loginData.user,
         password: loginData.password,
       }).unwrap();
+
+      dispatch(addToken(reqData));
+
       handleClose();
     } catch (err) {
       const error = err as IError;

@@ -36,9 +36,8 @@ const baseQueryWithReauth: BaseQueryFn<
       extraOptions
     );
     if (refreshResult.data) {
-      //const data = refreshResult.data
-      const data = { username: "teste", token: "aaaa" };
-      api.dispatch(addToken(data));
+      const data = refreshResult.data;
+      api.dispatch(addToken({ username: "", accessToken: "" }));
       result = await baseApiQuery(args, api, extraOptions);
     } else {
       api.dispatch(removeToken());
