@@ -1,16 +1,18 @@
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 
+import Divider from "@mui/material/Divider";
+
+import HistoryModal from "./HistoryModal";
+import ProfileModal from "./ProfileModal";
+import MessagesModal from "./MessagesModal";
+import LoginModal from "./LoginModal";
+import RegisterModal from "./RegisterModal";
 import SidebarUserOptions from "./SidebarUserOptions";
 import UserInfo from "./UserInfo";
 import Auth from "./Auth";
 
-import Divider from "@mui/material/Divider";
-
 import styles from "./styles/Sidebar.module.scss";
-import HistoryModal from "./HistoryModal";
-import ProfileModal from "./ProfileModal";
-import MessagesModal from "./MessagesModal";
 
 function Sidebar() {
   const hasToken = useSelector((state: RootState) => state.auth.token);
@@ -27,6 +29,8 @@ function Sidebar() {
   let render = (
     <div className={styles.container}>
       <Auth />
+      <LoginModal />
+      <RegisterModal />
     </div>
   );
 

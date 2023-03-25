@@ -2,7 +2,7 @@ import { apiSlice } from "./apiSlice";
 
 import { IRanking, IRecentMatches } from "../slices/generalInfoSlice";
 
-interface IStatistics {
+export interface IStatistics {
   game: string;
   wins: number;
   loses: number;
