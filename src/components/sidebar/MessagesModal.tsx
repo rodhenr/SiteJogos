@@ -13,7 +13,7 @@ import { changeMessagesModal } from "../../store/slices/modalSlice";
 import styles from "./styles/MessagesModal.module.scss";
 
 function MessagesModal() {
-  const historyState = useSelector(
+  const messagesState = useSelector(
     (state: RootState) => state.modals.messagesModal
   );
   const dispatch = useDispatch();
@@ -25,7 +25,7 @@ function MessagesModal() {
   return (
     <div>
       <Modal
-        open={historyState}
+        open={messagesState}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"

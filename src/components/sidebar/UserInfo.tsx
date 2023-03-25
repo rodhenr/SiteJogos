@@ -1,4 +1,4 @@
-import { useGetPlayerBasicInfoQuery } from "../../store/api/userInfoSlice";
+import { useGetPlayerBasicInfoQuery } from "../../store/api/userInfoApiSlice";
 
 import Avatar from "@mui/material/Avatar";
 

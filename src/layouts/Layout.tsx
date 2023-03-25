@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
 
+import { useSelector } from "react-redux";
+import { RootState } from "../store/store";
+
 import Menu from "../components/menu/Menu";
 import Sidebar from "../components/sidebar/Sidebar";
 import DrawerMenu from "../components/home/DrawerMenu";
@@ -43,9 +46,6 @@ function Layout({ children }: IProps) {
         <Menu />
         <div className={styles.main}>{children}</div>
       </div>
-      <HistoryModal />
-      <ProfileModal />
-      <MessagesModal />
       <LoginModal />
       <RegisterModal />
     </div>
