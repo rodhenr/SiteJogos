@@ -41,13 +41,13 @@ export const generalInfoApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     getPlayerBasicInfo: builder.query<IPlayerBasicInfo, void>({
       query: () => ({
-        url: "/api/user/info/basic",
+        url: "/api/user/basic",
         method: "GET",
       }),
     }),
     getPlayerRecentMatches: builder.query<IPlayerRecentMatches[] | [], number>({
       query: (limit) => ({
-        url: "/api/user/info/matches",
+        url: "/api/match/user",
         method: "GET",
         params: {
           limit,
@@ -56,7 +56,7 @@ export const generalInfoApiSlice = apiSlice.injectEndpoints({
     }),
     getPlayerCompleteInfo: builder.query<IPlayerCompleteInfo, void>({
       query: () => ({
-        url: "/api/user/info/complete",
+        url: "/api/info/complete",
         method: "GET",
       }),
     }),

@@ -92,6 +92,11 @@ function ProfileModal() {
                   AMIGOS
                 </Typography>
                 <Box className={styles.friends} display={"flex"} gap={1}>
+                  {data.friends.length === 0 && (
+                    <p className={styles.hasZeroFriends}>
+                      Nenhum amigo para exibir...
+                    </p>
+                  )}
                   {data.friends.map((friend) => {
                     return (
                       <Tooltip key={uuidv4()} title={friend["User.name"]}>
