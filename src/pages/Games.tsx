@@ -1,17 +1,16 @@
-import { fakeData } from "../data/fakeData";
-
 import { v4 as uuidv4 } from "uuid";
 
 import styles from "./styles/Games.module.scss";
-import Layout from "../layouts/Layout";
-import GamesPageItem from "../components/games/GamesPageItem";
+import MainLayout from "../shared/MainLayout";
+import GamesPageItem from "../features/game/components/GamesPageItem";
 
 function Games() {
+  const fakeData: any[] = [];
   return (
     <div className={styles.container}>
-      <Layout>
+      <MainLayout>
         <div className={styles.gamesContainer}>
-          {fakeData.gameList.map((game) => {
+          {/* {fakeData.gameList.map((game) => {
             return (
               <GamesPageItem
                 image={game.image}
@@ -20,9 +19,9 @@ function Games() {
                 url={game.url}
               />
             );
-          })}
+          })} */}
         </div>
-      </Layout>
+      </MainLayout>
     </div>
   );
 }

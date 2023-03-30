@@ -2,13 +2,13 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 
 import { Provider } from "react-redux";
-import { store } from "./store/store";
+import { store } from "./app/store";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import reportWebVitals from "./reportWebVitals";
 
-import App from "./App";
+import App from "./app/App";
 
 import "./index.css";
 

@@ -1,13 +1,13 @@
 import { useState } from "react";
 
-import { useGetPlayerRankingQuery } from "../store/api/generalInfoApiSlice";
+import { useGetPlayerRankingQuery } from "../features/matches/generalInfoApiSlice";
 
 import { v4 as uuidv4 } from "uuid";
 
-import Layout from "../layouts/Layout";
+import MainLayout from "../shared/MainLayout";
 
-import RankingItem from "../components/home/RankingItem";
-import RankingUserInfo from "../components/ranking/RankingUserInfo";
+import RankingItem from "../features/ranking/components/RankingItem";
+import RankingUserInfo from "../features/ranking/components/RankingUserInfo";
 
 import styles from "./styles/Ranking.module.scss";
 
@@ -22,7 +22,7 @@ function Ranking() {
 
   return (
     <div>
-      <Layout>
+      <MainLayout>
         <div className={styles.container}>
           {isLoading && <div></div>}
           <div className={styles.mainRanking}>
@@ -59,7 +59,7 @@ function Ranking() {
             )}
           </div>
         </div>
-      </Layout>
+      </MainLayout>
     </div>
   );
 }
