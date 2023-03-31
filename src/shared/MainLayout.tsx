@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import Menu from "./menu/Menu";
+import Menu from "./components/Menu";
 import Sidebar from "../features/sidebar/index";
 import DrawerMenu from "../features/sidebar/components/DrawerMenu";
 

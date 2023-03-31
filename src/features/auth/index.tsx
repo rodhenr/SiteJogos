@@ -9,10 +9,10 @@ import styles from "./styles/Auth.module.scss";
 function Index() {
   const dispatch = useDispatch();
 
-  const handleClick = (tipo: string) => {
-    if (tipo === "Login") {
+  const handleClick = (isLogin: boolean) => {
+    if (isLogin) {
       dispatch(changeLoginModal(true));
-    } else if (tipo === "Registro") {
+    } else {
       dispatch(changeRegisterModal(true));
     }
   };
@@ -25,7 +25,7 @@ function Index() {
           variant={"contained"}
           color={"success"}
           size={"small"}
-          onClick={() => handleClick("Registro")}
+          onClick={() => handleClick(false)}
         >
           Cadastre-se agora!
         </Button>
@@ -35,7 +35,7 @@ function Index() {
         <Button
           variant={"contained"}
           size={"small"}
-          onClick={() => handleClick("Login")}
+          onClick={() => handleClick(true)}
         >
           FAÇA LOGIN
         </Button>

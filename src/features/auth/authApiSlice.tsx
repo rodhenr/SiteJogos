@@ -9,7 +9,9 @@ interface IRegister {
 }
 
 export interface IError {
-  data: { message: string };
+  error?: string;
+  status?: string;
+  data?: { message: string };
 }
 
 interface ILoginData {

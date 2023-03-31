@@ -10,7 +10,7 @@ import HelpIcon from "@mui/icons-material/Help";
 import Button from "./Button";
 import SearchBar from "./SearchBar";
 
-import styles from "./styles/Menu.module.scss";
+import styles from "../styles/Menu.module.scss";
 
 function Menu() {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);

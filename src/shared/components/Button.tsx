@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 
 import { useLocation, useNavigate } from "react-router-dom";
 
-import styles from "./styles/Button.module.scss";
+import styles from "../styles/Button.module.scss";
 
 interface IProps {
   Icon: any;
