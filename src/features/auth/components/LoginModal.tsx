@@ -113,98 +113,104 @@ function LoginModal() {
   };
 
   return (
-    <div>
+    <>
       <Modal
-        open={loginModalState}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
+        aria-labelledby="modal-modal-title"
+        onClose={handleClose}
+        open={loginModalState}
       >
         <div className={styles.container}>
-          <div className={styles.top}>
-            <h1 className={styles.title}>LOGIN</h1>
+          <div className={styles.closeButtonContainer}>
             <div className={styles.closeButton} onClick={handleClose}>
               <CloseIcon />
             </div>
           </div>
-          <div className={styles.errorMessage}>
-            {reqError && <p>{reqError.toUpperCase()}</p>}
-          </div>
-          <div className={styles.inputButton}>
-            <form className={styles.form} onSubmit={(e) => handleLogin(e)}>
-              <TextField
-                error={loginData.user.error}
-                helperText={
-                  loginData.user.error &&
-                  `O campo deve conter ao menos ${loginData.user.minLength} caracteres`
-                }
-                id="filled-basic"
-                label="Usuário"
-                name={"user"}
-                onChange={handleInputChange}
-                required
-                value={loginData.user.value}
-                variant="filled"
-              />
-              <TextField
-                autoComplete="current-password"
-                error={loginData.password.error}
-                helperText={
-                  loginData.password.error &&
-                  `O campo deve conter ao menos ${loginData.password.minLength} caracteres`
-                }
-                id="filled-password-input"
-                label="Senha"
-                name={"password"}
-                onChange={handleInputChange}
-                required
-                type="password"
-                value={loginData.password.value}
-                variant="filled"
-              />
-              <div className={styles.forgotPassword}>
-                <p>Esqueceu sua senha?</p>
-              </div>
-              {isLoading ? (
-                <Box
-                  sx={{
-                    alignItems: "center",
-                    backgroundColor: "#ff4c29;",
-                    borderRadius: "10px",
-                    display: "flex",
-                    fontSize: "18px",
-                    height: "50px",
-                    justifyContent: "center",
-                    width: " 100%",
-                  }}
-                >
-                  <CircularProgress />
-                </Box>
-              ) : (
-                <Button
-                  sx={{
-                    backgroundColor: "#ff4c29;",
-                    borderRadius: "10px",
-                    fontSize: "18px",
-                    height: "50px",
-                    ":hover": {
-                      backgroundColor: "#cb3b1e;",
-                    },
-                  }}
-                  type="submit"
-                  variant={"contained"}
-                >
-                  Faça Login
-                </Button>
-              )}
-            </form>
-          </div>
-          <div className={styles.register} onClick={handleChangeRegister}>
-            <p>Não tem uma conta? Cadastre-se</p>
+          <div className={styles.loginContainer}>
+            <div className={styles.title}>
+              <h1>LOGIN</h1>
+            </div>
+            <div className={styles.errorMessage}>
+              {reqError && <p>{reqError.toUpperCase()}</p>}
+            </div>
+            <div className={styles.inputButton}>
+              <form className={styles.form} onSubmit={(e) => handleLogin(e)}>
+                <TextField
+                  error={loginData.user.error}
+                  helperText={
+                    loginData.user.error &&
+                    `O campo deve conter ao menos ${loginData.user.minLength} caracteres`
+                  }
+                  id="filled-basic"
+                  label="Usuário"
+                  name={"user"}
+                  onChange={handleInputChange}
+                  required
+                  value={loginData.user.value}
+                  variant="filled"
+                />
+                <TextField
+                  autoComplete="current-password"
+                  error={loginData.password.error}
+                  helperText={
+                    loginData.password.error &&
+                    `O campo deve conter ao menos ${loginData.password.minLength} caracteres`
+                  }
+                  id="filled-password-input"
+                  label="Senha"
+                  name={"password"}
+                  onChange={handleInputChange}
+                  required
+                  type="password"
+                  value={loginData.password.value}
+                  variant="filled"
+                />
+
+                <div className={styles.forgotPassword}>
+                  <p>Esqueceu sua senha?</p>
+                </div>
+                
+                {isLoading ? (
+                  <Box
+                    sx={{
+                      alignItems: "center",
+                      backgroundColor: "#ff4c29;",
+                      borderRadius: "10px",
+                      display: "flex",
+                      fontSize: "18px",
+                      height: "50px",
+                      justifyContent: "center",
+                      width: " 100%",
+                    }}
+                  >
+                    <CircularProgress />
+                  </Box>
+                ) : (
+                  <Button
+                    sx={{
+                      backgroundColor: "#ff4c29;",
+                      borderRadius: "10px",
+                      fontSize: "18px",
+                      height: "50px",
+                      ":hover": {
+                        backgroundColor: "#cb3b1e;",
+                      },
+                    }}
+                    type="submit"
+                    variant={"contained"}
+                  >
+                    Faça Login
+                  </Button>
+                )}
+              </form>
+            </div>
+            <div className={styles.register} onClick={handleChangeRegister}>
+              <p>Não tem uma conta? Cadastre-se</p>
+            </div>
           </div>
         </div>
       </Modal>
-    </div>
+    </>
   );
 }
 

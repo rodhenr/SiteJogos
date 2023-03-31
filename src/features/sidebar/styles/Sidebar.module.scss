@@ -1,6 +1,4 @@
 .container {
-  display: none;
-
   @media (min-width: 1024px) {
     background-color: #131315;
     box-sizing: border-box;
@@ -11,3 +9,5 @@
     padding: 32px 16px;
   }
 }
+
+

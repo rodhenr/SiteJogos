@@ -125,126 +125,130 @@ function RegisterModal() {
   };
 
   return (
-    <div>
+    <>
       <Modal
-        open={registerModalState}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
+        aria-labelledby="modal-modal-title"
+        onClose={handleClose}
+        open={registerModalState}
       >
         <div className={styles.container}>
-          <div className={styles.top}>
-            <h1 className={styles.title}>REGISTRO</h1>
+          <div className={styles.closeButtonContainer}>
             <div className={styles.closeButton} onClick={handleClose}>
               <CloseIcon />
             </div>
           </div>
-          <div className={styles.errorMessage}>
-            {reqError && <p>{reqError.toUpperCase()}</p>}
-          </div>
-          <div className={styles.inputButton}>
-            <form className={styles.form} onSubmit={(e) => handleRegister(e)}>
-              <TextField
-                error={formData.name.error}
-                helperText={
-                  formData.name.error &&
-                  `O campo deve conter ao menos ${formData.name.minLength} caracteres`
-                }
-                id="filled-basic-name"
-                label="Nome"
-                name="name"
-                onChange={handleInputChange}
-                required
-                value={formData.name.value}
-                variant="filled"
-              />
-              <TextField
-                error={formData.user.error}
-                helperText={
-                  formData.user.error &&
-                  `O campo deve conter ao menos ${formData.user.minLength} caracteres`
-                }
-                id="filled-basic-user"
-                label="Usuário"
-                name="user"
-                onChange={handleInputChange}
-                required
-                value={formData.user.value}
-                variant="filled"
-              />
-              <TextField
-                autoComplete="current-password"
-                error={formData.password.error}
-                helperText={
-                  formData.password.error &&
-                  `O campo deve conter ao menos ${formData.password.minLength} caracteres`
-                }
-                id="filled-password-input"
-                label="Senha"
-                name="password"
-                onChange={handleInputChange}
-                required
-                type="password"
-                value={formData.password.value}
-                variant="filled"
-              />
-              <TextField
-                autoComplete="current-password"
-                error={formData.confirmationPassword.error}
-                helperText={
-                  formData.confirmationPassword.error &&
-                  `O campo deve conter ao menos ${formData.confirmationPassword.minLength} caracteres`
-                }
-                id="filled-confirm-password-input"
-                label="Confirme a senha"
-                name="confirmationPassword"
-                onChange={handleInputChange}
-                required
-                type="password"
-                value={formData.confirmationPassword.value}
-                variant="filled"
-              />
+          <div className={styles.registerContainer}>
+            <div className={styles.title}>
+              <h1>REGISTRAR</h1>
+            </div>
+            <div className={styles.errorMessage}>
+              {reqError && <p>{reqError.toUpperCase()}</p>}
+            </div>
+            <div className={styles.inputButton}>
+              <form className={styles.form} onSubmit={(e) => handleRegister(e)}>
+                <TextField
+                  error={formData.name.error}
+                  helperText={
+                    formData.name.error &&
+                    `O campo deve conter ao menos ${formData.name.minLength} caracteres`
+                  }
+                  id="filled-basic-name"
+                  label="Nome"
+                  name="name"
+                  onChange={handleInputChange}
+                  required
+                  value={formData.name.value}
+                  variant="filled"
+                />
+                <TextField
+                  error={formData.user.error}
+                  helperText={
+                    formData.user.error &&
+                    `O campo deve conter ao menos ${formData.user.minLength} caracteres`
+                  }
+                  id="filled-basic-user"
+                  label="Usuário"
+                  name="user"
+                  onChange={handleInputChange}
+                  required
+                  value={formData.user.value}
+                  variant="filled"
+                />
+                <TextField
+                  autoComplete="current-password"
+                  error={formData.password.error}
+                  helperText={
+                    formData.password.error &&
+                    `O campo deve conter ao menos ${formData.password.minLength} caracteres`
+                  }
+                  id="filled-password-input"
+                  label="Senha"
+                  name="password"
+                  onChange={handleInputChange}
+                  required
+                  type="password"
+                  value={formData.password.value}
+                  variant="filled"
+                />
+                <TextField
+                  autoComplete="current-password"
+                  error={formData.confirmationPassword.error}
+                  helperText={
+                    formData.confirmationPassword.error &&
+                    `O campo deve conter ao menos ${formData.confirmationPassword.minLength} caracteres`
+                  }
+                  id="filled-confirm-password-input"
+                  label="Confirme a senha"
+                  name="confirmationPassword"
+                  onChange={handleInputChange}
+                  required
+                  type="password"
+                  value={formData.confirmationPassword.value}
+                  variant="filled"
+                />
 
-              {isLoading ? (
-                <Box
-                  sx={{
-                    alignItems: "center",
-                    backgroundColor: "#ff4c29;",
-                    borderRadius: "10px",
-                    display: "flex",
-                    fontSize: "18px",
-                    height: "50px",
-                    justifyContent: "center",
-                    width: " 100%",
-                  }}
-                >
-                  <CircularProgress />
-                </Box>
-              ) : (
-                <Button
-                  sx={{
-                    backgroundColor: "#ff4c29;",
-                    borderRadius: "10px",
-                    fontSize: "18px",
-                    height: "50px",
-                    ":hover": {
-                      backgroundColor: "#cb3b1e;",
-                    },
-                  }}
-                  type="submit"
-                  variant={"contained"}
-                >
-                  REGISTRE-SE
-                </Button>
-              )}
-            </form>
-          </div>
-          <div className={styles.login} onClick={handleChangeLogin}>
-            <p>Já possui uma conta? Faça login</p>
+                {isLoading ? (
+                  <Box
+                    sx={{
+                      alignItems: "center",
+                      backgroundColor: "#ff4c29;",
+                      borderRadius: "10px",
+                      display: "flex",
+                      fontSize: "18px",
+                      height: "50px",
+                      justifyContent: "center",
+                      width: " 100%",
+                    }}
+                  >
+                    <CircularProgress />
+                  </Box>
+                ) : (
+                  <Button
+                    sx={{
+                      backgroundColor: "#ff4c29;",
+                      borderRadius: "10px",
+                      fontSize: "18px",
+                      height: "50px",
+                      ":hover": {
+                        backgroundColor: "#cb3b1e;",
+                      },
+                    }}
+                    type="submit"
+                    variant={"contained"}
+                  >
+                    REGISTRE-SE
+                  </Button>
+                )}
+              </form>
+            </div>
+            <div className={styles.login} onClick={handleChangeLogin}>
+              <p>Já possui uma conta? Faça login</p>
+            </div>
           </div>
         </div>
       </Modal>
-    </div>
+    </>
   );
 }
 

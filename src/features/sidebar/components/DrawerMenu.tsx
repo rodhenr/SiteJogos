@@ -9,6 +9,8 @@ import { Drawer, Divider, List } from "@mui/material";
 import Auth from "../../auth";
 import UserInfo from "./UserInfo";
 import SidebarUserOptions from "./SidebarUserOptions";
+import LoginModal from "../../auth/components/LoginModal";
+import RegisterModal from "../../auth/components/RegisterModal";
 
 import styles from "../styles/Drawer.module.scss";
 
@@ -24,6 +26,8 @@ function DrawerMenu() {
   let render = (
     <List className={styles.containerSidebar} sx={{ height: "100%" }}>
       <Auth />
+      <LoginModal />
+      <RegisterModal />
     </List>
   );
 
