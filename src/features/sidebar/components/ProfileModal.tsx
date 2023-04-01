@@ -3,7 +3,14 @@ import { RootState } from "../../../app/store";
 import { useGetPlayerCompleteInfoQuery } from "../userInfoApiSlice";
 import { changeProfileModal } from "../modalSlice";
 
-import { Avatar, Box, Modal, Tooltip, Typography } from "@mui/material";
+import {
+  Avatar,
+  Box,
+  CircularProgress,
+  Modal,
+  Tooltip,
+  Typography,
+} from "@mui/material";
 
 import { v4 as uuidv4 } from "uuid";
 
@@ -11,18 +18,19 @@ import ExpInfo from "./ExpInfo";
 
 import styles from "../styles/ProfileModal.module.scss";
 import { useEffect } from "react";
+import CloseButton from "../../../shared/components/CloseButton";
 
 function ProfileModal() {
   const profileState = useSelector(
     (state: RootState) => state.modals.profileModal
   );
   const dispatch = useDispatch();
-  const { data, isSuccess, isLoading, isError, refetch } =
+  const { data, isSuccess, isLoading, refetch } =
     useGetPlayerCompleteInfoQuery();
 
   useEffect(() => {
     refetch();
-  }, []);
+  }, [refetch]);
 
   const handleClose = () => {
     dispatch(changeProfileModal(false));
@@ -37,7 +45,18 @@ function ProfileModal() {
         aria-describedby="modal-modal-description"
       >
         <Box className={styles.container} sx={{ boxShadow: 24 }}>
-          {isLoading && <div></div>}
+          <CloseButton handleClose={handleClose} />
+          {isLoading && (
+            <Box
+              alignItems={"center"}
+              display={"flex"}
+              justifyContent={"center"}
+              height={"100%"}
+              width={"100%"}
+            >
+              <CircularProgress />
+            </Box>
+          )}
           {isSuccess && (
             <>
               <Box
@@ -52,8 +71,8 @@ function ProfileModal() {
                   flexDirection={"column"}
                   sx={{ gap: 1 }}
                 >
-                  <p className={styles.ranking}>RANKING #{data.ranking}</p>
-                  <Box className={styles.userInfoContainer}>
+                  <p className={styles.ranking}>RANKING #{data.position}</p>
+                  <Box className={styles.userInfoContainer} mt={2}>
                     <Avatar
                       alt="User Avatar"
                       className={styles.avatar}
@@ -94,7 +113,7 @@ function ProfileModal() {
                 <Box className={styles.friends} display={"flex"} gap={1}>
                   {data.friends.length === 0 && (
                     <p className={styles.hasZeroFriends}>
-                      Nenhum amigo para exibir...
+                      Nenhum amigo para exibir
                     </p>
                   )}
                   {data.friends.map((friend) => {
@@ -148,6 +167,11 @@ function ProfileModal() {
                     gap={1}
                     mt={1}
                   >
+                    {data.statistics.length === 0 && (
+                      <p className={styles.hasZeroMatches}>
+                        Nenhuma partida realizada
+                      </p>
+                    )}
                     {data.statistics.map((game) => {
                       return (
                         <Box

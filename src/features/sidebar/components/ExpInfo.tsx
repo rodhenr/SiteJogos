@@ -1,17 +1,30 @@
+import { useEffect, useRef, useState } from "react";
+
 import styles from "../styles/ExpInfo.module.scss";
 
 interface IProps {
   exp: number;
   isModal: boolean;
   level: number;
-  maxExpLevel: number;
+  maxExpLevel: string;
 }
 
 function ExpInfo({ exp, isModal, level, maxExpLevel }: IProps) {
-  const widthUserExp = exp / maxExpLevel === 0 ? 1 : (exp / maxExpLevel) * 220; //width expBar
+  const componentRef = useRef<HTMLDivElement>(null);
+  const [expWidth, setExpWidth] = useState<number>(0);
+
+  useEffect(() => {
+    if (componentRef.current) {
+      setExpWidth(componentRef.current.offsetWidth);
+    }
+  }, []);
+
+  const widthUserExp = isNaN(exp / Number(maxExpLevel))
+    ? 0
+    : (exp / Number(maxExpLevel)) * expWidth;
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container} ref={componentRef}>
       <div className={isModal ? `${styles.info} ${styles.modal}` : styles.info}>
         <p>Nível {level}</p>
         <p>

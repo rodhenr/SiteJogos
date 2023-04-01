@@ -6,7 +6,7 @@ export interface IPlayerBasicInfo {
   experience: number;
   id: number;
   level: number;
-  maxExperience: number;
+  maxExperience: string;
   name: string;
 }
 
@@ -31,9 +31,9 @@ export interface IPlayerCompleteInfo {
   }[];
   id: number;
   level: number;
-  maxExperience: number;
+  maxExperience: string;
   name: string;
-  ranking: number;
+  position: number;
   statistics: IStatistics[];
 }
 
@@ -56,7 +56,7 @@ export const generalInfoApiSlice = apiSlice.injectEndpoints({
     }),
     getPlayerCompleteInfo: builder.query<IPlayerCompleteInfo, void>({
       query: () => ({
-        url: "/api/info/complete",
+        url: "/api/user/complete",
         method: "GET",
       }),
     }),
