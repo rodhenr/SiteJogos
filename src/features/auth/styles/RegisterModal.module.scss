@@ -3,7 +3,6 @@
   background-color: #373738;
   border: 2px solid #000;
   border-radius: 20px;
-  box-shadow: 24;
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -31,6 +30,15 @@
   justify-content: flex-end;
   padding: 16px;
   width: 100%;
+}
+
+.closeButtonContainer.registered {
+  align-self: flex-end;
+  padding: 0;
+  position: absolute;
+  right: 8px;
+  top: 8px;
+  width: auto;
 }
 
 .closeButton {
@@ -130,5 +138,74 @@
 
   @media (min-width: 720px) {
     flex: 1;
+  }
+}
+
+.containerRegistered {
+  align-items: center;
+  background-color: #373738;
+  box-sizing: border-box;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  height: 30%;
+  left: 50%;
+  overflow-y: auto;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%;
+
+  @media (min-width: 720px) {
+    border: 2px solid #000;
+    border-radius: 20px;
+    height: 300px;
+    width: 60vw;
+  }
+
+  @media (min-width: 1024px) {
+    width: 500px;
+  }
+}
+
+.top {
+  align-items: center;
+  background-color: #278b0e;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 120px;
+  position: relative;
+  width: 100%;
+}
+
+.checkIcon {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+
+  svg {
+    color: white;
+    font-size: 80px;
+  }
+}
+
+.registeredMessage {
+  align-items: center;
+  box-sizing: border-box;
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  padding: 8px;
+  width: 100%;
+
+  p {
+    color: #278b0e;
+    font-family: "Montserrat", sans-serif;
+    font-size: 32px;
+    margin: 0;
+    text-align: center;
+    word-wrap: break-word;
   }
 }

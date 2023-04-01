@@ -11,6 +11,9 @@ import UserInfo from "./UserInfo";
 import SidebarUserOptions from "./SidebarUserOptions";
 import LoginModal from "../../auth/components/LoginModal";
 import RegisterModal from "../../auth/components/RegisterModal";
+import HistoryModal from "./HistoryModal";
+import ProfileModal from "./ProfileModal";
+import MessagesModal from "./MessagesModal";
 
 import styles from "../styles/Drawer.module.scss";
 
@@ -20,6 +23,16 @@ function DrawerMenu() {
   const toggleDrawer = () => {
     setDrawerOpen(!drawerOpen);
   };
+
+  const historyState = useSelector(
+    (state: RootState) => state.modals.historyModal
+  );
+  const profileState = useSelector(
+    (state: RootState) => state.modals.profileModal
+  );
+  const messagesState = useSelector(
+    (state: RootState) => state.modals.messagesModal
+  );
 
   const token = useSelector((state: RootState) => state.auth.token);
 
@@ -37,6 +50,9 @@ function DrawerMenu() {
         <UserInfo />
         <Divider sx={{ backgroundColor: "#454550" }} />
         <SidebarUserOptions />
+        {historyState && <HistoryModal />}
+        {profileState && <ProfileModal />}
+        {messagesState && <MessagesModal />}
       </List>
     );
   }
