@@ -1,15 +1,17 @@
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../app/store";
 import { useGetPlayerRecentMatchesQuery } from "../userInfoApiSlice";
+import { changeHistoryModal } from "../modalSlice";
 
 import { v4 as uuidv4 } from "uuid";
 
-import { Box, Modal, Typography } from "@mui/material";
+import { Box, CircularProgress, Modal, Typography } from "@mui/material";
 
-import { changeHistoryModal } from "../modalSlice";
+import CloseButton from "../../../shared/components/CloseButton";
+
+import { formatDateWithTime } from "../../../utils/formatDate";
 
 import styles from "../styles/HistoryModal.module.scss";
-import { formatDateWithTime } from "../../../utils/formatDate";
 
 function HistoryModal() {
   const historyState = useSelector(
@@ -18,7 +20,7 @@ function HistoryModal() {
   const dispatch = useDispatch();
 
   const { data, isSuccess, isLoading, isError } =
-    useGetPlayerRecentMatchesQuery(30, {
+    useGetPlayerRecentMatchesQuery(0, {
       refetchOnMountOrArgChange: true,
     });
 
@@ -35,17 +37,28 @@ function HistoryModal() {
         aria-describedby="modal-modal-description"
       >
         <Box className={styles.container}>
-          {isLoading && <div></div>}
-          {isError && <div></div>}
-
+          <CloseButton handleClose={handleClose} />
           <Typography
             id="modal-modal-title"
-            variant="h6"
-            component="h2"
-            sx={{ color: "white", fontSize: "18px", textAlign: "center" }}
+            variant="h5"
+            component="h1"
+            sx={{ color: "white", textAlign: "center" }}
           >
             HISTÓRICO DE PARTIDAS
           </Typography>
+
+          {isLoading && (
+            <Box
+              alignItems={"center"}
+              display={"flex"}
+              justifyContent={"center"}
+              height={"100%"}
+              width={"100%"}
+            >
+              <CircularProgress />
+            </Box>
+          )}
+
           {isSuccess &&
             (data.length > 0 ? (
               <>
@@ -98,6 +111,11 @@ function HistoryModal() {
                 <p>Nenhuma partida recente</p>
               </div>
             ))}
+          {isError && (
+            <div className={styles.errorMessage}>
+              <p>Ocorreu um erro no servidor...</p>{" "}
+            </div>
+          )}
         </Box>
       </Modal>
     </div>
