@@ -1,7 +1,9 @@
+import { useEffect } from "react";
+
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../../app/store";
-import { useGetPlayerCompleteInfoQuery } from "../userInfoApiSlice";
-import { changeProfileModal } from "../modalSlice";
+import { RootState } from "../../../../app/store";
+import { useGetPlayerCompleteInfoQuery } from "../../userInfoApiSlice";
+import { changeProfileModal } from "../../sidebarSlice";
 
 import {
   Avatar,
@@ -14,15 +16,14 @@ import {
 
 import { v4 as uuidv4 } from "uuid";
 
-import ExpInfo from "./ExpInfo";
+import ExpInfo from "../ExpInfo";
+import CloseButton from "../../../../shared/components/CloseButton";
 
-import styles from "../styles/ProfileModal.module.scss";
-import { useEffect } from "react";
-import CloseButton from "../../../shared/components/CloseButton";
+import styles from "../../styles/ProfileModal.module.scss";
 
 function ProfileModal() {
   const profileState = useSelector(
-    (state: RootState) => state.modals.profileModal
+    (state: RootState) => state.sidebar.profileModal
   );
   const dispatch = useDispatch();
   const { data, isSuccess, isLoading, refetch } =

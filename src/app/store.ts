@@ -1,6 +1,6 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 
-import modalReducer from "../features/sidebar/modalSlice";
+import sidebarReducer from "../features/sidebar/sidebarSlice";
 import rankingReducer from "../features/ranking/rankingSlice";
 import authReducer from "../features/auth/authSlice";
 import generalInfoReducer from "../features/matches/generalInfoSlice";
@@ -9,16 +9,11 @@ import { apiSlice } from "./apiSlice";
 
 const rootReducer = combineReducers({
   [apiSlice.reducerPath]: apiSlice.reducer,
-  modals: modalReducer,
+  sidebar: sidebarReducer,
   ranking: rankingReducer,
   auth: authReducer,
   generalInfo: generalInfoReducer,
 });
-
-const persistConfig = {
-  key: "root",
-  version: 1,
-};
 
 export const store = configureStore({
   reducer: rootReducer,

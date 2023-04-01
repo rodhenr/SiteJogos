@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 
-import { changeLoginModal, changeRegisterModal } from "../sidebar/modalSlice";
+import { changeLoginModal, changeRegisterModal } from "./authSlice";
 
 import { Button } from "@mui/material";
 

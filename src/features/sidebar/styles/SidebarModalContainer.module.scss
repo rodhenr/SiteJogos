@@ -1,0 +1,31 @@
+.container {
+  background-color: #1b1e23;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  height: 100%;
+  left: 50%;
+  overflow-y: auto;
+  padding: 8px;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  @media (min-width: 720px) {
+    border: 2px solid #000;
+    height: auto;
+    max-height: 700px;
+    width: 80vw;
+  }
+
+  @media (min-width: 1024px) {
+    padding: 16px;
+    width: 800px;
+  }
+}

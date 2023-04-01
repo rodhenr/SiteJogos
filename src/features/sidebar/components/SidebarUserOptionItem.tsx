@@ -3,7 +3,7 @@ import {
   changeHistoryModal,
   changeProfileModal,
   changeMessagesModal,
-} from "../modalSlice";
+} from "../sidebarSlice";
 
 import styles from "../styles/SidebarUserOptionsItem.module.scss";
 

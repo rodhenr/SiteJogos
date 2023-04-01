@@ -3,10 +3,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { IError, useLoginMutation } from "../authApiSlice";
-import {
-  changeLoginModal,
-  changeRegisterModal,
-} from "../../sidebar/modalSlice";
+import { changeLoginModal, changeRegisterModal } from "../authSlice";
 import { addToken } from "../authSlice";
 import { RootState } from "../../../app/store";
 
@@ -22,7 +19,7 @@ interface IState {
 
 function LoginModal() {
   const loginModalState = useSelector(
-    (state: RootState) => state.modals.loginModal
+    (state: RootState) => state.auth.loginModal
   );
   const dispatch = useDispatch();
 
@@ -169,7 +166,7 @@ function LoginModal() {
                 <div className={styles.forgotPassword}>
                   <p>Esqueceu sua senha?</p>
                 </div>
-                
+
                 {isLoading ? (
                   <Box
                     sx={{

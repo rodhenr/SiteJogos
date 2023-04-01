@@ -2,7 +2,7 @@ import { v4 as uuidv4 } from "uuid";
 
 import Message from "./Message";
 
-import styles from "../styles/Messages.module.scss";
+import styles from "../../styles/Messages.module.scss";
 
 function Messages() {
   const fakeData: any[] = [];

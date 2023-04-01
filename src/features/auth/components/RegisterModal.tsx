@@ -5,7 +5,7 @@ import { IError, useRegisterUserMutation } from "../authApiSlice";
 import {
   changeLoginModal,
   changeRegisterModal,
-} from "../../sidebar/modalSlice";
+} from "../authSlice";
 import { RootState } from "../../../app/store";
 
 import CloseIcon from "@mui/icons-material/Close";
@@ -23,7 +23,7 @@ interface IState {
 
 function RegisterModal() {
   const registerModalState = useSelector(
-    (state: RootState) => state.modals.registerModal
+    (state: RootState) => state.auth.registerModal
   );
   const dispatch = useDispatch();
 
@@ -116,7 +116,9 @@ function RegisterModal() {
     }
 
     if (!/^[a-zA-Z]+$/.test(formData.user.value.trim())) {
-      setReqError("O usuário possui caracteres especiais e portanto não é válido");
+      setReqError(
+        "O usuário possui caracteres especiais e portanto não é válido"
+      );
       setFormData((prev) => ({
         ...prev,
         user: {

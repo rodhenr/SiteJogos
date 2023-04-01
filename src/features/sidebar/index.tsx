@@ -1,50 +1,52 @@
+import { useEffect, useState } from "react";
+
 import { useSelector } from "react-redux";
 import { RootState } from "../../app/store";
 
-import Divider from "@mui/material/Divider";
-
-import HistoryModal from "./components/HistoryModal";
-import ProfileModal from "./components/ProfileModal";
-import MessagesModal from "./components/MessagesModal";
-import LoginModal from "../auth/components/LoginModal";
-import RegisterModal from "../auth/components/RegisterModal";
-import SidebarUserOptions from "./components/SidebarUserOptions";
-import UserInfo from "./components/UserInfo";
-import Auth from "../auth";
-
-import styles from "./styles/Sidebar.module.scss";
+import SidebarMobileContainer from "./components/containers/SidebarMobileContainer";
+import SidebarDesktopContainer from "./components/containers/SidebarDesktopContainer";
+import AuthSidebar from "./components/AuthSidebar";
+import LoggedSidebar from "./components/LoggedSidebar";
 
 function Index() {
-  const hasToken = useSelector((state: RootState) => state.auth.token);
-  const historyState = useSelector(
-    (state: RootState) => state.modals.historyModal
-  );
-  const profileState = useSelector(
-    (state: RootState) => state.modals.profileModal
-  );
-  const messagesState = useSelector(
-    (state: RootState) => state.modals.messagesModal
-  );
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
-  let render = (
-    <div className={styles.container}>
-      <Auth />
-      <LoginModal />
-      <RegisterModal />
-    </div>
-  );
+  useEffect(() => {
+    const handleWindowResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleWindowResize);
+
+    return () => {
+      window.removeEventListener("resize", handleWindowResize);
+    };
+  });
+
+  const hasToken = useSelector((state: RootState) => state.auth.token);
+
+  let render =
+    windowWidth >= 1024 ? (
+      <SidebarDesktopContainer>
+        <AuthSidebar />
+      </SidebarDesktopContainer>
+    ) : (
+      <SidebarMobileContainer>
+        <AuthSidebar />
+      </SidebarMobileContainer>
+    );
 
   if (hasToken) {
-    render = (
-      <div className={styles.container}>
-        <UserInfo />
-        <Divider sx={{ backgroundColor: "#454550" }} />
-        <SidebarUserOptions />
-        {historyState && <HistoryModal />}
-        {profileState && <ProfileModal />}
-        {messagesState && <MessagesModal />}
-      </div>
-    );
+    render =
+      windowWidth >= 1024 ? (
+        <SidebarDesktopContainer>
+          <LoggedSidebar />
+        </SidebarDesktopContainer>
+      ) : (
+        <SidebarMobileContainer>
+          <LoggedSidebar />
+        </SidebarMobileContainer>
+      );
   }
 
   return render;

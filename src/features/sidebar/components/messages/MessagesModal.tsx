@@ -1,18 +1,18 @@
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../../app/store";
+import { RootState } from "../../../../app/store";
 
 import { v4 as uuidv4 } from "uuid";
 
 import { Avatar, Box, Modal, Typography } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 
-import { changeMessagesModal } from "../modalSlice";
+import { changeMessagesModal } from "../../sidebarSlice";
 
-import styles from "../styles/MessagesModal.module.scss";
+import styles from "../../styles/MessagesModal.module.scss";
 
 function MessagesModal() {
   const messagesState = useSelector(
-    (state: RootState) => state.modals.messagesModal
+    (state: RootState) => state.sidebar.messagesModal
   );
   const dispatch = useDispatch();
 

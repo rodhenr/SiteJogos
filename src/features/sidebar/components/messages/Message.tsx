@@ -2,7 +2,7 @@ import Badge from "@mui/material/Badge";
 import MailIcon from "@mui/icons-material/Mail";
 import Avatar from "@mui/material/Avatar";
 
-import styles from "../styles/Message.module.scss";
+import styles from "../../styles/Message.module.scss";
 
 interface IProps {
   avatar: string;

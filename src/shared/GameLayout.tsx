@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from "uuid";
 import styles from "./styles/GameLayout.module.scss";
 
 interface IProps {
-  children: React.ReactNode;
+  children: JSX.Element | JSX.Element[];
   rules: any[];
 }
 
