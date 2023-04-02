@@ -32,13 +32,15 @@ function ModalContainer({
     >
       <Box className={styles.container}>
         <CloseButton handleClose={closeFunction} />
-        <Typography
-          variant="h5"
-          component="h1"
-          sx={{ color: "white", textAlign: "center" }}
-        >
-          {title}
-        </Typography>
+        {title.length > 0 && (
+          <Typography
+            variant="h5"
+            component="h1"
+            sx={{ color: "white", textAlign: "center" }}
+          >
+            {title}
+          </Typography>
+        )}
         {children}
         {isLoading && <Loading />}
         {isError && <ErrorMessage />}

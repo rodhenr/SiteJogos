@@ -8,7 +8,7 @@ import MatchItem from "./MatchItem";
 interface IProps {
   data: IPlayerRecentMatches[];
 }
-function MatchList({ data }: IProps) {
+function MatchesModal({ data }: IProps) {
   return (
     <>
       <MatchTitle />
@@ -27,4 +27,4 @@ function MatchList({ data }: IProps) {
   );
 }
 
-export default MatchList;
+export default MatchesModal;

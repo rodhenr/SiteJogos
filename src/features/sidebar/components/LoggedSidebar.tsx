@@ -9,8 +9,8 @@ import { Divider, List } from "@mui/material";
 
 import UserInfo from "./UserInfo";
 import SidebarUserOptions from "./SidebarUserOptions";
-import HistoryModal from "./matches/MatchesModal";
-import ProfileModal from "./profile/ProfileModal";
+import HistoryModal from "./matchesModal";
+import ProfileModal from "./profileModal/index";
 import MessagesModal from "./messages/MessagesModal";
 
 function LoggedMenuMobile() {

@@ -4,10 +4,10 @@ import { useGetPlayerRecentMatchesQuery } from "../../userInfoApiSlice";
 import { changeHistoryModal } from "../../sidebarSlice";
 
 import SidebarModalContainer from "../containers/SidebarModalContainer";
-import MatchList from "./MatchList";
+import MatchesModal from "./MatchesModal";
 import HasNoData from "../HasNoData";
 
-function MatchesModal() {
+function Index() {
   const historyState = useSelector(
     (state: RootState) => state.sidebar.historyModal
   );
@@ -32,7 +32,7 @@ function MatchesModal() {
     >
       {isSuccess ? (
         data.length > 0 ? (
-          <MatchList data={data} />
+          <MatchesModal data={data} />
         ) : (
           <HasNoData />
         )
@@ -43,4 +43,4 @@ function MatchesModal() {
   );
 }
 
-export default MatchesModal;
+export default Index;

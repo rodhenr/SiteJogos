@@ -18,17 +18,19 @@ export interface IPlayerRecentMatches {
   "Game.name": string;
 }
 
+export interface IFriends {
+  userID1: number;
+  userID2: number;
+  date: Date;
+  "User.avatar": string;
+  "User.id": number;
+  "User.name": string;
+}
+
 export interface IPlayerCompleteInfo {
   avatar: "";
   experience: number;
-  friends: {
-    userID1: number;
-    userID2: number;
-    date: Date;
-    "User.avatar": string;
-    "User.id": number;
-    "User.name": string;
-  }[];
+  friends: IFriends[];
   id: number;
   level: number;
   maxExperience: string;
