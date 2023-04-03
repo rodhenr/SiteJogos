@@ -2,7 +2,7 @@ import { useDispatch } from "react-redux";
 
 import { changeLoginModal, changeRegisterModal } from "./authSlice";
 
-import { Button } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 
 import styles from "./styles/Auth.module.scss";
 
@@ -18,9 +18,11 @@ function Index() {
   };
 
   return (
-    <div className={styles.container}>
-      <div className={styles.register}>
-        <p>Quer salvar seu progresso e subir nos rankings do site?</p>
+    <Box className={styles.container}>
+      <Box className={styles.register}>
+        <Typography>
+          Quer salvar seu progresso e subir nos rankings do site?
+        </Typography>
         <Button
           variant={"contained"}
           color={"success"}
@@ -29,9 +31,9 @@ function Index() {
         >
           Cadastre-se agora!
         </Button>
-      </div>
-      <div className={styles.login}>
-        <p>Já possui uma conta?</p>
+      </Box>
+      <Box className={styles.login}>
+        <Typography>Já possui uma conta?</Typography>
         <Button
           variant={"contained"}
           size={"small"}
@@ -39,8 +41,8 @@ function Index() {
         >
           FAÇA LOGIN
         </Button>
-      </div>
-    </div>
+      </Box>
+    </Box>
   );
 }
 

@@ -3,15 +3,15 @@ import {
   selectHistoryState,
   selectMessagesState,
   selectProfileState,
-} from "../sidebarSlice";
+} from "../../sidebarSlice";
 
 import { Divider, List } from "@mui/material";
 
 import UserInfo from "./UserInfo";
-import SidebarUserOptions from "./SidebarUserOptions";
-import HistoryModal from "./matchesModal";
-import ProfileModal from "./profileModal/index";
-import MessagesModal from "./messages/MessagesModal";
+import SidebarUserOptions from "./UserOptions";
+import HistoryModal from "../matchesModal";
+import ProfileModal from "../profileModal/index";
+import MessagesModal from "../messages/MessagesModal";
 
 function LoggedMenuMobile() {
   const historyState = useSelector(selectHistoryState);

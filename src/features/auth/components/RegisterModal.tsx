@@ -2,15 +2,19 @@ import { useState } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 import { IError, useRegisterUserMutation } from "../authApiSlice";
-import {
-  changeLoginModal,
-  changeRegisterModal,
-} from "../authSlice";
+import { changeLoginModal, changeRegisterModal } from "../authSlice";
 import { RootState } from "../../../app/store";
 
 import CloseIcon from "@mui/icons-material/Close";
 import CheckCircleOutlineRoundedIcon from "@mui/icons-material/CheckCircleOutlineRounded";
-import { Box, Button, CircularProgress, Modal, TextField } from "@mui/material";
+import {
+  Box,
+  Button,
+  CircularProgress,
+  Modal,
+  TextField,
+  Typography,
+} from "@mui/material";
 
 import styles from "../styles/RegisterModal.module.scss";
 
@@ -165,38 +169,38 @@ function RegisterModal() {
         open={registerModalState}
       >
         {isSuccess ? (
-          <div className={styles.containerRegistered}>
-            <div className={styles.top}>
-              <div
+          <Box className={styles.containerRegistered}>
+            <Box className={styles.top}>
+              <Box
                 className={`${styles.closeButtonContainer} ${styles.registered}`}
               >
-                <div className={styles.closeButton} onClick={handleClose}>
+                <Box className={styles.closeButton} onClick={handleClose}>
                   <CloseIcon />
-                </div>
-              </div>
-              <div className={styles.checkIcon}>
+                </Box>
+              </Box>
+              <Box className={styles.checkIcon}>
                 <CheckCircleOutlineRoundedIcon />
-              </div>
-            </div>
-            <div className={styles.registeredMessage}>
-              <p>Você se registrou com sucesso!</p>
-            </div>
-          </div>
+              </Box>
+            </Box>
+            <Box className={styles.registeredMessage}>
+              <Typography>Você se registrou com sucesso!</Typography>
+            </Box>
+          </Box>
         ) : (
-          <div className={styles.container}>
-            <div className={styles.closeButtonContainer}>
-              <div className={styles.closeButton} onClick={handleClose}>
+          <Box className={styles.container}>
+            <Box className={styles.closeButtonContainer}>
+              <Box className={styles.closeButton} onClick={handleClose}>
                 <CloseIcon />
-              </div>
-            </div>
-            <div className={styles.registerContainer}>
-              <div className={styles.title}>
+              </Box>
+            </Box>
+            <Box className={styles.registerContainer}>
+              <Box className={styles.title}>
                 <h1>REGISTRAR</h1>
-              </div>
-              <div className={styles.errorMessage}>
-                {reqError && <p>{reqError.toUpperCase()}</p>}
-              </div>
-              <div className={styles.inputButton}>
+              </Box>
+              <Box className={styles.errorMessage}>
+                {reqError && <Typography>{reqError.toUpperCase()}</Typography>}
+              </Box>
+              <Box className={styles.inputButton}>
                 <form
                   className={styles.form}
                   onSubmit={(e) => handleRegister(e)}
@@ -295,12 +299,12 @@ function RegisterModal() {
                     </Button>
                   )}
                 </form>
-              </div>
-              <div className={styles.login} onClick={handleChangeLogin}>
-                <p>Já possui uma conta? Faça login</p>
-              </div>
-            </div>
-          </div>
+              </Box>
+              <Box className={styles.login} onClick={handleChangeLogin}>
+                <Typography>Já possui uma conta? Faça login</Typography>
+              </Box>
+            </Box>
+          </Box>
         )}
       </Modal>
     </>

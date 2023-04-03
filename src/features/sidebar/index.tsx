@@ -6,7 +6,7 @@ import { RootState } from "../../app/store";
 import SidebarMobileContainer from "./components/containers/SidebarMobileContainer";
 import SidebarDesktopContainer from "./components/containers/SidebarDesktopContainer";
 import AuthSidebar from "./components/AuthSidebar";
-import LoggedSidebar from "./components/LoggedSidebar";
+import LoggedSidebar from "./components/logged/LoggedSidebar";
 
 function Index() {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);

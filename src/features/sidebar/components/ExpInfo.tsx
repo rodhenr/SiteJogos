@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-import styles from "../styles/ExpInfo.module.scss";
+import { Box, Typography, useTheme } from "@mui/material";
 
 interface IProps {
   exp: number;
@@ -10,6 +10,8 @@ interface IProps {
 }
 
 function ExpInfo({ exp, isModal, level, maxExpLevel }: IProps) {
+  const theme = useTheme();
+
   const componentRef = useRef<HTMLDivElement>(null);
   const [expWidth, setExpWidth] = useState<number>(0);
 
@@ -24,19 +26,50 @@ function ExpInfo({ exp, isModal, level, maxExpLevel }: IProps) {
     : (exp / Number(maxExpLevel)) * expWidth;
 
   return (
-    <div className={styles.container} ref={componentRef}>
-      <div className={isModal ? `${styles.info} ${styles.modal}` : styles.info}>
-        <p>Nível {level}</p>
-        <p>
-          {exp} / {maxExpLevel}
-        </p>
-      </div>
-      <div
-        className={isModal ? `${styles.expBar} ${styles.modal}` : styles.expBar}
+    <Box display={"flex"} flexDirection={"column"} ref={componentRef}>
+      <Box
+        display={"flex"}
+        justifyContent={"space-between"}
+        mb={0.5}
+        sx={{
+          [theme.breakpoints.up("laptop")]: { fontSize: "14px" },
+          [theme.breakpoints.up("laptop")]: { fontSize: "15px" },
+        }}
       >
-        <div className={styles.exp} style={{ width: widthUserExp }} />
-      </div>
-    </div>
+        <Typography
+          color={"#6a6a84"}
+          sx={{ fontSize: isModal ? "16px" : "13px" }}
+        >
+          Nível {level}
+        </Typography>
+        <Typography
+          color={"#6a6a84"}
+          sx={{ fontSize: isModal ? "16px" : "13px" }}
+        >
+          {exp} / {maxExpLevel}
+        </Typography>
+      </Box>
+      <Box
+        bgcolor={"#FFF"}
+        display={"inline-block"}
+        overflow={"hidden"}
+        sx={{
+          height: isModal ? "18px" : "11px",
+          zIndex: "100",
+          [theme.breakpoints.up("desktopLarge")]: {
+            height: "13px",
+          },
+        }}
+        width={"100%"}
+      >
+        <Box
+          bgcolor={"#2a18f3"}
+          height={"100%"}
+          width={widthUserExp}
+          zIndex={"100"}
+        />
+      </Box>
+    </Box>
   );
 }
 

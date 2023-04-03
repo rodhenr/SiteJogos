@@ -3,9 +3,11 @@ import {
   changeHistoryModal,
   changeProfileModal,
   changeMessagesModal,
-} from "../sidebarSlice";
+} from "../../sidebarSlice";
 
-import styles from "../styles/SidebarUserOptionsItem.module.scss";
+import { Box, Typography } from "@mui/material";
+
+import styles from "../../styles/SidebarUserOptionsItem.module.scss";
 
 interface IProps {
   Icon: any;
@@ -26,16 +28,34 @@ function SidebarOptionItem({ Icon, title }: IProps) {
   };
 
   return (
-    <div className={styles.container} onClick={handleClick}>
+    <Box
+      alignItems={"center"}
+      display={"flex"}
+      justifyContent={"center"}
+      gap={1}
+      px={0.25}
+      py={"6px"}
+      sx={{ cursor: "pointer" }}
+      className={styles.container}
+      onClick={handleClick}
+    >
       <Icon
         sx={{
           alignSelf: "center",
           color: "#FFF",
-          fontSize: 26,
+          fontSize: "26px",
         }}
       />
-      <p className={styles.title}>{title}</p>
-    </div>
+      <Typography
+        color={"#FFF"}
+        fontFamily={"'Montserrat', sans-serif"}
+        fontSize={"16px"}
+        m={0}
+        className={styles.title}
+      >
+        {title}
+      </Typography>
+    </Box>
   );
 }
 

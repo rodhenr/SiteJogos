@@ -1,15 +1,4 @@
 .container {
-  align-items: center;
-  box-sizing: border-box;
-  cursor: pointer;
-  display: flex;
-  gap: 8px;
-  padding: 6px 2px;
-
-  p {
-    margin: 0;
-  }
-
   &:hover {
     background-color: #15171a;
     border-radius: 5px;
@@ -28,10 +17,6 @@
 }
 
 .title {
-  color: #fff;
-  font-family: "Montserrat", sans-serif;
-  font-size: 16px !important;
-
   @media (min-width: 1024px) {
     font-size: 16px;
   }

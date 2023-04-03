@@ -8,7 +8,14 @@ import { addToken } from "../authSlice";
 import { RootState } from "../../../app/store";
 
 import CloseIcon from "@mui/icons-material/Close";
-import { Box, Button, CircularProgress, Modal, TextField } from "@mui/material";
+import {
+  Box,
+  Button,
+  CircularProgress,
+  Modal,
+  TextField,
+  Typography,
+} from "@mui/material";
 
 import styles from "../styles/LoginModal.module.scss";
 
@@ -117,20 +124,22 @@ function LoginModal() {
         onClose={handleClose}
         open={loginModalState}
       >
-        <div className={styles.container}>
-          <div className={styles.closeButtonContainer}>
-            <div className={styles.closeButton} onClick={handleClose}>
+        <Box className={styles.container}>
+          <Box className={styles.closeButtonContainer}>
+            <Box className={styles.closeButton} onClick={handleClose}>
               <CloseIcon />
-            </div>
-          </div>
-          <div className={styles.loginContainer}>
-            <div className={styles.title}>
-              <h1>LOGIN</h1>
-            </div>
-            <div className={styles.errorMessage}>
-              {reqError && <p>{reqError.toUpperCase()}</p>}
-            </div>
-            <div className={styles.inputButton}>
+            </Box>
+          </Box>
+          <Box className={styles.loginContainer}>
+            <Box className={styles.title}>
+              <Typography color={"#FFF"} m={0}>
+                LOGIN
+              </Typography>
+            </Box>
+            <Box className={styles.errorMessage}>
+              {reqError && <Typography>{reqError.toUpperCase()}</Typography>}
+            </Box>
+            <Box className={styles.inputButton}>
               <form className={styles.form} onSubmit={(e) => handleLogin(e)}>
                 <TextField
                   error={loginData.user.error}
@@ -163,9 +172,9 @@ function LoginModal() {
                   variant="filled"
                 />
 
-                <div className={styles.forgotPassword}>
-                  <p>Esqueceu sua senha?</p>
-                </div>
+                <Box className={styles.forgotPassword}>
+                  <Typography>Esqueceu sua senha?</Typography>
+                </Box>
 
                 {isLoading ? (
                   <Box
@@ -200,12 +209,12 @@ function LoginModal() {
                   </Button>
                 )}
               </form>
-            </div>
-            <div className={styles.register} onClick={handleChangeRegister}>
-              <p>Não tem uma conta? Cadastre-se</p>
-            </div>
-          </div>
-        </div>
+            </Box>
+            <Box className={styles.register} onClick={handleChangeRegister}>
+              <Typography>Não tem uma conta? Cadastre-se</Typography>
+            </Box>
+          </Box>
+        </Box>
       </Modal>
     </>
   );

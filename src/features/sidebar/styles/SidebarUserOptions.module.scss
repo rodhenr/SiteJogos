@@ -1,24 +1,5 @@
-.container {
-  align-items: flex-start;
-  display: flex;
-  flex-direction: column;
-  margin-top: 16px;
-
-  p {
-    font-size: 14px;
-    margin: 0;
-  }
-
-  @media (min-width: 1024px) {
-    margin-top: 0;
-  }
-}
 
 .title {
-  color: #6a6a84;
-  font-family: "Nunito", sans-serif;
-  font-size: 10px;
-
   @media (min-width: 1024px) {
     font-size: 13px;
     font-weight: 600;
@@ -29,10 +10,4 @@
   }
 }
 
-.optionsContainer {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  margin: 16px 0 24px 0;
-  width: 100%;
-}
+
