@@ -1,6 +1,4 @@
-import { Avatar, Box, Typography } from "@mui/material";
-
-import styles from "../../styles/ProfileModal.module.scss";
+import { Avatar, Box, Typography, useTheme } from "@mui/material";
 
 interface IProps {
   avatar: string;
@@ -10,6 +8,8 @@ interface IProps {
 }
 
 function UserInfoModal({ avatar, id, name, position }: IProps) {
+  const theme = useTheme();
+
   return (
     <Box
       display={"flex"}
@@ -31,17 +31,18 @@ function UserInfoModal({ avatar, id, name, position }: IProps) {
         >
           RANKING #{position}
         </Typography>
-        <Box
-          className={styles.userInfoContainer}
-          display={"flex"}
-          gap={2}
-          mt={2}
-        >
+        <Box display={"flex"} mt={2} sx={{ gap: { tablet: 2, laptop: 1 } }}>
           <Avatar
             alt="User Avatar"
-            className={styles.avatar}
             src={avatar}
-            sx={{ height: "60px !important", width: "60px !important" }}
+            sx={{
+              height: "60px !important",
+              width: "60px !important",
+              [theme.breakpoints.up("tablet")]: {
+                height: "70px",
+                width: "70px",
+              },
+            }}
           />
           <Box
             display={"flex"}

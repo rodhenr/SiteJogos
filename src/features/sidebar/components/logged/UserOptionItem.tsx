@@ -7,8 +7,6 @@ import {
 
 import { Box, Typography } from "@mui/material";
 
-import styles from "../../styles/SidebarUserOptionsItem.module.scss";
-
 interface IProps {
   Icon: any;
   title: string;
@@ -35,15 +33,23 @@ function SidebarOptionItem({ Icon, title }: IProps) {
       gap={1}
       px={0.25}
       py={"6px"}
-      sx={{ cursor: "pointer" }}
-      className={styles.container}
+      sx={{
+        cursor: "pointer",
+        ":hover": {
+          backgroundColor: "#15171a",
+          borderRadius: "5px",
+          "& p, svg": {
+            color: "#ff4c29",
+          },
+        },
+      }}
       onClick={handleClick}
     >
       <Icon
         sx={{
           alignSelf: "center",
           color: "#FFF",
-          fontSize: "26px",
+          fontSize: { mobile: "26px", laptop: "22px" },
         }}
       />
       <Typography
@@ -51,7 +57,12 @@ function SidebarOptionItem({ Icon, title }: IProps) {
         fontFamily={"'Montserrat', sans-serif"}
         fontSize={"16px"}
         m={0}
-        className={styles.title}
+        sx={{
+          fontSize: {
+            mobile: "16px",
+            desktopLarge: "18px",
+          },
+        }}
       >
         {title}
       </Typography>

@@ -4,8 +4,6 @@ import CloseButton from "../../../../shared/components/CloseButton";
 import Loading from "../../../../shared/components/Loading";
 import ErrorMessage from "../ErrorMessage";
 
-import styles from "../../styles/SidebarModalContainer.module.scss";
-
 interface IProps {
   children: JSX.Element | JSX.Element[];
   closeFunction: React.MouseEventHandler<HTMLDivElement>;
@@ -30,7 +28,31 @@ function ModalContainer({
       aria-labelledby="modal-matches"
       aria-describedby="modal-matches-history"
     >
-      <Box className={styles.container}>
+      <Box
+        bgcolor={"#1b1e23"}
+        boxSizing={"border-box"}
+        display={"flex"}
+        flexDirection={"column"}
+        gap={2}
+        left={"50%"}
+        position={"absolute"}
+        sx={{
+          border: "2px solid #000",
+          height: { mobile: "100%", tablet: "auto" },
+          maxHeight: { tablet: "700px" },
+          overflowY: "auto",
+          p: {
+            mobile: 1,
+            laptop: 2,
+          },
+          transform: "translate(-50%, -50%)",
+          width: { mobile: "100%", tablet: "80vw", laptop: "800px" },
+          "&::-webkit-scrollbar": {
+            display: "none",
+          },
+        }}
+        top={"50%"}
+      >
         <CloseButton handleClose={closeFunction} />
         {title.length > 0 && (
           <Typography

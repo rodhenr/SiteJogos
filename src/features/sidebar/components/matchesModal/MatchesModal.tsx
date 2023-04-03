@@ -1,5 +1,7 @@
 import { Box } from "@mui/material";
 
+import { v4 as uuidv4 } from "uuid";
+
 import { IPlayerRecentMatches } from "../../userInfoApiSlice";
 
 import MatchTitle from "./MatchTitle";
@@ -18,6 +20,7 @@ function MatchesModal({ data }: IProps) {
             <MatchItem
               date={match.date}
               game={match["Game.name"]}
+              key={uuidv4()}
               win={match.is_win}
             />
           );

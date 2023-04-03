@@ -4,8 +4,6 @@ import { Box, Typography } from "@mui/material";
 
 import { IStatistics } from "../../../matches/generalInfoApiSlice";
 
-import styles from "../../styles/ProfileModal.module.scss";
-
 interface IProps {
   data: IStatistics[];
 }
@@ -13,7 +11,6 @@ interface IProps {
 function StatisticList({ data }: IProps) {
   return (
     <Box
-      className={styles.statisticsContainer}
       display={"flex"}
       flex={1}
       flexDirection={"column"}
@@ -33,25 +30,18 @@ function StatisticList({ data }: IProps) {
         <Box
           bgcolor={"#323131"}
           borderRadius={2}
-          className={styles.statisticsTitle}
           display={"flex"}
           justifyContent={"center"}
           paddingY={"4px"}
+          sx={{ fontSize: { mobile: "13px", tablet: "17px" } }}
           textAlign={"center"}
           width={"100%"}
         >
-          <Typography flex={1} fontSize={"13px"}>
-            JOGO
-          </Typography>
-          <Typography flex={1} fontSize={"13px"}>
-            VITÓRIAS
-          </Typography>
-          <Typography flex={1} fontSize={"13px"}>
-            DERROTAS
-          </Typography>
+          <Typography flex={1}>JOGO</Typography>
+          <Typography flex={1}>VITÓRIAS</Typography>
+          <Typography flex={1}>DERROTAS</Typography>
         </Box>
         <Box
-          className={styles.statisticsItems}
           color={"#6A6A84"}
           display={"flex"}
           flexDirection={"column"}
@@ -74,6 +64,7 @@ function StatisticList({ data }: IProps) {
               <Box
                 borderRadius={"6px"}
                 display={"flex"}
+                fontSize={"13px"}
                 justifyContent={"space-between"}
                 key={uuidv4()}
                 padding={"2px 0"}
@@ -86,15 +77,9 @@ function StatisticList({ data }: IProps) {
                 }}
                 textAlign={"center"}
               >
-                <Typography flex={1} fontSize={"13px"}>
-                  {game.game}
-                </Typography>
-                <Typography flex={1} fontSize={"13px"}>
-                  {game.wins}
-                </Typography>
-                <Typography flex={1} fontSize={"13px"}>
-                  {game.loses}
-                </Typography>
+                <Typography flex={1}>{game.game}</Typography>
+                <Typography flex={1}>{game.wins}</Typography>
+                <Typography flex={1}>{game.loses}</Typography>
               </Box>
             );
           })}

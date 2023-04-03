@@ -4,7 +4,6 @@ import Avatar from "@mui/material/Avatar";
 
 import ExpInfo from "../ExpInfo";
 
-import styles from "../../styles/UserInfo.module.scss";
 import { Box, Typography } from "@mui/material";
 
 function UserInfo() {
@@ -24,8 +23,15 @@ function UserInfo() {
             fontSize={"16px"}
             justifyContent={"center"}
             m={0}
-            sx={{ hyphens: "auto", wordBreak: "break-word" }}
-            className={styles.username}
+            sx={{
+              fontSize: {
+                mobile: "16px",
+                laptop: "20px",
+                desktopLarge: "22px",
+              },
+              hyphens: "auto",
+              wordBreak: "break-word",
+            }}
           >
             {data.name.toUpperCase()}
           </Typography>

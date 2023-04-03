@@ -1,5 +1,3 @@
-import { v4 as uuidv4 } from "uuid";
-
 import { Box, Typography } from "@mui/material";
 
 import { formatDateWithTime } from "../../../../utils/formatDate";
@@ -16,7 +14,6 @@ function MatchItem({ date, game, win }: IProps) {
       color={"#6a6a84"}
       display={"flex"}
       justifyContent={"space-between"}
-      key={uuidv4()}
       px={0.5}
       py={0.25}
     >

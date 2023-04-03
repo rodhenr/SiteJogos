@@ -6,7 +6,6 @@ import { useGetPlayerCompleteInfoQuery } from "../../userInfoApiSlice";
 import { changeProfileModal } from "../../sidebarSlice";
 
 import SidebarModalContainer from "../containers/SidebarModalContainer";
-
 import ProfileModal from "./ProfileModal";
 
 function Index() {
@@ -26,17 +25,15 @@ function Index() {
   };
 
   return (
-    <div>
-      <SidebarModalContainer
-        closeFunction={handleClose}
-        openState={profileState}
-        isLoading={isLoading}
-        isError={isError}
-        title={""}
-      >
-        {isSuccess ? <ProfileModal data={data} /> : <></>}
-      </SidebarModalContainer>
-    </div>
+    <SidebarModalContainer
+      closeFunction={handleClose}
+      openState={profileState}
+      isLoading={isLoading}
+      isError={isError}
+      title={""}
+    >
+      {isSuccess ? <ProfileModal data={data} /> : <></>}
+    </SidebarModalContainer>
   );
 }
 

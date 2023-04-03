@@ -26,6 +26,7 @@ function DrawerContainer({ children }: IProps) {
           height={"100%"}
           py={3}
           px={2}
+          sx={{ width: { mobile: "250px", tablet: "300px" } }}
           width={"250px"}
         >
           {children}

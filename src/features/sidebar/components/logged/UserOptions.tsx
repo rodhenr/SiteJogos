@@ -6,8 +6,6 @@ import SidebarUserOptionItem from "./UserOptionItem";
 
 import { Box, Typography } from "@mui/material";
 
-import styles from "../../styles/SidebarUserOptions.module.scss";
-
 function SidebarUserOptions() {
   return (
     <Box
@@ -21,7 +19,10 @@ function SidebarUserOptions() {
         fontFamily={"'Nunito', sans-serif"}
         fontSize={"12px"}
         m={0}
-        className={styles.title}
+        sx={{
+          fontSize: { mobile: "12px", laptop: "13px", desktopLarge: "14px" },
+          fontWeight: { laptop: 600 },
+        }}
       >
         MENU
       </Typography>

@@ -4,8 +4,6 @@ import { Avatar, Box, Tooltip, Typography } from "@mui/material";
 
 import { IFriends } from "../../userInfoApiSlice";
 
-import styles from "../../styles/ProfileModal.module.scss";
-
 interface IProps {
   data: IFriends[];
 }
@@ -13,11 +11,11 @@ interface IProps {
 function FriendList({ data }: IProps) {
   return (
     <Box
-      className={styles.friendsContainer}
       display={"flex"}
       flexDirection={"column"}
       gap={1}
       py={1}
+      sx={{ flex: { laptop: 1 } }}
     >
       <Typography
         sx={{
