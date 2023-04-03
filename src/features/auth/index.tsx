@@ -4,8 +4,6 @@ import { changeLoginModal, changeRegisterModal } from "./authSlice";
 
 import { Box, Button, Typography } from "@mui/material";
 
-import styles from "./styles/Auth.module.scss";
-
 function Index() {
   const dispatch = useDispatch();
 
@@ -18,8 +16,23 @@ function Index() {
   };
 
   return (
-    <Box className={styles.container}>
-      <Box className={styles.register}>
+    <Box
+      alignItems={"center"}
+      color={"#FFF"}
+      display={"flex"}
+      flexDirection={"column"}
+      fontSize={"16px"}
+      gap={2}
+      height={"100%"}
+      justifyContent={"center"}
+      textAlign={"center"}
+    >
+      <Box
+        display={"flex"}
+        flexDirection={"column"}
+        gap={1}
+        justifyContent={"center"}
+      >
         <Typography>
           Quer salvar seu progresso e subir nos rankings do site?
         </Typography>
@@ -32,7 +45,12 @@ function Index() {
           Cadastre-se agora!
         </Button>
       </Box>
-      <Box className={styles.login}>
+      <Box
+        display={"flex"}
+        flexDirection={"column"}
+        gap={1}
+        justifyContent={"center"}
+      >
         <Typography>Já possui uma conta?</Typography>
         <Button
           variant={"contained"}

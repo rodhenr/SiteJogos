@@ -7,19 +7,13 @@ import { changeLoginModal, changeRegisterModal } from "../authSlice";
 import { addToken } from "../authSlice";
 import { RootState } from "../../../app/store";
 
-import CloseIcon from "@mui/icons-material/Close";
-import {
-  Box,
-  Button,
-  CircularProgress,
-  Modal,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Box, TextField, Typography } from "@mui/material";
 
-import styles from "../styles/LoginModal.module.scss";
+import LoginRegisterSwitcher from "./LoginRegisterSwitcher";
+import Form from "./Form";
+import AuthModalContainer from "./AuthModalContainer";
 
-interface IState {
+export interface IState {
   user: { value: string; error: boolean; minLength: number };
   password: { value: string; error: boolean; minLength: number };
 }
@@ -36,7 +30,7 @@ function LoginModal() {
     password: { value: "", error: false, minLength: 8 },
   });
 
-  const [login, { isLoading }] = useLoginMutation();
+  const [login, { isLoading, isError }] = useLoginMutation();
 
   const handleClose = () => {
     setReqError("");
@@ -115,108 +109,67 @@ function LoginModal() {
     handleClose();
     dispatch(changeRegisterModal(true));
   };
-
+  //Falta exibir erros
   return (
-    <>
-      <Modal
-        aria-describedby="modal-modal-description"
-        aria-labelledby="modal-modal-title"
-        onClose={handleClose}
-        open={loginModalState}
+    <AuthModalContainer
+      isLoading={isLoading}
+      isError={isError}
+      handleClose={handleClose}
+      openState={loginModalState}
+      handleSwitcher={handleChangeRegister}
+      switcherText={"Não tem uma conta? Cadastre-se"}
+      title={"LOGIN"}
+    >
+      <Form
+        buttonText={"Faça Login"}
+        handleForm={handleLogin}
+        isLoading={isLoading}
       >
-        <Box className={styles.container}>
-          <Box className={styles.closeButtonContainer}>
-            <Box className={styles.closeButton} onClick={handleClose}>
-              <CloseIcon />
-            </Box>
-          </Box>
-          <Box className={styles.loginContainer}>
-            <Box className={styles.title}>
-              <Typography color={"#FFF"} m={0}>
-                LOGIN
-              </Typography>
-            </Box>
-            <Box className={styles.errorMessage}>
-              {reqError && <Typography>{reqError.toUpperCase()}</Typography>}
-            </Box>
-            <Box className={styles.inputButton}>
-              <form className={styles.form} onSubmit={(e) => handleLogin(e)}>
-                <TextField
-                  error={loginData.user.error}
-                  helperText={
-                    loginData.user.error &&
-                    `O campo deve conter ao menos ${loginData.user.minLength} caracteres`
-                  }
-                  id="filled-basic"
-                  label="Usuário"
-                  name={"user"}
-                  onChange={handleInputChange}
-                  required
-                  value={loginData.user.value}
-                  variant="filled"
-                />
-                <TextField
-                  autoComplete="current-password"
-                  error={loginData.password.error}
-                  helperText={
-                    loginData.password.error &&
-                    `O campo deve conter ao menos ${loginData.password.minLength} caracteres`
-                  }
-                  id="filled-password-input"
-                  label="Senha"
-                  name={"password"}
-                  onChange={handleInputChange}
-                  required
-                  type="password"
-                  value={loginData.password.value}
-                  variant="filled"
-                />
+        <TextField
+          error={loginData.user.error}
+          helperText={
+            loginData.user.error &&
+            `O campo deve conter ao menos ${loginData.user.minLength} caracteres`
+          }
+          id="filled-basic"
+          label="Usuário"
+          name={"user"}
+          onChange={handleInputChange}
+          required
+          value={loginData.user.value}
+          variant="filled"
+        />
+        <TextField
+          autoComplete="current-password"
+          error={loginData.password.error}
+          helperText={
+            loginData.password.error &&
+            `O campo deve conter ao menos ${loginData.password.minLength} caracteres`
+          }
+          id="filled-password-input"
+          label="Senha"
+          name={"password"}
+          onChange={handleInputChange}
+          required
+          type="password"
+          value={loginData.password.value}
+          variant="filled"
+        />
 
-                <Box className={styles.forgotPassword}>
-                  <Typography>Esqueceu sua senha?</Typography>
-                </Box>
-
-                {isLoading ? (
-                  <Box
-                    sx={{
-                      alignItems: "center",
-                      backgroundColor: "#ff4c29;",
-                      borderRadius: "10px",
-                      display: "flex",
-                      fontSize: "18px",
-                      height: "50px",
-                      justifyContent: "center",
-                      width: " 100%",
-                    }}
-                  >
-                    <CircularProgress />
-                  </Box>
-                ) : (
-                  <Button
-                    sx={{
-                      backgroundColor: "#ff4c29;",
-                      borderRadius: "10px",
-                      fontSize: "18px",
-                      height: "50px",
-                      ":hover": {
-                        backgroundColor: "#cb3b1e;",
-                      },
-                    }}
-                    type="submit"
-                    variant={"contained"}
-                  >
-                    Faça Login
-                  </Button>
-                )}
-              </form>
-            </Box>
-            <Box className={styles.register} onClick={handleChangeRegister}>
-              <Typography>Não tem uma conta? Cadastre-se</Typography>
-            </Box>
-          </Box>
+        <Box display={"flex"} justifyContent={"flex-end"} width={"100%"}>
+          <Typography
+            color={"#ff4c29"}
+            sx={{
+              "&:hover": {
+                cursor: "pointer",
+              },
+            }}
+          >
+            Esqueceu sua senha?
+          </Typography>
         </Box>
-      </Modal>
-    </>
+      </Form>
+    </AuthModalContainer>
   );
 }
 
