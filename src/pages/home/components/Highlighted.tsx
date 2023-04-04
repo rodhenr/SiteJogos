@@ -1,18 +1,15 @@
-import { v4 as uuidv4 } from "uuid";
-
 import StarIcon from "@mui/icons-material/Star";
+import { Box } from "@mui/material";
 
-import HighlightedItem from "./HighlightedItem";
 import Title from "./Title";
 
 import styles from "../styles/Highlighted.module.scss";
 
 function Highlighted() {
-  const fakeData: any[] = [];
   return (
-    <div className={styles.container}>
+    <Box className={styles.container}>
       <Title Icon={StarIcon} title={"EM DESTAQUE"} />
-      <div className={styles.cardsContainer}>
+      <Box className={styles.cardsContainer}>
         {/*  {fakeData.highlightedGames.map((game) => {
           return (
             <HighlightedItem
@@ -23,8 +20,8 @@ function Highlighted() {
             />
           );
         })} */}
-      </div>
-    </div>
+      </Box>
+    </Box>
   );
 }
 
