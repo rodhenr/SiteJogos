@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 
 import ModalContainer from "../../sidebar/components/containers/SidebarModalContainer";
 import LoginRegisterSwitcher from "./LoginRegisterSwitcher";
@@ -10,6 +10,7 @@ interface IProps {
   handleClose: () => void;
   openState: boolean;
   handleSwitcher: () => void;
+  reqError: string;
   switcherText: string;
   title: string;
 }
@@ -21,6 +22,7 @@ function AuthModalContainer({
   isError,
   isLoading,
   openState,
+  reqError,
   switcherText,
   title,
 }: IProps) {
@@ -31,7 +33,19 @@ function AuthModalContainer({
       closeFunction={handleClose}
       openState={openState}
       title={title}
+      isAuth={true}
     >
+      <Typography
+        color={"rgb(241, 61, 61)"}
+        fontSize={"20px"}
+        fontWeight={"700"}
+        m={0}
+        sx={{ wordWrap: "break-word" }}
+        textAlign={"center"}
+        width={"100%"}
+      >
+        {reqError.toUpperCase()}
+      </Typography>
       <Box
         alignItems={"center"}
         display={"flex"}

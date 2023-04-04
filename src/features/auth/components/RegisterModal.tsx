@@ -147,13 +147,12 @@ function RegisterModal() {
       }
     }
   };
-  console.log(formData);
 
   const handleChangeLogin = () => {
     handleClose();
     dispatch(changeLoginModal(true));
   };
-  //Falta exibir erros
+ 
   return (
     <AuthModalContainer
       isLoading={isLoading}
@@ -161,6 +160,7 @@ function RegisterModal() {
       handleClose={handleClose}
       openState={registerModalState}
       handleSwitcher={handleChangeLogin}
+      reqError={reqError}
       switcherText={"Já possui uma conta? Faça login!"}
       title={"REGISTRO"}
     >

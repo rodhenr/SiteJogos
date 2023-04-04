@@ -9,7 +9,6 @@ import { RootState } from "../../../app/store";
 
 import { Box, TextField, Typography } from "@mui/material";
 
-import LoginRegisterSwitcher from "./LoginRegisterSwitcher";
 import Form from "./Form";
 import AuthModalContainer from "./AuthModalContainer";
 
@@ -109,7 +108,7 @@ function LoginModal() {
     handleClose();
     dispatch(changeRegisterModal(true));
   };
-  //Falta exibir erros
+  
   return (
     <AuthModalContainer
       isLoading={isLoading}
@@ -117,6 +116,7 @@ function LoginModal() {
       handleClose={handleClose}
       openState={loginModalState}
       handleSwitcher={handleChangeRegister}
+      reqError={reqError}
       switcherText={"Não tem uma conta? Cadastre-se"}
       title={"LOGIN"}
     >

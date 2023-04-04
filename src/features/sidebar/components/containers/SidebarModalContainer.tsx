@@ -11,6 +11,7 @@ interface IProps {
   isError: boolean;
   isLoading: boolean;
   title: string;
+  isAuth: boolean;
 }
 
 function ModalContainer({
@@ -20,6 +21,7 @@ function ModalContainer({
   closeFunction,
   openState,
   title,
+  isAuth,
 }: IProps) {
   return (
     <Modal
@@ -65,7 +67,7 @@ function ModalContainer({
         )}
         {children}
         {isLoading && <Loading />}
-        {isError && <ErrorMessage />}
+        {!isAuth && isError && <ErrorMessage />}
       </Box>
     </Modal>
   );

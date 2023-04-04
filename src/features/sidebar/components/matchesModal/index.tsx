@@ -29,6 +29,7 @@ function Index() {
       isLoading={isLoading}
       isError={isError}
       title={"HISTÓRICO DE PARTIDAS"}
+      isAuth={false}
     >
       {isSuccess ? (
         data.length > 0 ? (

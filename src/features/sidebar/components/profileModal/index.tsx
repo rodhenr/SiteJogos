@@ -31,6 +31,7 @@ function Index() {
       isLoading={isLoading}
       isError={isError}
       title={""}
+      isAuth={false}
     >
       {isSuccess ? <ProfileModal data={data} /> : <></>}
     </SidebarModalContainer>
