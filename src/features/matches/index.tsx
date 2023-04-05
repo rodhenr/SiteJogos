@@ -10,10 +10,15 @@ import HomeItemContainer from "../../pages/home/components/HomeItemContainer";
 import RecentItem from "./components/RecentItem";
 
 function Index() {
-  const { data, isSuccess, isLoading, isError } = useGetRecentMatchesQuery(5);
+  const { data, isSuccess, isLoading } = useGetRecentMatchesQuery(10);
 
   return (
-    <HomeItemContainer icon={TvIcon} size={2} titleText={"PARTIDAS RECENTES"}>
+    <HomeItemContainer
+      icon={TvIcon}
+      isLoading={isLoading}
+      size={2}
+      titleText={"PARTIDAS RECENTES"}
+    >
       {isSuccess ? (
         <>
           <Box

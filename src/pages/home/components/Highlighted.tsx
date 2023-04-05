@@ -5,7 +5,12 @@ import HomeItemContainer from "./HomeItemContainer";
 
 function Highlighted() {
   return (
-    <HomeItemContainer icon={StarIcon} size={1} titleText={"em destaque"}>
+    <HomeItemContainer
+      icon={StarIcon}
+      isLoading={false}
+      size={1}
+      titleText={"em destaque"}
+    >
       <Box display={"flex"} flex={1} gap={"8px 16px"} overflow={"hidden"}>
         {/*  {fakeData.highlightedGames.map((game) => {
           return (

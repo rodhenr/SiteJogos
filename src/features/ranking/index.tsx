@@ -13,18 +13,28 @@ import HomeItemContainer from "../../pages/home/components/HomeItemContainer";
 
 function Index() {
   const navigate = useNavigate();
-  const { data, isSuccess, isLoading, isError } = useGetPlayerRankingQuery(20);
+  const { data, isSuccess, isLoading } = useGetPlayerRankingQuery(20);
 
   const handleNavigateRanking = () => {
     navigate("/ranking");
   };
 
   return (
-    <HomeItemContainer icon={BoltIcon} size={1} titleText={"ranking"}>
+    <HomeItemContainer
+      icon={BoltIcon}
+      isLoading={isLoading}
+      size={1}
+      titleText={"ranking"}
+    >
       {isSuccess ? (
         <>
           <Box>
-            <Box display={"flex"} flexDirection={"column"} gap={1}>
+            <Box
+              display={"flex"}
+              flexDirection={"column"}
+              gap={1}
+              sx={{ overflowY: "auto" }}
+            >
               {data.map((rank: IRanking) => (
                 <RankingItem
                   key={uuidv4()}
@@ -43,8 +53,8 @@ function Index() {
             borderRadius={"30px"}
             display={"flex"}
             height={"30px"}
-            justify-content={"center"}
-            margin-top={"24px"}
+            justifyContent={"center"}
+            mt={3}
             sx={{
               transition: "background-color 0.3s",
               "& p": { color: "#fff", fontSize: "13px" },

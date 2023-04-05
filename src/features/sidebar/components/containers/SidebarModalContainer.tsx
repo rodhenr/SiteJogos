@@ -49,6 +49,7 @@ function ModalContainer({
           },
           transform: "translate(-50%, -50%)",
           width: { mobile: "100%", tablet: "80vw", laptop: "800px" },
+
           "&::-webkit-scrollbar": {
             display: "none",
           },
