@@ -4,6 +4,7 @@ import { IRecentMatches } from "./generalInfoSlice";
 import { v4 as uuidv4 } from "uuid";
 
 import { Box, Typography } from "@mui/material";
+import TvIcon from "@mui/icons-material/Tv";
 
 import HomeItemContainer from "../../pages/home/components/HomeItemContainer";
 import RecentItem from "./components/RecentItem";
@@ -12,7 +13,7 @@ function Index() {
   const { data, isSuccess, isLoading, isError } = useGetRecentMatchesQuery(5);
 
   return (
-    <HomeItemContainer titleIcon={"TvIcon"} titleText={"PARTIDAS RECENTES"}>
+    <HomeItemContainer icon={TvIcon} size={2} titleText={"PARTIDAS RECENTES"}>
       {isSuccess ? (
         <>
           <Box

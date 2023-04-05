@@ -3,11 +3,12 @@ import Title from "./Title";
 
 interface IProps {
   children: JSX.Element | JSX.Element[];
-  titleIcon: string;
+  icon: any;
+  size: number;
   titleText: string;
 }
 
-function HomeItemContainer({ children, titleIcon, titleText }: IProps) {
+function HomeItemContainer({ children, icon, size, titleText }: IProps) {
   //Implementar loading
   return (
     <Box
@@ -16,7 +17,7 @@ function HomeItemContainer({ children, titleIcon, titleText }: IProps) {
       boxShadow={24}
       boxSizing={"border-box"}
       display={"flex"}
-      flex={1}
+      flex={size}
       flexDirection={"column"}
       minHeight={"100px"}
       sx={{
@@ -28,7 +29,7 @@ function HomeItemContainer({ children, titleIcon, titleText }: IProps) {
         },
       }}
     >
-      <Title Icon={titleIcon} title={titleText.toUpperCase()} />
+      <Title Icon={icon} title={titleText.toUpperCase()} />
       {children}
     </Box>
   );

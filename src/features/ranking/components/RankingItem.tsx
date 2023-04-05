@@ -1,4 +1,4 @@
-import styles from "../styles/RankingItem.module.scss";
+import { Box, Typography } from "@mui/material";
 
 interface IProps {
   level: number;
@@ -22,16 +22,36 @@ function RankingItem({ level, player, playerID, position }: IProps) {
   const handleClick = () => {};
 
   return (
-    <div
-      className={styles.container}
-      style={{ backgroundColor: bColor, color: color }}
+    <Box
+      bgcolor={bColor}
+      borderRadius={"10px"}
+      boxSizing={"border-box"}
+      color={color}
+      display={"flex"}
+      justifyContent={"space-between"}
+      padding={"4px 8px"}
+      sx={{
+        "& p": {
+          fontSize: { mobile: "11px", laptop: "12px", desktopLarge: "13px" },
+          maxWidth: "100%",
+        },
+
+        "&:hover": {
+          cursor: "pointer",
+          opacity: "0.75",
+        },
+      }}
     >
-      <div className={styles.playerInfo}>
-        <p>{position}.</p>
-        <p className={styles.playerName}>{player.substring(0, 40)}</p>
-      </div>
-      <p>NÍVEL {level}</p>
-    </div>
+      <Box
+        display={"flex"}
+        gap={"4px"}
+        sx={{ fontSize: { mobile: "12px", laptop: "14px" } }}
+      >
+        <Typography>{position}.</Typography>
+        <Typography>{player.substring(0, 40)}</Typography>
+      </Box>
+      <Typography>NÍVEL {level}</Typography>
+    </Box>
   );
 }
 

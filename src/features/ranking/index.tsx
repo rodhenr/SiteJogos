@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 
 import { Box, Typography } from "@mui/material";
+import BoltIcon from "@mui/icons-material/Bolt";
 
 import RankingItem from "./components/RankingItem";
 import HomeItemContainer from "../../pages/home/components/HomeItemContainer";
@@ -19,7 +20,7 @@ function Index() {
   };
 
   return (
-    <HomeItemContainer titleText={"oltIcon"} titleIcon={"RANKING"}>
+    <HomeItemContainer icon={BoltIcon} size={1} titleText={"ranking"}>
       {isSuccess ? (
         <>
           <Box>
