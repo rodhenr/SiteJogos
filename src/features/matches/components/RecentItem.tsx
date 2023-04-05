@@ -1,6 +1,6 @@
-import { formatDateWithTime } from "../../../utils/formatDate";
+import { Box, Typography } from "@mui/material";
 
-import styles from "../styles/RecentItem.module.scss";
+import { formatDateWithTime } from "../../../utils/formatDate";
 
 interface IProps {
   time: Date;
@@ -11,14 +11,36 @@ interface IProps {
 
 function RecentItem({ time, game, user, win }: IProps) {
   return (
-    <div className={styles.container}>
-      <p>{formatDateWithTime(new Date(time))}</p>
-      <p>{game}</p>
-      <p>{user.substring(0, 40)}</p>
-      <p style={win ? { color: "#11C318" } : { color: "#FE3434" }}>
+    <Box
+      alignItems={"center"}
+      bgcolor={"#232323"}
+      borderRadius={"5px"}
+      boxSizing={"border-box"}
+      display={"flex"}
+      justifyContent={"center"}
+      p={"5px"}
+      sx={{
+        "& p": {
+          color: "#fff",
+          flex: 1,
+          fontFamily: "Roboto Condensed",
+          fontSize: {
+            mobile: "10px",
+            tablet: "11px",
+            laptop: "12px",
+            desktopLarge: "13px",
+          },
+          textAlign: "center",
+        },
+      }}
+    >
+      <Typography>{formatDateWithTime(new Date(time))}</Typography>
+      <Typography>{game}</Typography>
+      <Typography>{user.substring(0, 40)}</Typography>
+      <Typography style={win ? { color: "#11C318" } : { color: "#FE3434" }}>
         {win ? "VITÓRIA" : "DERROTA"}
-      </p>
-    </div>
+      </Typography>
+    </Box>
   );
 }
 

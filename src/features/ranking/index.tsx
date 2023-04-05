@@ -5,29 +5,25 @@ import { useNavigate } from "react-router-dom";
 
 import { v4 as uuidv4 } from "uuid";
 
-import BoltIcon from "@mui/icons-material/Bolt";
+import { Box, Typography } from "@mui/material";
 
-import Title from "../../pages/home/components/Title";
 import RankingItem from "./components/RankingItem";
-
-import styles from "./styles/Ranking.module.scss";
+import HomeItemContainer from "../../pages/home/components/HomeItemContainer";
 
 function Index() {
   const navigate = useNavigate();
-  const { data, isSuccess, isLoading } = useGetPlayerRankingQuery(10);
+  const { data, isSuccess, isLoading, isError } = useGetPlayerRankingQuery(20);
 
   const handleNavigateRanking = () => {
     navigate("/ranking");
   };
 
   return (
-    <div className={styles.container}>
-      {isLoading && <div></div>}
-      {isSuccess && (
+    <HomeItemContainer titleText={"oltIcon"} titleIcon={"RANKING"}>
+      {isSuccess ? (
         <>
-          <div>
-            <Title Icon={BoltIcon} title={"RANKING"} />
-            <div className={styles.playersContainer}>
+          <Box>
+            <Box display={"flex"} flexDirection={"column"} gap={1}>
               {data.map((rank: IRanking) => (
                 <RankingItem
                   key={uuidv4()}
@@ -37,14 +33,36 @@ function Index() {
                   position={rank.position}
                 />
               ))}
-            </div>
-          </div>
-          <div className={styles.buttonMore} onClick={handleNavigateRanking}>
-            <p>VER RANKING GERAL</p>
-          </div>
+            </Box>
+          </Box>
+          <Box
+            alignItems={"center"}
+            alignSelf={"center"}
+            bgcolor={"#ff4c29"}
+            borderRadius={"30px"}
+            display={"flex"}
+            height={"30px"}
+            justify-content={"center"}
+            margin-top={"24px"}
+            sx={{
+              transition: "background-color 0.3s",
+              "& p": { color: "#fff", fontSize: "13px" },
+
+              "&:hover": {
+                bgcolor: "#f13a15",
+                cursor: "pointer",
+              },
+            }}
+            width={"70%"}
+            onClick={handleNavigateRanking}
+          >
+            <Typography>VER RANKING GERAL</Typography>
+          </Box>
         </>
+      ) : (
+        <></>
       )}
-    </div>
+    </HomeItemContainer>
   );
 }
 

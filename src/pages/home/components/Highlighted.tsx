@@ -1,15 +1,16 @@
-import StarIcon from "@mui/icons-material/Star";
 import { Box } from "@mui/material";
 
-import Title from "./Title";
-
-import styles from "../styles/Highlighted.module.scss";
+import HomeItemContainer from "./HomeItemContainer";
 
 function Highlighted() {
   return (
-    <Box className={styles.container}>
-      <Title Icon={StarIcon} title={"EM DESTAQUE"} />
-      <Box className={styles.cardsContainer}>
+    <HomeItemContainer titleIcon={"StarIcon"} titleText={"em destaque"}>
+      <Box
+        display={"flex"}
+        flex={1}
+        gap={"8px 16px"}
+        overflow={"hidden"}
+      >
         {/*  {fakeData.highlightedGames.map((game) => {
           return (
             <HighlightedItem
@@ -21,7 +22,7 @@ function Highlighted() {
           );
         })} */}
       </Box>
-    </Box>
+    </HomeItemContainer>
   );
 }
 

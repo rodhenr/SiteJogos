@@ -1,4 +1,4 @@
-import styles from "../styles/Title.module.scss";
+import { Box, Typography } from "@mui/material";
 
 interface IProps {
   Icon: any;
@@ -7,10 +7,23 @@ interface IProps {
 
 function Title({ Icon, title }: IProps) {
   return (
-    <div className={styles.container}>
+    <Box
+      display={"flex"}
+      fontFamily={"'Space Grotesk', sans-serif"}
+      mb={2}
+      sx={{ gap: { mobile: 0.5, tablet: 1 } }}
+    >
       <Icon sx={{ color: "#FF4C29" }} />
-      <p className={styles.title}>{title}</p>
-    </div>
+      <Typography
+        color={"#6a6a84"}
+        m={0}
+        sx={{
+          fontSize: { tablet: "17px", laptop: "18px", desktopLarge: "19px" },
+        }}
+      >
+        {title}
+      </Typography>
+    </Box>
   );
 }
 

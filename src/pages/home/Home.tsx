@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 
 import { Box } from "@mui/material";
 
-import Help from "./components/Help";
 import Highlighted from "./components/Highlighted";
 import Ranking from "../../features/ranking/index";
 import Recent from "../../features/matches/index";
@@ -25,9 +24,9 @@ function Home() {
 
   let render = (
     <>
+      <Highlighted />
       <Recent />
       <Ranking />
-      <Help />
     </>
   );
 
@@ -36,15 +35,14 @@ function Home() {
       <>
         <Box
           display={"flex"}
-          flex={1}
+          flexDirection={"column"}
+          flex={2}
           sx={{
-            flex: 2,
-            flexDirection: "column",
             gap: { mobile: "8px", laptop: "16px" },
           }}
         >
+          <Highlighted />
           <Recent />
-          <Help />
         </Box>
         <Ranking />
       </>
@@ -52,29 +50,19 @@ function Home() {
   }
 
   return (
-    <Box flex={1}>
-      <MainLayout>
-        <Box
-          display={"flex"}
-          flex={1}
-          flexDirection={"column"}
-          sx={{ gap: { mobile: "8px", laptop: "16px" } }}
-        >
-          <Highlighted />
-          <Box
-            display={"flex"}
-            justifyContent={"space-between"}
-            sx={{
-              flex: { laptop: 1 },
-              flexDirection: { mobile: "column", laptop: "row" },
-              gap: { mobile: "8px", laptop: "16px" },
-            }}
-          >
-            {render}
-          </Box>
-        </Box>
-      </MainLayout>
-    </Box>
+    <MainLayout>
+      <Box
+        display={"flex"}
+        justifyContent={"space-between"}
+        sx={{
+          flex: { laptop: 1 },
+          flexDirection: { mobile: "column", laptop: "row" },
+          gap: { mobile: "8px", laptop: "16px" },
+        }}
+      >
+        {render}
+      </Box>
+    </MainLayout>
   );
 }
 
