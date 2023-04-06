@@ -2,17 +2,18 @@ import { useEffect, useState } from "react";
 
 import { v4 as uuidv4 } from "uuid";
 
+import { Box, Typography } from "@mui/material";
 import HomeIcon from "@mui/icons-material/Home";
 import SportsEsportsIcon from "@mui/icons-material/SportsEsports";
 import StarsIcon from "@mui/icons-material/Stars";
-import HelpIcon from "@mui/icons-material/Help";
 
 import Button from "./Button";
 import SearchBar from "./SearchBar";
+import MenuUserInfo from "./MenuUserInfo";
+import { useNavigate } from "react-router-dom";
 
-import styles from "../styles/Menu.module.scss";
-
-function Menu() {
+function TopMenu() {
+  const navigate = useNavigate();
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   const titles = [
@@ -20,7 +21,6 @@ function Menu() {
     { icon: SportsEsportsIcon, name: "Jogos", route: "/jogos" },
     { icon: StarsIcon, name: "Ranking", route: "/ranking" },
     { icon: StarsIcon, name: "Recordes", route: "/recordes" },
-    { icon: HelpIcon, name: "Faq", route: "/faq" },
   ];
 
   useEffect(() => {
@@ -35,9 +35,13 @@ function Menu() {
     };
   });
 
+  const handleClick = (route: string) => {
+    navigate(route);
+  };
+
   let render = (
     <>
-      <div className={styles.buttonsContainer}>
+      <Box display={"flex"} justifyContent={"space-between"} gap={1.5}>
         {titles.map((title) => {
           return (
             <Button
@@ -48,7 +52,7 @@ function Menu() {
             />
           );
         })}
-      </div>
+      </Box>
       <SearchBar />
     </>
   );
@@ -56,24 +60,52 @@ function Menu() {
   if (windowWidth > 1024) {
     render = (
       <>
-        <SearchBar />
-        <div className={styles.buttonsContainer}>
+        <Box
+          display={"flex"}
+          flex={1}
+          justifyContent={"flex-start"}
+          sx={{
+            gap: { mobile: 1.5, desktopLarge: 3 },
+
+            "& p": {
+              color: "#FFF",
+              fontSize: "20px",
+
+              "&:hover": {
+                cursor: "pointer",
+              },
+            },
+          }}
+        >
           {titles.map((title) => {
             return (
-              <Button
-                Icon={title.icon}
-                key={uuidv4()}
-                route={title.route}
-                title={title.name}
-              />
+              <Typography onClick={() => handleClick(title.route)}>
+                {title.name}
+              </Typography>
             );
           })}
-        </div>
+        </Box>
+        <Box display={"flex"} flex={1}>
+          <SearchBar />
+          <MenuUserInfo />
+        </Box>
       </>
     );
   }
 
-  return <div className={styles.container}>{render}</div>;
+  return (
+    <Box
+      display={"flex"}
+      justifyContent={"space-between"}
+      sx={{
+        alignItems: { laptop: "center" },
+        flexDirection: { mobile: "column", laptop: "row" },
+        gap: { mobile: 2, laptop: 1 },
+      }}
+    >
+      {render}
+    </Box>
+  );
 }
 
-export default Menu;
+export default TopMenu;

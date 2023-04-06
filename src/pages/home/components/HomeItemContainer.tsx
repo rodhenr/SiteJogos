@@ -30,11 +30,6 @@ function HomeItemContainer({
       sx={{
         p: { mobile: 1, laptop: 2 },
         overflowY: "auto",
-        transition: "background-color 0.3s",
-
-        "&:hover": {
-          bgcolor: "#171a1f",
-        },
 
         "&::-webkit-scrollbar": {
           display: "none",

@@ -1,9 +1,8 @@
-import { Box } from "@mui/material";
+import { Box, Divider } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { breakpointsTheme } from "../utils/themes";
 
-import Menu from "./components/Menu";
-import Sidebar from "../features/sidebar/index";
+import TopMenu from "./components/TopMenu";
 
 interface IProps {
   children: JSX.Element | JSX.Element[];
@@ -14,39 +13,28 @@ function MainLayout({ children }: IProps) {
   return (
     <ThemeProvider theme={theme}>
       <Box
+        boxSizing={"border-box"}
         display={"flex"}
+        flex={1}
+        flexDirection={"column"}
         height={"100vh"}
         sx={{
-          flexDirection: { mobile: "column", laptop: "row" },
-          mb: { mobile: 8, laptop: 0 },
+          gap: { mobile: 2, laptop: 3 },
+          py: { mobile: 2, laptop: 3 },
+          px: { mobile: 2, laptop: 3 },
         }}
-        width={"100%"}
       >
-        <Sidebar />
+        <TopMenu />
+        <Divider color={"#a8a8a8"} sx={{ opacity: 0.2 }} />
         <Box
-          boxSizing={"border-box"}
-          display={"flex"}
-          flex={"1"}
-          flexDirection={"column"}
-          height={"100vh"}
+          flex={1}
           sx={{
-            gap: { mobile: 2, laptop: 4 },
-            py: { mobile: 2, laptop: 3 },
-            px: { mobile: 2, laptop: 4 },
+            display: { laptop: "flex" },
+            flexDirection: { mobile: "row", laptop: "column" },
+            gap: { mobile: "8px", laptop: "16px" },
           }}
         >
-          <Menu />
-          <Box
-            flex={1}
-            sx={{
-              display: { laptop: "flex" },
-              flexDirection: { mobile: "row", laptop: "column" },
-              gap: { mobile: "8px", laptop: "16px" },
-              maxHeight: { desktop: "calc(100% - 100px)" },
-            }}
-          >
-            {children}
-          </Box>
+          {children}
         </Box>
       </Box>
     </ThemeProvider>
