@@ -13,6 +13,14 @@ declare module "@mui/material/styles" {
     desktop: true;
     desktopLarge: true;
   }
+
+  interface Palette {
+    tertiary: Palette["primary"];
+  }
+
+  interface PaletteOptions {
+    tertiary: PaletteOptions["primary"];
+  }
 }
 
 export const mainTheme = createTheme({
@@ -22,6 +30,11 @@ export const mainTheme = createTheme({
     },
     secondary: {
       main: "#144272",
+    },
+    tertiary: {
+      dark: "#9C241D",
+      light: "#eb726b",
+      main: "#C3423F",
     },
     info: {
       main: "#205295",

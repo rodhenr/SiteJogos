@@ -1,4 +1,4 @@
-import { Avatar, Box, Typography, useTheme } from "@mui/material";
+import { Avatar, Box, Typography } from "@mui/material";
 
 interface IProps {
   avatar: string;
@@ -8,23 +8,20 @@ interface IProps {
 }
 
 function UserInfoModal({ avatar, id, name, position }: IProps) {
-  const theme = useTheme();
-
   return (
     <Box
       display={"flex"}
-      fontFamily={"Roboto Condensed"}
       justifyContent={"space-between"}
     >
       <Box
         alignItems={"center"}
-        color={"#6A6A84"}
+        color={"#FFF"}
         display={"flex"}
         flexDirection={"column"}
         sx={{ gap: 1 }}
       >
         <Typography
-          color={"#ff4c29"}
+          color={"info.main"}
           fontSize={"25px"}
           fontWeight={600}
           width={"100%"}
@@ -36,12 +33,8 @@ function UserInfoModal({ avatar, id, name, position }: IProps) {
             alt="User Avatar"
             src={avatar}
             sx={{
-              height: "60px !important",
-              width: "60px !important",
-              [theme.breakpoints.up("tablet")]: {
-                height: "70px",
-                width: "70px",
-              },
+              height: { mobile: "60px", laptop: "70px" },
+              width: { mobile: "60px", laptop: "70px" },
             }}
           />
           <Box

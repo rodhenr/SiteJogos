@@ -10,9 +10,10 @@ function Highlighted() {
       icon={StarIcon}
       isLoading={false}
       size={1}
+      maxHeight={"200px"}
       titleText={"em destaque"}
     >
-      <Box display={"flex"} flex={1} gap={1} overflow={"hidden"}>
+      <Box display={"flex"} gap={1} overflow={"hidden"}>
         <HighlightedItem
           image={
             "https://cdn2.unrealengine.com/Diesel%2Fproductv2%2Funo%2Fhome%2FGameName_Store_Landscape_2560x1440-2560x1440-5195e8a3e06d672f97a1ee49ecea59027c14cae4.jpg"

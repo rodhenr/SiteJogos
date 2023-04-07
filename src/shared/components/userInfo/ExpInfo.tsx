@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-import { Box, Typography, useTheme } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 
 interface IProps {
   exp: number;
@@ -10,8 +10,6 @@ interface IProps {
 }
 
 function ExpInfo({ exp, isModal, level, maxExpLevel }: IProps) {
-  const theme = useTheme();
-
   const componentRef = useRef<HTMLDivElement>(null);
   const [expWidth, setExpWidth] = useState<number>(0);
 
@@ -37,8 +35,7 @@ function ExpInfo({ exp, isModal, level, maxExpLevel }: IProps) {
         justifyContent={"space-between"}
         mb={0.5}
         sx={{
-          [theme.breakpoints.up("laptop")]: { fontSize: "14px" },
-          [theme.breakpoints.up("laptop")]: { fontSize: "15px" },
+          fontSize: { laptop: "14px", desktopLarger: "15px" },
         }}
       >
         <Typography color={"#FFF"} sx={{ fontSize: isModal ? "16px" : "13px" }}>

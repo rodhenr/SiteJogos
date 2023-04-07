@@ -1,4 +1,4 @@
-import { Box, Typography, useTheme } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 
 import { formatDateWithTime } from "../../../utils/formatDate";
 
@@ -10,12 +10,10 @@ interface IProps {
 }
 
 function RecentItem({ time, game, user, win }: IProps) {
-  const theme = useTheme();
-
   return (
     <Box
       alignItems={"center"}
-      bgcolor={theme.palette.info.dark}
+      bgcolor={"info.dark"}
       borderRadius={"5px"}
       boxSizing={"border-box"}
       display={"flex"}
@@ -23,9 +21,7 @@ function RecentItem({ time, game, user, win }: IProps) {
       p={0.9}
       sx={{
         "& p": {
-          color: "#fff",
           flex: 1,
-          fontFamily: "Roboto Condensed",
           fontSize: {
             mobile: "11.5px",
             tablet: "14px",
@@ -35,10 +31,14 @@ function RecentItem({ time, game, user, win }: IProps) {
         },
       }}
     >
-      <Typography>{formatDateWithTime(new Date(time))}</Typography>
-      <Typography>{game}</Typography>
-      <Typography>{user.substring(0, 40)}</Typography>
-      <Typography style={win ? { color: "#11C318" } : { color: "#FE3434" }}>
+      <Typography color={"#FFF"}>
+        {formatDateWithTime(new Date(time))}
+      </Typography>
+      <Typography color={"#FFF"}>{game}</Typography>
+      <Typography color={"#FFF"}>{user.substring(0, 40)}</Typography>
+      <Typography
+        sx={win ? { color: "success.main" } : { color: "error.main" }}
+      >
         {win ? "VITÓRIA" : "DERROTA"}
       </Typography>
     </Box>

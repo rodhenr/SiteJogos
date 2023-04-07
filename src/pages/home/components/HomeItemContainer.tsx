@@ -1,4 +1,4 @@
-import { Box, useTheme } from "@mui/material";
+import { Box } from "@mui/material";
 
 import Title from "./Title";
 import Loading from "../../../shared/components/Loading";
@@ -7,6 +7,7 @@ interface IProps {
   children: JSX.Element | JSX.Element[];
   icon: any;
   isLoading: boolean;
+  maxHeight: string;
   size: number;
   titleText: string;
 }
@@ -15,14 +16,13 @@ function HomeItemContainer({
   children,
   icon,
   isLoading,
+  maxHeight,
   size,
   titleText,
 }: IProps) {
-  const theme = useTheme();
-
   return (
     <Box
-      bgcolor={theme.palette.primary.main}
+      bgcolor={"primary.main"}
       borderRadius={"10px"}
       boxShadow={3}
       boxSizing={"border-box"}
@@ -30,6 +30,7 @@ function HomeItemContainer({
       flex={size}
       flexDirection={"column"}
       minHeight={"100px"}
+      maxHeight={maxHeight}
       sx={{
         p: { mobile: 2, laptop: 2 },
         overflowY: "auto",

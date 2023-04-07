@@ -1,28 +1,52 @@
 import { Box, Typography } from "@mui/material";
-
 import CheckCircleOutlineRoundedIcon from "@mui/icons-material/CheckCircleOutlineRounded";
 
-function UserRegistered() {
+import CloseButton from "../../../shared/components/CloseButton";
+
+interface IProps {
+  handleClose: () => void;
+}
+function UserRegistered({ handleClose }: IProps) {
   return (
-    <>
+    <Box
+      alignItems={"center"}
+      bgcolor={"primary.dark"}
+      boxSizing={"border-box"}
+      display={"flex"}
+      flexDirection={"column"}
+      gap={4}
+      justifyContent={"center"}
+      left={"50%"}
+      position={"absolute"}
+      sx={{
+        border: { laptop: "2px solid #000" },
+        height: { mobile: "100%", laptop: "auto" },
+        maxHeight: { laptop: "700px" },
+        overflowY: "auto",
+        transform: "translate(-50%, -50%)",
+        width: { mobile: "100%", tablet: "80vw", laptop: "800px" },
+      }}
+      top={"50%"}
+    >
+      <CloseButton handleClose={handleClose} />
       <Box
         alignItems={"center"}
-        bgcolor={"#278b0e"}
+        bgcolor={"success.main"}
         boxSizing={"border-box"}
         display={"flex"}
         flexDirection={"column"}
         justifyContent={"center"}
-        height={"120px"}
         position={"relative"}
+        sx={{ height: { mobile: "230px" } }}
         width={"100%"}
       >
         <Box
           display={"flex"}
           justifyContent={"center"}
           sx={{
-            "&:svg": {
+            "& svg": {
               color: "#FFF",
-              fontSize: "80px",
+              fontSize: "100px",
             },
           }}
           width={"100%"}
@@ -30,27 +54,16 @@ function UserRegistered() {
           <CheckCircleOutlineRoundedIcon />
         </Box>
       </Box>
-      <Box
-        alignItems={"center"}
-        boxSizing={"border-box"}
-        display={"flex"}
-        flex={1}
-        justifyContent={"center"}
-        p={1}
-        width={"100%"}
-      >
+      <Box display={"flex"} flex={1} justifyContent={"center"} width={"100%"}>
         <Typography
-          color={"#278b0e"}
-          fontFamily={"'Montserrat', sans-serif"}
-          fontSize={"32px"}
-          margin={"0"}
-          sx={{ wordWrap: "break-word" }}
+          color={"success.main"}
+          sx={{ fontSize: { mobile: "32px" }, wordWrap: "break-word" }}
           textAlign={"center"}
         >
           Você se registrou com sucesso!
         </Typography>
       </Box>
-    </>
+    </Box>
   );
 }
 

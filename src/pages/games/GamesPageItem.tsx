@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-import { Box, Typography, useTheme } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 
 interface IProps {
   image: string;
@@ -9,7 +9,6 @@ interface IProps {
 }
 
 function GamesPageItem({ image, name, url }: IProps) {
-  const theme = useTheme();
   const navigate = useNavigate();
 
   const handleGameNavigate = () => {
@@ -18,7 +17,7 @@ function GamesPageItem({ image, name, url }: IProps) {
 
   return (
     <Box
-      bgcolor={theme.palette.secondary.dark}
+      bgcolor={"primary.main"}
       boxShadow={10}
       display={"flex"}
       flexDirection={"column"}
@@ -26,7 +25,7 @@ function GamesPageItem({ image, name, url }: IProps) {
         transition: "transform 0.4s, background-color 0.4s",
 
         "&:hover": {
-          bgcolor: theme.palette.secondary.light,
+          bgcolor: "secondary.light",
           cursor: "pointer",
           transform: "scale(1.03)",
         },

@@ -1,4 +1,4 @@
-import { Box, Typography, useTheme } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 
 interface IProps {
   level: number;
@@ -8,11 +8,7 @@ interface IProps {
 }
 
 function RankingItem({ level, player, playerID, position }: IProps) {
-  const theme = useTheme();
-
-  const bColor = [1, 2, 3].includes(position)
-    ? theme.palette.secondary.light
-    : theme.palette.info.dark;
+  const bColor = [1, 2, 3].includes(position) ? "secondary.light" : "info.dark";
 
   return (
     <Box
@@ -31,8 +27,8 @@ function RankingItem({ level, player, playerID, position }: IProps) {
         },
 
         "&:hover": {
+          bgcolor: "info.main",
           cursor: "pointer",
-          opacity: "0.75",
         },
       }}
     >

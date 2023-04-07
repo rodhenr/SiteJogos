@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import { useLocation, useNavigate } from "react-router-dom";
 
-import { Box, Typography, useTheme } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 
 interface IProps {
   route: string;
@@ -10,7 +10,6 @@ interface IProps {
 }
 
 function MenuButton({ route, title }: IProps) {
-  const theme = useTheme();
   const [color, setColor] = useState("#FFF");
 
   const navigate = useNavigate();
@@ -18,11 +17,11 @@ function MenuButton({ route, title }: IProps) {
 
   useEffect(() => {
     if (pathname === route) {
-      setColor(theme.palette.info.light);
+      setColor("info.light");
     } else {
       setColor("#FFF");
     }
-  }, [pathname, route, theme.palette.info.light]);
+  }, [pathname, route]);
 
   const handleClick = () => {
     navigate(route);
@@ -39,14 +38,13 @@ function MenuButton({ route, title }: IProps) {
 
         "& p, & svg": {
           "&:hover": {
-            color: theme.palette.info.main,
+            color: "info.main",
           },
         },
       }}
       onClick={handleClick}
     >
       <Typography
-        fontFamily={"'Roboto Condensed', sans-serif"}
         sx={{ color, fontSize: { mobile: "18px", laptop: "25px" } }}
       >
         {title.toUpperCase()}

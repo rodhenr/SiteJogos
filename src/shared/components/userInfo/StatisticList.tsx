@@ -20,7 +20,6 @@ function StatisticList({ data }: IProps) {
       <Typography
         sx={{
           color: "white",
-          fontFamily: "Roboto Condensed",
           fontSize: "20px",
         }}
       >

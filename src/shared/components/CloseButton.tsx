@@ -1,32 +1,31 @@
 import CloseIcon from "@mui/icons-material/Close";
-import { Box, useTheme } from "@mui/material";
+import { Box } from "@mui/material";
 
 interface IProps {
   handleClose: () => void;
 }
 
 function CloseButton({ handleClose }: IProps) {
-  const theme = useTheme()
   return (
     <Box
       alignSelf={"flex-end"}
       boxSizing={"border-box"}
       display={"flex"}
       justifyContent={"flex-end"}
-      sx={{ position: "absolute", right: "8px", top: "8px" }}
+      sx={{ position: "absolute", right: "8px", top: "8px", zIndex: 100 }}
       width={"auto"}
     >
       <Box
         alignSelf={"flex-end"}
         alignItems={"center"}
-        bgcolor={theme.palette.secondary.light}
+        bgcolor={"tertiary.main"}
         borderRadius={"50%"}
         display={"flex"}
         height={"30px"}
         justifyContent={"center"}
         sx={{
           "&:hover": {
-            bgcolor: theme.palette.secondary.main,
+            bgcolor: "tertiary.light",
             cursor: "pointer",
           },
         }}

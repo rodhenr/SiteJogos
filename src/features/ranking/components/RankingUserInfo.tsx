@@ -1,6 +1,6 @@
 import { useGetPlayerInfoFromRankingQuery } from "../../matches/generalInfoApiSlice";
 
-import { Avatar, Box, Typography, useTheme } from "@mui/material";
+import { Avatar, Box, Typography } from "@mui/material";
 
 import { v4 as uuidv4 } from "uuid";
 
@@ -11,7 +11,6 @@ interface IProps {
 }
 
 function RankingUserInfo({ userID }: IProps) {
-  const theme = useTheme();
   const { data, isSuccess, isLoading } =
     useGetPlayerInfoFromRankingQuery(userID);
 
@@ -36,7 +35,7 @@ function RankingUserInfo({ userID }: IProps) {
         >
           <Box display={"flex"} justifyContent={"space-between"}>
             <Typography
-              color={theme.palette.info.light}
+              color={"info.light"}
               flex={1}
               fontSize={"22px"}
               variant={"h1"}
@@ -68,7 +67,7 @@ function RankingUserInfo({ userID }: IProps) {
           </Box>
           <Box display={"flex"} flexDirection={"column"} mt={2}>
             <Box
-              bgcolor={theme.palette.info.main}
+              bgcolor={"info.main"}
               borderRadius={"10px 10px 0 0"}
               display={"flex"}
               justifyContent={"space-between"}
@@ -87,7 +86,7 @@ function RankingUserInfo({ userID }: IProps) {
               <Typography>DERROTAS</Typography>
             </Box>
             <Box
-              bgcolor={theme.palette.info.light}
+              bgcolor={"info.light"}
               borderRadius={"0 0 10px 10px"}
               display={"flex"}
               flexDirection={"column"}
@@ -104,14 +103,14 @@ function RankingUserInfo({ userID }: IProps) {
                       transition: "background-color 0.3s",
 
                       "& p": {
-                        color: theme.palette.primary.dark,
+                        color: "primary.dark",
                         flex: 1,
                         fontSize: { mobile: "13px" },
                         textAlign: "center",
                       },
 
                       "&:hover": {
-                        bgcolor: theme.palette.secondary.light,
+                        bgcolor: "secondary.light",
                         cursor: "pointer",
                       },
                     }}

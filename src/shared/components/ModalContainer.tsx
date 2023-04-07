@@ -1,4 +1,4 @@
-import { Box, Modal, Typography, useTheme } from "@mui/material";
+import { Box, Modal, Typography } from "@mui/material";
 
 import CloseButton from "./CloseButton";
 import Loading from "./Loading";
@@ -23,8 +23,6 @@ function ModalContainer({
   title,
   isAuth,
 }: IProps) {
-  const theme = useTheme();
-
   return (
     <Modal
       open={openState}
@@ -34,7 +32,7 @@ function ModalContainer({
     >
       <Box
         alignItems={"center"}
-        bgcolor={theme.palette.primary.dark}
+        bgcolor={"primary.dark"}
         boxSizing={"border-box"}
         display={"flex"}
         flexDirection={"column"}
@@ -47,9 +45,13 @@ function ModalContainer({
           height: { mobile: "100%", laptop: "auto" },
           maxHeight: { laptop: "700px" },
           overflowY: "auto",
-          p: {
+          px: {
             mobile: 1,
-            laptop: 2,
+            laptop: 3,
+          },
+          py: {
+            mobile: 1,
+            laptop: 4,
           },
           transform: "translate(-50%, -50%)",
           width: { mobile: "100%", tablet: "80vw", laptop: "800px" },
@@ -61,7 +63,7 @@ function ModalContainer({
         top={"50%"}
       >
         <CloseButton handleClose={closeFunction} />
-        <Typography component="h1" sx={{ color: "#FFF" }} variant="h5">
+        <Typography component="h1" sx={{ color: "#FFF" }} variant="h4">
           {title}
         </Typography>
         {children}

@@ -37,8 +37,9 @@ function Home() {
           display={"flex"}
           flexDirection={"column"}
           flex={2}
+          maxHeight={"100%"}
           sx={{
-            gap: { mobile: "8px", laptop: "16px" },
+            gap: { mobile: 1, laptop: 2 },
           }}
         >
           <Highlighted />
@@ -58,6 +59,7 @@ function Home() {
           flex: { laptop: 1 },
           flexDirection: { mobile: "column", laptop: "row" },
           gap: { mobile: 2, laptop: 3 },
+          overflowY: "auto",
         }}
       >
         {render}

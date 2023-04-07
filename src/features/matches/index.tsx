@@ -7,9 +7,10 @@ import TvIcon from "@mui/icons-material/Tv";
 
 import HomeItemContainer from "../../pages/home/components/HomeItemContainer";
 import RecentItem from "./components/RecentItem";
+import ErrorMessage from "../../shared/components/ErrorMessage";
 
 function Index() {
-  const { data, isSuccess, isLoading } = useGetRecentMatchesQuery(10);
+  const { data, isSuccess, isLoading, isError } = useGetRecentMatchesQuery(15);
 
   const titles = ["DATA/HORA", "JOGO", "USUÁRIO", "RESULTADO"];
 
@@ -17,57 +18,65 @@ function Index() {
     <HomeItemContainer
       icon={TvIcon}
       isLoading={isLoading}
-      size={2}
+      maxHeight={"100%"}
+      size={1}
       titleText={"PARTIDAS RECENTES"}
     >
-      {isSuccess ? (
-        <>
-          <Box
-            display={"flex"}
-            mb={1}
-            sx={{
-              "& p": {
-                color: "#FFF",
-                flex: 1,
-                fontSize: {
-                  mobile: "12px",
-                  tablet: "14px",
-                  desktopLarge: "15px",
+      <>
+        {isSuccess && (
+          <>
+            <Box
+              display={"flex"}
+              mb={1}
+              sx={{
+                "& p": {
+                  flex: 1,
+                  fontSize: {
+                    mobile: "12px",
+                    tablet: "14px",
+                    desktopLarge: "16px",
+                  },
+                  fontWeight: 700,
+                  textAlign: "center",
                 },
-                textAlign: "center",
-              },
-            }}
-          >
-            {titles.map((title) => {
-              return <Typography key={uuidv4()}>{title}</Typography>;
-            })}
-          </Box>
-          <Box display={"flex"} flexDirection={"column"} gap={0.8}>
-            {data.map((match) => {
-              return (
-                <RecentItem
-                  game={match["Game.name"]}
-                  key={uuidv4()}
-                  time={match.date}
-                  user={match["User.name"]}
-                  win={match.is_win}
-                />
-              );
-            })}
-          </Box>
-        </>
-      ) : (
-        <Box
-          alignItems={"center"}
-          display={"flex"}
-          flex={1}
-          justifyContent={"center"}
-        >
-          <Typography color={"#FFF"}>
-            Ocorreu um erro. Tente novamente.
-          </Typography>
-        </Box>
-      )}
+              }}
+            >
+              {titles.map((title) => {
+                return (
+                  <Typography color={"info.light"} key={uuidv4()}>
+                    {title}
+                  </Typography>
+                );
+              })}
+            </Box>
+            <Box
+              display={"flex"}
+              flexDirection={"column"}
+              gap={0.8}
+              sx={{
+                overflowY: "auto",
+
+                "&::-webkit-scrollbar": {
+                  display: "none",
+                },
+              }}
+            >
+              {data.map((match) => {
+                return (
+                  <RecentItem
+                    game={match["Game.name"]}
+                    key={uuidv4()}
+                    time={match.date}
+                    user={match["User.name"]}
+                    win={match.is_win}
+                  />
+                );
+              })}
+            </Box>
+          </>
+        )}
+        {isError && <ErrorMessage />}
+      </>
     </HomeItemContainer>
   );
 }

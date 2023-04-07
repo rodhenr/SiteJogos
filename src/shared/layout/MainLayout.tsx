@@ -1,7 +1,6 @@
 import { useSelector } from "react-redux";
 
 import { Box, Divider } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
 
 import TopMenu from "../components/menu/TopMenu";
 import ProfileModal from "../components/userInfo/ProfileModal";
@@ -13,35 +12,35 @@ interface IProps {
 
 function MainLayout({ children }: IProps) {
   const profileState = useSelector(selectProfileState);
-  const theme = useTheme();
 
   return (
-    <>
+    <Box
+      boxSizing={"border-box"}
+      display={"flex"}
+      flex={1}
+      flexDirection={"column"}
+      height={"100vh"}
+      sx={{
+        gap: { mobile: 2, laptop: 3 },
+        p: { mobile: 2, laptop: 3 },
+      }}
+    >
+      <TopMenu />
+      <Divider sx={{ bgcolor: "info.main", opacity: 0.75 }} />
       <Box
         boxSizing={"border-box"}
-        display={"flex"}
-        flex={1}
-        flexDirection={"column"}
+        minHeight={0}
         sx={{
-          gap: { mobile: 2, laptop: 3 },
-          p: { mobile: 2, laptop: 3 },
+          display: { laptop: "flex" },
+          flex: { laptop: 1 },
+          flexDirection: { mobile: "row", laptop: "column" },
+          gap: { mobile: 1, laptop: 2 },
         }}
       >
-        <TopMenu />
-        <Divider color={theme.palette.primary.main} sx={{ opacity: 0.2 }} />
-        <Box
-          flex={1}
-          sx={{
-            display: { laptop: "flex" },
-            flexDirection: { mobile: "row", laptop: "column" },
-            gap: { mobile: 1, laptop: 2 },
-          }}
-        >
-          {children}
-        </Box>
+        {children}
       </Box>
       {profileState && <ProfileModal />}
-    </>
+    </Box>
   );
 }
 

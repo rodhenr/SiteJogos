@@ -7,7 +7,7 @@ import { changeLoginModal, changeRegisterModal } from "../authSlice";
 import { addToken } from "../authSlice";
 import { RootState } from "../../../app/store";
 
-import { Box, TextField, Typography, useTheme } from "@mui/material";
+import { Box, TextField, Typography } from "@mui/material";
 
 import Form from "./Form";
 import AuthModalContainer from "./AuthModalContainer";
@@ -18,7 +18,6 @@ export interface IState {
 }
 
 function LoginModal() {
-  const theme = useTheme();
   const loginModalState = useSelector(
     (state: RootState) => state.auth.loginModal
   );
@@ -159,7 +158,7 @@ function LoginModal() {
 
         <Box display={"flex"} justifyContent={"flex-end"} width={"100%"}>
           <Typography
-            color={theme.palette.info.light}
+            color={"info.light"}
             sx={{
               "&:hover": {
                 cursor: "pointer",

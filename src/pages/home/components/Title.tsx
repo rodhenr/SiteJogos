@@ -1,4 +1,4 @@
-import { Box, Typography, useTheme } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 
 interface IProps {
   Icon: any;
@@ -6,18 +6,11 @@ interface IProps {
 }
 
 function Title({ Icon, title }: IProps) {
-  const theme = useTheme();
-
   return (
-    <Box
-      display={"flex"}
-      fontFamily={"'Space Grotesk', sans-serif"}
-      mb={2}
-      sx={{ gap: { mobile: 0.5, tablet: 1 } }}
-    >
-      <Icon sx={{ color: theme.palette.info.light }} />
+    <Box display={"flex"} mb={2} sx={{ gap: { mobile: 0.5, tablet: 1 } }}>
+      <Icon sx={{ color: "tertiary.main" }} />
       <Typography
-        color={"#FFF"}
+        color={"tertiary.main"}
         m={0}
         sx={{
           fontSize: { tablet: "17px", laptop: "18px", desktopLarge: "19px" },

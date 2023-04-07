@@ -4,7 +4,7 @@ import { useGetPlayerRankingQuery } from "../../features/matches/generalInfoApiS
 
 import { v4 as uuidv4 } from "uuid";
 
-import { Box, Typography, useTheme } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 
 import MainLayout from "../../shared/layout/MainLayout";
 import RankingItem from "../../features/ranking/components/RankingItem";
@@ -12,7 +12,6 @@ import RankingUserInfo from "../../features/ranking/components/RankingUserInfo";
 import Loading from "../../shared/components/Loading";
 
 function Ranking() {
-  const theme = useTheme();
   const [userID, setUserID] = useState<number | null>(null);
 
   const { data, isSuccess, isLoading } = useGetPlayerRankingQuery(100);
@@ -36,7 +35,7 @@ function Ranking() {
         {isLoading && <Loading />}
 
         <Box
-          bgcolor={theme.palette.primary.main}
+          bgcolor={"primary.main"}
           borderRadius={"10px"}
           boxSizing={"border-box"}
           boxShadow={2}
@@ -48,8 +47,13 @@ function Ranking() {
           sx={{
             maxHeight: {
               mobile: "450px",
-              laptop: "auto",
-              desktopLarger: "100%",
+              laptop: "100%",
+            },
+
+            overflowY: "auto",
+
+            "&::-webkit-scrollbar": {
+              display: "none",
             },
           }}
         >
@@ -90,7 +94,7 @@ function Ranking() {
         </Box>
         <Box
           alignItems={"center"}
-          bgcolor={theme.palette.primary.main}
+          bgcolor={"primary.main"}
           borderRadius={"10px"}
           boxSizing={"border-box"}
           boxShadow={2}
