@@ -1,29 +1,22 @@
 import { useEffect, useState } from "react";
 
-import { useNavigate } from "react-router-dom";
-
 import { v4 as uuidv4 } from "uuid";
 
-import { Box, Typography } from "@mui/material";
-import HomeIcon from "@mui/icons-material/Home";
-import SportsEsportsIcon from "@mui/icons-material/SportsEsports";
-import StarsIcon from "@mui/icons-material/Stars";
+import { Box } from "@mui/material";
 
-import Button from "./Button";
 import LoginModal from "../../features/auth/components/LoginModal";
 import RegisterModal from "../../features/auth/components/RegisterModal";
 import MenuUserInfo from "./MenuUserInfo";
+import MenuButton from "./MenuButton";
 
 function TopMenu() {
-  const navigate = useNavigate();
-
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   const titles = [
-    { icon: HomeIcon, name: "Inicio", route: "/" },
-    { icon: SportsEsportsIcon, name: "Jogos", route: "/jogos" },
-    { icon: StarsIcon, name: "Ranking", route: "/ranking" },
-    { icon: StarsIcon, name: "Recordes", route: "/recordes" },
+    { name: "Inicio", route: "/" },
+    { name: "Jogos", route: "/jogos" },
+    { name: "Ranking", route: "/ranking" },
+    { name: "Recordes", route: "/recordes" },
   ];
 
   useEffect(() => {
@@ -38,63 +31,6 @@ function TopMenu() {
     };
   });
 
-  const handleClick = (route: string) => {
-    navigate(route);
-  };
-
-  let render = (
-    <>
-      <MenuUserInfo />
-      <Box display={"flex"} justifyContent={"space-between"} gap={1.5}>
-        {titles.map((title) => {
-          return (
-            <Button
-              Icon={title.icon}
-              key={uuidv4()}
-              route={title.route}
-              title={title.name}
-            />
-          );
-        })}
-      </Box>
-    </>
-  );
-
-  if (windowWidth > 1024) {
-    render = (
-      <>
-        <Box
-          display={"flex"}
-          flex={1}
-          justifyContent={"flex-start"}
-          sx={{
-            gap: { mobile: 1.5, desktopLarge: 3 },
-
-            "& p": {
-              color: "#FFF",
-              fontSize: "20px",
-
-              "&:hover": {
-                cursor: "pointer",
-              },
-            },
-          }}
-        >
-          {titles.map((title) => {
-            return (
-              <Typography onClick={() => handleClick(title.route)}>
-                {title.name}
-              </Typography>
-            );
-          })}
-        </Box>
-        <Box display={"flex"} flex={1} justifyContent={"flex-end"}>
-          <MenuUserInfo />
-        </Box>
-      </>
-    );
-  }
-
   return (
     <Box
       display={"flex"}
@@ -105,7 +41,30 @@ function TopMenu() {
         gap: { mobile: 2, laptop: 1 },
       }}
     >
-      {render}
+      {windowWidth < 1024 && (
+        <Box display={"flex"} flex={1} justifyContent={"flex-end"}>
+          <MenuUserInfo />
+        </Box>
+      )}
+      <Box
+        display={"flex"}
+        flex={1}
+        sx={{
+          gap: { mobile: 1.5, desktopLarge: 3 },
+          justifyContent: { mobile: "space-between", laptop: "flex-start" },
+        }}
+      >
+        {titles.map((title) => {
+          return (
+            <MenuButton key={uuidv4()} route={title.route} title={title.name} />
+          );
+        })}
+      </Box>
+      {windowWidth > 1024 && (
+        <Box display={"flex"} flex={1} justifyContent={"flex-end"}>
+          <MenuUserInfo />
+        </Box>
+      )}
       <LoginModal />
       <RegisterModal />
     </Box>

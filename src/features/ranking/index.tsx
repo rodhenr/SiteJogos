@@ -5,13 +5,15 @@ import { useNavigate } from "react-router-dom";
 
 import { v4 as uuidv4 } from "uuid";
 
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, useTheme } from "@mui/material";
 import BoltIcon from "@mui/icons-material/Bolt";
 
 import RankingItem from "./components/RankingItem";
 import HomeItemContainer from "../../pages/home/components/HomeItemContainer";
 
+
 function Index() {
+  const theme = useTheme();
   const navigate = useNavigate();
   const { data, isSuccess, isLoading } = useGetPlayerRankingQuery(20);
 
@@ -49,7 +51,7 @@ function Index() {
           <Box
             alignItems={"center"}
             alignSelf={"center"}
-            bgcolor={"#ff4c29"}
+            bgcolor={theme.palette.secondary.main}
             borderRadius={"30px"}
             display={"flex"}
             height={"30px"}
@@ -60,7 +62,7 @@ function Index() {
               "& p": { color: "#fff", fontSize: "13px" },
 
               "&:hover": {
-                bgcolor: "#f13a15",
+                bgcolor: theme.palette.secondary.light,
                 cursor: "pointer",
               },
             }}
@@ -71,7 +73,16 @@ function Index() {
           </Box>
         </>
       ) : (
-        <></>
+        <Box
+          alignItems={"center"}
+          display={"flex"}
+          flex={1}
+          justifyContent={"center"}
+        >
+          <Typography color={"#FFF"}>
+            Ocorreu um erro. Tente novamente.
+          </Typography>
+        </Box>
       )}
     </HomeItemContainer>
   );

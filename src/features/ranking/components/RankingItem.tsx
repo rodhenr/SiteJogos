@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, useTheme } from "@mui/material";
 
 interface IProps {
   level: number;
@@ -8,6 +8,8 @@ interface IProps {
 }
 
 function RankingItem({ level, player, playerID, position }: IProps) {
+  const theme = useTheme();
+
   const bColor =
     position === 1
       ? "#E5D432"
@@ -15,11 +17,9 @@ function RankingItem({ level, player, playerID, position }: IProps) {
       ? "#9B9B9B"
       : position === 3
       ? "#E58832"
-      : "#232323";
+      : theme.palette.info.dark;
 
-  const color = position < 4 ? "#000" : "#6a6a84";
-
-  const handleClick = () => {};
+  const color = position < 4 ? "#242424" : "#FFF";
 
   return (
     <Box
@@ -29,10 +29,11 @@ function RankingItem({ level, player, playerID, position }: IProps) {
       color={color}
       display={"flex"}
       justifyContent={"space-between"}
-      padding={"4px 8px"}
+      px={1}
+      py={0.7}
       sx={{
         "& p": {
-          fontSize: { mobile: "11px", laptop: "12px", desktopLarge: "13px" },
+          fontSize: { mobile: "12px", laptop: "13px", desktopLarge: "14px" },
           maxWidth: "100%",
         },
 
@@ -44,7 +45,7 @@ function RankingItem({ level, player, playerID, position }: IProps) {
     >
       <Box
         display={"flex"}
-        gap={"4px"}
+        gap={0.5}
         sx={{ fontSize: { mobile: "12px", laptop: "14px" } }}
       >
         <Typography>{position}.</Typography>

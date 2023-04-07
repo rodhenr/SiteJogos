@@ -18,7 +18,7 @@ function GameLayout({ children, rules }: IProps) {
         boxSizing={"border-box"}
         boxShadow={24}
         display={"flex"}
-        flex-direction={"column"}
+        flex-Direction={"column"}
         flex={1}
         gap={2}
         p={2}

@@ -1,5 +1,7 @@
-import { Box, CircularProgress } from "@mui/material";
+import { Box, useTheme } from "@mui/material";
+
 import Title from "./Title";
+import Loading from "../../../shared/components/Loading";
 
 interface IProps {
   children: JSX.Element | JSX.Element[];
@@ -16,19 +18,20 @@ function HomeItemContainer({
   size,
   titleText,
 }: IProps) {
-  //Implementar loading
+  const theme = useTheme();
+
   return (
     <Box
-      bgcolor={"#1b1e23"}
+      bgcolor={theme.palette.primary.main}
       borderRadius={"10px"}
-      boxShadow={24}
+      boxShadow={3}
       boxSizing={"border-box"}
       display={"flex"}
       flex={size}
       flexDirection={"column"}
       minHeight={"100px"}
       sx={{
-        p: { mobile: 1, laptop: 2 },
+        p: { mobile: 2, laptop: 2 },
         overflowY: "auto",
 
         "&::-webkit-scrollbar": {
@@ -37,18 +40,7 @@ function HomeItemContainer({
       }}
     >
       <Title Icon={icon} title={titleText.toUpperCase()} />
-      {isLoading ? (
-        <Box
-          alignItems={"center"}
-          display={"flex"}
-          flex={1}
-          justifyContent={"center"}
-        >
-          <CircularProgress />
-        </Box>
-      ) : (
-        children
-      )}
+      {isLoading ? <Loading /> : children}
     </Box>
   );
 }

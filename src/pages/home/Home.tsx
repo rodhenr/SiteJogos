@@ -57,7 +57,7 @@ function Home() {
         sx={{
           flex: { laptop: 1 },
           flexDirection: { mobile: "column", laptop: "row" },
-          gap: { mobile: "8px", laptop: "16px" },
+          gap: { mobile: 2, laptop: 3 },
         }}
       >
         {render}

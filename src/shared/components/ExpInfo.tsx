@@ -26,7 +26,12 @@ function ExpInfo({ exp, isModal, level, maxExpLevel }: IProps) {
     : (exp / Number(maxExpLevel)) * expWidth;
 
   return (
-    <Box display={"flex"} flexDirection={"column"} ref={componentRef}>
+    <Box
+      display={"flex"}
+      flexDirection={"column"}
+      ref={componentRef}
+      sx={{ width: "200px" }}
+    >
       <Box
         display={"flex"}
         justifyContent={"space-between"}
@@ -36,16 +41,10 @@ function ExpInfo({ exp, isModal, level, maxExpLevel }: IProps) {
           [theme.breakpoints.up("laptop")]: { fontSize: "15px" },
         }}
       >
-        <Typography
-          color={"#6a6a84"}
-          sx={{ fontSize: isModal ? "16px" : "13px" }}
-        >
+        <Typography color={"#FFF"} sx={{ fontSize: isModal ? "16px" : "13px" }}>
           Nível {level}
         </Typography>
-        <Typography
-          color={"#6a6a84"}
-          sx={{ fontSize: isModal ? "16px" : "13px" }}
-        >
+        <Typography color={"#FFF"} sx={{ fontSize: isModal ? "16px" : "13px" }}>
           {exp} / {maxExpLevel}
         </Typography>
       </Box>
@@ -54,11 +53,11 @@ function ExpInfo({ exp, isModal, level, maxExpLevel }: IProps) {
         display={"inline-block"}
         overflow={"hidden"}
         sx={{
-          height: isModal ? "18px" : "11px",
+          height: isModal ? "18px" : "8px",
           zIndex: "100",
-          [theme.breakpoints.up("desktopLarge")]: {
+          /* [theme.breakpoints.up("desktopLarge")]: {
             height: "13px",
-          },
+          }, */
         }}
         width={"100%"}
       >

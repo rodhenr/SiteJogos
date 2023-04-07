@@ -1,18 +1,19 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import {
   changeLoginModal,
   changeRegisterModal,
 } from "../../features/auth/authSlice";
-import { RootState } from "../../app/store";
 import { useGetPlayerBasicInfoQuery } from "../../features/sidebar/userInfoApiSlice";
+import { changeProfileModal } from "../../features/sidebar/sidebarSlice";
 
 import { Avatar, Box, Button, Typography } from "@mui/material";
 
+import ExpInfo from "./ExpInfo";
+
 function MenuUserInfo() {
   const dispatch = useDispatch();
-  const hasToken = useSelector((state: RootState) => state.auth.token);
 
-  const { data, isSuccess, isLoading, isError } = useGetPlayerBasicInfoQuery();
+  const { data, isSuccess } = useGetPlayerBasicInfoQuery();
 
   const handleAuthModalState = (isLogin: boolean) => {
     if (isLogin) {
@@ -22,17 +23,28 @@ function MenuUserInfo() {
     }
   };
 
+  const handleProfileModalState = () => {
+    dispatch(changeProfileModal(true));
+  };
+
   return (
     <Box alignItems={"center"} display={"flex"} gap={6} sx={{ color: "#FFF" }}>
-      {hasToken ? (
+      {isSuccess ? (
         <>
-          <Box display={"flex"} gap={1} justifyContent={"center"}>
+          <Box
+            alignContent={"center"}
+            display={"flex"}
+            gap={1}
+            justifyContent={"center"}
+          >
             <Box
               display={"flex"}
               flexDirection={"column"}
               justifyContent={"flex-end"}
             >
-              <Typography fontSize={"15px"}>RODRIGO HENRIQUE</Typography>
+              <Typography fontSize={"15px"}>
+                {data.name.toUpperCase()}
+              </Typography>
               <Box
                 display={"flex"}
                 justifyContent={"space-between"}
@@ -41,29 +53,58 @@ function MenuUserInfo() {
                     fontSize: "11px",
                   },
                 }}
+                width={"100%"}
               >
-                <Typography>Nível 5</Typography>
-                <Typography>700/1500</Typography>
+                <ExpInfo
+                  exp={data.experience}
+                  isModal={false}
+                  level={data.level}
+                  maxExpLevel={data.maxExperience}
+                />
               </Box>
-              <Box bgcolor={"#FFF"} height={"5px"} width={"200px"}></Box>
             </Box>
-            <Avatar sx={{ height: "48px", width: "48px" }} />
-            <Button color={"primary"} variant={"contained"}>SAIR</Button>
+            <Avatar
+              alt="User Avatar"
+              onClick={handleProfileModalState}
+              src={data.avatar}
+              sx={{
+                height: "48px",
+                width: "48px",
+                "&:hover": {
+                  cursor: "pointer",
+                },
+              }}
+            />
+            {/* <Button
+              color={"primary"}
+              sx={{
+                fontSize: "11px",
+                height: "30px",
+              }}
+              variant={"contained"}
+            >
+              SAIR
+            </Button> */}
           </Box>
         </>
       ) : (
         <Box display={"flex"} gap={1}>
           <Button
-            color={"primary"}
-            variant={"contained"}
+            color={"secondary"}
             onClick={() => handleAuthModalState(true)}
+            sx={{
+              fontSize: "11px",
+              height: "30px",
+            }}
+            variant={"contained"}
           >
             LOGIN
           </Button>
           <Button
-            color={"success"}
-            variant={"contained"}
+            color={"info"}
+            sx={{ fontSize: "11px", height: "30px" }}
             onClick={() => handleAuthModalState(false)}
+            variant={"contained"}
           >
             REGISTRO
           </Button>

@@ -1,5 +1,4 @@
 import { useGetRecentMatchesQuery } from "./generalInfoApiSlice";
-import { IRecentMatches } from "./generalInfoSlice";
 
 import { v4 as uuidv4 } from "uuid";
 
@@ -11,6 +10,8 @@ import RecentItem from "./components/RecentItem";
 
 function Index() {
   const { data, isSuccess, isLoading } = useGetRecentMatchesQuery(10);
+
+  const titles = ["DATA/HORA", "JOGO", "USUÁRIO", "RESULTADO"];
 
   return (
     <HomeItemContainer
@@ -26,7 +27,7 @@ function Index() {
             mb={1}
             sx={{
               "& p": {
-                color: "#6a6a84",
+                color: "#FFF",
                 flex: 1,
                 fontSize: {
                   mobile: "12px",
@@ -37,13 +38,12 @@ function Index() {
               },
             }}
           >
-            <Typography>DATA/HORA</Typography>
-            <Typography>JOGO</Typography>
-            <Typography>USUÁRIO</Typography>
-            <Typography>RESULTADO</Typography>
+            {titles.map((title) => {
+              return <Typography key={uuidv4()}>{title}</Typography>;
+            })}
           </Box>
           <Box display={"flex"} flexDirection={"column"} gap={0.8}>
-            {data.map((match: IRecentMatches) => {
+            {data.map((match) => {
               return (
                 <RecentItem
                   game={match["Game.name"]}
@@ -57,7 +57,16 @@ function Index() {
           </Box>
         </>
       ) : (
-        <></>
+        <Box
+          alignItems={"center"}
+          display={"flex"}
+          flex={1}
+          justifyContent={"center"}
+        >
+          <Typography color={"#FFF"}>
+            Ocorreu um erro. Tente novamente.
+          </Typography>
+        </Box>
       )}
     </HomeItemContainer>
   );

@@ -2,7 +2,7 @@ import { useGetPlayerBasicInfoQuery } from "../../userInfoApiSlice";
 
 import Avatar from "@mui/material/Avatar";
 
-import ExpInfo from "../ExpInfo";
+import ExpInfo from "../../../../shared/components/ExpInfo";
 
 import { Box, Typography } from "@mui/material";
 

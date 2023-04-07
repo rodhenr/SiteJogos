@@ -159,7 +159,7 @@ function LoginModal() {
 
         <Box display={"flex"} justifyContent={"flex-end"} width={"100%"}>
           <Typography
-            color={theme.palette.info.main}
+            color={theme.palette.info.light}
             sx={{
               "&:hover": {
                 cursor: "pointer",

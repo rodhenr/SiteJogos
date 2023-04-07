@@ -1,27 +1,28 @@
-import { Box, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 
 import { useLocation, useNavigate } from "react-router-dom";
 
+import { Box, Typography, useTheme } from "@mui/material";
+
 interface IProps {
-  Icon: any;
   route: string;
   title: string;
 }
 
-function Button({ Icon, route, title }: IProps) {
-  const [color, setColor] = useState("#6A6A84");
+function MenuButton({ route, title }: IProps) {
+  const theme = useTheme();
+  const [color, setColor] = useState("#FFF");
 
   const navigate = useNavigate();
   const { pathname } = useLocation();
 
   useEffect(() => {
     if (pathname === route) {
-      setColor("#ff4c29");
+      setColor(theme.palette.info.light);
     } else {
-      setColor("#6A6A84");
+      setColor("#FFF");
     }
-  }, [pathname, route]);
+  }, [pathname, route, theme.palette.info.light]);
 
   const handleClick = () => {
     navigate(route);
@@ -32,23 +33,21 @@ function Button({ Icon, route, title }: IProps) {
       alignItems={"center"}
       display={"flex"}
       flexDirection={"column"}
-      gap={"2px"}
+      gap={0.25}
       sx={{
         cursor: "pointer",
-        
+
         "& p, & svg": {
           "&:hover": {
-            color: "#ff4c29",
+            color: theme.palette.info.main,
           },
         },
       }}
       onClick={handleClick}
     >
-      <Icon sx={{ color }} />
       <Typography
         fontFamily={"'Roboto Condensed', sans-serif"}
-        fontSize={"18px"}
-        sx={{ color }}
+        sx={{ color, fontSize: { mobile: "18px", laptop: "25px" } }}
       >
         {title.toUpperCase()}
       </Typography>
@@ -56,4 +55,4 @@ function Button({ Icon, route, title }: IProps) {
   );
 }
 
-export default Button;
+export default MenuButton;

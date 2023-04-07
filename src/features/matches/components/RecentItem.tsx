@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, useTheme } from "@mui/material";
 
 import { formatDateWithTime } from "../../../utils/formatDate";
 
@@ -10,25 +10,26 @@ interface IProps {
 }
 
 function RecentItem({ time, game, user, win }: IProps) {
+  const theme = useTheme();
+
   return (
     <Box
       alignItems={"center"}
-      bgcolor={"#232323"}
+      bgcolor={theme.palette.info.dark}
       borderRadius={"5px"}
       boxSizing={"border-box"}
       display={"flex"}
       justifyContent={"center"}
-      p={"5px"}
+      p={0.9}
       sx={{
         "& p": {
           color: "#fff",
           flex: 1,
           fontFamily: "Roboto Condensed",
           fontSize: {
-            mobile: "10px",
-            tablet: "11px",
-            laptop: "12px",
-            desktopLarge: "13px",
+            mobile: "11.5px",
+            tablet: "14px",
+            desktopLarge: "15px",
           },
           textAlign: "center",
         },

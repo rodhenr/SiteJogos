@@ -1,4 +1,5 @@
-import { Box, Button, CircularProgress } from "@mui/material";
+import { Box, Button, CircularProgress, useTheme } from "@mui/material";
+import Loading from "../../../shared/components/Loading";
 
 const formStyle = { display: "flex", "flex-direction": "column", gap: "16px" };
 
@@ -10,6 +11,8 @@ interface IProps {
 }
 
 function Form({ buttonText, children, handleForm, isLoading }: IProps) {
+  const theme = useTheme();
+
   return (
     <Box
       display={"flex"}
@@ -28,29 +31,16 @@ function Form({ buttonText, children, handleForm, isLoading }: IProps) {
         {children}
 
         {isLoading ? (
-          <Box
-            sx={{
-              alignItems: "center",
-              backgroundColor: "#ff4c29;",
-              borderRadius: "10px",
-              display: "flex",
-              fontSize: "18px",
-              height: "50px",
-              justifyContent: "center",
-              width: " 100%",
-            }}
-          >
-            <CircularProgress />
-          </Box>
+          <Loading />
         ) : (
           <Button
             sx={{
-              backgroundColor: "#ff4c29;",
+              backgroundColor: theme.palette.secondary.main,
               borderRadius: "10px",
               fontSize: "18px",
               height: "50px",
               ":hover": {
-                backgroundColor: "#cb3b1e;",
+                backgroundColor: theme.palette.secondary.light,
               },
             }}
             type="submit"

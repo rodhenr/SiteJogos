@@ -50,7 +50,6 @@ function AuthModalContainer({
       <Box
         alignItems={"center"}
         display={"flex"}
-        flex={1}
         flexDirection={"column"}
         gap={1.5}
         justifyContent={"center"}

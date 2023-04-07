@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, useTheme } from "@mui/material";
 
 interface IProps {
   handleClick: React.MouseEventHandler<HTMLDivElement>;
@@ -6,6 +6,8 @@ interface IProps {
 }
 
 function LoginRegisterSwitcher({ handleClick, text }: IProps) {
+  const theme = useTheme();
+
   return (
     <Box
       alignItems={"center"}
@@ -18,7 +20,7 @@ function LoginRegisterSwitcher({ handleClick, text }: IProps) {
       width={"100%"}
     >
       <Typography
-        color={"#ff4c29"}
+        color={theme.palette.info.light}
         sx={{
           "&:hover": {
             cursor: "pointer",

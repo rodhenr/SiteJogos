@@ -20,13 +20,14 @@ function HighlightedItem({ image, name, url }: IProps) {
       borderRadius={"10px"}
       display={"flex"}
       onClick={handleNavigate}
-      overflow={"hidden"}
-      position={"relative"}
       sx={{
         cursor: "pointer",
         flex: { laptop: 1 },
+        maxHeight: { mobile: "200px", laptop: "300px" },
         opacity: "0.8",
-        "&:img": {
+
+        "& img": {
+          borderRadius: "10px",
           height: "auto",
           maxWidth: { laptop: "100%" },
           objectFit: "cover",

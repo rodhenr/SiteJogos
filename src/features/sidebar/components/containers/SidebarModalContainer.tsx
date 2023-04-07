@@ -1,4 +1,4 @@
-import { Box, Modal, Typography } from "@mui/material";
+import { Box, Modal, Typography, useTheme } from "@mui/material";
 
 import CloseButton from "../../../../shared/components/CloseButton";
 import Loading from "../../../../shared/components/Loading";
@@ -6,7 +6,7 @@ import ErrorMessage from "../ErrorMessage";
 
 interface IProps {
   children: JSX.Element | JSX.Element[];
-  closeFunction: React.MouseEventHandler<HTMLDivElement>;
+  closeFunction: () => void;
   openState: boolean;
   isError: boolean;
   isLoading: boolean;
@@ -23,6 +23,8 @@ function ModalContainer({
   title,
   isAuth,
 }: IProps) {
+  const theme = useTheme();
+
   return (
     <Modal
       open={openState}
@@ -31,17 +33,19 @@ function ModalContainer({
       aria-describedby="modal-matches-history"
     >
       <Box
-        bgcolor={"#1b1e23"}
+        alignItems={"center"}
+        bgcolor={theme.palette.primary.dark}
         boxSizing={"border-box"}
         display={"flex"}
         flexDirection={"column"}
         gap={2}
+        justifyContent={"center"}
         left={"50%"}
         position={"absolute"}
         sx={{
-          border: "2px solid #000",
-          height: { mobile: "100%", tablet: "auto" },
-          maxHeight: { tablet: "700px" },
+          border: { laptop: "2px solid #000" },
+          height: { mobile: "100%", laptop: "auto" },
+          maxHeight: { laptop: "700px" },
           overflowY: "auto",
           p: {
             mobile: 1,
@@ -57,15 +61,9 @@ function ModalContainer({
         top={"50%"}
       >
         <CloseButton handleClose={closeFunction} />
-        {title.length > 0 && (
-          <Typography
-            variant="h5"
-            component="h1"
-            sx={{ color: "white", textAlign: "center" }}
-          >
-            {title}
-          </Typography>
-        )}
+        <Typography component="h1" sx={{ color: "#FFF" }} variant="h5">
+          {title}
+        </Typography>
         {children}
         {isLoading && <Loading />}
         {!isAuth && isError && <ErrorMessage />}
