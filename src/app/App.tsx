@@ -8,7 +8,7 @@ import Uno from "../features/game/pages/Uno";
 import Jokenpo from "../features/game/pages/Jokenpo";
 import TicTacToe from "../features/game/pages/TicTacToe";
 import Yahtzee from "../features/game/pages/Yahtzee";
-import NotFound from "../pages/NotFound";
+import NotFound from "../pages/notFound/NotFound";
 
 function App() {
   return (
