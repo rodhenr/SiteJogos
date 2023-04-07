@@ -1,10 +1,9 @@
 import { Routes, Route } from "react-router-dom";
 
 import Home from "../pages/home/Home";
-import Records from "../pages/Records";
-import Faq from "../pages/Faq";
-import Games from "../pages/Games";
-import Ranking from "../pages/Ranking";
+import Records from "../pages/records/Records";
+import Games from "../pages/games/Games";
+import Ranking from "../pages/ranking/Ranking";
 import Uno from "../features/game/pages/Uno";
 import Jokenpo from "../features/game/pages/Jokenpo";
 import TicTacToe from "../features/game/pages/TicTacToe";
@@ -19,7 +18,6 @@ function App() {
         <Route path="jogos" element={<Games />} />
         <Route path="ranking" element={<Ranking />} />
         <Route path="recordes" element={<Records />} />
-        <Route path="faq" element={<Faq />} />
         <Route path="*" element={<NotFound />} />
       </Route>
       <Route path="/jogos/*">

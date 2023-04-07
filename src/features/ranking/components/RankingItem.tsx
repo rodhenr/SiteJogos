@@ -10,23 +10,16 @@ interface IProps {
 function RankingItem({ level, player, playerID, position }: IProps) {
   const theme = useTheme();
 
-  const bColor =
-    position === 1
-      ? "#E5D432"
-      : position === 2
-      ? "#9B9B9B"
-      : position === 3
-      ? "#E58832"
-      : theme.palette.info.dark;
-
-  const color = position < 4 ? "#242424" : "#FFF";
+  const bColor = [1, 2, 3].includes(position)
+    ? theme.palette.secondary.light
+    : theme.palette.info.dark;
 
   return (
     <Box
       bgcolor={bColor}
       borderRadius={"10px"}
       boxSizing={"border-box"}
-      color={color}
+      color={"#FFF"}
       display={"flex"}
       justifyContent={"space-between"}
       px={1}

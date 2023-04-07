@@ -1,7 +1,20 @@
 import { apiSlice } from "../../app/apiSlice";
 
-import { IRanking, IRecentMatches } from "./generalInfoSlice";
+export interface IRanking {
+  id: number;
+  name: string;
+  level: number;
+  position: number;
+}
 
+export interface IRecentMatches {
+  id: number;
+  date: Date;
+  is_win: boolean;
+  is_processed: boolean;
+  "User.name": string;
+  "Game.name": string;
+}
 export interface IStatistics {
   game: string;
   wins: number;

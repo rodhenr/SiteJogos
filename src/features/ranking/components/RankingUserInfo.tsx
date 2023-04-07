@@ -1,29 +1,53 @@
 import { useGetPlayerInfoFromRankingQuery } from "../../matches/generalInfoApiSlice";
 
-import { Avatar } from "@mui/material";
+import { Avatar, Box, Typography, useTheme } from "@mui/material";
 
 import { v4 as uuidv4 } from "uuid";
 
-import styles from "../styles/RankingUserInfo.module.scss";
+import Loading from "../../../shared/components/Loading";
 
 interface IProps {
   userID: number;
 }
 
 function RankingUserInfo({ userID }: IProps) {
+  const theme = useTheme()
   const { data, isSuccess, isLoading } =
     useGetPlayerInfoFromRankingQuery(userID);
 
   return (
     <>
-      {isLoading && <div></div>}
+      {isLoading && <Loading />}
       {isSuccess && (
-        <div className={styles.playerInfo}>
-          <div className={styles.info1}>
-            <p className={styles.ranking}>RANKING #{data.ranking}</p>
-            <p className={styles.id}>ID: {data.id}</p>
-          </div>
-          <div className={styles.info2}>
+        <Box
+          display={"flex"}
+          flexDirection={"column"}
+          gap={2}
+          height={"100%"}
+          width={"100%"}
+          sx={{
+            "& p": {
+              color: "#FFF",
+            },
+          }}
+        >
+          <Box display={"flex"} justifyContent={"space-between"}>
+            <Typography
+              color={"#ff4c29"}
+              flex={1}
+              fontFamily={"'Roboto Condensed', sans-serif"}
+              fontSize={"25px"}
+            >
+              RANKING #{data.ranking}
+            </Typography>
+            <Typography
+              fontFamily={"'Roboto Condensed', sans-serif"}
+              fontSize={"13px"}
+            >
+              ID: {data.id}
+            </Typography>
+          </Box>
+          <Box alignItems={"center"} display={"flex"} gap={1}>
             <Avatar
               alt=""
               src={data.avatar}
@@ -33,30 +57,69 @@ function RankingUserInfo({ userID }: IProps) {
                 width: "60px",
               }}
             />
-            <div className={styles.nameLevelContainer}>
-              <p className={styles.name}>{data.name.toUpperCase()}</p>
-              <p className={styles.level}>NÍVEL {data.level}</p>
-            </div>
-          </div>
-          <div className={styles.statisticsContainer}>
-            <div className={styles.statisticsHeader}>
-              <p>JOGO</p>
-              <p>VITÓRIAS</p>
-              <p>DERROTAS</p>
-            </div>
-            <div className={styles.statisticsList}>
+            <Box display={"flex"} flexDirection={"column"}>
+              <Typography fontSize={"24px"}>
+                {data.name.toUpperCase()}
+              </Typography>
+              <Typography fontSize={"11px"}>NÍVEL {data.level}</Typography>
+            </Box>
+          </Box>
+          <Box display={"flex"} flexDirection={"column"} mt={2}>
+            <Box
+              bgcolor={"#0c0c0c"}
+              display={"flex"}
+              justifyContent={"space-between"}
+              px={0}
+              py={0.5}
+              sx={{
+                "& p": {
+                  flex: 1,
+                  textAlign: "center",
+                },
+              }}
+            >
+              <Typography>JOGO</Typography>
+              <Typography>VITÓRIAS</Typography>
+              <Typography>DERROTAS</Typography>
+            </Box>
+            <Box
+              bgcolor={"#272727"}
+              display={"flex"}
+              flexDirection={"column"}
+              gap={0.5}
+              p={0.5}
+            >
               {data.statistics.map((statistic) => {
                 return (
-                  <div className={styles.statistic} key={uuidv4()}>
-                    <p>{statistic.game}</p>
-                    <p>{statistic.wins}</p>
-                    <p>{statistic.loses}</p>
-                  </div>
+                  <Box
+                    borderRadius={"6px"}
+                    display={"flex"}
+                    justifyContent={"space-between"}
+                    sx={{
+                      transition: "background-color 0.3s",
+
+                      "& p": {
+                        color: "#6a6a84",
+                        flex: 1,
+                        textAlign: "center",
+                      },
+
+                      "&:hover": {
+                        bgcolor: "#1b1e23",
+                        cursor: "pointer",
+                      },
+                    }}
+                    key={uuidv4()}
+                  >
+                    <Typography>{statistic.game}</Typography>
+                    <Typography>{statistic.wins}</Typography>
+                    <Typography>{statistic.loses}</Typography>
+                  </Box>
                 );
               })}
-            </div>
-          </div>
-        </div>
+            </Box>
+          </Box>
+        </Box>
       )}
     </>
   );

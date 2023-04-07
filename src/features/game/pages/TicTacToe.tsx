@@ -1,4 +1,4 @@
-import GameLayout from "../../../shared/GameLayout"
+import GameLayout from "../../../shared/layout/GameLayout";
 
 function TicTacToe() {
   return (

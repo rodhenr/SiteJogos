@@ -1,5 +1,5 @@
-import { apiSlice } from "../../app/apiSlice";
-import { IStatistics } from "../matches/generalInfoApiSlice";
+import { apiSlice } from "../app/apiSlice";
+import { IStatistics } from "../features/matches/generalInfoApiSlice";
 
 export interface IPlayerBasicInfo {
   avatar: "";

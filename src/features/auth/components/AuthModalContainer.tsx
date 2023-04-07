@@ -1,6 +1,6 @@
 import { Box, Typography, useTheme } from "@mui/material";
 
-import ModalContainer from "../../sidebar/components/containers/SidebarModalContainer";
+import ModalContainer from "../../../shared/components/ModalContainer";
 import LoginRegisterSwitcher from "./LoginRegisterSwitcher";
 
 interface IProps {

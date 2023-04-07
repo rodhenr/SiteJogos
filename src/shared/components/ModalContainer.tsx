@@ -1,8 +1,8 @@
 import { Box, Modal, Typography, useTheme } from "@mui/material";
 
-import CloseButton from "../../../../shared/components/CloseButton";
-import Loading from "../../../../shared/components/Loading";
-import ErrorMessage from "../ErrorMessage";
+import CloseButton from "./CloseButton";
+import Loading from "./Loading";
+import ErrorMessage from "./ErrorMessage";
 
 interface IProps {
   children: JSX.Element | JSX.Element[];

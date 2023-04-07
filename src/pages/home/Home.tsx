@@ -5,7 +5,7 @@ import { Box } from "@mui/material";
 import Highlighted from "./components/Highlighted";
 import Ranking from "../../features/ranking/index";
 import Recent from "../../features/matches/index";
-import MainLayout from "../../shared/MainLayout";
+import MainLayout from "../../shared/layout/MainLayout";
 
 function Home() {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);

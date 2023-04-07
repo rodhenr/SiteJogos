@@ -1,8 +1,8 @@
 import { v4 as uuidv4 } from "uuid";
 
-import styles from "./styles/Games.module.scss";
-import MainLayout from "../shared/MainLayout";
-import GamesPageItem from "../features/game/components/GamesPageItem";
+import styles from "../styles/Games.module.scss";
+import MainLayout from "../../shared/layout/MainLayout";
+import GamesPageItem from "../../features/game/components/GamesPageItem";
 
 function Games() {
   const fakeData: any[] = [];

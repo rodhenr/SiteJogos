@@ -3,25 +3,17 @@ import { useSelector } from "react-redux";
 import { Box, Divider } from "@mui/material";
 import { ThemeProvider, useTheme } from "@mui/material/styles";
 
-import { mainTheme } from "../utils/themes";
-import TopMenu from "./components/TopMenu";
-import ProfileModal from "../features/sidebar/components/profileModal/index";
-import MessagesModal from "../features/sidebar/components/messages/MessagesModal";
-import MatchesModal from "../features/sidebar/components/matchesModal/index";
-import {
-  selectHistoryState,
-  selectMessagesState,
-  selectProfileState,
-} from "../features/sidebar/sidebarSlice";
+import { mainTheme } from "../../utils/themes";
+import TopMenu from "../components/menu/TopMenu";
+import ProfileModal from "../components/userInfo/ProfileModal";
+import { selectProfileState } from "../modalSlice";
 
 interface IProps {
   children: JSX.Element | JSX.Element[];
 }
 
 function MainLayout({ children }: IProps) {
-  const historyState = useSelector(selectHistoryState);
   const profileState = useSelector(selectProfileState);
-  const messagesState = useSelector(selectMessagesState);
   const theme = useTheme();
 
   return (
@@ -49,9 +41,7 @@ function MainLayout({ children }: IProps) {
           {children}
         </Box>
       </Box>
-      {historyState && <MatchesModal />}
       {profileState && <ProfileModal />}
-      {messagesState && <MessagesModal />}
     </ThemeProvider>
   );
 }

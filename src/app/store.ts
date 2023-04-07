@@ -1,9 +1,8 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 
-import sidebarReducer from "../features/sidebar/sidebarSlice";
+import sidebarReducer from "../shared/modalSlice";
 import rankingReducer from "../features/ranking/rankingSlice";
 import authReducer from "../features/auth/authSlice";
-import generalInfoReducer from "../features/matches/generalInfoSlice";
 
 import { apiSlice } from "./apiSlice";
 
@@ -12,7 +11,6 @@ const rootReducer = combineReducers({
   sidebar: sidebarReducer,
   ranking: rankingReducer,
   auth: authReducer,
-  generalInfo: generalInfoReducer,
 });
 
 export const store = configureStore({

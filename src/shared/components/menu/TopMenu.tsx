@@ -4,9 +4,9 @@ import { v4 as uuidv4 } from "uuid";
 
 import { Box } from "@mui/material";
 
-import LoginModal from "../../features/auth/components/LoginModal";
-import RegisterModal from "../../features/auth/components/RegisterModal";
-import MenuUserInfo from "./MenuUserInfo";
+import LoginModal from "../../../features/auth/components/LoginModal";
+import RegisterModal from "../../../features/auth/components/RegisterModal";
+import MenuUserInfo from "../userInfo/MenuUserInfo";
 import MenuButton from "./MenuButton";
 
 function TopMenu() {

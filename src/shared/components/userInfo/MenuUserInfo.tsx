@@ -2,9 +2,9 @@ import { useDispatch } from "react-redux";
 import {
   changeLoginModal,
   changeRegisterModal,
-} from "../../features/auth/authSlice";
-import { useGetPlayerBasicInfoQuery } from "../../features/sidebar/userInfoApiSlice";
-import { changeProfileModal } from "../../features/sidebar/sidebarSlice";
+} from "../../../features/auth/authSlice";
+import { useGetPlayerBasicInfoQuery } from "../../userInfoApiSlice";
+import { changeProfileModal } from "../../modalSlice";
 
 import { Avatar, Box, Button, Typography } from "@mui/material";
 

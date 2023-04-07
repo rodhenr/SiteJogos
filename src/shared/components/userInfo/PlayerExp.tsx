@@ -1,6 +1,6 @@
 import { Box } from "@mui/material";
 
-import ExpInfo from "../../../../shared/components/ExpInfo";
+import ExpInfo from "./ExpInfo";
 
 interface IProps {
   experience: number;

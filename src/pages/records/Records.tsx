@@ -1,9 +1,9 @@
 import { v4 as uuidv4 } from "uuid";
 
-import MainLayout from "../shared/MainLayout";
-import { useGetRecordsQuery } from "../features/matches/generalInfoApiSlice";
+import MainLayout from "../../shared/layout/MainLayout";
+import { useGetRecordsQuery } from "../../features/matches/generalInfoApiSlice";
 
-import styles from "./styles/Records.module.scss";
+import styles from "../styles/Records.module.scss";
 
 function Records() {
   const { data, isSuccess, isLoading } = useGetRecordsQuery();
