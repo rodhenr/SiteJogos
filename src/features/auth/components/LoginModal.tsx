@@ -7,7 +7,7 @@ import { changeLoginModal, changeRegisterModal } from "../authSlice";
 import { addToken } from "../authSlice";
 import { RootState } from "../../../app/store";
 
-import { Box, TextField, Typography } from "@mui/material";
+import { Box, TextField, Typography, useTheme } from "@mui/material";
 
 import Form from "./Form";
 import AuthModalContainer from "./AuthModalContainer";
@@ -18,6 +18,7 @@ export interface IState {
 }
 
 function LoginModal() {
+  const theme = useTheme();
   const loginModalState = useSelector(
     (state: RootState) => state.auth.loginModal
   );
@@ -108,7 +109,7 @@ function LoginModal() {
     handleClose();
     dispatch(changeRegisterModal(true));
   };
-  
+
   return (
     <AuthModalContainer
       isLoading={isLoading}
@@ -158,7 +159,7 @@ function LoginModal() {
 
         <Box display={"flex"} justifyContent={"flex-end"} width={"100%"}>
           <Typography
-            color={"#ff4c29"}
+            color={theme.palette.info.main}
             sx={{
               "&:hover": {
                 cursor: "pointer",

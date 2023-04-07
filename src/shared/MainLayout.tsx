@@ -1,17 +1,19 @@
 import { Box, Divider } from "@mui/material";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { breakpointsTheme } from "../utils/themes";
+import { ThemeProvider, useTheme } from "@mui/material/styles";
 
+import { mainTheme } from "../utils/themes";
 import TopMenu from "./components/TopMenu";
+import Sidebar from "../features/sidebar/index";
 
 interface IProps {
   children: JSX.Element | JSX.Element[];
 }
+
 function MainLayout({ children }: IProps) {
-  const theme = createTheme(breakpointsTheme);
+  const theme = useTheme();
 
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={mainTheme}>
       <Box
         boxSizing={"border-box"}
         display={"flex"}
@@ -25,13 +27,13 @@ function MainLayout({ children }: IProps) {
         }}
       >
         <TopMenu />
-        <Divider color={"#a8a8a8"} sx={{ opacity: 0.2 }} />
+        <Divider color={theme.palette.primary.main} sx={{ opacity: 0.2 }} />
         <Box
           flex={1}
           sx={{
             display: { laptop: "flex" },
             flexDirection: { mobile: "row", laptop: "column" },
-            gap: { mobile: "8px", laptop: "16px" },
+            gap: { mobile: 1, laptop: 2 },
           }}
         >
           {children}

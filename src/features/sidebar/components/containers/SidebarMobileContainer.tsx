@@ -7,7 +7,7 @@ interface IProps {
   children: JSX.Element | JSX.Element[];
 }
 
-function DrawerContainer({ children }: IProps) {
+function SidebarMobileContainer({ children }: IProps) {
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   const toggleDrawer = () => {
@@ -36,4 +36,4 @@ function DrawerContainer({ children }: IProps) {
   );
 }
 
-export default DrawerContainer;
+export default SidebarMobileContainer;

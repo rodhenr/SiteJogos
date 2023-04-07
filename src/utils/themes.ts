@@ -1,13 +1,13 @@
-import { ThemeOptions } from "@mui/material/styles/createTheme";
+import createTheme from "@mui/material/styles/createTheme";
 
 declare module "@mui/material/styles" {
   interface BreakpointOverrides {
-    xs: false; // removes the `xs` breakpoint
+    xs: false;
     sm: false;
     md: false;
     lg: false;
     xl: false;
-    mobile: true; // adds the `mobile` breakpoint
+    mobile: true;
     laptop: true;
     tablet: true;
     desktop: true;
@@ -15,7 +15,18 @@ declare module "@mui/material/styles" {
   }
 }
 
-export const breakpointsTheme: ThemeOptions = {
+export const mainTheme = createTheme({
+  palette: {
+    primary: {
+      main: "#0A2647",
+    },
+    secondary: {
+      main: "#144272",
+    },
+    info: {
+      main: "#205295",
+    },
+  },
   breakpoints: {
     values: {
       mobile: 0,
@@ -25,4 +36,4 @@ export const breakpointsTheme: ThemeOptions = {
       desktopLarge: 1400,
     },
   },
-};
+});

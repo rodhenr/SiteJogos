@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 
+import { useNavigate } from "react-router-dom";
+
 import { v4 as uuidv4 } from "uuid";
 
 import { Box, Typography } from "@mui/material";
@@ -8,12 +10,13 @@ import SportsEsportsIcon from "@mui/icons-material/SportsEsports";
 import StarsIcon from "@mui/icons-material/Stars";
 
 import Button from "./Button";
-import SearchBar from "./SearchBar";
+import LoginModal from "../../features/auth/components/LoginModal";
+import RegisterModal from "../../features/auth/components/RegisterModal";
 import MenuUserInfo from "./MenuUserInfo";
-import { useNavigate } from "react-router-dom";
 
 function TopMenu() {
   const navigate = useNavigate();
+
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   const titles = [
@@ -41,6 +44,7 @@ function TopMenu() {
 
   let render = (
     <>
+      <MenuUserInfo />
       <Box display={"flex"} justifyContent={"space-between"} gap={1.5}>
         {titles.map((title) => {
           return (
@@ -53,7 +57,6 @@ function TopMenu() {
           );
         })}
       </Box>
-      <SearchBar />
     </>
   );
 
@@ -85,8 +88,7 @@ function TopMenu() {
             );
           })}
         </Box>
-        <Box display={"flex"} flex={1}>
-          <SearchBar />
+        <Box display={"flex"} flex={1} justifyContent={"flex-end"}>
           <MenuUserInfo />
         </Box>
       </>
@@ -104,6 +106,8 @@ function TopMenu() {
       }}
     >
       {render}
+      <LoginModal />
+      <RegisterModal />
     </Box>
   );
 }

@@ -1,9 +1,7 @@
-import { Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 
 import { useLocation, useNavigate } from "react-router-dom";
-
-import styles from "../styles/Button.module.scss";
 
 interface IProps {
   Icon: any;
@@ -30,10 +28,31 @@ function Button({ Icon, route, title }: IProps) {
   };
 
   return (
-    <div className={styles.container} onClick={handleClick}>
+    <Box
+      alignItems={"center"}
+      display={"flex"}
+      flexDirection={"column"}
+      gap={"2px"}
+      sx={{
+        cursor: "pointer",
+        
+        "& p, & svg": {
+          "&:hover": {
+            color: "#ff4c29",
+          },
+        },
+      }}
+      onClick={handleClick}
+    >
       <Icon sx={{ color }} />
-      <Typography sx={{ color }}>{title.toUpperCase()}</Typography>
-    </div>
+      <Typography
+        fontFamily={"'Roboto Condensed', sans-serif"}
+        fontSize={"18px"}
+        sx={{ color }}
+      >
+        {title.toUpperCase()}
+      </Typography>
+    </Box>
   );
 }
 

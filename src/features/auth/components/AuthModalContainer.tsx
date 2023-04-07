@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, useTheme } from "@mui/material";
 
 import ModalContainer from "../../sidebar/components/containers/SidebarModalContainer";
 import LoginRegisterSwitcher from "./LoginRegisterSwitcher";
@@ -26,6 +26,7 @@ function AuthModalContainer({
   switcherText,
   title,
 }: IProps) {
+  const theme = useTheme();
   return (
     <ModalContainer
       isLoading={isLoading}
@@ -36,7 +37,7 @@ function AuthModalContainer({
       isAuth={true}
     >
       <Typography
-        color={"rgb(241, 61, 61)"}
+        color={theme.palette.error.dark}
         fontSize={"20px"}
         fontWeight={"700"}
         m={0}

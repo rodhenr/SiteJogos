@@ -1,8 +1,8 @@
-import Layout from "./MainLayout";
-
 import { v4 as uuidv4 } from "uuid";
 
-import styles from "./styles/GameLayout.module.scss";
+import { Box, Typography } from "@mui/material";
+
+import Layout from "./MainLayout";
 
 interface IProps {
   children: JSX.Element | JSX.Element[];
@@ -12,23 +12,47 @@ interface IProps {
 function GameLayout({ children, rules }: IProps) {
   return (
     <Layout>
-      <div className={styles.container}>
-        <div className={styles.gameContainer}>{children}</div>
-        <div className={styles.rulesContainer}>
-          <h1>REGRAS</h1>
-          <div className={styles.rules}>
+      <Box
+        bgcolor={"#1b1e23"}
+        borderRadius={"10px"}
+        boxSizing={"border-box"}
+        boxShadow={24}
+        display={"flex"}
+        flex-direction={"column"}
+        flex={1}
+        gap={2}
+        p={2}
+        sx={{
+          overflowY: "auto",
+          "&::-webkit-scrollbar": {
+            display: "none",
+          },
+        }}
+      >
+        <Box
+          bgcolor={"#FFF"}
+          flex={1}
+          sx={{ minHeight: { desktopLarge: "450px" } }}
+        >
+          {children}
+        </Box>
+        <Box display={"flex"} flex={1} flexDirection={"column"}>
+          <Typography color={"#FFF"} mb={1} variant="h1">
+            REGRAS
+          </Typography>
+          <Box display={"flex"} flexDirection={"column"} gap={1}>
             {rules.map((rule, index) => {
               return (
-                <div className={styles.rule} key={uuidv4()}>
-                  <p>
+                <Box key={uuidv4()}>
+                  <Typography color={"#FFF"}>
                     {index + 1} - {rule}
-                  </p>
-                </div>
+                  </Typography>
+                </Box>
               );
             })}
-          </div>
-        </div>
-      </div>
+          </Box>
+        </Box>
+      </Box>
     </Layout>
   );
 }
