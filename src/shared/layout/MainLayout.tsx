@@ -1,9 +1,8 @@
 import { useSelector } from "react-redux";
 
 import { Box, Divider } from "@mui/material";
-import { ThemeProvider, useTheme } from "@mui/material/styles";
+import { useTheme } from "@mui/material/styles";
 
-import { mainTheme } from "../../utils/themes";
 import TopMenu from "../components/menu/TopMenu";
 import ProfileModal from "../components/userInfo/ProfileModal";
 import { selectProfileState } from "../modalSlice";
@@ -17,7 +16,7 @@ function MainLayout({ children }: IProps) {
   const theme = useTheme();
 
   return (
-    <ThemeProvider theme={mainTheme}>
+    <>
       <Box
         boxSizing={"border-box"}
         display={"flex"}
@@ -42,7 +41,7 @@ function MainLayout({ children }: IProps) {
         </Box>
       </Box>
       {profileState && <ProfileModal />}
-    </ThemeProvider>
+    </>
   );
 }
 

@@ -2,7 +2,7 @@ import { v4 as uuidv4 } from "uuid";
 import { Box } from "@mui/material";
 
 import MainLayout from "../../shared/layout/MainLayout";
-import GamesPageItem from "../../features/game/components/GamesPageItem";
+import GamesPageItem from "./GamesPageItem";
 
 function Games() {
   const games = [

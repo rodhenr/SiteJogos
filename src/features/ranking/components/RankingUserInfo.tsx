@@ -11,13 +11,16 @@ interface IProps {
 }
 
 function RankingUserInfo({ userID }: IProps) {
-  const theme = useTheme()
+  const theme = useTheme();
   const { data, isSuccess, isLoading } =
     useGetPlayerInfoFromRankingQuery(userID);
+
+  console.log(data);
 
   return (
     <>
       {isLoading && <Loading />}
+
       {isSuccess && (
         <Box
           display={"flex"}
@@ -33,40 +36,40 @@ function RankingUserInfo({ userID }: IProps) {
         >
           <Box display={"flex"} justifyContent={"space-between"}>
             <Typography
-              color={"#ff4c29"}
+              color={theme.palette.info.light}
               flex={1}
-              fontFamily={"'Roboto Condensed', sans-serif"}
-              fontSize={"25px"}
+              fontSize={"22px"}
+              variant={"h1"}
             >
-              RANKING #{data.ranking}
+              RANKING #{data.position}
             </Typography>
-            <Typography
-              fontFamily={"'Roboto Condensed', sans-serif"}
-              fontSize={"13px"}
-            >
-              ID: {data.id}
-            </Typography>
+            <Typography fontSize={"13px"}>ID: {data.id}</Typography>
           </Box>
           <Box alignItems={"center"} display={"flex"} gap={1}>
             <Avatar
-              alt=""
+              alt="user avatar"
               src={data.avatar}
               sx={{
-                border: "2px solid black",
-                height: "60px",
-                width: "60px",
+                height: "50px",
+                width: "50px",
               }}
             />
-            <Box display={"flex"} flexDirection={"column"}>
-              <Typography fontSize={"24px"}>
-                {data.name.toUpperCase()}
+            <Box
+              display={"flex"}
+              flexDirection={"column"}
+              overflow={"hidden"}
+              width={"100%"}
+            >
+              <Typography sx={{ fontSize: { mobile: "17px" } }}>
+                {data.name.toUpperCase().substring(0, 30)}
               </Typography>
-              <Typography fontSize={"11px"}>NÍVEL {data.level}</Typography>
+              <Typography fontSize={"12px"}>NÍVEL {data.level}</Typography>
             </Box>
           </Box>
           <Box display={"flex"} flexDirection={"column"} mt={2}>
             <Box
-              bgcolor={"#0c0c0c"}
+              bgcolor={theme.palette.info.main}
+              borderRadius={"10px 10px 0 0"}
               display={"flex"}
               justifyContent={"space-between"}
               px={0}
@@ -74,6 +77,7 @@ function RankingUserInfo({ userID }: IProps) {
               sx={{
                 "& p": {
                   flex: 1,
+                  fontSize: { mobile: "14px" },
                   textAlign: "center",
                 },
               }}
@@ -83,7 +87,8 @@ function RankingUserInfo({ userID }: IProps) {
               <Typography>DERROTAS</Typography>
             </Box>
             <Box
-              bgcolor={"#272727"}
+              bgcolor={theme.palette.info.light}
+              borderRadius={"0 0 10px 10px"}
               display={"flex"}
               flexDirection={"column"}
               gap={0.5}
@@ -99,13 +104,14 @@ function RankingUserInfo({ userID }: IProps) {
                       transition: "background-color 0.3s",
 
                       "& p": {
-                        color: "#6a6a84",
+                        color: theme.palette.primary.dark,
                         flex: 1,
+                        fontSize: { mobile: "13px" },
                         textAlign: "center",
                       },
 
                       "&:hover": {
-                        bgcolor: "#1b1e23",
+                        bgcolor: theme.palette.secondary.light,
                         cursor: "pointer",
                       },
                     }}

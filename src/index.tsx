@@ -6,10 +6,12 @@ import { store } from "./app/store";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
+import { ThemeProvider } from "@mui/material/styles";
+import { mainTheme } from "./utils/themes";
+
 import reportWebVitals from "./reportWebVitals";
 
 import App from "./app/App";
-
 import "./index.css";
 
 const root = ReactDOM.createRoot(
@@ -17,13 +19,15 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <BrowserRouter>
-        <Routes>
-          <Route path="*" element={<App />} />
-        </Routes>
-      </BrowserRouter>
-    </Provider>
+    <ThemeProvider theme={mainTheme}>
+      <Provider store={store}>
+        <BrowserRouter>
+          <Routes>
+            <Route path="*" element={<App />} />
+          </Routes>
+        </BrowserRouter>
+      </Provider>
+    </ThemeProvider>
   </React.StrictMode>
 );
 

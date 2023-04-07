@@ -26,7 +26,7 @@ export interface IUserInfo {
   name: string;
   avatar: string;
   statistics: IStatistics[];
-  ranking: number;
+  position: number;
   level: number;
 }
 

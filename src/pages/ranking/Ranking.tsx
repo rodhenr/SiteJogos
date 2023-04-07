@@ -4,7 +4,7 @@ import { useGetPlayerRankingQuery } from "../../features/matches/generalInfoApiS
 
 import { v4 as uuidv4 } from "uuid";
 
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, useTheme } from "@mui/material";
 
 import MainLayout from "../../shared/layout/MainLayout";
 import RankingItem from "../../features/ranking/components/RankingItem";
@@ -12,6 +12,7 @@ import RankingUserInfo from "../../features/ranking/components/RankingUserInfo";
 import Loading from "../../shared/components/Loading";
 
 function Ranking() {
+  const theme = useTheme();
   const [userID, setUserID] = useState<number | null>(null);
 
   const { data, isSuccess, isLoading } = useGetPlayerRankingQuery(100);
@@ -35,10 +36,10 @@ function Ranking() {
         {isLoading && <Loading />}
 
         <Box
-          bgcolor={"#1b1e23"}
+          bgcolor={theme.palette.primary.main}
           borderRadius={"10px"}
           boxSizing={"border-box"}
-          boxShadow={6}
+          boxShadow={2}
           display={"flex"}
           flex={2}
           flexDirection={"column"}
@@ -46,13 +47,13 @@ function Ranking() {
           p={2}
           sx={{
             maxHeight: {
-              mobile: "350px",
+              mobile: "450px",
               laptop: "auto",
               desktopLarger: "100%",
             },
           }}
         >
-          <Typography color={"#6a6a84"} fontSize={"22px"} textAlign={"center"}>
+          <Typography color={"#FFF"} fontSize={"22px"} textAlign={"center"}>
             RANKING GERAL
           </Typography>
           {isSuccess && (
@@ -89,10 +90,10 @@ function Ranking() {
         </Box>
         <Box
           alignItems={"center"}
-          bgcolor={"#1b1e23"}
+          bgcolor={theme.palette.primary.main}
           borderRadius={"10px"}
           boxSizing={"border-box"}
-          boxShadow={6}
+          boxShadow={2}
           display={"flex"}
           flex={1}
           justifyContent={"center"}
@@ -100,8 +101,8 @@ function Ranking() {
         >
           {!userID ? (
             <Typography
-              color={"#6a6a84"}
-              fontSize={"25px"}
+              color={"#FFF"}
+              sx={{ fontSize: { mobile: "16px", laptop: "25px" } }}
               textAlign={"center"}
             >
               Selecione um jogador para ver as suas estatísticas
