@@ -46,7 +46,7 @@ function ModalContainer({
           maxHeight: { laptop: "700px" },
           overflowY: "auto",
           px: {
-            mobile: 1,
+            mobile: 2,
             laptop: 3,
           },
           py: {
@@ -54,7 +54,10 @@ function ModalContainer({
             laptop: 4,
           },
           transform: "translate(-50%, -50%)",
-          width: { mobile: "100%", tablet: "80vw", laptop: "800px" },
+          width: {
+            mobile: "100%",
+            laptop: "800px",
+          },
 
           "&::-webkit-scrollbar": {
             display: "none",

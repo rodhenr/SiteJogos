@@ -16,10 +16,11 @@ function StatisticList({ data }: IProps) {
       flexDirection={"column"}
       gap={1}
       minHeight={100}
+      width={"100%"}
     >
       <Typography
         sx={{
-          color: "white",
+          color: "tertiary.main",
           fontSize: "20px",
         }}
       >
@@ -27,7 +28,7 @@ function StatisticList({ data }: IProps) {
       </Typography>
       <Box color={"#FFF"}>
         <Box
-          bgcolor={"#323131"}
+          bgcolor={"info.dark"}
           borderRadius={2}
           display={"flex"}
           justifyContent={"center"}
@@ -63,15 +64,18 @@ function StatisticList({ data }: IProps) {
               <Box
                 borderRadius={"6px"}
                 display={"flex"}
-                fontSize={"13px"}
                 justifyContent={"space-between"}
                 key={uuidv4()}
-                padding={"2px 0"}
+                py={0.25}
                 sx={{
                   transition: "background-color 0.2s",
                   ":hover": {
                     backgroundColor: "#FFF",
                     cursor: "pointer",
+                  },
+
+                  "& p": {
+                    fontSize: "14px",
                   },
                 }}
                 textAlign={"center"}

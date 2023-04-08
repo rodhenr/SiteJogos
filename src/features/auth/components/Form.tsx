@@ -1,8 +1,6 @@
 import { Box, Button } from "@mui/material";
 import Loading from "../../../shared/components/Loading";
 
-const formStyle = { display: "flex", "flex-direction": "column", gap: "16px" };
-
 interface IProps {
   buttonText: string;
   children: JSX.Element | JSX.Element[];
@@ -27,7 +25,10 @@ function Form({ buttonText, children, handleForm, isLoading }: IProps) {
         },
       }}
     >
-      <form style={formStyle} onSubmit={(e) => handleForm(e)}>
+      <form
+        style={{ display: "flex", flexDirection: "column", gap: "16px" }}
+        onSubmit={(e) => handleForm(e)}
+      >
         {children}
 
         {isLoading ? (

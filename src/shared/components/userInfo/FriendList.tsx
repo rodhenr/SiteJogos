@@ -16,10 +16,11 @@ function FriendList({ data }: IProps) {
       gap={1}
       py={1}
       sx={{ flex: { laptop: 1 } }}
+      width={"100%"}
     >
       <Typography
         sx={{
-          color: "white",
+          color: "tertiary.main",
           fontSize: "20px",
         }}
       >

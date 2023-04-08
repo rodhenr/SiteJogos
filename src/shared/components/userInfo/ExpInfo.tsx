@@ -28,7 +28,7 @@ function ExpInfo({ exp, isModal, level, maxExpLevel }: IProps) {
       display={"flex"}
       flexDirection={"column"}
       ref={componentRef}
-      sx={{ width: "200px" }}
+      sx={{ width: isModal ? "100%" : "200px" }}
     >
       <Box
         display={"flex"}
@@ -50,7 +50,7 @@ function ExpInfo({ exp, isModal, level, maxExpLevel }: IProps) {
         display={"inline-block"}
         overflow={"hidden"}
         sx={{
-          height: isModal ? "18px" : "8px",
+          height: isModal ? "13px" : "8px",
           zIndex: "100",
           /* [theme.breakpoints.up("desktopLarge")]: {
             height: "13px",

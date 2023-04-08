@@ -36,25 +36,25 @@ function ProfileModal() {
       title={""}
       isAuth={false}
     >
-      {isSuccess ? (
-        <>
-          <UserInfoModal
-            avatar={data.avatar}
-            id={data.id}
-            name={data.name}
-            position={data.position}
-          />
-          <PlayerExp
-            experience={data.experience}
-            level={data.level}
-            maxExperience={data.maxExperience}
-          />
-          <FriendList data={data.friends} />
-          <StatisticList data={data.statistics} />
-        </>
-      ) : (
-        <></>
-      )}
+      <>
+        {isSuccess && (
+          <>
+            <UserInfoModal
+              avatar={data.avatar}
+              id={data.id}
+              name={data.name}
+              position={data.position}
+            />
+            <PlayerExp
+              experience={data.experience}
+              level={data.level}
+              maxExperience={data.maxExperience}
+            />
+            <FriendList data={data.friends} />
+            <StatisticList data={data.statistics} />
+          </>
+        )}
+      </>
     </ModalContainer>
   );
 }
