@@ -30,8 +30,8 @@ function HomeItemContainer({
       flex={size}
       flexDirection={"column"}
       minHeight={"100px"}
-      maxHeight={maxHeight}
       sx={{
+        maxHeight: { mobile: "400px", laptop: maxHeight },
         p: { mobile: 2, laptop: 2 },
         overflowY: "auto",
 

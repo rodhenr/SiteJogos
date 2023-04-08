@@ -8,7 +8,7 @@ interface IProps {
 }
 
 function RankingItem({ level, player, playerID, position }: IProps) {
-  const bColor = [1, 2, 3].includes(position) ? "secondary.light" : "info.dark";
+  const bColor = [1, 2, 3].includes(position) ? "tertiary.main" : "info.dark";
 
   return (
     <Box

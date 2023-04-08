@@ -1,10 +1,12 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   changeLoginModal,
   changeRegisterModal,
+  logout,
 } from "../../../features/auth/authSlice";
 import { useGetPlayerBasicInfoQuery } from "../../userInfoApiSlice";
 import { changeProfileModal } from "../../modalSlice";
+import { RootState } from "../../../app/store";
 
 import { Avatar, Box, Button, Typography } from "@mui/material";
 
@@ -12,8 +14,11 @@ import ExpInfo from "./ExpInfo";
 
 function MenuUserInfo() {
   const dispatch = useDispatch();
+  const hasToken = useSelector((state: RootState) => !!state.auth.token);
 
-  const { data, isSuccess } = useGetPlayerBasicInfoQuery();
+  const { data, isSuccess } = useGetPlayerBasicInfoQuery(undefined, {
+    skip: !hasToken,
+  });
 
   const handleAuthModalState = (isLogin: boolean) => {
     if (isLogin) {
@@ -27,21 +32,36 @@ function MenuUserInfo() {
     dispatch(changeProfileModal(true));
   };
 
+  const handleLogout = () => {
+    dispatch(logout());
+  };
+
   return (
-    <Box alignItems={"center"} display={"flex"} gap={6} sx={{ color: "#FFF" }}>
-      {isSuccess ? (
-        <>
-          <Box
-            alignContent={"center"}
-            display={"flex"}
-            gap={1}
-            justifyContent={"center"}
-          >
-            <Box
-              display={"flex"}
-              flexDirection={"column"}
-              justifyContent={"flex-end"}
-            >
+    <Box
+      alignItems={"center"}
+      display={"flex"}
+      gap={6}
+      sx={{ color: "#FFF" }}
+      width={"100%"}
+    >
+      {hasToken && isSuccess ? (
+        <Box display={"flex"} justifyContent={"space-between"} width={"100%"}>
+          <Box alignContent={"center"} display={"flex"} flex={1} gap={1}>
+            <Avatar
+              alt="User Avatar"
+              onClick={handleProfileModalState}
+              src={data.avatar}
+              sx={{
+                alignSelf: "center",
+                height: "48px",
+                width: "48px",
+
+                "&:hover": {
+                  cursor: "pointer",
+                },
+              }}
+            />
+            <Box display={"flex"} flexDirection={"column"}>
               <Typography fontSize={"15px"}>
                 {data.name.toUpperCase()}
               </Typography>
@@ -63,20 +83,11 @@ function MenuUserInfo() {
                 />
               </Box>
             </Box>
-            <Avatar
-              alt="User Avatar"
-              onClick={handleProfileModalState}
-              src={data.avatar}
-              sx={{
-                height: "48px",
-                width: "48px",
-                "&:hover": {
-                  cursor: "pointer",
-                },
-              }}
-            />
-            {/* <Button
-              color={"primary"}
+          </Box>
+          <Box>
+            <Button
+              color={"info"}
+              onClick={handleLogout}
               sx={{
                 fontSize: "11px",
                 height: "30px",
@@ -84,9 +95,9 @@ function MenuUserInfo() {
               variant={"contained"}
             >
               SAIR
-            </Button> */}
+            </Button>
           </Box>
-        </>
+        </Box>
       ) : (
         <Box display={"flex"} gap={1}>
           <Button

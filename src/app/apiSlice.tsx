@@ -7,7 +7,7 @@ import type {
 
 import type { RootState } from "./store";
 
-import { addToken, removeToken } from "../features/auth/authSlice";
+import { addToken, logout } from "../features/auth/authSlice";
 
 const baseApiQuery = fetchBaseQuery({
   baseUrl: "http://localhost:8080/",
@@ -40,7 +40,7 @@ const baseQueryWithReauth: BaseQueryFn<
       api.dispatch(addToken({ username: "", accessToken: "" }));
       result = await baseApiQuery(args, api, extraOptions);
     } else {
-      api.dispatch(removeToken());
+      api.dispatch(logout());
     }
   }
   return result;

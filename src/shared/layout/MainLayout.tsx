@@ -19,9 +19,9 @@ function MainLayout({ children }: IProps) {
       display={"flex"}
       flex={1}
       flexDirection={"column"}
-      height={"100vh"}
       sx={{
         gap: { mobile: 2, laptop: 3 },
+        height: {laptop: "100vh"},
         p: { mobile: 2, laptop: 3 },
       }}
     >

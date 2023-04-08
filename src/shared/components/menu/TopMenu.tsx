@@ -42,7 +42,13 @@ function TopMenu() {
       }}
     >
       {windowWidth < 1024 && (
-        <Box display={"flex"} flex={1} justifyContent={"flex-end"}>
+        <Box
+          display={"flex"}
+          flex={1}
+          sx={{
+            justifyContent: { mobile: "space-between", laptop: "flex-end" },
+          }}
+        >
           <MenuUserInfo />
         </Box>
       )}
@@ -61,7 +67,13 @@ function TopMenu() {
         })}
       </Box>
       {windowWidth > 1024 && (
-        <Box display={"flex"} flex={1} justifyContent={"flex-end"}>
+        <Box
+          display={"flex"}
+          flex={1}
+          sx={{
+            justifyContent: { mobile: "space-between", laptop: "flex-end" },
+          }}
+        >
           <MenuUserInfo />
         </Box>
       )}
