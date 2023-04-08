@@ -3,12 +3,13 @@ import { v4 as uuidv4 } from "uuid";
 import { Box, Typography } from "@mui/material";
 
 import MainLayout from "../../shared/layout/MainLayout";
-import { useGetRecordsQuery } from "../../features/matches/generalInfoApiSlice";
+import { useGetRecordsQuery } from "../../app/generalInfoApiSlice";
 
 import Loading from "../../shared/components/Loading";
+import ErrorMessage from "../../shared/components/ErrorMessage";
 
 function Records() {
-  const { data, isSuccess, isLoading } = useGetRecordsQuery();
+  const { data, isSuccess, isLoading, isError } = useGetRecordsQuery();
 
   return (
     <MainLayout>
@@ -111,6 +112,8 @@ function Records() {
             })}
           </>
         )}
+
+        {isError && <ErrorMessage />}
       </Box>
     </MainLayout>
   );

@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { useGetPlayerRankingQuery } from "../../features/matches/generalInfoApiSlice";
+import { useGetPlayerRankingQuery } from "../../app/generalInfoApiSlice";
 
 import { v4 as uuidv4 } from "uuid";
 

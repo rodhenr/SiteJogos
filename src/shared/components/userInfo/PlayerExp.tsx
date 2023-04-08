@@ -10,7 +10,7 @@ interface IProps {
 
 function PlayerExp({ experience, level, maxExperience }: IProps) {
   return (
-    <Box color={"#6A6A84"}>
+    <Box color={"#FFF"}>
       <ExpInfo
         exp={experience}
         isModal={true}

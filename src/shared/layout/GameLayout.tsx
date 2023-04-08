@@ -2,7 +2,7 @@ import { v4 as uuidv4 } from "uuid";
 
 import { Box, Typography } from "@mui/material";
 
-import Layout from "./MainLayout";
+import MainLayout from "./MainLayout";
 
 interface IProps {
   children: JSX.Element | JSX.Element[];
@@ -11,7 +11,7 @@ interface IProps {
 
 function GameLayout({ children, rules }: IProps) {
   return (
-    <Layout>
+    <MainLayout>
       <Box
         bgcolor={"#1b1e23"}
         borderRadius={"10px"}
@@ -53,7 +53,7 @@ function GameLayout({ children, rules }: IProps) {
           </Box>
         </Box>
       </Box>
-    </Layout>
+    </MainLayout>
   );
 }
 

@@ -1,17 +1,18 @@
-import { useGetPlayerInfoFromRankingQuery } from "../../matches/generalInfoApiSlice";
+import { useGetPlayerInfoFromRankingQuery } from "../../../app/generalInfoApiSlice";
 
 import { Avatar, Box, Typography } from "@mui/material";
 
 import { v4 as uuidv4 } from "uuid";
 
 import Loading from "../../../shared/components/Loading";
+import ErrorMessage from "../../../shared/components/ErrorMessage";
 
 interface IProps {
   userID: number;
 }
 
 function RankingUserInfo({ userID }: IProps) {
-  const { data, isSuccess, isLoading } =
+  const { data, isSuccess, isLoading, isError } =
     useGetPlayerInfoFromRankingQuery(userID);
 
   console.log(data);
@@ -126,6 +127,8 @@ function RankingUserInfo({ userID }: IProps) {
           </Box>
         </Box>
       )}
+
+      {isError && <ErrorMessage />}
     </>
   );
 }

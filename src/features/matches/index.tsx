@@ -1,4 +1,4 @@
-import { useGetRecentMatchesQuery } from "./generalInfoApiSlice";
+import { useGetRecentMatchesQuery } from "../../app/generalInfoApiSlice";
 
 import { v4 as uuidv4 } from "uuid";
 
@@ -6,7 +6,7 @@ import { Box, Typography } from "@mui/material";
 import TvIcon from "@mui/icons-material/Tv";
 
 import HomeItemContainer from "../../pages/home/components/HomeItemContainer";
-import RecentItem from "./components/RecentItem";
+import RecentItem from "./components/MatchItem";
 import ErrorMessage from "../../shared/components/ErrorMessage";
 
 function Index() {

@@ -2,7 +2,7 @@ import { v4 as uuidv4 } from "uuid";
 
 import { Box, Typography } from "@mui/material";
 
-import { IStatistics } from "../../../features/matches/generalInfoApiSlice";
+import { IStatistics } from "../../../app/generalInfoApiSlice";
 
 interface IProps {
   data: IStatistics[];
@@ -41,7 +41,7 @@ function StatisticList({ data }: IProps) {
           <Typography flex={1}>DERROTAS</Typography>
         </Box>
         <Box
-          color={"#6A6A84"}
+          color={"#FFF"}
           display={"flex"}
           flexDirection={"column"}
           gap={1}
@@ -49,7 +49,7 @@ function StatisticList({ data }: IProps) {
         >
           {data.length === 0 && (
             <Typography
-              color={"#6a6a84"}
+              color={"#FFF"}
               display={"flex"}
               fontSize={"20px"}
               justifyContent={"center"}

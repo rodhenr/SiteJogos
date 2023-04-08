@@ -1,5 +1,5 @@
-import { useGetPlayerRankingQuery } from "../matches/generalInfoApiSlice";
-import { IRanking } from "../matches/generalInfoApiSlice";
+import { useGetPlayerRankingQuery } from "../../app/generalInfoApiSlice";
+import { IRanking } from "../../app/generalInfoApiSlice";
 
 import { useNavigate } from "react-router-dom";
 

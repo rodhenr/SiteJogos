@@ -9,7 +9,7 @@ interface IProps {
   win: boolean;
 }
 
-function RecentItem({ time, game, user, win }: IProps) {
+function MatchItem({ time, game, user, win }: IProps) {
   return (
     <Box
       alignItems={"center"}
@@ -23,7 +23,7 @@ function RecentItem({ time, game, user, win }: IProps) {
         "& p": {
           flex: 1,
           fontSize: {
-            mobile: "11.5px",
+            mobile: "11px",
             tablet: "14px",
             desktopLarge: "15px",
           },
@@ -45,4 +45,4 @@ function RecentItem({ time, game, user, win }: IProps) {
   );
 }
 
-export default RecentItem;
+export default MatchItem;
