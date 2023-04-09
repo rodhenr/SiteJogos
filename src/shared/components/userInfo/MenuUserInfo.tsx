@@ -41,12 +41,18 @@ function MenuUserInfo() {
       alignItems={"center"}
       display={"flex"}
       gap={6}
-      sx={{ color: "#FFF" }}
+      sx={{ color: "#FFF", justifyContent: { laptop: "flex-end" } }}
       width={"100%"}
     >
       {hasToken && isSuccess ? (
-        <Box display={"flex"} justifyContent={"space-between"} width={"100%"}>
-          <Box alignContent={"center"} display={"flex"} flex={1} gap={1}>
+        <Box display={"flex"} gap={2} justifyContent={"space-between"} width={"100%"}>
+          <Box
+            alignContent={"center"}
+            display={"flex"}
+            flex={1}
+            gap={1}
+            justifyContent={"flex-end"}
+          >
             <Avatar
               alt="User Avatar"
               onClick={handleProfileModalState}

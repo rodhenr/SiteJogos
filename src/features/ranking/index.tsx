@@ -24,7 +24,7 @@ function Index() {
     <HomeItemContainer
       icon={BoltIcon}
       isLoading={isLoading}
-      maxHeight={"auto"}
+      maxHeight={"100%"}
       size={1}
       titleText={"ranking"}
     >

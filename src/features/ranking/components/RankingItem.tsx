@@ -9,6 +9,9 @@ interface IProps {
 
 function RankingItem({ level, player, playerID, position }: IProps) {
   const bColor = [1, 2, 3].includes(position) ? "tertiary.main" : "info.dark";
+  const hoverBackgroundColor = [1, 2, 3].includes(position)
+    ? "tertiary.light"
+    : "info.main";
 
   return (
     <Box
@@ -27,7 +30,7 @@ function RankingItem({ level, player, playerID, position }: IProps) {
         },
 
         "&:hover": {
-          bgcolor: "info.main",
+          bgcolor: hoverBackgroundColor,
           cursor: "pointer",
         },
       }}

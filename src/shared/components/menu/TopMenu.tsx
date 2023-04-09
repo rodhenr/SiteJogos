@@ -34,11 +34,11 @@ function TopMenu() {
   return (
     <Box
       display={"flex"}
-      justifyContent={"space-between"}
       sx={{
         alignItems: { laptop: "center" },
         flexDirection: { mobile: "column", laptop: "row" },
         gap: { mobile: 2, laptop: 1 },
+        justifyContent: { mobile: "space-between", laptop: "flex-end" },
       }}
     >
       {windowWidth < 1024 && (
