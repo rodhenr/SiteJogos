@@ -1,17 +1,33 @@
 import GameLayout from "../../../shared/layout/GameLayout";
 
 function Uno() {
+  const sizes = {
+    height: {
+      mobile: "100%",
+      tablet: "100%",
+      laptop: "100%",
+      desktop: "100%",
+      desktopLarger: "100%",
+    },
+    width: {
+      mobile: "100%",
+      tablet: "100%",
+      laptop: "100%",
+      desktop: "100%",
+      desktopLarger: "100%",
+    },
+    rulesOnSide: {
+      mobile: false,
+      tablet: false,
+      laptop: false,
+      desktop: false,
+      desktopLarger: false,
+    },
+  };
+
   return (
-    <GameLayout
-      rules={[
-        "Você deve jogar uma cartaVocê deve jogar uma cartaVocê deve jogar uma cartaVocê deve jogar uma cartaVocê deve jogar uma cartaVocê deve jogar uma cartaVocê deve jogar uma cartaVocê deve jogar uma cartaVocê deve jogar uma cartaVocê deve jogar uma cartaVocê deve jogar uma carta ",
-        "Você deve jogar uma cartaVocê deve jogar uma cartaVocê deve jogar uma cartaVocê deve jogar uma cartaVocê deve jogar uma cartaVocê deve jogar uma cartaVocê deve jogar uma cartaVocê deve jogar uma cartaVocê deve jogar uma cartaVocê deve jogar uma cartaVocê deve jogar uma carta ",
-        "Você deve jogar uma cartaVocê deve jogar uma cartaVocê deve jogar uma cartaVocê deve jogar uma cartaVocê deve jogar uma cartaVocê deve jogar uma cartaVocê deve jogar uma cartaVocê deve jogar uma cartaVocê deve jogar uma cartaVocê deve jogar uma cartaVocê deve jogar uma carta ",
-        "Você deve jogar uma cartaVocê deve jogar uma cartaVocê deve jogar uma cartaVocê deve jogar uma cartaVocê deve jogar uma cartaVocê deve jogar uma cartaVocê deve jogar uma cartaVocê deve jogar uma cartaVocê deve jogar uma cartaVocê deve jogar uma cartaVocê deve jogar uma carta ",
-        "Você deve jogar uma cartaVocê deve jogar uma cartaVocê deve jogar uma cartaVocê deve jogar uma cartaVocê deve jogar uma cartaVocê deve jogar uma cartaVocê deve jogar uma cartaVocê deve jogar uma cartaVocê deve jogar uma cartaVocê deve jogar uma cartaVocê deve jogar uma carta ",
-      ]}
-    >
-      <div>Uno</div>
+    <GameLayout rulesList={[""]} sizes={sizes}>
+      <div>JOGO</div>
     </GameLayout>
   );
 }

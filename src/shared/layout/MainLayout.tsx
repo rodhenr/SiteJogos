@@ -19,9 +19,10 @@ function MainLayout({ children }: IProps) {
       display={"flex"}
       flex={1}
       flexDirection={"column"}
+      minHeight={"100%"}
       sx={{
         gap: { mobile: 2, laptop: 3 },
-        height: {laptop: "100vh"},
+        height: { laptop: "100vh" },
         p: { mobile: 2, laptop: 3 },
       }}
     >
@@ -29,6 +30,7 @@ function MainLayout({ children }: IProps) {
       <Divider sx={{ bgcolor: "info.main", opacity: 0.75 }} />
       <Box
         boxSizing={"border-box"}
+        height={"100%"}
         minHeight={0}
         sx={{
           display: { laptop: "flex" },

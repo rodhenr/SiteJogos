@@ -4,19 +4,44 @@ import { Box, Typography } from "@mui/material";
 
 import MainLayout from "./MainLayout";
 
-interface IProps {
-  children: JSX.Element | JSX.Element[];
-  rules: any[];
+export interface ISize {
+  height: {
+    mobile: string;
+    tablet: string;
+    laptop: string;
+    desktop: string;
+    desktopLarger: string;
+  };
+  width: {
+    mobile: string;
+    tablet: string;
+    laptop: string;
+    desktop: string;
+    desktopLarger: string;
+  };
+  rulesOnSide: {
+    mobile: boolean;
+    tablet: boolean;
+    laptop: boolean;
+    desktop: boolean;
+    desktopLarger: boolean;
+  };
 }
 
-function GameLayout({ children, rules }: IProps) {
+interface IProps {
+  children: JSX.Element | JSX.Element[];
+  rulesList: string[];
+  sizes: ISize;
+}
+
+function GameLayout({ children, rulesList, sizes }: IProps) {
   return (
     <MainLayout>
       <Box
-        bgcolor={"#1b1e23"}
+        bgcolor={"secondary.dark"}
         borderRadius={"10px"}
         boxSizing={"border-box"}
-        boxShadow={24}
+        boxShadow={6}
         display={"flex"}
         flexDirection={"column"}
         flex={1}
@@ -24,24 +49,26 @@ function GameLayout({ children, rules }: IProps) {
         p={2}
         sx={{
           overflowY: "auto",
+
           "&::-webkit-scrollbar": {
             display: "none",
           },
         }}
       >
         <Box
-          bgcolor={"#FFF"}
-          flex={1}
-          sx={{ minHeight: { desktopLarge: "450px" } }}
+          bgcolor={"info.light"}
+          display={"flex"}
+          overflow={"hidden"}
+          sx={{ height: { ...sizes.height }, width: { ...sizes.width } }}
         >
           {children}
         </Box>
         <Box display={"flex"} flex={1} flexDirection={"column"}>
-          <Typography color={"#FFF"} mb={1} variant="h1">
+          <Typography color={"#FFF"} mb={1} variant="h5">
             REGRAS
           </Typography>
           <Box display={"flex"} flexDirection={"column"} gap={1}>
-            {rules.map((rule, index) => {
+            {rulesList.map((rule, index) => {
               return (
                 <Box key={uuidv4()}>
                   <Typography color={"#FFF"}>
