@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from "uuid";
 
-import { Box, Typography } from "@mui/material";
+import { Box, Divider, Typography } from "@mui/material";
 
 import MainLayout from "./MainLayout";
 
@@ -10,31 +10,32 @@ export interface ISize {
     tablet: string;
     laptop: string;
     desktop: string;
-    desktopLarger: string;
+    desktopLarge: string;
   };
   width: {
     mobile: string;
     tablet: string;
     laptop: string;
     desktop: string;
-    desktopLarger: string;
+    desktopLarge: string;
   };
   rulesOnSide: {
     mobile: boolean;
     tablet: boolean;
     laptop: boolean;
     desktop: boolean;
-    desktopLarger: boolean;
+    desktopLarge: boolean;
   };
 }
 
 interface IProps {
   children: JSX.Element | JSX.Element[];
+  gameName: string;
   rulesList: string[];
   sizes: ISize;
 }
 
-function GameLayout({ children, rulesList, sizes }: IProps) {
+function GameLayout({ children, gameName, rulesList, sizes }: IProps) {
   return (
     <MainLayout>
       <Box
@@ -48,6 +49,13 @@ function GameLayout({ children, rulesList, sizes }: IProps) {
         gap={2}
         p={2}
         sx={{
+          flexDirection: {
+            mobile: sizes.rulesOnSide.mobile ? "row" : "column",
+            tablet: sizes.rulesOnSide.tablet ? "row" : "column",
+            laptop: sizes.rulesOnSide.laptop ? "row" : "column",
+            desktop: sizes.rulesOnSide.desktop ? "row" : "column",
+            desktopLarge: sizes.rulesOnSide.desktopLarge ? "row" : "column",
+          },
           overflowY: "auto",
 
           "&::-webkit-scrollbar": {
@@ -63,7 +71,11 @@ function GameLayout({ children, rulesList, sizes }: IProps) {
         >
           {children}
         </Box>
-        <Box display={"flex"} flex={1} flexDirection={"column"}>
+        <Box display={"flex"} flex={1} flexDirection={"column"} gap={1}>
+          <Typography color={"#FFF"} variant={"h3"}>
+            {gameName.toUpperCase()}
+          </Typography>
+          <Divider sx={{ bgcolor: "info.main", opacity: 0.75 }} />
           <Typography color={"#FFF"} mb={1} variant="h5">
             REGRAS
           </Typography>

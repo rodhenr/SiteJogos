@@ -17,11 +17,15 @@ function GameSquares({ itens, play }: Props) {
       sx={{
         gridTemplateColumns: {
           mobile: "repeat(3, 80px)",
-          laptop: "repeat(3, 160px)",
+          tablet: "repeat(3, 100px)",
+          laptop: "repeat(3, 130px)",
+          desktopLarge: "repeat(3, 160px)",
         },
         gridTemplateRows: {
           mobile: "repeat(3, 80px)",
-          laptop: "repeat(3, 160px)",
+          tablet: "repeat(3, 100px)",
+          laptop: "repeat(3, 130px)",
+          desktopLarge: "repeat(3, 160px)",
         },
       }}
     >
@@ -35,8 +39,18 @@ function GameSquares({ itens, play }: Props) {
             justifyContent={"center"}
             sx={{
               cursor: "pointer",
-              height: { mobile: "70px", laptop: "150px" },
-              width: { mobile: "70px", laptop: "150px" },
+              height: {
+                mobile: "70px",
+                tablet: "90px",
+                laptop: "120px",
+                desktopLarge: "150px",
+              },
+              width: {
+                mobile: "70px",
+                tablet: "90px",
+                laptop: "120px",
+                desktopLarge: "150px",
+              },
 
               "& p": {
                 fontSize: { mobile: "44px", laptop: "96px" },

@@ -7,26 +7,26 @@ function Yahtzee() {
       tablet: "100%",
       laptop: "100%",
       desktop: "100%",
-      desktopLarger: "100%",
+      desktopLarge: "100%",
     },
     width: {
       mobile: "100%",
       tablet: "100%",
       laptop: "100%",
       desktop: "100%",
-      desktopLarger: "100%",
+      desktopLarge: "100%",
     },
     rulesOnSide: {
       mobile: false,
       tablet: false,
       laptop: false,
       desktop: false,
-      desktopLarger: false,
+      desktopLarge: false,
     },
   };
 
   return (
-    <GameLayout rulesList={[""]} sizes={sizes}>
+    <GameLayout gameName={"Yahtzee"} rulesList={[""]} sizes={sizes}>
       <div>JOGO</div>
     </GameLayout>
   );
