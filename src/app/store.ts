@@ -3,6 +3,7 @@ import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import sidebarReducer from "../shared/modalSlice";
 import rankingReducer from "../features/ranking/rankingSlice";
 import authReducer from "../features/auth/authSlice";
+import gameReducer from "../features/game/gameSlice";
 
 import { apiSlice } from "./apiSlice";
 
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
   sidebar: sidebarReducer,
   ranking: rankingReducer,
   auth: authReducer,
+  game: gameReducer,
 });
 
 export const store = configureStore({

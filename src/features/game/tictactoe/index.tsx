@@ -5,12 +5,17 @@ import { Box } from "@mui/material";
 import GameSquares from "./components/GameSquares";
 import EndMessage from "./components/EndMessage";
 import Restart from "./components/Restart";
+import InitialScreen from "../components/InitialScreen";
+import { useSelector } from "react-redux";
+import { RootState } from "../../../app/store";
 
 function Index() {
   const [quadrado, setQuadrado] = useState(Array(9).fill(""));
   const [over, setOver] = useState(false);
   const [turno, setTurno] = useState(0);
   const [mensagem, setMensagem] = useState("");
+
+  const hasMatchID = useSelector((state: RootState) => state.game.matchID);
 
   useEffect(() => {
     const regras = (simbolo: string) => {
@@ -61,9 +66,15 @@ function Index() {
       justifyItems={"center"}
       p={1}
     >
-      <GameSquares itens={quadrado} play={play} />
-      <EndMessage info={mensagem} turno={turno} over={over} />
-      <Restart turno={turno} over={over} />
+      {!hasMatchID ? (
+        <InitialScreen gameName={"Jogo da Velha"} gameID={4} />
+      ) : (
+        <>
+          <GameSquares itens={quadrado} play={play} />
+          <EndMessage info={mensagem} turno={turno} over={over} />
+          <Restart turno={turno} over={over} />
+        </>
+      )}
     </Box>
   );
 }
