@@ -1,11 +1,58 @@
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../../../app/store";
+import { useCpuMoveMutation, usePlayerMoveMutation } from "../../gameApiSlice";
+
 import { Box, Typography } from "@mui/material";
 
-interface Props {
-  itens: string[];
-  play: Function;
+import { v4 as uuidv4 } from "uuid";
+import { changeGameState } from "../../gameSlice";
+import { useEffect } from "react";
+
+interface IProps {
+  matchID: number;
 }
 
-function GameSquares({ itens, play }: Props) {
+function GameSquares({ matchID }: IProps) {
+  const dispatch = useDispatch();
+  const cells = useSelector((state: RootState) => state.game.cells);
+  const isPlayerNext = useSelector(
+    (state: RootState) => state.game.isPlayerNext
+  );
+  const [doPlayerMove] = usePlayerMoveMutation();
+  const [doCpuMove] = useCpuMoveMutation();
+
+  useEffect(() => {
+    const handleCpuMove = async () => {
+      try {
+        const data = await doCpuMove({ matchID }).unwrap();
+        dispatch(changeGameState(data));
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    if (!isPlayerNext) {
+      handleCpuMove();
+    }
+
+    return () => {};
+  }, [isPlayerNext]);
+
+  const handlePlayerMove = async (cell: boolean | null, position: number) => {
+    if (cell !== null) return;
+
+    try {
+      const data = await doPlayerMove({
+        matchID,
+        squarePosition: position,
+      }).unwrap();
+      dispatch(changeGameState(data));
+      //faz algo com a data
+    } catch (err: any) {
+      console.log(err);
+    }
+  };
+
   return (
     <Box
       alignContent={"center"}
@@ -29,7 +76,7 @@ function GameSquares({ itens, play }: Props) {
         },
       }}
     >
-      {itens.map((i, key) => {
+      {cells.map((cell, index) => {
         return (
           <Box
             alignItems={"center"}
@@ -60,10 +107,12 @@ function GameSquares({ itens, play }: Props) {
                 bgcolor: "#434a56",
               },
             }}
-            key={key}
-            onClick={() => play(key)}
+            key={uuidv4()}
+            onClick={() => handlePlayerMove(cell, index + 1)}
           >
-            <Typography color={"#FFF"}>{i}</Typography>
+            <Typography color={"#FFF"}>
+              {cell ? "X" : cell === null ? "" : "O"}
+            </Typography>
           </Box>
         );
       })}

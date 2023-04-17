@@ -15,7 +15,7 @@ function Index() {
   const [turno, setTurno] = useState(0);
   const [mensagem, setMensagem] = useState("");
 
-  const hasMatchID = useSelector((state: RootState) => state.game.matchID);
+  const matchID = useSelector((state: RootState) => state.game.matchID);
 
   useEffect(() => {
     const regras = (simbolo: string) => {
@@ -66,11 +66,11 @@ function Index() {
       justifyItems={"center"}
       p={1}
     >
-      {!hasMatchID ? (
+      {!matchID ? (
         <InitialScreen gameName={"Jogo da Velha"} gameID={4} />
       ) : (
         <>
-          <GameSquares itens={quadrado} play={play} />
+          <GameSquares matchID={matchID} />
           <EndMessage info={mensagem} turno={turno} over={over} />
           <Restart turno={turno} over={over} />
         </>
