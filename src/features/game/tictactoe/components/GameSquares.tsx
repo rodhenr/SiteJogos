@@ -6,7 +6,7 @@ import { Box, Typography } from "@mui/material";
 
 import { v4 as uuidv4 } from "uuid";
 import { changeGameState } from "../../gameSlice";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 interface IProps {
   matchID: number;
@@ -18,25 +18,27 @@ function GameSquares({ matchID }: IProps) {
   const isPlayerNext = useSelector(
     (state: RootState) => state.game.isPlayerNext
   );
+  const isGameOver = useSelector((state: RootState) => state.game.isGameOver);
   const [doPlayerMove] = usePlayerMoveMutation();
   const [doCpuMove] = useCpuMoveMutation();
+  const [render, setRender] = useState(0);
 
   useEffect(() => {
-    const handleCpuMove = async () => {
-      try {
-        const data = await doCpuMove({ matchID }).unwrap();
-        dispatch(changeGameState(data));
-      } catch (err) {
-        console.log(err);
-      }
-    };
+    setRender((prev) => prev + 1);
+    console.log(render);
+    if (!isPlayerNext && !isGameOver) {
+      const handleCpuMove = async () => {
+        try {
+          const data = await doCpuMove({ matchID }).unwrap();
+          dispatch(changeGameState(data));
+        } catch (err) {
+          console.log(err);
+        }
+      };
 
-    if (!isPlayerNext) {
       handleCpuMove();
     }
-
-    return () => {};
-  }, [isPlayerNext]);
+  }, [isPlayerNext, isGameOver]);
 
   const handlePlayerMove = async (cell: boolean | null, position: number) => {
     if (cell !== null) return;

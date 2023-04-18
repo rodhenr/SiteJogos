@@ -1,35 +1,47 @@
+import { useSelector } from "react-redux";
+import { RootState } from "../../../../app/store";
+
 import { Box, Typography } from "@mui/material";
 
-interface Props {
-  info: string;
-  over: boolean;
-  turno: number;
-}
+function EndMensage() {
+  const isUserWin = useSelector((state: RootState) => state.game.isUserWin);
 
-function EndMensage({ info, over, turno }: Props) {
   return (
     <Box
       alignItems={"center"}
       display={"flex"}
-      justifyContent={"center"}
+      flex={1}
+      flexDirection={"column"}
+      height={"100%"}
+      justifyContent={"flex-end"}
       sx={{
         minHeight: "50px",
-        "& p": {
-          color: "#fff",
-          fontSize: { mobile: "18px", laptop: "22px" },
-        },
       }}
     >
-      {over ? (
-        <Box>
-          <Typography>{info}</Typography>
-        </Box>
-      ) : turno === 9 ? (
-        <Box>
-          <Typography>O JOGO TERMINOU EMPATADO!</Typography>
+      <Typography
+        color={"secondary.dark"}
+        sx={{
+          fontSize: { mobile: 35, tablet: 50, laptop: 55 },
+          fontWeight: "bold",
+        }}
+        textAlign={"center"}
+      >
+        Partida encerrada!
+      </Typography>
+      {!!isUserWin ? (
+        <Box
+          sx={{
+            "& p": {
+              color: "#FFF",
+              fontSize: { mobile: 28, tablet: 34 },
+              textAlign: "center",
+            },
+          }}
+        >
+          <Typography>VOCÊ VENCEU!</Typography>
         </Box>
       ) : (
-        ""
+        <Typography>VOCÊ PERDEU!</Typography>
       )}
     </Box>
   );
