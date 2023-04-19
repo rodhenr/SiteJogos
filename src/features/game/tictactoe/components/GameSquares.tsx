@@ -6,7 +6,7 @@ import { Box, Typography } from "@mui/material";
 
 import { v4 as uuidv4 } from "uuid";
 import { changeGameState } from "../../gameSlice";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 interface IProps {
   matchID: number;
@@ -21,11 +21,8 @@ function GameSquares({ matchID }: IProps) {
   const isGameOver = useSelector((state: RootState) => state.game.isGameOver);
   const [doPlayerMove] = usePlayerMoveMutation();
   const [doCpuMove] = useCpuMoveMutation();
-  const [render, setRender] = useState(0);
 
   useEffect(() => {
-    setRender((prev) => prev + 1);
-    console.log(render);
     if (!isPlayerNext && !isGameOver) {
       const handleCpuMove = async () => {
         try {

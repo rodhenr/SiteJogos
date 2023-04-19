@@ -8,12 +8,18 @@ export interface IRanking {
 }
 
 export interface IRecentMatches {
+  matchProcessingHistoryID: number;
+  userID: number;
   id: number;
   date: Date;
-  is_win: boolean;
-  is_processed: boolean;
   "User.name": string;
   "Game.name": string;
+  "MatchProcessingHistory.Config_MatchResult.id": number;
+  "MatchProcessingHistory.Config_MatchResult.matchResult": string;
+  "MatchProcessingHistory.date": Date;
+  "MatchProcessingHistory.id": number;
+  "MatchProcessingHistory.matchID": number;
+  "MatchProcessingHistory.matchResultID": number;
 }
 export interface IStatistics {
   game: string;

@@ -6,10 +6,10 @@ interface IProps {
   time: Date;
   game: string;
   user: string;
-  win: boolean;
+  result: string;
 }
 
-function MatchItem({ time, game, user, win }: IProps) {
+function MatchItem({ time, game, user, result }: IProps) {
   return (
     <Box
       alignItems={"center"}
@@ -37,9 +37,19 @@ function MatchItem({ time, game, user, win }: IProps) {
       <Typography color={"#FFF"}>{game}</Typography>
       <Typography color={"#FFF"}>{user.substring(0, 40)}</Typography>
       <Typography
-        sx={win ? { color: "success.main" } : { color: "error.main" }}
+        sx={
+          result === "win"
+            ? { color: "success.main" }
+            : result === "lose"
+            ? { color: "error.main" }
+            : { color: "#a0a01d" }
+        }
       >
-        {win ? "VITÓRIA" : "DERROTA"}
+        {result === "win"
+          ? "VITÓRIA"
+          : result === "lose"
+          ? "DERROTA"
+          : "EMPATE"}
       </Typography>
     </Box>
   );

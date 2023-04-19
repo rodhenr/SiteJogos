@@ -10,7 +10,7 @@ import RecentItem from "./components/MatchItem";
 import ErrorMessage from "../../shared/components/ErrorMessage";
 
 function Index() {
-  const { data, isSuccess, isLoading, isError } = useGetRecentMatchesQuery(15);
+  const { data, isSuccess, isLoading, isError } = useGetRecentMatchesQuery(10);
 
   const titles = ["DATA/HORA", "JOGO", "USUÁRIO", "RESULTADO"];
 
@@ -68,7 +68,11 @@ function Index() {
                     key={uuidv4()}
                     time={match.date}
                     user={match["User.name"]}
-                    win={match.is_win}
+                    result={
+                      match[
+                        "MatchProcessingHistory.Config_MatchResult.matchResult"
+                      ]
+                    }
                   />
                 );
               })}

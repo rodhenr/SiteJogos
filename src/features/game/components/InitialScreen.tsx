@@ -1,6 +1,10 @@
-import { Box, Button, Typography } from "@mui/material";
-import { useCreateNewGameMutation } from "../gameApiSlice";
+import { useState } from "react";
+
 import { useDispatch } from "react-redux";
+import { useCreateNewGameMutation } from "../gameApiSlice";
+
+import { Alert, Box, Button, Typography } from "@mui/material";
+
 import { changeMatchID } from "../gameSlice";
 
 interface IProps {
@@ -18,6 +22,7 @@ interface IProps {
 function InitialScreen({ gameName, gameID }: IProps) {
   const dispatch = useDispatch();
   const [createNewGame] = useCreateNewGameMutation();
+  const [error, setError] = useState<string>("");
 
   const handleNewGame = async () => {
     try {
@@ -25,8 +30,10 @@ function InitialScreen({ gameName, gameID }: IProps) {
       dispatch(changeMatchID(data.matchID));
     } catch (err: any) {
       if (err?.data?.message) {
-        //Necessário criar estado de erro(ou alerta) e exibir na tela
-        console.log("Mensagem:", err.data.message, "  Status:", err.status);
+        setError(err.data.message);
+        setTimeout(() => {
+          setError("");
+        }, 2500);
       }
     }
   };
@@ -39,8 +46,23 @@ function InitialScreen({ gameName, gameID }: IProps) {
       gap={3}
       height={"100%"}
       justifyContent={"center"}
+      position={"relative"}
       width={"100%"}
     >
+      {error && (
+        <Alert
+          severity="error"
+          sx={{
+            boxSizing: "border-box",
+            position: "absolute",
+            top: 0,
+            width: "100%",
+          }}
+          variant="filled"
+        >
+          {error}
+        </Alert>
+      )}
       <Typography
         color={"#FFF"}
         fontFamily={"'DynaPuff', cursive"}

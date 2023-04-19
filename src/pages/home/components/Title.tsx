@@ -8,12 +8,12 @@ interface IProps {
 function Title({ Icon, title }: IProps) {
   return (
     <Box display={"flex"} mb={2} sx={{ gap: { mobile: 0.5, tablet: 1 } }}>
-      <Icon sx={{ color: "tertiary.main" }} />
+      <Icon sx={{ alignSelf: "center", color: "tertiary.main" }} />
       <Typography
         color={"tertiary.main"}
         m={0}
         sx={{
-          fontSize: { tablet: "17px", laptop: "18px", desktopLarge: "19px" },
+          fontSize: { tablet: 17, laptop: 18, desktopLarge: 23 },
         }}
       >
         {title}

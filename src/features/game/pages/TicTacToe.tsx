@@ -27,7 +27,15 @@ function TicTacToe() {
   };
 
   return (
-    <GameLayout gameName={"Jogo da Velha"} rulesList={[""]} sizes={sizes}>
+    <GameLayout
+      gameName={"Jogo da Velha"}
+      rulesList={[
+        "O jogador possui uma marcação de xis (X) e o CPU possui uma marcação de círculo (O)",
+        "Os jogadores jogam alternadamente, uma marcação por vez, numa lacuna que esteja vazia",
+        "Vence o jogador que conseguir formar primeiro uma linha com três símbolos iguais, seja ela na horizontal, vertical ou diagonal",
+      ]}
+      sizes={sizes}
+    >
       <Game />
     </GameLayout>
   );

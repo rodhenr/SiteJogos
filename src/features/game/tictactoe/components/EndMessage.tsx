@@ -28,21 +28,21 @@ function EndMensage() {
       >
         Partida encerrada!
       </Typography>
-      {!!isUserWin ? (
-        <Box
-          sx={{
-            "& p": {
-              color: "#FFF",
-              fontSize: { mobile: 28, tablet: 34 },
-              textAlign: "center",
-            },
-          }}
-        >
+      <Box
+        sx={{
+          "& p": {
+            color: "#FFF",
+            fontSize: { mobile: 28, tablet: 34 },
+            textAlign: "center",
+          },
+        }}
+      >
+        {!!isUserWin ? (
           <Typography>VOCÊ VENCEU!</Typography>
-        </Box>
-      ) : (
-        <Typography>VOCÊ PERDEU!</Typography>
-      )}
+        ) : (
+          <Typography>VOCÊ PERDEU!</Typography>
+        )}
+      </Box>
     </Box>
   );
 }
