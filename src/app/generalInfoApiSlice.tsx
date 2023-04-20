@@ -25,6 +25,7 @@ export interface IStatistics {
   game: string;
   wins: number;
   loses: number;
+  draws: number;
 }
 
 export interface IUserInfo {

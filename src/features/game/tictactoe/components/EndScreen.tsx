@@ -20,7 +20,6 @@ function EndScreen({ gameID }: IProps) {
       dispatch(changeMatchID(data.matchID));
     } catch (err: any) {
       if (err?.data?.message) {
-        //Necessário criar estado de erro(ou alerta) e exibir na tela
         console.log("Mensagem:", err.data.message, "  Status:", err.status);
       }
     }

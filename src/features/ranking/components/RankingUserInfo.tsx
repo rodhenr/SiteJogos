@@ -15,8 +15,6 @@ function RankingUserInfo({ userID }: IProps) {
   const { data, isSuccess, isLoading, isError } =
     useGetPlayerInfoFromRankingQuery(userID);
 
-  console.log(data);
-
   return (
     <>
       {isLoading && <Loading />}
@@ -85,6 +83,7 @@ function RankingUserInfo({ userID }: IProps) {
               <Typography>JOGO</Typography>
               <Typography>VITÓRIAS</Typography>
               <Typography>DERROTAS</Typography>
+              <Typography>EMPATES</Typography>
             </Box>
             <Box
               bgcolor={"info.light"}
@@ -120,6 +119,7 @@ function RankingUserInfo({ userID }: IProps) {
                     <Typography>{statistic.game}</Typography>
                     <Typography>{statistic.wins}</Typography>
                     <Typography>{statistic.loses}</Typography>
+                    <Typography>{statistic.draws}</Typography>
                   </Box>
                 );
               })}

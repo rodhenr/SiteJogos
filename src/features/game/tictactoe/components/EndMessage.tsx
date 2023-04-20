@@ -4,7 +4,7 @@ import { RootState } from "../../../../app/store";
 import { Box, Typography } from "@mui/material";
 
 function EndMensage() {
-  const isUserWin = useSelector((state: RootState) => state.game.isUserWin);
+  const gameResult = useSelector((state: RootState) => state.game.gameResult);
 
   return (
     <Box
@@ -37,10 +37,12 @@ function EndMensage() {
           },
         }}
       >
-        {!!isUserWin ? (
+        {gameResult && gameResult === "win" ? (
           <Typography>VOCÊ VENCEU!</Typography>
-        ) : (
+        ) : gameResult === "lose" ? (
           <Typography>VOCÊ PERDEU!</Typography>
+        ) : (
+          <Typography>EMPATE!</Typography>
         )}
       </Box>
     </Box>

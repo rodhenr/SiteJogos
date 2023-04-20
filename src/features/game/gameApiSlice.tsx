@@ -14,7 +14,7 @@ interface IPlayerMove {
 export interface IMoveReturn {
   message: string | null;
   isGameOver: boolean | null;
-  isUserWin: boolean | null;
+  gameResult: string | null;
   isPlayerNext: boolean | null;
   cells: CellType[];
 }

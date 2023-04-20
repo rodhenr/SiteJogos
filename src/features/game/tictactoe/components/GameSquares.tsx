@@ -46,7 +46,6 @@ function GameSquares({ matchID }: IProps) {
         squarePosition: position,
       }).unwrap();
       dispatch(changeGameState(data));
-      //faz algo com a data
     } catch (err: any) {
       console.log(err);
     }
