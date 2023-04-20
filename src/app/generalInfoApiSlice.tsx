@@ -37,15 +37,6 @@ export interface IUserInfo {
   level: number;
 }
 
-export interface IRecords {
-  [key: string]: {
-    gameName: string;
-    userName: string;
-    userID: number;
-    totalWins: number;
-  }[];
-}
-
 export const generalInfoApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     getPlayerRanking: builder.query<IRanking[], number>({
@@ -75,12 +66,6 @@ export const generalInfoApiSlice = apiSlice.injectEndpoints({
         },
       }),
     }),
-    getRecords: builder.query<IRecords, void>({
-      query: () => ({
-        url: "/api/records",
-        method: "GET",
-      }),
-    }),
   }),
 });
 
@@ -88,5 +73,4 @@ export const {
   useGetPlayerRankingQuery,
   useGetRecentMatchesQuery,
   useGetPlayerInfoFromRankingQuery,
-  useGetRecordsQuery,
 } = generalInfoApiSlice;

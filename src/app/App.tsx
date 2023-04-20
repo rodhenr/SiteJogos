@@ -1,7 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 
 import Home from "../pages/home/Home";
-import Records from "../pages/records/Records";
 import Games from "../pages/games/Games";
 import Ranking from "../pages/ranking/Ranking";
 import Uno from "../features/game/pages/Uno";
@@ -17,7 +16,6 @@ function App() {
         <Route index element={<Home />} />
         <Route path="jogos" element={<Games />} />
         <Route path="ranking" element={<Ranking />} />
-        <Route path="recordes" element={<Records />} />
         <Route path="*" element={<NotFound />} />
       </Route>
       <Route path="/jogos/*">

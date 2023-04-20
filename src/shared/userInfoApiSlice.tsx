@@ -46,6 +46,7 @@ export const generalInfoApiSlice = apiSlice.injectEndpoints({
         url: "/api/user/basic",
         method: "GET",
       }),
+      providesTags: ["UserInfo"],
     }),
     getPlayerRecentMatches: builder.query<IPlayerRecentMatches[] | [], number>({
       query: (limit) => ({

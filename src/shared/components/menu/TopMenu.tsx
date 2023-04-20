@@ -16,7 +16,6 @@ function TopMenu() {
     { name: "Inicio", route: "/" },
     { name: "Jogos", route: "/jogos" },
     { name: "Ranking", route: "/ranking" },
-    { name: "Recordes", route: "/recordes" },
   ];
 
   useEffect(() => {
