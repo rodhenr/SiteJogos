@@ -1,7 +1,6 @@
 import { Box, Modal, Typography } from "@mui/material";
 
 import CloseButton from "./CloseButton";
-import Loading from "./Loading";
 import ErrorMessage from "./ErrorMessage";
 
 interface IProps {
@@ -70,7 +69,6 @@ function ModalContainer({
           {title}
         </Typography>
         {children}
-        {isLoading && <Loading />}
         {!isAuth && isError && <ErrorMessage />}
       </Box>
     </Modal>

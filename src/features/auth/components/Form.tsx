@@ -30,27 +30,22 @@ function Form({ buttonText, children, handleForm, isLoading }: IProps) {
         onSubmit={(e) => handleForm(e)}
       >
         {children}
+        <Button
+          sx={{
+            bgcolor: "tertiary.main",
+            borderRadius: "10px",
+            fontSize: "18px",
+            height: "50px",
 
-        {isLoading ? (
-          <Loading />
-        ) : (
-          <Button
-            sx={{
-              bgcolor: "tertiary.main",
-              borderRadius: "10px",
-              fontSize: "18px",
-              height: "50px",
-
-              ":hover": {
-                bgcolor: "tertiary.light",
-              },
-            }}
-            type="submit"
-            variant={"contained"}
-          >
-            {buttonText}
-          </Button>
-        )}
+            ":hover": {
+              bgcolor: "tertiary.light",
+            },
+          }}
+          type="submit"
+          variant={"contained"}
+        >
+          {isLoading ? <Loading /> : buttonText}
+        </Button>
       </form>
     </Box>
   );

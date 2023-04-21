@@ -36,13 +36,19 @@ const baseQueryWithReauth: BaseQueryFn<
       extraOptions
     );
     if (refreshResult.data) {
-      const data = refreshResult.data;
-      api.dispatch(addToken({ username: "", accessToken: "" }));
+      const data = refreshResult.data as {
+        accessToken: string;
+        username: string;
+      };
+      api.dispatch(
+        addToken({ username: data.username, accessToken: data.accessToken })
+      );
       result = await baseApiQuery(args, api, extraOptions);
     } else {
       api.dispatch(logout());
     }
   }
+
   return result;
 };
 
