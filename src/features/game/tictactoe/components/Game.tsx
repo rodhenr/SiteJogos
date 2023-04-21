@@ -12,7 +12,7 @@ interface IProps {
   matchID: number;
 }
 
-function GameSquares({ matchID }: IProps) {
+function Game({ matchID }: IProps) {
   const dispatch = useDispatch();
   const cells = useSelector((state: RootState) => state.game.cells);
   const isPlayerNext = useSelector(
@@ -118,4 +118,4 @@ function GameSquares({ matchID }: IProps) {
   );
 }
 
-export default GameSquares;
+export default Game;

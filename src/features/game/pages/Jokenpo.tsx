@@ -1,11 +1,12 @@
 import GameLayout from "../../../shared/layout/GameLayout";
+import Game from "../jokenpo/index";
 
 function Jokenpo() {
   const sizes = {
-  height: {
-      mobile: "100%",
-      tablet: "100%",
-      laptop: "100%",
+    height: {
+      mobile: "400px",
+      tablet: "450px",
+      laptop: "550px",
       desktop: "100%",
       desktopLarge: "100%",
     },
@@ -13,20 +14,21 @@ function Jokenpo() {
       mobile: "100%",
       tablet: "100%",
       laptop: "100%",
-      desktop: "100%",
-      desktopLarge: "100%",
+      desktop: "50%",
+      desktopLarge: "50%",
     },
     rulesOnSide: {
       mobile: false,
       tablet: false,
       laptop: false,
-      desktop: false,
-      desktopLarge: false,
-    }}
+      desktop: true,
+      desktopLarge: true,
+    },
+  };
 
   return (
     <GameLayout gameName={"JoKenPo"} rulesList={[""]} sizes={sizes}>
-      <div>JOGO</div>
+      <Game />
     </GameLayout>
   );
 }

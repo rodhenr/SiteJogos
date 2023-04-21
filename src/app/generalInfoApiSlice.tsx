@@ -8,18 +8,18 @@ export interface IRanking {
 }
 
 export interface IRecentMatches {
-  matchProcessingHistoryID: number;
+  matchProcessingID: number;
   userID: number;
   id: number;
   date: Date;
   "User.name": string;
   "Game.name": string;
-  "MatchProcessingHistory.Config_MatchResult.id": number;
-  "MatchProcessingHistory.Config_MatchResult.matchResult": string;
-  "MatchProcessingHistory.date": Date;
-  "MatchProcessingHistory.id": number;
-  "MatchProcessingHistory.matchID": number;
-  "MatchProcessingHistory.matchResultID": number;
+  "MatchProcessing.Config_Result.id": number;
+  "MatchProcessing.Config_Result.result": string;
+  "MatchProcessing.date": Date;
+  "MatchProcessing.id": number;
+  "MatchProcessing.matchID": number;
+  "MatchProcessing.resultID": number;
 }
 export interface IStatistics {
   game: string;
@@ -56,6 +56,7 @@ export const generalInfoApiSlice = apiSlice.injectEndpoints({
           limit,
         },
       }),
+      providesTags: ["RecentMatches"],
     }),
     getPlayerInfoFromRanking: builder.query<IUserInfo, number>({
       query: (userID) => ({

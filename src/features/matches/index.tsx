@@ -68,11 +68,7 @@ function Index() {
                     key={uuidv4()}
                     time={match.date}
                     user={match["User.name"]}
-                    result={
-                      match[
-                        "MatchProcessingHistory.Config_MatchResult.matchResult"
-                      ]
-                    }
+                    result={match["MatchProcessing.Config_Result.result"]}
                   />
                 );
               })}

@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import { useDispatch } from "react-redux";
-import { useCreateNewGameMutation } from "../gameApiSlice";
+import { useNewMatchMutation } from "../gameApiSlice";
 
 import { Alert, Box, Button, Typography } from "@mui/material";
 
@@ -10,6 +10,7 @@ import { changeMatchID } from "../gameSlice";
 interface IProps {
   gameName: string;
   gameID: number;
+  url: string;
 }
 
 /* interface IError {
@@ -19,14 +20,17 @@ interface IProps {
   status: string;
 } */
 
-function InitialScreen({ gameName, gameID }: IProps) {
+function InitialScreen({ gameName, gameID, url }: IProps) {
   const dispatch = useDispatch();
-  const [createNewGame] = useCreateNewGameMutation();
+  const [newMatch] = useNewMatchMutation();
   const [error, setError] = useState<string>("");
 
   const handleNewGame = async () => {
     try {
-      const data = await createNewGame(gameID).unwrap();
+      const data = await newMatch({
+        gameID,
+        url,
+      }).unwrap();
       dispatch(changeMatchID(data.matchID));
     } catch (err: any) {
       if (err?.data?.message) {

@@ -4,7 +4,7 @@ import { changeMatchID } from "../../gameSlice";
 import { Box, Button } from "@mui/material";
 
 import EndMessage from "./EndMessage";
-import { useCreateNewGameMutation } from "../../gameApiSlice";
+import { useNewMatchMutation } from "../../gameApiSlice";
 
 interface IProps {
   gameID: number;
@@ -12,11 +12,14 @@ interface IProps {
 
 function EndScreen({ gameID }: IProps) {
   const dispatch = useDispatch();
-  const [createNewGame] = useCreateNewGameMutation();
+  const [newMatch] = useNewMatchMutation();
 
   const handleNewGame = async () => {
     try {
-      const data = await createNewGame(gameID).unwrap();
+      const data = await newMatch({
+        gameID,
+        url: "/api/games/tictactoe/start",
+      }).unwrap();
       dispatch(changeMatchID(data.matchID));
     } catch (err: any) {
       if (err?.data?.message) {

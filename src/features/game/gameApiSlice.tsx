@@ -19,11 +19,27 @@ export interface IMoveReturn {
   cells: CellType[];
 }
 
+export interface INewMatch {
+  gameID: number;
+  url: string;
+}
+
+export interface IJokenpoReturn {
+  userChoice: string;
+  cpuCHoice: string;
+  result: string;
+}
+
+export interface IJokenpoRequest {
+  matchID: number;
+  choice: string;
+}
+
 export const gameApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    createNewGame: builder.mutation<IMatchID, number>({
-      query: (gameID) => ({
-        url: "/api/games/tictactoe/start",
+    newMatch: builder.mutation<IMatchID, INewMatch>({
+      query: ({ gameID, url }) => ({
+        url,
         method: "POST",
         body: { gameID },
       }),
@@ -48,11 +64,26 @@ export const gameApiSlice = apiSlice.injectEndpoints({
         body: { ...data },
       }),
     }),
+    jokenpoUserChoice: builder.mutation<IJokenpoReturn, IJokenpoRequest>({
+      query: (data) => ({
+        url: "/api/games/jokenpo/player/choice",
+        method: "POST",
+        body: { ...data },
+      }),
+      invalidatesTags: (result) => {
+        if (!result?.result) {
+          return [];
+        }
+
+        return ["UserInfo"];
+      },
+    }),
   }),
 });
 
 export const {
-  useCreateNewGameMutation,
+  useNewMatchMutation,
   usePlayerMoveMutation,
   useCpuMoveMutation,
+  useJokenpoUserChoiceMutation,
 } = gameApiSlice;

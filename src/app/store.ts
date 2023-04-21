@@ -4,6 +4,7 @@ import sidebarReducer from "../shared/modalSlice";
 import rankingReducer from "../features/ranking/rankingSlice";
 import authReducer from "../features/auth/authSlice";
 import gameReducer from "../features/game/gameSlice";
+import jokenpoReducer from "../features/game/jokenpo/jokenpoSlice";
 
 import { apiSlice } from "./apiSlice";
 
@@ -25,6 +26,7 @@ const rootReducer = combineReducers({
   ranking: rankingReducer,
   auth: authReducer,
   game: gameReducer,
+  jokenpo: jokenpoReducer,
 });
 
 const persistConfig = {

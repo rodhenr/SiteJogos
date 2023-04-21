@@ -1,13 +1,14 @@
-import { Box } from "@mui/material";
-
-import Game from "./components/Game";
-import InitialScreen from "../components/InitialScreen";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../app/store";
-import EndScreen from "./components/EndScreen";
 
-function Index() {
-  const isGameOver = useSelector((state: RootState) => state.game.isGameOver);
+import { Box } from "@mui/material";
+
+import InitialScreen from "../components/InitialScreen";
+import EndScreen from "./components/EndScreen";
+import Game from "./components/Game";
+
+function Jokenpo() {
+  const result = useSelector((state: RootState) => state.jokenpo.result);
   const matchID = useSelector((state: RootState) => state.game.matchID);
 
   return (
@@ -23,12 +24,12 @@ function Index() {
     >
       {!matchID ? (
         <InitialScreen
-          gameName={"Jogo da Velha"}
-          gameID={4}
-          url={"/api/games/tictactoe/start"}
+          gameName={"Jokenpo"}
+          gameID={3}
+          url={"/api/games/jokenpo/start"}
         />
-      ) : isGameOver ? (
-        <EndScreen gameID={4} />
+      ) : result ? (
+        <EndScreen gameID={3} url={"/api/games/jokenpo/start"} />
       ) : (
         <Game matchID={matchID} />
       )}
@@ -36,4 +37,4 @@ function Index() {
   );
 }
 
-export default Index;
+export default Jokenpo;
