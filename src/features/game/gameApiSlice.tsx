@@ -1,4 +1,5 @@
 import { apiSlice } from "../../app/apiSlice";
+import { IUno } from "./uno/unoSlice";
 
 export type CellType = boolean | null;
 
@@ -21,7 +22,6 @@ export interface IMoveReturn {
 
 export interface INewMatch {
   gameID: number;
-  url: string;
 }
 
 export interface IJokenpoReturn {
@@ -35,11 +35,22 @@ export interface IJokenpoRequest {
   choice: string;
 }
 
+export interface IUnoPlayerRequest {
+  matchID: number;
+  card: string;
+  color: null | string;
+}
+
+export interface IUnoCPURequest {
+  matchID: number;
+  player: string;
+}
+
 export const gameApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     newMatch: builder.mutation<IMatchID, INewMatch>({
-      query: ({ gameID, url }) => ({
-        url,
+      query: ({ gameID }) => ({
+        url: "/api/games/start",
         method: "POST",
         body: { gameID },
       }),
@@ -78,6 +89,27 @@ export const gameApiSlice = apiSlice.injectEndpoints({
         return ["UserInfo"];
       },
     }),
+    unoPlayerMove: builder.mutation<IUno, IUnoPlayerRequest>({
+      query: (data) => ({
+        url: "/api/games/uno/player/move",
+        method: "POST",
+        body: { ...data },
+      }),
+    }),
+    unoCPUMove: builder.mutation<IUno, IUnoCPURequest>({
+      query: (data) => ({
+        url: "/api/games/uno/cpu/move",
+        method: "POST",
+        body: { ...data },
+      }),
+    }),
+    unoBuyCard: builder.mutation<IUno, IUnoCPURequest>({
+      query: (data) => ({
+        url: "/api/games/uno/buy",
+        method: "POST",
+        body: { ...data },
+      }),
+    }),
   }),
 });
 
@@ -86,4 +118,7 @@ export const {
   usePlayerMoveMutation,
   useCpuMoveMutation,
   useJokenpoUserChoiceMutation,
+  useUnoPlayerMoveMutation,
+  useUnoCPUMoveMutation,
+  useUnoBuyCardMutation,
 } = gameApiSlice;

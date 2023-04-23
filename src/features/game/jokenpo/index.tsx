@@ -26,7 +26,6 @@ function Jokenpo() {
         <InitialScreen
           gameName={"Jokenpo"}
           gameID={3}
-          url={"/api/games/jokenpo/start"}
         />
       ) : result ? (
         <EndScreen gameID={3} url={"/api/games/jokenpo/start"} />

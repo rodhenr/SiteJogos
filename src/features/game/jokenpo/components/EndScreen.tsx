@@ -42,7 +42,6 @@ function EndScreen({ gameID, url }: IProps) {
     try {
       const data = await newMatch({
         gameID,
-        url,
       }).unwrap();
       dispatch(changeMatchID(data.matchID));
       dispatch(resetGameState());

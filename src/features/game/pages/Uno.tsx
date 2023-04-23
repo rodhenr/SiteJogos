@@ -1,4 +1,5 @@
 import GameLayout from "../../../shared/layout/GameLayout";
+import Game from "../uno/index";
 
 function Uno() {
   const sizes = {
@@ -27,7 +28,7 @@ function Uno() {
 
   return (
     <GameLayout gameName={"UNO"} rulesList={[""]} sizes={sizes}>
-      <div>JOGO</div>
+      <Game />
     </GameLayout>
   );
 }

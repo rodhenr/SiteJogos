@@ -18,7 +18,6 @@ function EndScreen({ gameID }: IProps) {
     try {
       const data = await newMatch({
         gameID,
-        url: "/api/games/tictactoe/start",
       }).unwrap();
       dispatch(changeMatchID(data.matchID));
     } catch (err: any) {

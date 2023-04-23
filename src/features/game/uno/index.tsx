@@ -23,8 +23,8 @@ function Index() {
     >
       {!matchID ? (
         <InitialScreen
-          gameName={"Jogo da Velha"}
-          gameID={4}
+          gameName={"UNO"}
+          gameID={1}
         />
       ) : isGameOver ? (
         <EndScreen gameID={4} />

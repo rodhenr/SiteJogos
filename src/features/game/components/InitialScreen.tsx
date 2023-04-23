@@ -10,7 +10,6 @@ import { changeMatchID } from "../gameSlice";
 interface IProps {
   gameName: string;
   gameID: number;
-  url: string;
 }
 
 /* interface IError {
@@ -20,7 +19,7 @@ interface IProps {
   status: string;
 } */
 
-function InitialScreen({ gameName, gameID, url }: IProps) {
+function InitialScreen({ gameName, gameID }: IProps) {
   const dispatch = useDispatch();
   const [newMatch] = useNewMatchMutation();
   const [error, setError] = useState<string>("");
@@ -29,7 +28,6 @@ function InitialScreen({ gameName, gameID, url }: IProps) {
     try {
       const data = await newMatch({
         gameID,
-        url,
       }).unwrap();
       dispatch(changeMatchID(data.matchID));
     } catch (err: any) {

@@ -5,6 +5,7 @@ import rankingReducer from "../features/ranking/rankingSlice";
 import authReducer from "../features/auth/authSlice";
 import gameReducer from "../features/game/gameSlice";
 import jokenpoReducer from "../features/game/jokenpo/jokenpoSlice";
+import unoReducer from "../features/game/uno/unoSlice";
 
 import { apiSlice } from "./apiSlice";
 
@@ -27,6 +28,7 @@ const rootReducer = combineReducers({
   auth: authReducer,
   game: gameReducer,
   jokenpo: jokenpoReducer,
+  uno: unoReducer,
 });
 
 const persistConfig = {
