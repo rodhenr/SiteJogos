@@ -1,35 +1,50 @@
 import { useState } from "react";
 
 import { useDispatch } from "react-redux";
-import { useNewMatchMutation } from "../gameApiSlice";
+import { useNewMatchMutation, useNewUnoGameMutation } from "../gameApiSlice";
 
 import { Alert, Box, Button, Typography } from "@mui/material";
 
 import { changeMatchID } from "../gameSlice";
+import { setData } from "../uno/unoSlice";
 
 interface IProps {
   gameName: string;
   gameID: number;
 }
 
-/* interface IError {
-  data: {
-    message: string;
-  };
-  status: string;
-} */
-
 function InitialScreen({ gameName, gameID }: IProps) {
   const dispatch = useDispatch();
   const [newMatch] = useNewMatchMutation();
+  const [newUnoMatch] = useNewUnoGameMutation();
   const [error, setError] = useState<string>("");
 
   const handleNewGame = async () => {
     try {
-      const data = await newMatch({
-        gameID,
-      }).unwrap();
-      dispatch(changeMatchID(data.matchID));
+      if (gameName.toLowerCase() === "uno") {
+        const data = await newUnoMatch().unwrap();
+
+        dispatch(changeMatchID(data.matchID));
+        dispatch(
+          setData({
+            color: data.color,
+            cpu1CardsLength: data.cpu1CardsLength,
+            cpu2CardsLength: data.cpu2CardsLength,
+            cpu3CardsLength: data.cpu3CardsLength,
+            isClockwise: data.isClockwise,
+            lastCard: data.lastCard,
+            nextPlayer: data.nextPlayer,
+            remainingCardsLength: data.remainingCardsLength,
+            remainingPlayers: data.remainingPlayers,
+            userCards: data.userCards,
+          })
+        );
+      } else {
+        const data = await newMatch({
+          gameID,
+        }).unwrap();
+        dispatch(changeMatchID(data.matchID));
+      }
     } catch (err: any) {
       if (err?.data?.message) {
         setError(err.data.message);

@@ -2,7 +2,7 @@ import { useEffect } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../../app/store";
-import { cpuMove } from "../unoSlice";
+import { setData } from "../unoSlice";
 import { useUnoCPUMoveMutation } from "../../gameApiSlice";
 
 import { Box } from "@mui/material";
@@ -16,6 +16,16 @@ interface IProps {
 function Game({ matchID }: IProps) {
   const dispatch = useDispatch();
   const nextPlayer = useSelector((state: RootState) => state.uno.nextPlayer);
+  const userCards = useSelector((state: RootState) => state.uno.userCards);
+  const cpu1CardsLength = useSelector(
+    (state: RootState) => state.uno.cpu1CardsLength
+  );
+  const cpu2CardsLength = useSelector(
+    (state: RootState) => state.uno.cpu1CardsLength
+  );
+  const cpu3CardsLength = useSelector(
+    (state: RootState) => state.uno.cpu1CardsLength
+  );
   const [unoCpuMove] = useUnoCPUMoveMutation();
 
   useEffect(() => {
@@ -29,8 +39,11 @@ function Game({ matchID }: IProps) {
             }).unwrap();
 
             dispatch(
-              cpuMove({
+              setData({
                 color: data.color,
+                cpu1CardsLength: data.cpu1CardsLength,
+                cpu2CardsLength: data.cpu2CardsLength,
+                cpu3CardsLength: data.cpu3CardsLength,
                 isClockwise: data.isClockwise,
                 lastCard: data.lastCard,
                 nextPlayer: data.nextPlayer,
@@ -58,22 +71,28 @@ function Game({ matchID }: IProps) {
       justifyContent={"space-between"}
       position={"relative"}
       sx={{
-        bgColor: "#8338ec",
         fontFamily: "'Montserrat', sans-serif",
         overflow: "hidden",
       }}
-      width={"100vw"}
+      width={"100%"}
     >
-      <Cards position="top" />
+      <Cards
+        cardsData={Array.from({ length: cpu2CardsLength }, () => "")}
+        player={"CPU 2"}
+        position="top"
+      />
 
       <Box
         alignItems={"center"}
         display={"flex"}
         justifyContent={"space-between"}
-        sx={{ maxWidth: { desktopLarge: "50vw" } }}
         width={"100%"}
       >
-        <Cards position="left" />
+        <Cards
+          cardsData={Array.from({ length: cpu1CardsLength }, () => "")}
+          player={"CPU 1"}
+          position="left"
+        />
 
         <Box
           alignItems={"center"}
@@ -88,10 +107,14 @@ function Game({ matchID }: IProps) {
           <MiddleCards />
         </Box>
 
-        <Cards position="right" />
+        <Cards
+          cardsData={Array.from({ length: cpu3CardsLength }, () => "")}
+          player={"CPU 3"}
+          position="right"
+        />
       </Box>
 
-      <Cards position="bottom" />
+      <Cards cardsData={userCards} player={"PLAYER"} position="bottom" />
     </Box>
   );
 }

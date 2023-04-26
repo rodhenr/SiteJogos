@@ -46,6 +46,10 @@ export interface IUnoCPURequest {
   player: string;
 }
 
+export interface IUnoResponse extends IUno {
+  matchID: number;
+}
+
 export const gameApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     newMatch: builder.mutation<IMatchID, INewMatch>({
@@ -89,6 +93,13 @@ export const gameApiSlice = apiSlice.injectEndpoints({
         return ["UserInfo"];
       },
     }),
+    newUnoGame: builder.mutation<IUnoResponse, void>({
+      query: () => ({
+        url: "/api/games/uno/new",
+        method: "POST",
+        body: {},
+      }),
+    }),
     unoPlayerMove: builder.mutation<IUno, IUnoPlayerRequest>({
       query: (data) => ({
         url: "/api/games/uno/player/move",
@@ -121,4 +132,5 @@ export const {
   useUnoPlayerMoveMutation,
   useUnoCPUMoveMutation,
   useUnoBuyCardMutation,
+  useNewUnoGameMutation,
 } = gameApiSlice;

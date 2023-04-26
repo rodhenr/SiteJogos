@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../../app/store";
 import { useUnoBuyCardMutation } from "../../gameApiSlice";
-import { buyCard } from "../unoSlice";
+import { setData } from "../unoSlice";
 
 import { Box } from "@mui/material";
 
@@ -18,10 +18,13 @@ function Deck() {
         matchID: matchID ?? 0,
         player: nextPlayer,
       }).unwrap();
-      
+
       dispatch(
-        buyCard({
+        setData({
           color: data.color,
+          cpu1CardsLength: data.cpu1CardsLength,
+          cpu2CardsLength: data.cpu2CardsLength,
+          cpu3CardsLength: data.cpu3CardsLength,
           isClockwise: data.isClockwise,
           lastCard: data.lastCard,
           nextPlayer: data.nextPlayer,
@@ -55,7 +58,7 @@ function Deck() {
         buyNewCard();
       }}
     >
-      <img src={`./images/back.png`} alt="deck" />
+      <img src="/images/back.png" alt="deck" />
     </Box>
   );
 }
