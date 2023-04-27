@@ -9,6 +9,8 @@ import { Box } from "@mui/material";
 
 import Cards from "./Cards";
 import MiddleCards from "./MiddleCards";
+import Next from "./Next";
+import ChooseColor from "./ChooseColor";
 
 interface IProps {
   matchID: number;
@@ -21,16 +23,17 @@ function Game({ matchID }: IProps) {
     (state: RootState) => state.uno.cpu1CardsLength
   );
   const cpu2CardsLength = useSelector(
-    (state: RootState) => state.uno.cpu1CardsLength
+    (state: RootState) => state.uno.cpu2CardsLength
   );
   const cpu3CardsLength = useSelector(
-    (state: RootState) => state.uno.cpu1CardsLength
+    (state: RootState) => state.uno.cpu3CardsLength
   );
+  const chooseColor = useSelector((state: RootState) => state.uno.chooseColor);
   const [unoCpuMove] = useUnoCPUMoveMutation();
 
   useEffect(() => {
-    if (nextPlayer !== "user") {
-      const cpuTurn = async () => {
+    const cpuTurn = async () => {
+      if (nextPlayer !== "user") {
         setTimeout(async () => {
           try {
             const data = await unoCpuMove({
@@ -56,10 +59,10 @@ function Game({ matchID }: IProps) {
             console.log(err);
           }
         }, 1000);
-      };
+      }
+    };
 
-      cpuTurn();
-    }
+    cpuTurn();
   }, [dispatch, matchID, nextPlayer, unoCpuMove]);
 
   return (
@@ -67,7 +70,6 @@ function Game({ matchID }: IProps) {
       alignItems={"center"}
       display={"flex"}
       flexDirection={"column"}
-      height={"100vh"}
       justifyContent={"space-between"}
       position={"relative"}
       sx={{
@@ -76,8 +78,9 @@ function Game({ matchID }: IProps) {
       }}
       width={"100%"}
     >
+      {chooseColor && <ChooseColor />}
       <Cards
-        cardsData={Array.from({ length: cpu2CardsLength }, () => "")}
+        cardsData={Array(cpu2CardsLength).fill("")}
         player={"CPU 2"}
         position="top"
       />
@@ -86,10 +89,11 @@ function Game({ matchID }: IProps) {
         alignItems={"center"}
         display={"flex"}
         justifyContent={"space-between"}
+        maxHeight={250}
         width={"100%"}
       >
         <Cards
-          cardsData={Array.from({ length: cpu1CardsLength }, () => "")}
+          cardsData={Array(cpu1CardsLength).fill("")}
           player={"CPU 1"}
           position="left"
         />
@@ -105,10 +109,11 @@ function Game({ matchID }: IProps) {
           width={"350px"}
         >
           <MiddleCards />
+          <Next />
         </Box>
 
         <Cards
-          cardsData={Array.from({ length: cpu3CardsLength }, () => "")}
+          cardsData={Array(cpu3CardsLength).fill("")}
           player={"CPU 3"}
           position="right"
         />

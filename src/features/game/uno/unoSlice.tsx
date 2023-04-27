@@ -13,8 +13,15 @@ export interface IUno {
   userCards: string[];
 }
 
-const initialState: IUno = {
+interface IUnoState extends IUno {
+  choosedCard: string;
+  chooseColor: boolean;
+}
+
+const initialState: IUnoState = {
   color: null,
+  choosedCard: "",
+  chooseColor: false,
   cpu1CardsLength: 0,
   cpu2CardsLength: 0,
   cpu3CardsLength: 0,
@@ -60,9 +67,16 @@ const unoSlice = createSlice({
 
       state.nextPlayer = nextPlayer;
     },
+    setChooseColor: (state, action: PayloadAction<boolean>) => {
+      state.chooseColor = action.payload;
+    },
+    setChoosedCard: (state, action: PayloadAction<string>) => {
+      state.choosedCard = action.payload;
+    },
   },
 });
 
-export const { setData, skipTurn } = unoSlice.actions;
+export const { setChoosedCard, setChooseColor, setData, skipTurn } =
+  unoSlice.actions;
 
 export default unoSlice.reducer;

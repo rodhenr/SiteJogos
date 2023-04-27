@@ -24,7 +24,6 @@ function InitialScreen({ gameName, gameID }: IProps) {
       if (gameName.toLowerCase() === "uno") {
         const data = await newUnoMatch().unwrap();
 
-        dispatch(changeMatchID(data.matchID));
         dispatch(
           setData({
             color: data.color,
@@ -39,6 +38,8 @@ function InitialScreen({ gameName, gameID }: IProps) {
             userCards: data.userCards,
           })
         );
+
+        dispatch(changeMatchID(data.matchID));
       } else {
         const data = await newMatch({
           gameID,
