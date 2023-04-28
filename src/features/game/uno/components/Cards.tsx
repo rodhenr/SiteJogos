@@ -38,7 +38,7 @@ function Cards({ cardsData, player, position }: IProps) {
   const handlePlayerMove = async (card: string) => {
     if (nextPlayer !== "user") return;
 
-    if (card.startsWith("plusFour") || card.startsWith("choose")) {
+    if (card.startsWith("plusFour") || card.startsWith("change")) {
       dispatch(setChoosedCard(card));
       dispatch(setChooseColor(true));
     } else {

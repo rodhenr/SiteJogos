@@ -9,7 +9,7 @@ interface Props {
 function Card({ cardType, isPlayer, position }: Props) {
   return isPlayer ? (
     <Box
-      borderTop={"3px solid #9d5df7"}
+      borderTop={"3px solid #291348"}
       borderRadius={"10px"}
       display={"flex"}
       height={"160px"}

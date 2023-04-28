@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../../app/store";
-import { setChooseColor, setData } from "../unoSlice";
+import { setChooseColor, setChoosedCard, setData } from "../unoSlice";
 import { useUnoPlayerMoveMutation } from "../../gameApiSlice";
 
 import { Box, Button, Typography } from "@mui/material";
@@ -37,6 +37,7 @@ function ChooseColor() {
         })
       );
 
+      dispatch(setChoosedCard(""));
       dispatch(setChooseColor(false));
     } catch (err: any) {
       console.log(err);
@@ -45,30 +46,50 @@ function ChooseColor() {
 
   return (
     <Box
-      bgcolor={"#431386"}
+      alignItems={"center"}
+      bgcolor={"secondary.dark"}
       boxSizing={"border-box"}
       borderRadius={"12px"}
-      display={"grid"}
+      display={"flex"}
+      flexDirection={"column"}
       gap={1}
-      height={220}
+      height={200}
       left={"50%"}
-      py={2}
+      py={1.5}
       position={"absolute"}
       sx={{
-        gridTemplateRows: "0.2fr 0.6fr 0.2fr",
         transform: "translate(-50%, -50%)",
       }}
       top={"50%"}
       width={220}
     >
-      <Typography>Escolha uma cor</Typography>
-      <Box alignItems={"center"} display={"flex"} gap={1} px={1}>
+      <Typography color={"white"} fontSize={18} sx={{ justifySelf: "center" }}>
+        Escolha uma cor
+      </Typography>
+      <Box
+        alignItems={"center"}
+        boxSizing={"border-box"}
+        display={"grid"}
+        flex={1}
+        gap={1}
+        justifyContent={"center"}
+        px={1}
+        sx={{
+          gridTemplateColumns: "repeat(4, 1fr)",
+          gridTemplateRows: "1fr",
+        }}
+        width={"100%"}
+      >
         <Box
           bgcolor={"green"}
           border={"1px solid #fff"}
-          height={"100px"}
-          sx={{ cursor: "pointer" }}
-          width={"100%"}
+          height={"100%"}
+          sx={{
+            cursor: "pointer",
+            "&:hover": {
+              opacity: 0.7,
+            },
+          }}
           onClick={() => {
             chooseFunc("green");
           }}
@@ -76,9 +97,13 @@ function ChooseColor() {
         <Box
           bgcolor={"yellow"}
           border={"1px solid #fff"}
-          height={"100px"}
-          sx={{ cursor: "pointer" }}
-          width={"100%"}
+          height={"100%"}
+          sx={{
+            cursor: "pointer",
+            "&:hover": {
+              opacity: 0.7,
+            },
+          }}
           onClick={() => {
             chooseFunc("yellow");
           }}
@@ -86,9 +111,13 @@ function ChooseColor() {
         <Box
           bgcolor={"red"}
           border={"1px solid #fff"}
-          height={"100px"}
-          sx={{ cursor: "pointer" }}
-          width={"100%"}
+          height={"100%"}
+          sx={{
+            cursor: "pointer",
+            "&:hover": {
+              opacity: 0.7,
+            },
+          }}
           onClick={() => {
             chooseFunc("red");
           }}
@@ -96,27 +125,30 @@ function ChooseColor() {
         <Box
           bgcolor={"blue"}
           border={"1px solid #fff"}
-          height={"100px"}
-          sx={{ cursor: "pointer" }}
-          width={"100%"}
+          height={"100%"}
+          sx={{
+            cursor: "pointer",
+            "&:hover": {
+              opacity: 0.7,
+            },
+          }}
           onClick={() => {
             chooseFunc("blue");
           }}
         ></Box>
       </Box>
       <Button
+        color={"info"}
         sx={{
           alignItems: "center",
-          borderRadius: "8px",
-          color: "rgba(0, 0, 0, 0.65)",
           cursor: "pointer",
           display: "flex",
           justifyContent: "center",
-          gap: 1,
           height: 25,
           justifySelf: "center",
           width: "85%",
         }}
+        variant={"contained"}
         onClick={() => {
           dispatch(setChooseColor(false));
         }}
