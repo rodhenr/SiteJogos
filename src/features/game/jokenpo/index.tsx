@@ -9,7 +9,7 @@ import Game from "./components/Game";
 
 function Jokenpo() {
   const result = useSelector((state: RootState) => state.jokenpo.result);
-  const matchID = useSelector((state: RootState) => state.game.matchID);
+  const matchID = useSelector((state: RootState) => state.jokenpo.matchID);
 
   return (
     <Box

@@ -1,35 +1,56 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 interface IJokenpoState {
-  userChoice: string | null;
   cpuChoice: string | null;
+  gameResult: string | null;
+  isGameOver: boolean;
+  matchID: number | null;
   result: string | null;
+  userChoice: string | null;
 }
 
 const initialState: IJokenpoState = {
-  userChoice: null,
   cpuChoice: null,
+  gameResult: null,
+  isGameOver: false,
+  matchID: null,
   result: null,
+  userChoice: null,
 };
 
 const gameSlice = createSlice({
   name: "jokenpo",
   initialState,
   reducers: {
-    changeGameState: (state, action) => {
+    setJokenpoMatchID: (state, action: PayloadAction<number>) => {
+      state.matchID = action.payload;
+    },
+    changeGameState: (
+      state,
+      action: PayloadAction<{
+        cpuChoice: string | null;
+        result: string | null;
+        userChoice: string | null;
+      }>
+    ) => {
       const { userChoice, cpuChoice, result } = action.payload;
+
       state.userChoice = userChoice;
       state.cpuChoice = cpuChoice;
       state.result = result;
     },
     resetGameState: (state) => {
-      state.userChoice = null;
       state.cpuChoice = null;
+      state.gameResult = null;
+      state.isGameOver = false;
+      state.matchID = null;
       state.result = null;
+      state.userChoice = null;
     },
   },
 });
 
-export const { changeGameState, resetGameState } = gameSlice.actions;
+export const { changeGameState, resetGameState, setJokenpoMatchID } =
+  gameSlice.actions;
 
 export default gameSlice.reducer;

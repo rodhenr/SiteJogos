@@ -18,7 +18,7 @@ interface IProps {
 function Cards({ cardsData, player, position }: IProps) {
   const dispatch = useDispatch();
   const [userMove] = useUnoPlayerMoveMutation();
-  const matchID = useSelector((state: RootState) => state.game.matchID);
+  const matchID = useSelector((state: RootState) => state.uno.matchID);
   const nextPlayer = useSelector((state: RootState) => state.uno.nextPlayer);
 
   const getClassName = (cards: number) => {
@@ -56,10 +56,13 @@ function Cards({ cardsData, player, position }: IProps) {
             cpu2CardsLength: data.cpu2CardsLength,
             cpu3CardsLength: data.cpu3CardsLength,
             isClockwise: data.isClockwise,
+            isGameOver: data.isGameOver,
+            gameResult: data.gameResult,
             lastCard: data.lastCard,
             nextPlayer: data.nextPlayer,
             remainingCardsLength: data.remainingCardsLength,
             remainingPlayers: data.remainingPlayers,
+            turn: data.turn,
             userCards: data.userCards,
           })
         );

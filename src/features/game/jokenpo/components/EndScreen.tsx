@@ -2,7 +2,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../../app/store";
 import { useNewMatchMutation } from "../../gameApiSlice";
 import { resetGameState } from "../jokenpoSlice";
-import { changeMatchID } from "../../gameSlice";
 
 import { Box, Button, Typography } from "@mui/material";
 
@@ -43,7 +42,8 @@ function EndScreen({ gameID, url }: IProps) {
       const data = await newMatch({
         gameID,
       }).unwrap();
-      dispatch(changeMatchID(data.matchID));
+
+      dispatch(changeJokenpoMatchID(data.matchID));
       dispatch(resetGameState());
     } catch (err: any) {
       if (err?.data?.message) {
@@ -121,3 +121,7 @@ function EndScreen({ gameID, url }: IProps) {
 }
 
 export default EndScreen;
+function changeJokenpoMatchID(matchID: number): any {
+  throw new Error("Function not implemented.");
+}
+

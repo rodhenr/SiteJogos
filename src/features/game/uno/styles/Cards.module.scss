@@ -8,13 +8,13 @@ $b4: #431386;
 .playerThree {
   align-items: center;
   display: flex;
+  height: 100%;
   flex-direction: column;
   justify-content: center;
   width: 100%;
 
   p {
     color: $b2;
-    font-family: "Kanit", sans-serif;
     font-size: 1.3rem;
     margin: 0;
     padding: 0.4rem 0;
@@ -27,7 +27,6 @@ $b4: #431386;
   p {
     color: $b2;
     display: inline;
-    font-family: "Kanit", sans-serif;
     font-size: 1.3rem;
     margin: 0;
     padding: 0 0.4rem;
@@ -42,7 +41,6 @@ $b4: #431386;
   p {
     color: $b2;
     display: inline;
-    font-family: "Kanit", sans-serif;
     font-size: 1.3rem;
     margin: 0;
     padding: 0 0.4rem;
@@ -88,7 +86,7 @@ $b4: #431386;
   border-top: 3px solid $borderC;
   border-radius: 10px;
   display: flex;
-  height: 160px;
+  height: 125px;
   justify-content: center;
   padding: 0 0.5rem;
   position: relative;
@@ -205,38 +203,39 @@ $b4: #431386;
 }
 
 .container_player .cards {
-  bottom: 0px;
+  box-sizing: border-box;
   cursor: pointer;
-  height: 150px;
-  max-width: 100px;
-  min-width: 100px;
+  height: 100%;
+  max-width: 75px;
+  min-width: 75px;
+  padding: 8px 0;
   position: absolute;
-
-  img {
-    height: 100px;
-  }
+  top: 0px;
 
   &:hover {
     animation: 0.5s cardHoverPlayer forwards ease-out;
-    z-index: 100;
   }
 
   &:not(hover) {
     animation: 0.2s cardNotHoverPlayer forwards ease-out;
   }
+
+  img {
+    height: 100%;
+  }
 }
 
 @keyframes cardHoverPlayer {
   0% {
-    bottom: 0px;
+    top: 0px;
   }
   100% {
-    bottom: 15px;
+    top: -15px;
   }
 }
 
 @keyframes cardNotHoverPlayer {
   100% {
-    bottom: 0px;
+    top: 0px;
   }
 }

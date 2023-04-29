@@ -13,11 +13,11 @@ interface IPlayerMove {
 }
 
 export interface IMoveReturn {
-  message: string | null;
-  isGameOver: boolean | null;
-  gameResult: string | null;
-  isPlayerNext: boolean | null;
   cells: CellType[];
+  gameResult: string | null;
+  isGameOver: boolean | null;
+  isPlayerNext: boolean | null;
+  message: string | null;
 }
 
 export interface INewMatch {
@@ -25,9 +25,9 @@ export interface INewMatch {
 }
 
 export interface IJokenpoReturn {
-  userChoice: string;
-  cpuCHoice: string;
-  result: string;
+  cpuChoice: string | null;
+  result: string | null;
+  userChoice: string | null;
 }
 
 export interface IJokenpoRequest {
@@ -121,6 +121,13 @@ export const gameApiSlice = apiSlice.injectEndpoints({
         body: { ...data },
       }),
     }),
+    unoSkipTurn: builder.mutation<IUno, IUnoCPURequest>({
+      query: (data) => ({
+        url: "/api/games/uno/skip",
+        method: "POST",
+        body: { ...data },
+      }),
+    }),
   }),
 });
 
@@ -133,4 +140,5 @@ export const {
   useUnoCPUMoveMutation,
   useUnoBuyCardMutation,
   useNewUnoGameMutation,
+  useUnoSkipTurnMutation,
 } = gameApiSlice;

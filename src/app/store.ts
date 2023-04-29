@@ -3,7 +3,7 @@ import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import sidebarReducer from "../shared/modalSlice";
 import rankingReducer from "../features/ranking/rankingSlice";
 import authReducer from "../features/auth/authSlice";
-import gameReducer from "../features/game/gameSlice";
+import tictactoeReducer from "../features/game/tictactoe/tictactoeSlice";
 import jokenpoReducer from "../features/game/jokenpo/jokenpoSlice";
 import unoReducer from "../features/game/uno/unoSlice";
 
@@ -26,7 +26,7 @@ const rootReducer = combineReducers({
   sidebar: sidebarReducer,
   ranking: rankingReducer,
   auth: authReducer,
-  game: gameReducer,
+  tictactoe: tictactoeReducer,
   jokenpo: jokenpoReducer,
   uno: unoReducer,
 });

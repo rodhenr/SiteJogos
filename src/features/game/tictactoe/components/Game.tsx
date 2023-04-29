@@ -1,12 +1,13 @@
+import { useEffect } from "react";
+
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../../app/store";
 import { useCpuMoveMutation, usePlayerMoveMutation } from "../../gameApiSlice";
+import { changeGameState } from "../tictactoeSlice";
 
 import { Box, Typography } from "@mui/material";
 
 import { v4 as uuidv4 } from "uuid";
-import { changeGameState } from "../../gameSlice";
-import { useEffect } from "react";
 
 interface IProps {
   matchID: number;
@@ -14,11 +15,13 @@ interface IProps {
 
 function Game({ matchID }: IProps) {
   const dispatch = useDispatch();
-  const cells = useSelector((state: RootState) => state.game.cells);
+  const cells = useSelector((state: RootState) => state.tictactoe.cells);
   const isPlayerNext = useSelector(
-    (state: RootState) => state.game.isPlayerNext
+    (state: RootState) => state.tictactoe.isPlayerNext
   );
-  const isGameOver = useSelector((state: RootState) => state.game.isGameOver);
+  const isGameOver = useSelector(
+    (state: RootState) => state.tictactoe.isGameOver
+  );
   const [doPlayerMove] = usePlayerMoveMutation();
   const [doCpuMove] = useCpuMoveMutation();
 
@@ -27,7 +30,15 @@ function Game({ matchID }: IProps) {
       const handleCpuMove = async () => {
         try {
           const data = await doCpuMove({ matchID }).unwrap();
-          dispatch(changeGameState(data));
+
+          dispatch(
+            changeGameState({
+              cells: data.cells,
+              gameResult: data.gameResult,
+              isGameOver: data.isGameOver,
+              isPlayerNext: data.isPlayerNext,
+            })
+          );
         } catch (err) {
           console.log(err);
         }
@@ -35,7 +46,7 @@ function Game({ matchID }: IProps) {
 
       handleCpuMove();
     }
-  }, [isPlayerNext, isGameOver]);
+  }, [dispatch, doCpuMove, matchID, isPlayerNext, isGameOver]);
 
   const handlePlayerMove = async (cell: boolean | null, position: number) => {
     if (cell !== null) return;
@@ -45,7 +56,15 @@ function Game({ matchID }: IProps) {
         matchID,
         squarePosition: position,
       }).unwrap();
-      dispatch(changeGameState(data));
+
+      dispatch(
+        changeGameState({
+          cells: data.cells,
+          gameResult: data.gameResult,
+          isGameOver: data.isGameOver,
+          isPlayerNext: data.isPlayerNext,
+        })
+      );
     } catch (err: any) {
       console.log(err);
     }

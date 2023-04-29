@@ -7,8 +7,8 @@ import { RootState } from "../../../app/store";
 import EndScreen from "./components/EndScreen";
 
 function Index() {
-  const isGameOver = useSelector((state: RootState) => state.game.isGameOver);
-  const matchID = useSelector((state: RootState) => state.game.matchID);
+  const isGameOver = useSelector((state: RootState) => state.tictactoe.isGameOver);
+  const matchID = useSelector((state: RootState) => state.tictactoe.matchID);
 
   return (
     <Box

@@ -4,7 +4,7 @@ import { RootState } from "../../../../app/store";
 import { Box, Typography } from "@mui/material";
 
 function EndMensage() {
-  const gameResult = useSelector((state: RootState) => state.game.gameResult);
+  const gameResult = useSelector((state: RootState) => state.tictactoe.gameResult);
 
   return (
     <Box

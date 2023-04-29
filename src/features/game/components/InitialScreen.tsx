@@ -5,8 +5,8 @@ import { useNewMatchMutation, useNewUnoGameMutation } from "../gameApiSlice";
 
 import { Alert, Box, Button, Typography } from "@mui/material";
 
-import { changeMatchID } from "../gameSlice";
-import { setData } from "../uno/unoSlice";
+import { setData, setUnoMatchID } from "../uno/unoSlice";
+import { setJokenpoMatchID } from "../jokenpo/jokenpoSlice";
 
 interface IProps {
   gameName: string;
@@ -24,6 +24,8 @@ function InitialScreen({ gameName, gameID }: IProps) {
       if (gameName.toLowerCase() === "uno") {
         const data = await newUnoMatch().unwrap();
 
+        dispatch(setUnoMatchID(data.matchID));
+
         dispatch(
           setData({
             color: data.color,
@@ -31,20 +33,28 @@ function InitialScreen({ gameName, gameID }: IProps) {
             cpu2CardsLength: data.cpu2CardsLength,
             cpu3CardsLength: data.cpu3CardsLength,
             isClockwise: data.isClockwise,
+            isGameOver: data.isGameOver,
+            gameResult: data.gameResult,
             lastCard: data.lastCard,
             nextPlayer: data.nextPlayer,
             remainingCardsLength: data.remainingCardsLength,
             remainingPlayers: data.remainingPlayers,
+            turn: data.turn,
             userCards: data.userCards,
           })
         );
-
-        dispatch(changeMatchID(data.matchID));
       } else {
         const data = await newMatch({
           gameID,
         }).unwrap();
-        dispatch(changeMatchID(data.matchID));
+
+        if (gameName.toLowerCase() === "jokenpo") {
+          dispatch(setJokenpoMatchID(data.matchID));
+        } else if (gameName.toLowerCase() === "tictactoe") {
+          dispatch(setTictactoeMatchID(data.matchID));
+        } else if (gameName.toLowerCase() === "yahtzee") {
+          //dispatch(setYahtzeeMatchID(data.matchID));
+        }
       }
     } catch (err: any) {
       if (err?.data?.message) {
@@ -86,6 +96,7 @@ function InitialScreen({ gameName, gameID }: IProps) {
         fontFamily={"'DynaPuff', cursive"}
         sx={{
           fontSize: { mobile: 35, tablet: 55, laptop: 70, desktopLarge: 90 },
+          textAlign: "center",
         }}
       >
         {gameName.toUpperCase()}
@@ -106,3 +117,6 @@ function InitialScreen({ gameName, gameID }: IProps) {
 }
 
 export default InitialScreen;
+function setTictactoeMatchID(matchID: number): any {
+  throw new Error("Function not implemented.");
+}

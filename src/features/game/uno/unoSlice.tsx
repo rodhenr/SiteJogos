@@ -6,19 +6,23 @@ export interface IUno {
   cpu2CardsLength: number;
   cpu3CardsLength: number;
   isClockwise: boolean;
+  isGameOver: boolean;
+  gameResult: string | null;
   lastCard: string | null;
   nextPlayer: string;
   remainingCardsLength: number;
   remainingPlayers: string[];
+  turn: number | null;
   userCards: string[];
 }
 
-interface IUnoState extends IUno {
+export interface IUnoSlice extends IUno {
   choosedCard: string;
   chooseColor: boolean;
+  matchID: number | null;
 }
 
-const initialState: IUnoState = {
+const initialState: IUnoSlice = {
   color: null,
   choosedCard: "",
   chooseColor: false,
@@ -26,10 +30,14 @@ const initialState: IUnoState = {
   cpu2CardsLength: 0,
   cpu3CardsLength: 0,
   isClockwise: true,
+  isGameOver: false,
+  gameResult: null,
   lastCard: null,
+  matchID: null,
   nextPlayer: "",
   remainingCardsLength: 60,
   remainingPlayers: [],
+  turn: null,
   userCards: [],
 };
 
@@ -37,6 +45,9 @@ const unoSlice = createSlice({
   name: "uno",
   initialState,
   reducers: {
+    setUnoMatchID: (state, action: PayloadAction<number | null>) => {
+      state.matchID = action.payload;
+    },
     setData: (state, action: PayloadAction<IUno>) => {
       const {
         color,
@@ -44,11 +55,14 @@ const unoSlice = createSlice({
         cpu2CardsLength,
         cpu3CardsLength,
         isClockwise,
+        isGameOver,
+        gameResult,
         lastCard,
         nextPlayer,
         remainingCardsLength,
         remainingPlayers,
         userCards,
+        turn,
       } = action.payload;
 
       state.color = color;
@@ -56,15 +70,29 @@ const unoSlice = createSlice({
       state.cpu2CardsLength = cpu2CardsLength;
       state.cpu3CardsLength = cpu3CardsLength;
       state.isClockwise = isClockwise;
+      state.isGameOver = isGameOver;
+      state.gameResult = gameResult;
       state.lastCard = lastCard;
       state.nextPlayer = nextPlayer;
       state.remainingCardsLength = remainingCardsLength;
       state.remainingPlayers = remainingPlayers;
+      state.turn = turn;
       state.userCards = userCards;
     },
-    skipTurn: (state, action: PayloadAction<{ nextPlayer: string }>) => {
-      const { nextPlayer } = action.payload;
+    skipTurn: (
+      state,
+      action: PayloadAction<{
+        isGameOver: boolean;
+        gameResult: string | null;
+        nextPlayer: string;
+        turn: number | null;
+      }>
+    ) => {
+      const { nextPlayer, turn, isGameOver, gameResult } = action.payload;
 
+      state.isGameOver = isGameOver;
+      state.gameResult = gameResult;
+      state.turn = turn;
       state.nextPlayer = nextPlayer;
     },
     setChooseColor: (state, action: PayloadAction<boolean>) => {
@@ -76,7 +104,12 @@ const unoSlice = createSlice({
   },
 });
 
-export const { setChoosedCard, setChooseColor, setData, skipTurn } =
-  unoSlice.actions;
+export const {
+  setChoosedCard,
+  setChooseColor,
+  setData,
+  setUnoMatchID,
+  skipTurn,
+} = unoSlice.actions;
 
 export default unoSlice.reducer;

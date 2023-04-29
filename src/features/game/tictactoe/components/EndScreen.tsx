@@ -1,5 +1,4 @@
 import { useDispatch } from "react-redux";
-import { changeMatchID } from "../../gameSlice";
 
 import { Box, Button } from "@mui/material";
 
@@ -19,7 +18,8 @@ function EndScreen({ gameID }: IProps) {
       const data = await newMatch({
         gameID,
       }).unwrap();
-      dispatch(changeMatchID(data.matchID));
+      
+      dispatch(changeTictactoeMatchID(data.matchID));
     } catch (err: any) {
       if (err?.data?.message) {
         console.log("Mensagem:", err.data.message, "  Status:", err.status);
@@ -61,3 +61,7 @@ function EndScreen({ gameID }: IProps) {
 }
 
 export default EndScreen;
+function changeTictactoeMatchID(matchID: number): any {
+  throw new Error("Function not implemented.");
+}
+

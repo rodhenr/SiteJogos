@@ -1,12 +1,12 @@
 import { useDispatch } from "react-redux";
 import { useJokenpoUserChoiceMutation } from "../../gameApiSlice";
+import { changeGameState } from "../jokenpoSlice";
 
 import { Box, Typography } from "@mui/material";
 
 import Paper from "./IconPaper";
 import Rock from "./IconRock";
 import Scissors from "./IconScissors";
-import { changeGameState } from "../jokenpoSlice";
 
 interface IProps {
   matchID: number;

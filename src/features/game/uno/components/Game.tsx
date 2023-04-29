@@ -29,6 +29,8 @@ function Game({ matchID }: IProps) {
     (state: RootState) => state.uno.cpu3CardsLength
   );
   const chooseColor = useSelector((state: RootState) => state.uno.chooseColor);
+  const turn = useSelector((state: RootState) => state.uno.turn);
+
   const [unoCpuMove] = useUnoCPUMoveMutation();
 
   useEffect(() => {
@@ -48,10 +50,13 @@ function Game({ matchID }: IProps) {
                 cpu2CardsLength: data.cpu2CardsLength,
                 cpu3CardsLength: data.cpu3CardsLength,
                 isClockwise: data.isClockwise,
+                isGameOver: data.isGameOver,
+                gameResult: data.gameResult,
                 lastCard: data.lastCard,
                 nextPlayer: data.nextPlayer,
                 remainingCardsLength: data.remainingCardsLength,
                 remainingPlayers: data.remainingPlayers,
+                turn: data.turn,
                 userCards: data.userCards,
               })
             );
@@ -63,7 +68,7 @@ function Game({ matchID }: IProps) {
     };
 
     cpuTurn();
-  }, [dispatch, matchID, nextPlayer, unoCpuMove]);
+  }, [dispatch, matchID, nextPlayer, unoCpuMove, turn]);
 
   return (
     <Box

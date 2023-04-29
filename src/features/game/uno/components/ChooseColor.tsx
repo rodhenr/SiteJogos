@@ -8,7 +8,7 @@ import { Box, Button, Typography } from "@mui/material";
 function ChooseColor() {
   const dispatch = useDispatch();
   const [userMove] = useUnoPlayerMoveMutation();
-  const matchID = useSelector((state: RootState) => state.game.matchID);
+  const matchID = useSelector((state: RootState) => state.uno.matchID);
   const nextPlayer = useSelector((state: RootState) => state.uno.nextPlayer);
   const choosedCard = useSelector((state: RootState) => state.uno.choosedCard);
 
@@ -29,10 +29,13 @@ function ChooseColor() {
           cpu2CardsLength: data.cpu2CardsLength,
           cpu3CardsLength: data.cpu3CardsLength,
           isClockwise: data.isClockwise,
+          isGameOver: data.isGameOver,
+          gameResult: data.gameResult,
           lastCard: data.lastCard,
           nextPlayer: data.nextPlayer,
           remainingCardsLength: data.remainingCardsLength,
           remainingPlayers: data.remainingPlayers,
+          turn: data.turn,
           userCards: data.userCards,
         })
       );
@@ -59,6 +62,7 @@ function ChooseColor() {
       position={"absolute"}
       sx={{
         transform: "translate(-50%, -50%)",
+        zIndex: 200,
       }}
       top={"50%"}
       width={220}
