@@ -106,6 +106,13 @@ export const gameApiSlice = apiSlice.injectEndpoints({
         method: "POST",
         body: { ...data },
       }),
+      invalidatesTags: (result) => {
+        if (!result?.gameResult) {
+          return [];
+        }
+
+        return ["UserInfo"];
+      },
     }),
     unoCPUMove: builder.mutation<IUno, IUnoCPURequest>({
       query: (data) => ({
@@ -113,6 +120,13 @@ export const gameApiSlice = apiSlice.injectEndpoints({
         method: "POST",
         body: { ...data },
       }),
+      invalidatesTags: (result) => {
+        if (!result?.gameResult) {
+          return [];
+        }
+
+        return ["UserInfo"];
+      },
     }),
     unoBuyCard: builder.mutation<IUno, IUnoCPURequest>({
       query: (data) => ({

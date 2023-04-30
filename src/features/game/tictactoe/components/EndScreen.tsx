@@ -1,9 +1,10 @@
 import { useDispatch } from "react-redux";
+import { useNewMatchMutation } from "../../gameApiSlice";
+import { setTicTacToeMatchID } from "../tictactoeSlice";
 
 import { Box, Button } from "@mui/material";
 
 import EndMessage from "./EndMessage";
-import { useNewMatchMutation } from "../../gameApiSlice";
 
 interface IProps {
   gameID: number;
@@ -18,8 +19,8 @@ function EndScreen({ gameID }: IProps) {
       const data = await newMatch({
         gameID,
       }).unwrap();
-      
-      dispatch(changeTictactoeMatchID(data.matchID));
+
+      dispatch(setTicTacToeMatchID(data.matchID));
     } catch (err: any) {
       if (err?.data?.message) {
         console.log("Mensagem:", err.data.message, "  Status:", err.status);
@@ -61,7 +62,3 @@ function EndScreen({ gameID }: IProps) {
 }
 
 export default EndScreen;
-function changeTictactoeMatchID(matchID: number): any {
-  throw new Error("Function not implemented.");
-}
-

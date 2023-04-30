@@ -23,7 +23,12 @@ const gameSlice = createSlice({
   initialState,
   reducers: {
     setJokenpoMatchID: (state, action: PayloadAction<number>) => {
+      state.cpuChoice = null;
+      state.gameResult = null;
+      state.isGameOver = false;
       state.matchID = action.payload;
+      state.result = null;
+      state.userChoice = null;
     },
     changeGameState: (
       state,

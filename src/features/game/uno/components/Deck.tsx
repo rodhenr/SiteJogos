@@ -19,7 +19,7 @@ function Deck() {
   const [unoBuyCard] = useUnoBuyCardMutation();
 
   const buyNewCard = async () => {
-    if (nextPlayer !== "user") return;
+    if (nextPlayer !== "user" || remainingCardsLength === 0) return;
 
     try {
       const data = await unoBuyCard({
@@ -50,6 +50,8 @@ function Deck() {
   };
 
   const handleSkipTurn = async () => {
+    if (nextPlayer !== "user") return;
+
     try {
       const data = await unoSkipTurn({
         matchID: matchID ?? 0,
