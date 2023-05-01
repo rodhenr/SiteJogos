@@ -9,23 +9,19 @@ function Score() {
   return (
     <Box
       alignItems={"center"}
-      borderRadius={"0 0 10px 10px"}
+      bgcolor={"secondary.main"}
       display={"flex"}
-      fontSize={32}
-      gap={1}
       justifyContent={"center"}
-      px={0.5}
       py={2}
       sx={{
         "& p": {
           color: "#fff",
-          margin: "0",
+          fontSize: 20,
         },
       }}
       width={"100%"}
     >
-      <Typography>Pontos</Typography>
-      <Typography>{score}</Typography>
+      <Typography>PONTOS: {score ?? 0}</Typography>
     </Box>
   );
 }

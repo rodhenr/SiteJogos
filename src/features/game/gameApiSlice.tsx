@@ -71,6 +71,11 @@ export interface IYahtzeeResponse {
   ruleRow_five: number | null;
 }
 
+interface IYahtzeeRoll {
+  matchID: number;
+  dices: boolean[];
+}
+
 export const gameApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     newMatch: builder.mutation<IMatchID, INewMatch>({
@@ -170,6 +175,13 @@ export const gameApiSlice = apiSlice.injectEndpoints({
         body: {},
       }),
     }),
+    yahtzeeRoll: builder.mutation<IYahtzeeResponse, IYahtzeeRoll>({
+      query: (data) => ({
+        url: "/api/games/yahtzee/roll",
+        method: "POST",
+        body: { ...data },
+      }),
+    }),
   }),
 });
 
@@ -184,4 +196,5 @@ export const {
   useNewUnoGameMutation,
   useUnoSkipTurnMutation,
   useNewYahtzeeGameMutation,
+  useYahtzeeRollMutation
 } = gameApiSlice;

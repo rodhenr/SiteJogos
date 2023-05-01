@@ -5,8 +5,11 @@ import { Box, Typography } from "@mui/material";
 
 import { rulesList } from "./RulesList";
 
+import { v4 as uuidv4 } from "uuid";
+
 export function Rules() {
   const dispatch = useDispatch();
+
   const dices = useSelector((state: RootState) => state.yahtzee.currentDices);
   const ruleSum_all = useSelector(
     (state: RootState) => state.yahtzee.ruleSum_all
@@ -47,37 +50,41 @@ export function Rules() {
 
   return (
     <Box
+      bgcolor={"secondary.main"}
+      boxSizing={"border-box"}
       display={"flex"}
+      flex={1}
       flexDirection={"column"}
+      gap={0.5}
+      p={1}
       width={"100%"}
     >
-      {rulesList.map((rule, index) => {
+      {rulesList.map((rule) => {
         return (
           <Box
             display={"flex"}
-            gap={"0.2rem"}
-            px={0.5}
-            py={0.15}
+            gap={0.4}
+            key={uuidv4()}
             sx={{
               "& p": {
-                bgcolor: "#eb1d36",
+                bgcolor: "info.light",
                 borderRadius: "5px",
                 color: "#fff",
                 cursor: "pointer",
-                fontSize: "0.9rem",
-                padding: "0.7rem 0",
+                fontSize: 14,
+                py: 1,
                 textAlign: "center",
                 width: "100%",
               },
+
               "&:hover": {
                 transform: "scale(1.01)",
 
                 "& p": {
-                  bgcolor: "#d5182e",
+                  bgcolor: "tertiary.light",
                 },
               },
             }}
-            key={index}
           >
             <Typography>{rule.name}</Typography>
             <Typography>{rule.description}</Typography>

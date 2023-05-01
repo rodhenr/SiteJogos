@@ -1,62 +1,93 @@
+import { useState } from "react";
+
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../../app/store";
+import { useYahtzeeRollMutation } from "../../gameApiSlice";
+import { setYahtzeeData } from "../yahtzeeSlice";
 
 import { Box, Button, Typography } from "@mui/material";
 
+import { v4 as uuidv4 } from "uuid";
+
 function Header() {
   const dispatch = useDispatch();
+  const [dicesFrozen, setDicesFrozen] = useState([
+    false,
+    false,
+    false,
+    false,
+    false,
+  ]);
+
+  const matchID = useSelector((state: RootState) => state.yahtzee.matchID);
   const dices = useSelector((state: RootState) => state.yahtzee.currentDices);
   const remainingMoves = useSelector(
     (state: RootState) => state.yahtzee.remainingMoves
   );
+  const [roll] = useYahtzeeRollMutation();
 
-  const handleFreezeDie = (dieNumber: number) => {};
+  const handleFreezeDie = (dieNumber: number) => {
+    setDicesFrozen((prev) => [
+      ...prev.slice(0, dieNumber),
+      !prev[dieNumber],
+      ...prev.slice(dieNumber + 1, prev.length),
+    ]);
+  };
 
-  const handleRoll = () => {};
+  const handleRoll = async () => {
+    if (remainingMoves === 0) return;
+
+    try {
+      const data = await roll({
+        matchID: matchID ?? 0,
+        dices: dicesFrozen,
+      }).unwrap();
+
+      dispatch(setYahtzeeData(data));
+    } catch (err: any) {
+      console.log(err);
+    }
+  };
 
   return (
     <Box
       alignItems={"center"}
       bgcolor={"secondary.main"}
       display={"flex"}
-      justifyContent={"CENTER"}
+      justifyContent={"center"}
+      minHeight={80}
+      py={1}
       width={"100%"}
     >
       <Box
         alignItems={"center"}
-        borderRadius={"10px"}
         display={"flex"}
         flex={1}
-        height={"100%"}
-        justifyContent={"center"}
+        justifyContent={"space-around"}
+        px={0.5}
       >
-        {dices.map((dice: any, index: number) => {
+        {dices.map((dice: number, index: number) => {
           return (
             <Box
               alignItems={"center"}
+              boxSizing={"border-box"}
               display={"flex"}
               flexDirection={"column"}
-              px={0.7}
-              py={0.5}
               sx={{
                 "& img": {
                   bgcolor: "#fff",
+                  borderRadius: "10px",
                   cursor: "pointer",
-                  height: 30,
-                },
-                "& p": {
-                  color: "#fff",
-                  fontSize: 12,
-                  margin: 0,
+                  height: 60,
+                  opacity: !dicesFrozen[index] ? 1 : 0.7,
                 },
               }}
-              key={index}
+              key={uuidv4()}
               onClick={() => {
                 handleFreezeDie(index);
               }}
             >
               <img src={`/images/dice${dice}.svg`} alt={`dice_${dice}`} />
-              <Typography>{dice}</Typography>
             </Box>
           );
         })}
@@ -64,17 +95,22 @@ function Header() {
       <Box
         display={"flex"}
         flexDirection={"column"}
-        sx={{ marginTop: "0.8rem" }}
+        gap={1}
+        justifyContent={"center"}
+        px={1}
       >
-        <Box borderRadius={"10px"} px={0.8} py={0.6}>
-          <Typography>{remainingMoves} MOVIMENTO(S) RESTANTE(S)</Typography>
-        </Box>
+        <Typography color={"white"} fontSize={14}>
+          {remainingMoves} MOVIMENTO(S) RESTANTE(S)
+        </Typography>
         <Button
+          color={"error"}
+          disabled={remainingMoves === 0}
           onClick={() => {
             handleRoll();
           }}
           sx={{
             cursor: "pointer",
+            height: 30,
           }}
           variant={"contained"}
         >

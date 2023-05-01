@@ -10,6 +10,7 @@ function Game() {
       alignItems={"center"}
       display={"flex"}
       flexDirection={"column"}
+      gap={0.5}
       width={"100%"}
     >
       <Header />
