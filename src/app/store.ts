@@ -6,6 +6,7 @@ import authReducer from "../features/auth/authSlice";
 import tictactoeReducer from "../features/game/tictactoe/tictactoeSlice";
 import jokenpoReducer from "../features/game/jokenpo/jokenpoSlice";
 import unoReducer from "../features/game/uno/unoSlice";
+import yahtzeeReducer from "../features/game/yahtzee/yahtzeeSlice";
 
 import { apiSlice } from "./apiSlice";
 
@@ -29,6 +30,7 @@ const rootReducer = combineReducers({
   tictactoe: tictactoeReducer,
   jokenpo: jokenpoReducer,
   uno: unoReducer,
+  yahtzee: yahtzeeReducer,
 });
 
 const persistConfig = {

@@ -15,6 +15,7 @@ import ChooseColor from "./ChooseColor";
 interface IProps {
   matchID: number;
 }
+
 function Game({ matchID }: IProps) {
   const dispatch = useDispatch();
   const nextPlayer = useSelector((state: RootState) => state.uno.nextPlayer);

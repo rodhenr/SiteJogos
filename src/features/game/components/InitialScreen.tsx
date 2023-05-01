@@ -1,10 +1,15 @@
 import { useState } from "react";
 
 import { useDispatch } from "react-redux";
-import { useNewMatchMutation, useNewUnoGameMutation } from "../gameApiSlice";
+import {
+  useNewMatchMutation,
+  useNewUnoGameMutation,
+  useNewYahtzeeGameMutation,
+} from "../gameApiSlice";
 import { setData, setUnoMatchID } from "../uno/unoSlice";
 import { setJokenpoMatchID } from "../jokenpo/jokenpoSlice";
 import { setTicTacToeMatchID } from "../tictactoe/tictactoeSlice";
+import { setYahtzeeData, setYahtzeeMatchID } from "../yahtzee/yahtzeeSlice";
 
 import { Alert, Box, Button, Typography } from "@mui/material";
 
@@ -17,6 +22,7 @@ function InitialScreen({ gameName, gameID }: IProps) {
   const dispatch = useDispatch();
   const [newMatch] = useNewMatchMutation();
   const [newUnoMatch] = useNewUnoGameMutation();
+  const [newYahtzeeMatch] = useNewYahtzeeGameMutation();
   const [error, setError] = useState<string>("");
 
   const handleNewGame = async () => {
@@ -43,6 +49,12 @@ function InitialScreen({ gameName, gameID }: IProps) {
             userCards: data.userCards,
           })
         );
+      } else if (gameName.toLowerCase() === "yahtzee") {
+        const data = await newYahtzeeMatch().unwrap();
+
+        dispatch(setYahtzeeMatchID(data.matchID));
+
+        dispatch(setYahtzeeData(data));
       } else {
         const data = await newMatch({
           gameID,
@@ -52,8 +64,6 @@ function InitialScreen({ gameName, gameID }: IProps) {
           dispatch(setJokenpoMatchID(data.matchID));
         } else if (gameName.toLowerCase() === "jogo da velha") {
           dispatch(setTicTacToeMatchID(data.matchID));
-        } else if (gameName.toLowerCase() === "yahtzee") {
-          //dispatch(setYahtzeeMatchID(data.matchID));
         }
       }
     } catch (err: any) {

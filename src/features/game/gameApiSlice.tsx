@@ -50,6 +50,27 @@ export interface IUnoResponse extends IUno {
   matchID: number;
 }
 
+export interface IYahtzeeResponse {
+  currentDices: number[];
+  isGameOver: boolean;
+  gameResult: string | null;
+  matchID: number;
+  points: number | null;
+  remainingMoves: number;
+  ruleSum_all: number | null;
+  ruleSum_one: number | null;
+  ruleSum_two: number | null;
+  ruleSum_three: number | null;
+  ruleSum_four: number | null;
+  ruleSum_five: number | null;
+  ruleSum_six: number | null;
+  ruleSame_three: number | null;
+  ruleSame_four: number | null;
+  rule_yahtzee: number | null;
+  ruleRow_four: number | null;
+  ruleRow_five: number | null;
+}
+
 export const gameApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     newMatch: builder.mutation<IMatchID, INewMatch>({
@@ -142,6 +163,13 @@ export const gameApiSlice = apiSlice.injectEndpoints({
         body: { ...data },
       }),
     }),
+    newYahtzeeGame: builder.mutation<IYahtzeeResponse, void>({
+      query: () => ({
+        url: "/api/games/yahtzee/new",
+        method: "POST",
+        body: {},
+      }),
+    }),
   }),
 });
 
@@ -155,4 +183,5 @@ export const {
   useUnoBuyCardMutation,
   useNewUnoGameMutation,
   useUnoSkipTurnMutation,
+  useNewYahtzeeGameMutation,
 } = gameApiSlice;
