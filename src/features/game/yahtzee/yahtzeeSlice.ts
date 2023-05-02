@@ -22,6 +22,7 @@ export interface IYahtzee {
 
 export interface IYahtzeeSlice extends IYahtzee {
   matchID: number | null;
+  dicesState: boolean[];
 }
 
 const initialState: IYahtzeeSlice = {
@@ -43,6 +44,7 @@ const initialState: IYahtzeeSlice = {
   rule_yahtzee: null,
   ruleRow_four: null,
   ruleRow_five: null,
+  dicesState: [false, false, false, false, false],
 };
 
 const yahtzeeSlice = createSlice({
@@ -51,6 +53,15 @@ const yahtzeeSlice = createSlice({
   reducers: {
     setYahtzeeMatchID: (state, action: PayloadAction<number | null>) => {
       state.matchID = action.payload;
+    },
+    resetDicesState: (state) => {
+      state.dicesState = [false, false, false, false, false];
+    },
+    changeDicesState: (state, action: PayloadAction<number>) => {
+      const dicesState = state.dicesState;
+      dicesState[action.payload] = !dicesState[action.payload];
+
+      state.dicesState = dicesState;
     },
     setYahtzeeData: (state, action: PayloadAction<IYahtzee>) => {
       const {
@@ -94,6 +105,11 @@ const yahtzeeSlice = createSlice({
   },
 });
 
-export const { setYahtzeeData, setYahtzeeMatchID } = yahtzeeSlice.actions;
+export const {
+  changeDicesState,
+  resetDicesState,
+  setYahtzeeData,
+  setYahtzeeMatchID,
+} = yahtzeeSlice.actions;
 
 export default yahtzeeSlice.reducer;

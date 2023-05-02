@@ -1,9 +1,7 @@
-import { useState } from "react";
-
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../../app/store";
 import { useYahtzeeRollMutation } from "../../gameApiSlice";
-import { setYahtzeeData } from "../yahtzeeSlice";
+import { changeDicesState, setYahtzeeData } from "../yahtzeeSlice";
 
 import { Box, Button, Typography } from "@mui/material";
 
@@ -11,14 +9,9 @@ import { v4 as uuidv4 } from "uuid";
 
 function Header() {
   const dispatch = useDispatch();
-  const [dicesFrozen, setDicesFrozen] = useState([
-    false,
-    false,
-    false,
-    false,
-    false,
-  ]);
-
+  const dicesState = useSelector(
+    (state: RootState) => state.yahtzee.dicesState
+  );
   const matchID = useSelector((state: RootState) => state.yahtzee.matchID);
   const dices = useSelector((state: RootState) => state.yahtzee.currentDices);
   const remainingMoves = useSelector(
@@ -27,11 +20,7 @@ function Header() {
   const [roll] = useYahtzeeRollMutation();
 
   const handleFreezeDie = (dieNumber: number) => {
-    setDicesFrozen((prev) => [
-      ...prev.slice(0, dieNumber),
-      !prev[dieNumber],
-      ...prev.slice(dieNumber + 1, prev.length),
-    ]);
+    dispatch(changeDicesState(dieNumber));
   };
 
   const handleRoll = async () => {
@@ -40,7 +29,7 @@ function Header() {
     try {
       const data = await roll({
         matchID: matchID ?? 0,
-        dices: dicesFrozen,
+        dices: dicesState,
       }).unwrap();
 
       dispatch(setYahtzeeData(data));
@@ -79,7 +68,7 @@ function Header() {
                   borderRadius: "10px",
                   cursor: "pointer",
                   height: 60,
-                  opacity: !dicesFrozen[index] ? 1 : 0.7,
+                  opacity: !dicesState[index] ? 1 : 0.7,
                 },
               }}
               key={uuidv4()}

@@ -11,6 +11,7 @@ function Game() {
       display={"flex"}
       flexDirection={"column"}
       gap={0.5}
+      height={"100%"}
       width={"100%"}
     >
       <Header />

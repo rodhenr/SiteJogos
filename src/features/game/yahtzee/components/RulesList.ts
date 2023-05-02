@@ -1,34 +1,36 @@
-export const rulesList = [
+import { IRules } from "./Rules";
+
+export const rulesList: IRules[] = [
   {
-    ruleName: "rulesum_all",
+    ruleName: "ruleSum_all",
     name: "SOMA",
     description: "SOMA DE TODOS OS DADOS",
   },
-  { ruleName: "rulesum_one", name: "UM", description: "1 PONTO POR CADA 1" },
-  { ruleName: "rulesum_two", name: "DOIS", description: "2 PONTO POR CADA 2" },
+  { ruleName: "ruleSum_one", name: "UM", description: "1 PONTO POR CADA 1" },
+  { ruleName: "ruleSum_two", name: "DOIS", description: "2 PONTO POR CADA 2" },
   {
-    ruleName: "rulesum_three",
+    ruleName: "ruleSum_three",
     name: "TRÊS",
     description: "3 PONTO POR CADA 3",
   },
   {
-    ruleName: "rulesum_four",
+    ruleName: "ruleSum_four",
     name: "QUATRO",
     description: "4 PONTO POR CADA 4",
   },
   {
-    ruleName: "rulesum_five",
+    ruleName: "ruleSum_five",
     name: "CINCO",
     description: "5 PONTO POR CADA 5",
   },
-  { ruleName: "rulesum_six", name: "SEIS", description: "6 PONTO POR CADA 6" },
+  { ruleName: "ruleSum_six", name: "SEIS", description: "6 PONTO POR CADA 6" },
   {
-    ruleName: "rulesame_three",
+    ruleName: "ruleSame_three",
     name: "3 DE UM TIPO",
     description: "SOMA DOS DADOS",
   },
   {
-    ruleName: "rulesame_four",
+    ruleName: "ruleSame_four",
     name: "4 DE UM TIPO",
     description: "SOMA DOS DADOS",
   },
