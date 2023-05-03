@@ -112,7 +112,7 @@ export function Rules() {
         return (
           <Box
             alignItems={"center"}
-            bgcolor={rulesObj[rule.ruleName] ? "error.main" : "info.light"}
+            bgcolor={rulesObj[rule.ruleName] !== null ? "error.main" : "info.light"}
             display={"grid"}
             flex={1}
             gap={0.4}
