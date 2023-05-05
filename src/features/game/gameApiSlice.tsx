@@ -193,6 +193,13 @@ export const gameApiSlice = apiSlice.injectEndpoints({
         method: "POST",
         body: { ...data },
       }),
+      invalidatesTags: (result) => {
+        if (!result?.gameResult) {
+          return [];
+        }
+
+        return ["UserInfo"];
+      },
     }),
   }),
 });
