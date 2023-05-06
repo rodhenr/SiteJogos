@@ -43,7 +43,7 @@ function Index() {
                     key={uuidv4()}
                     level={rank.level}
                     player={rank.name}
-                    playerID={rank.id}
+                    isHomePage={true}
                     position={rank.position}
                   />
                 ))}

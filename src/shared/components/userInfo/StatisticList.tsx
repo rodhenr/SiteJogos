@@ -39,6 +39,7 @@ function StatisticList({ data }: IProps) {
         >
           <Typography flex={1}>JOGO</Typography>
           <Typography flex={1}>VITÓRIAS</Typography>
+          <Typography flex={1}>EMPATES</Typography>
           <Typography flex={1}>DERROTAS</Typography>
         </Box>
         <Box
@@ -70,7 +71,7 @@ function StatisticList({ data }: IProps) {
                 sx={{
                   transition: "background-color 0.2s",
                   ":hover": {
-                    backgroundColor: "#FFF",
+                    backgroundColor: "info.light",
                     cursor: "pointer",
                   },
 
@@ -82,6 +83,7 @@ function StatisticList({ data }: IProps) {
               >
                 <Typography flex={1}>{game.game}</Typography>
                 <Typography flex={1}>{game.wins}</Typography>
+                <Typography flex={1}>{game.draws}</Typography>
                 <Typography flex={1}>{game.loses}</Typography>
               </Box>
             );

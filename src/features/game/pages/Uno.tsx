@@ -4,7 +4,7 @@ import Game from "../uno/index";
 function Uno() {
   const sizes = {
     height: {
-      mobile: "100%",
+      mobile: "600px",
       tablet: "100%",
       laptop: "100%",
       desktop: "100%",
@@ -14,14 +14,14 @@ function Uno() {
       mobile: "100%",
       tablet: "100%",
       laptop: "100%",
-      desktop: "100%",
+      desktop: "75%",
       desktopLarge: "75%",
     },
     rulesOnSide: {
       mobile: false,
       tablet: false,
       laptop: false,
-      desktop: false,
+      desktop: true,
       desktopLarge: true,
     },
   };

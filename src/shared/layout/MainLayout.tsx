@@ -22,7 +22,7 @@ function MainLayout({ children }: IProps) {
       minHeight={"100%"}
       sx={{
         gap: { mobile: 2, laptop: 3 },
-        height: { laptop: "100vh" },
+        height: { mobile: "100%", laptop: "100vh" },
         p: { mobile: 2, laptop: 3 },
       }}
     >

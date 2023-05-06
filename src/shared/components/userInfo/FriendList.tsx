@@ -32,7 +32,7 @@ function FriendList({ data }: IProps) {
             Nenhum amigo para exibir
           </Typography>
         )}
-        {data.map((friend) => {
+        {data.slice(0, 20).map((friend) => {
           return (
             <Tooltip key={uuidv4()} title={friend["User.name"]}>
               <Avatar
@@ -47,6 +47,38 @@ function FriendList({ data }: IProps) {
             </Tooltip>
           );
         })}
+        {data.length > 20 && (
+          <Box sx={{ position: "relative" }}>
+            <Typography
+              color={"info.main"}
+              sx={{
+                fontWeight: "bold",
+                left: "50%",
+                position: "absolute",
+                textShadow:
+                  "2px 0 #fff, -2px 0 #fff, 0 2px #fff, 0 -2px #fff, 1px 1px #fff, -1px -1px #fff, 1px -1px #fff, -1px 1px #fff",
+                top: "50%",
+                transform: "translate(-50%, -50%)",
+                zIndex: 2,
+
+                ":hover": {
+                  cursor: "pointer",
+                },
+              }}
+            >
+              +{data.length - 20}
+            </Typography>
+            <Avatar
+              alt={"Avatar"}
+              src={""}
+              sx={{
+                ":hover": {
+                  cursor: "pointer",
+                },
+              }}
+            />
+          </Box>
+        )}
       </Box>
     </Box>
   );

@@ -44,11 +44,12 @@ function Score() {
       borderRadius={"5px"}
       display={"flex"}
       justifyContent={"center"}
-      py={2}
+      
       sx={{
+        py: {mobile: 1, desktop: 2},
         "& p": {
           color: "#fff",
-          fontSize: 20,
+          fontSize: { mobile: 18, desktop: 20 },
         },
       }}
       width={"100%"}

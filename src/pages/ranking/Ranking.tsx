@@ -82,7 +82,7 @@ function Ranking() {
                       <RankingItem
                         level={player.level}
                         player={player.name}
-                        playerID={player.id}
+                        isHomePage={false}
                         position={player.position}
                       />
                     </Box>

@@ -91,13 +91,17 @@ export function Rules() {
         gap={0.4}
         key={uuidv4()}
         sx={{
-          gridTemplateColumns: "0.3fr 1fr 0.2fr",
+          gridTemplateColumns: {
+            mobile: "0.5fr 1fr 0.3fr",
+            desktop: "0.3fr 1fr 0.2fr",
+          },
+
           "& p": {
             bgcolor: "primary.main",
             borderRadius: "5px",
             color: "#fff",
             cursor: "pointer",
-            fontSize: 14,
+            fontSize: { mobile: 12, tablet: 14 },
             py: 0.3,
             textAlign: "center",
             width: "100%",
@@ -112,7 +116,9 @@ export function Rules() {
         return (
           <Box
             alignItems={"center"}
-            bgcolor={rulesObj[rule.ruleName] !== null ? "error.main" : "info.light"}
+            bgcolor={
+              rulesObj[rule.ruleName] !== null ? "error.main" : "info.light"
+            }
             display={"grid"}
             flex={1}
             gap={0.4}
@@ -120,12 +126,15 @@ export function Rules() {
             sx={{
               borderRadius: "5px",
               cursor: "pointer",
-              gridTemplateColumns: "0.3fr 1fr 0.2fr",
+              gridTemplateColumns: {
+                mobile: "0.5fr 1fr 0.3fr",
+                desktop: "0.3fr 1fr 0.2fr",
+              },
               gridTemplateRows: "1fr",
 
               "& p": {
                 color: "#fff",
-                fontSize: 14,
+                fontSize: { mobile: 11, tablet: 14 },
                 textAlign: "center",
               },
 

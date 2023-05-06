@@ -44,30 +44,36 @@ function Header() {
       bgcolor={"secondary.main"}
       display={"flex"}
       justifyContent={"center"}
-      minHeight={80}
       py={1}
+      sx={{
+        flexDirection: { mobile: "column", desktop: "row" },
+        gap: { mobile: 1, desktop: 0 },
+        minHeight: { mobile: 90, desktop: 80 },
+      }}
       width={"100%"}
     >
       <Box
         alignItems={"center"}
+        boxSizing={"border-box"}
         display={"flex"}
         flex={1}
-        justifyContent={"space-around"}
-        px={0.5}
+        sx={{
+          gap: { mobile: 1, desktop: 0 },
+          justifyContent: { mobile: "space-between", desktop: "space-around" },
+          px: { mobile: 1, desktop: 0.5 },
+          width: { mobile: "100%", desktop: "auto" },
+        }}
       >
         {dices.map((dice: number, index: number) => {
           return (
             <Box
-              alignItems={"center"}
               boxSizing={"border-box"}
-              display={"flex"}
-              flexDirection={"column"}
               sx={{
                 "& img": {
                   bgcolor: "#fff",
                   borderRadius: "10px",
                   cursor: "pointer",
-                  height: 60,
+                  height: { mobile: 50, desktop: 60 },
                   opacity: !dicesState[index] ? 1 : 0.7,
                 },
               }}
@@ -82,14 +88,24 @@ function Header() {
         })}
       </Box>
       <Box
+        alignItems={"center"}
+        boxSizing={"border-box"}
         display={"flex"}
-        flexDirection={"column"}
         gap={1}
-        justifyContent={"center"}
         px={1}
+        sx={{
+          flexDirection: { mobile: "row", desktop: "column" },
+          justifyContent: { mobile: "space-between", desktop: "center" },
+          width: { mobile: "100%", desktop: "auto" },
+        }}
       >
-        <Typography color={"white"} fontSize={14}>
-          {remainingMoves} MOVIMENTO(S) RESTANTE(S)
+        <Typography
+          color={"white"}
+          sx={{ fontSize: { mobile: 13, desktop: 14 } }}
+          textAlign={"center"}
+        >
+          <span style={{ fontWeight: "bold" }}>{remainingMoves}</span>{" "}
+          MOVIMENTO(S) RESTANTE(S)
         </Typography>
         <Button
           color={"error"}
@@ -99,7 +115,8 @@ function Header() {
           }}
           sx={{
             cursor: "pointer",
-            height: 30,
+            height: { mobile: 25, desktop: 30 },
+            width: { mobile: 30, desktop: "auto" },
           }}
           variant={"contained"}
         >

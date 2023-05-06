@@ -3,11 +3,11 @@ import { Box, Typography } from "@mui/material";
 interface IProps {
   level: number;
   player: string;
-  playerID: number;
+  isHomePage: boolean;
   position: number;
 }
 
-function RankingItem({ level, player, playerID, position }: IProps) {
+function RankingItem({ level, player, isHomePage, position }: IProps) {
   const bColor = [1, 2, 3].includes(position) ? "tertiary.main" : "info.dark";
   const hoverBackgroundColor = [1, 2, 3].includes(position)
     ? "tertiary.light"
@@ -30,8 +30,8 @@ function RankingItem({ level, player, playerID, position }: IProps) {
         },
 
         "&:hover": {
-          bgcolor: hoverBackgroundColor,
-          cursor: "pointer",
+          bgcolor: isHomePage ? null : hoverBackgroundColor,
+          cursor: isHomePage ? "auto" : "pointer",
         },
       }}
     >

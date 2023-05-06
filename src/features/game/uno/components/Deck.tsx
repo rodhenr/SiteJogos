@@ -79,15 +79,16 @@ function Deck() {
       position={"relative"}
       sx={{
         cursor: "pointer",
+        width: { mobile: 50, tablet: 80, laptop: 90, desktop: 100 },
+
         "& img": {
-          height: 150,
+          height: { mobile: 80, tablet: 110, laptop: 130, desktop: 150 },
 
           "&:hover": {
             opacity: remainingCardsLength > 0 ? 0.9 : 1,
           },
         },
       }}
-      width={100}
       onClick={buyNewCard}
     >
       <img src="/images/back.png" alt="deck" />

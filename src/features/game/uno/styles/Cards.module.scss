@@ -63,9 +63,19 @@ $b4: #431386;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
-  height: 400px;
+  height: 250px;
   position: relative;
-  width: 90px;
+  width: 55px;
+
+  @media (min-width: 1024px) {
+    height: 300px;
+    width: 75px;
+  }
+
+  @media (min-width: 1200px) {
+    height: 400px;
+    width: 90px;
+  }
 }
 
 .container_right {
@@ -73,9 +83,19 @@ $b4: #431386;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
-  height: 400px;
+  height: 250px;
   position: relative;
-  width: 90px;
+  width: 55px;
+
+  @media (min-width: 1024px) {
+    height: 300px;
+    width: 75px;
+  }
+
+  @media (min-width: 1200px) {
+    height: 400px;
+    width: 90px;
+  }
 }
 
 .container_top {
@@ -83,22 +103,42 @@ $b4: #431386;
   border-radius: 10px;
   box-sizing: border-box;
   display: flex;
-  height: 120px;
+  height: 80px;
   justify-content: center;
   padding: 0 0.5rem;
   position: relative;
-  width: 400px;
+  width: 250px;
+
+  @media (min-width: 1024px) {
+    height: 100px;
+    width: 300px;
+  }
+
+  @media (min-width: 1200px) {
+    height: 120px;
+    width: 400px;
+  }
 }
 
 .container_player {
   border-top: 3px solid $borderC;
   border-radius: 10px;
   display: flex;
-  height: 125px;
+  height: 90px;
   justify-content: center;
   padding: 0 0.5rem;
   position: relative;
-  width: 400px;
+  width: 250px;
+
+  @media (min-width: 1024px) {
+    height: 105px;
+    width: 300px;
+  }
+
+  @media (min-width: 1200px) {
+    height: 125px;
+    width: 400px;
+  }
 }
 
 .container_left .maxThree,
@@ -146,7 +186,19 @@ $b4: #431386;
   width: 100px;
 
   img {
-    height: 100px;
+    height: 70px;
+  }
+
+  @media (min-width: 1024px) {
+    img {
+      height: 85px;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    img {
+      height: 100px;
+    }
   }
 }
 
@@ -155,7 +207,19 @@ $b4: #431386;
   position: absolute;
 
   img {
-    height: 100px;
+    height: 70px;
+  }
+
+  @media (min-width: 1024px) {
+    img {
+      height: 85px;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    img {
+      height: 100px;
+    }
   }
 }
 
@@ -206,7 +270,19 @@ $b4: #431386;
   position: absolute;
 
   img {
-    height: 100px;
+    height: 70px;
+  }
+
+  @media (min-width: 1024px) {
+    img {
+      height: 85px;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    img {
+      height: 100px;
+    }
   }
 }
 
@@ -221,6 +297,18 @@ $b4: #431386;
   top: 0px;
 
   img {
-    height: 100%;
+    height: 80px;
+  }
+
+  @media (min-width: 1024px) {
+    img {
+      height: 100px;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    img {
+      height: 100%;
+    }
   }
 }

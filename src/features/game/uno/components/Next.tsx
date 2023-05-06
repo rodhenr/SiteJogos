@@ -1,5 +1,3 @@
-import { useEffect, useState } from "react";
-
 import { useSelector } from "react-redux";
 import { RootState } from "../../../../app/store";
 
@@ -11,15 +9,17 @@ function Next() {
   return (
     <Box
       alignItems={"center"}
-      bgcolor={"rgb(90, 66, 185)"}
+      bgcolor={"info.dark"}
       borderRadius={1}
       color={"white"}
       display={"flex"}
       height={30}
       justifyContent={"center"}
-      width={150}
+      sx={{ width: { mobile: 100, tablet: 130, laptop: 150 } }}
     >
-      <Typography fontSize={14}>Turno atual: {nextPlayer}</Typography>
+      <Typography sx={{ fontSize: { mobile: 12, laptop: 14 } }}>
+        Turno atual: {nextPlayer}
+      </Typography>
     </Box>
   );
 }

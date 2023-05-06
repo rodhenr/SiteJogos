@@ -48,10 +48,7 @@ function ModalContainer({
             mobile: 2,
             laptop: 3,
           },
-          py: {
-            mobile: 1,
-            laptop: 4,
-          },
+          py: 1,
           transform: "translate(-50%, -50%)",
           width: {
             mobile: "100%",

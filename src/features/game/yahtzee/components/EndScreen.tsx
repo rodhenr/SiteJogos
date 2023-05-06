@@ -42,9 +42,33 @@ function EndScreen() {
         flex={1}
         justifyContent={"flex-end"}
       >
-        <Typography variant={"h2"}>
-          {gameResult === "win" ? "Você venceu!" : "Você perdeu!"}
+        <Typography
+          color={"secondary.dark"}
+          sx={{
+            fontSize: { mobile: 35, tablet: 50, laptop: 55 },
+            fontWeight: "bold",
+          }}
+          textAlign={"center"}
+        >
+          Partida encerrada!
         </Typography>
+        <Box
+          sx={{
+            "& p": {
+              color: "#FFF",
+              fontSize: { mobile: 28, tablet: 34 },
+              textAlign: "center",
+            },
+          }}
+        >
+          {gameResult && gameResult === "win" ? (
+            <Typography>VOCÊ VENCEU!</Typography>
+          ) : gameResult === "lose" ? (
+            <Typography>VOCÊ PERDEU!</Typography>
+          ) : (
+            <Typography>EMPATE!</Typography>
+          )}
+        </Box>
       </Box>
       <Box alignItems={"center"} display={"flex"} flex={1}>
         <Button

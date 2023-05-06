@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react";
 
+import { NavLink } from "react-router-dom";
+
 import { Box } from "@mui/material";
 
 import LoginModal from "../../../features/auth/components/LoginModal";
 import RegisterModal from "../../../features/auth/components/RegisterModal";
 import MenuUserInfo from "../userInfo/MenuUserInfo";
-import { NavLink } from "react-router-dom";
+
+import { v4 as uuidv4 } from "uuid";
 
 function TopMenu() {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -53,18 +56,22 @@ function TopMenu() {
         display={"flex"}
         flex={1}
         sx={{
-          gap: { mobile: 1.5, desktopLarge: 3 },
+          gap: { mobile: 1.5, desktop: 3, desktopLarge: 4 },
           justifyContent: { mobile: "space-between", laptop: "flex-start" },
+
+          "& a": {
+            fontSize: { mobile: 18, tablet: 22, laptop: 26 },
+          },
         }}
       >
         {titles.map((title) => {
           return (
             <NavLink
+              key={uuidv4()}
               to={title.route}
               style={({ isActive }) => {
                 return {
-                  color: isActive ? "#4C74AA" : "#FFF",
-                  fontSize: "22px",
+                  color: isActive ? "#C3423F" : "#FFF",
                   textDecoration: "none",
                 };
               }}

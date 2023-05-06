@@ -105,13 +105,14 @@ function InitialScreen({ gameName, gameID }: IProps) {
         color={"#FFF"}
         fontFamily={"'DynaPuff', cursive"}
         sx={{
-          fontSize: { mobile: 35, tablet: 55, laptop: 70, desktopLarge: 90 },
+          fontSize: { mobile: 35, tablet: 55, laptop: 70, desktopLarge: 100 },
           textAlign: "center",
         }}
       >
         {gameName.toUpperCase()}
       </Typography>
       <Button
+        color={"info"}
         sx={{
           fontSize: { mobile: 18, tablet: 20, laptop: 22 },
           height: { mobile: 40, tablet: 50 },

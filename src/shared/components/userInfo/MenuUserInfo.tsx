@@ -45,13 +45,18 @@ function MenuUserInfo() {
       width={"100%"}
     >
       {hasToken && isSuccess ? (
-        <Box display={"flex"} gap={2} justifyContent={"space-between"} width={"100%"}>
+        <Box
+          display={"flex"}
+          gap={2}
+          justifyContent={"space-between"}
+          width={"100%"}
+        >
           <Box
             alignContent={"center"}
             display={"flex"}
             flex={1}
             gap={1}
-            justifyContent={"flex-end"}
+            sx={{ justifyContent: { laptop: "flex-end" } }}
           >
             <Avatar
               alt="User Avatar"
@@ -92,13 +97,13 @@ function MenuUserInfo() {
           </Box>
           <Box>
             <Button
-              color={"info"}
               onClick={handleLogout}
               sx={{
                 fontSize: "11px",
                 height: "30px",
               }}
               variant={"contained"}
+              style={{ backgroundColor: "#d32f2f" }}
             >
               SAIR
             </Button>
@@ -123,7 +128,7 @@ function MenuUserInfo() {
             onClick={() => handleAuthModalState(false)}
             variant={"contained"}
           >
-            REGISTRO
+            REGISTRAR
           </Button>
         </Box>
       )}

@@ -18,18 +18,19 @@ function CardsPlayed() {
     <Box
       height={150}
       sx={{
+        width: { mobile: 50, tablet: 80, laptop: 90, desktop: 100 },
+
         "& img": {
-          height: 150,
+          height: { mobile: 80, tablet: 110, laptop: 130, desktop: 150 },
         },
       }}
-      width={100}
     >
       {!lastCard ? (
         <Box
           bgcolor={"green"}
           border={"1px solid black"}
           borderRadius={2}
-          height={"100%"}
+          sx={{ height: { mobile: 80, desktop: 150 } }}
           width={"100%"}
         ></Box>
       ) : lastCard.startsWith("plusFour") ? (

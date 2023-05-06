@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from "uuid";
 
-import { Alert, Box, Divider, Typography } from "@mui/material";
+import { Box, Divider, Typography } from "@mui/material";
 
 import MainLayout from "./MainLayout";
 
@@ -47,6 +47,7 @@ function GameLayout({ children, gameName, rulesList, sizes }: IProps) {
         flexDirection={"column"}
         flex={1}
         gap={2}
+        minHeight={"100%"}
         p={2}
         sx={{
           flexDirection: {
@@ -72,19 +73,20 @@ function GameLayout({ children, gameName, rulesList, sizes }: IProps) {
           {children}
         </Box>
         <Box display={"flex"} flex={1} flexDirection={"column"} gap={1}>
-          <Typography color={"#FFF"} variant={"h3"}>
-            {gameName.toUpperCase()}
-          </Typography>
-          <Divider sx={{ bgcolor: "info.main", opacity: 0.75 }} />
-          <Typography color={"#FFF"} mb={1} variant="h5">
+          <Typography color={"#FFF"} variant="h5">
             REGRAS
           </Typography>
+          <Divider sx={{ bgcolor: "info.main", mb: 1, opacity: 0.75 }} />
           <Box display={"flex"} flexDirection={"column"} gap={1}>
-            {rulesList.map((rule, index) => {
+            {rulesList.map((rule: string, index: number) => {
               return (
                 <Box key={uuidv4()}>
-                  <Typography color={"#FFF"}>
-                    {index + 1} - {rule}
+                  <Typography
+                    color={"#FFF"}
+                    sx={{ fontSize: { mobile: 14, desktop: 16 } }}
+                  >
+                    <span style={{ fontWeight: "bold" }}>{index + 1}</span> -{" "}
+                    {rule}
                   </Typography>
                 </Box>
               );

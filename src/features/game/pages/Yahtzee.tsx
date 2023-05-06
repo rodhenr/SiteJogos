@@ -4,8 +4,8 @@ import Game from "../yahtzee/index";
 function Yahtzee() {
   const sizes = {
     height: {
-      mobile: "100%",
-      tablet: "100%",
+      mobile: "600px",
+      tablet: "700px",
       laptop: "100%",
       desktop: "100%",
       desktopLarge: "100%",
@@ -13,14 +13,14 @@ function Yahtzee() {
     width: {
       mobile: "100%",
       tablet: "100%",
-      laptop: "100%",
+      laptop: "50%",
       desktop: "50%",
       desktopLarge: "50%",
     },
     rulesOnSide: {
       mobile: false,
       tablet: false,
-      laptop: false,
+      laptop: true,
       desktop: true,
       desktopLarge: true,
     },
