@@ -4,6 +4,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../../app/store";
 import { useCpuMoveMutation, usePlayerMoveMutation } from "../../gameApiSlice";
 import { changeGameState } from "../tictactoeSlice";
+import { resetUno } from "../../uno/unoSlice";
+import { resetYahtzee } from "../../yahtzee/yahtzeeSlice";
+import { resetJokenpo } from "../../jokenpo/jokenpoSlice";
 
 import { Box, Typography } from "@mui/material";
 
@@ -24,6 +27,12 @@ function Game({ matchID }: IProps) {
   );
   const [doPlayerMove] = usePlayerMoveMutation();
   const [doCpuMove] = useCpuMoveMutation();
+
+  useEffect(() => {
+    dispatch(resetJokenpo());
+    dispatch(resetYahtzee());
+    dispatch(resetUno());
+  }, [dispatch]);
 
   useEffect(() => {
     if (!isPlayerNext && !isGameOver) {

@@ -102,12 +102,34 @@ const yahtzeeSlice = createSlice({
       state.ruleRow_four = ruleRow_four;
       state.ruleRow_five = ruleRow_five;
     },
+    resetYahtzee: (state) => {
+      state.currentDices = [];
+      state.isGameOver = false;
+      state.gameResult = null;
+      state.matchID = null;
+      state.points = null;
+      state.remainingMoves = 0;
+      state.ruleSum_all = null;
+      state.ruleSum_one = null;
+      state.ruleSum_two = null;
+      state.ruleSum_three = null;
+      state.ruleSum_four = null;
+      state.ruleSum_five = null;
+      state.ruleSum_six = null;
+      state.ruleSame_three = null;
+      state.ruleSame_four = null;
+      state.rule_yahtzee = null;
+      state.ruleRow_four = null;
+      state.ruleRow_five = null;
+      state.dicesState = [false, false, false, false, false];
+    },
   },
 });
 
 export const {
   changeDicesState,
   resetDicesState,
+  resetYahtzee,
   setYahtzeeData,
   setYahtzeeMatchID,
 } = yahtzeeSlice.actions;

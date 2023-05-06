@@ -44,7 +44,7 @@ const gameSlice = createSlice({
       state.cpuChoice = cpuChoice;
       state.result = result;
     },
-    resetGameState: (state) => {
+    resetJokenpo: (state) => {
       state.cpuChoice = null;
       state.gameResult = null;
       state.isGameOver = false;
@@ -55,7 +55,7 @@ const gameSlice = createSlice({
   },
 });
 
-export const { changeGameState, resetGameState, setJokenpoMatchID } =
+export const { changeGameState, resetJokenpo, setJokenpoMatchID } =
   gameSlice.actions;
 
 export default gameSlice.reducer;

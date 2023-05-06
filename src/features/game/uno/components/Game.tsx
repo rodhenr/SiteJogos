@@ -4,6 +4,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../../app/store";
 import { setData } from "../unoSlice";
 import { useUnoCPUMoveMutation } from "../../gameApiSlice";
+import { resetYahtzee } from "../../yahtzee/yahtzeeSlice";
+import { resetTicTacToe } from "../../tictactoe/tictactoeSlice";
+import { resetJokenpo } from "../../jokenpo/jokenpoSlice";
 
 import { Box } from "@mui/material";
 
@@ -20,6 +23,8 @@ function Game({ matchID }: IProps) {
   const dispatch = useDispatch();
   const nextPlayer = useSelector((state: RootState) => state.uno.nextPlayer);
   const userCards = useSelector((state: RootState) => state.uno.userCards);
+  const chooseColor = useSelector((state: RootState) => state.uno.chooseColor);
+  const turn = useSelector((state: RootState) => state.uno.turn);
   const cpu1CardsLength = useSelector(
     (state: RootState) => state.uno.cpu1CardsLength
   );
@@ -29,10 +34,14 @@ function Game({ matchID }: IProps) {
   const cpu3CardsLength = useSelector(
     (state: RootState) => state.uno.cpu3CardsLength
   );
-  const chooseColor = useSelector((state: RootState) => state.uno.chooseColor);
-  const turn = useSelector((state: RootState) => state.uno.turn);
 
   const [unoCpuMove] = useUnoCPUMoveMutation();
+
+  useEffect(() => {
+    dispatch(resetJokenpo());
+    dispatch(resetYahtzee());
+    dispatch(resetTicTacToe());
+  }, [dispatch]);
 
   useEffect(() => {
     const cpuTurn = async () => {

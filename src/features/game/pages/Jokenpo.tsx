@@ -27,7 +27,13 @@ function Jokenpo() {
   };
 
   return (
-    <GameLayout gameName={"JoKenPo"} rulesList={[""]} sizes={sizes}>
+    <GameLayout
+      gameName={"JoKenPo"}
+      rulesList={[
+        "Cada jogador escolhe uma das três opções: pedra, papel ou tesoura. Pedra ganha da tesoura (amassando-a), tesoura ganha do papel (cortando-o) e papel ganha da pedra (cobrindo-a).",
+      ]}
+      sizes={sizes}
+    >
       <Game />
     </GameLayout>
   );

@@ -1,6 +1,11 @@
+import { useEffect } from "react";
+
 import { useDispatch } from "react-redux";
 import { useJokenpoUserChoiceMutation } from "../../gameApiSlice";
 import { changeGameState } from "../jokenpoSlice";
+import { resetYahtzee } from "../../yahtzee/yahtzeeSlice";
+import { resetTicTacToe } from "../../tictactoe/tictactoeSlice";
+import { resetUno } from "../../uno/unoSlice";
 
 import { Box, Typography } from "@mui/material";
 
@@ -15,6 +20,12 @@ interface IProps {
 function Game({ matchID }: IProps) {
   const dispatch = useDispatch();
   const [userChoice] = useJokenpoUserChoiceMutation();
+
+  useEffect(() => {
+    dispatch(resetUno());
+    dispatch(resetYahtzee());
+    dispatch(resetTicTacToe());
+  }, [dispatch]);
 
   const handlePlayerMove = async (choice: string) => {
     try {

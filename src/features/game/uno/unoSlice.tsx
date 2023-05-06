@@ -101,10 +101,29 @@ const unoSlice = createSlice({
     setChoosedCard: (state, action: PayloadAction<string>) => {
       state.choosedCard = action.payload;
     },
+    resetUno: (state) => {
+      state.color = null;
+      state.choosedCard = "";
+      state.chooseColor = false;
+      state.cpu1CardsLength = 0;
+      state.cpu2CardsLength = 0;
+      state.cpu3CardsLength = 0;
+      state.isClockwise = true;
+      state.isGameOver = false;
+      state.gameResult = null;
+      state.lastCard = null;
+      state.matchID = null;
+      state.nextPlayer = "";
+      state.remainingCardsLength = 60;
+      state.remainingPlayers = [];
+      state.turn = null;
+      state.userCards = [];
+    },
   },
 });
 
 export const {
+  resetUno,
   setChoosedCard,
   setChooseColor,
   setData,

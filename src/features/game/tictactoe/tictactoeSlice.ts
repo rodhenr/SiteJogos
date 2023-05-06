@@ -39,9 +39,17 @@ const gameSlice = createSlice({
       state.isGameOver = isGameOver;
       state.isPlayerNext = isPlayerNext;
     },
+    resetTicTacToe: (state) => {
+      state.cells = [];
+      state.gameResult = null;
+      state.isGameOver = false;
+      state.isPlayerNext = null;
+      state.matchID = null;
+    },
   },
 });
 
-export const { setTicTacToeMatchID, changeGameState } = gameSlice.actions;
+export const { changeGameState, resetTicTacToe, setTicTacToeMatchID } =
+  gameSlice.actions;
 
 export default gameSlice.reducer;
