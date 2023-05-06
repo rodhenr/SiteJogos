@@ -8,9 +8,9 @@ $b4: #431386;
 .playerThree {
   align-items: center;
   display: flex;
+  flex: 1;
   height: 100%;
   flex-direction: column;
-  justify-content: center;
   width: 100%;
 
   p {
@@ -19,6 +19,14 @@ $b4: #431386;
     margin: 0;
     padding: 0.4rem 0;
   }
+}
+
+.playerOne {
+  justify-content: flex-end;
+}
+
+.playerThree {
+  justify-content: flex-start;
 }
 
 .playerTwo {
@@ -55,9 +63,9 @@ $b4: #431386;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
-  height: 300px;
+  height: 400px;
   position: relative;
-  width: 110px;
+  width: 90px;
 }
 
 .container_right {
@@ -65,9 +73,9 @@ $b4: #431386;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
-  height: 300px;
+  height: 400px;
   position: relative;
-  width: 110px;
+  width: 90px;
 }
 
 .container_top {
@@ -212,30 +220,7 @@ $b4: #431386;
   position: absolute;
   top: 0px;
 
-  &:hover {
-    animation: 0.5s cardHoverPlayer forwards ease-out;
-  }
-
-  &:not(hover) {
-    animation: 0.2s cardNotHoverPlayer forwards ease-out;
-  }
-
   img {
     height: 100%;
-  }
-}
-
-@keyframes cardHoverPlayer {
-  0% {
-    top: 0px;
-  }
-  100% {
-    top: -15px;
-  }
-}
-
-@keyframes cardNotHoverPlayer {
-  100% {
-    top: 0px;
   }
 }

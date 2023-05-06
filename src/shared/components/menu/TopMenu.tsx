@@ -1,13 +1,11 @@
 import { useEffect, useState } from "react";
 
-import { v4 as uuidv4 } from "uuid";
-
 import { Box } from "@mui/material";
 
 import LoginModal from "../../../features/auth/components/LoginModal";
 import RegisterModal from "../../../features/auth/components/RegisterModal";
 import MenuUserInfo from "../userInfo/MenuUserInfo";
-import MenuButton from "./MenuButton";
+import { NavLink } from "react-router-dom";
 
 function TopMenu() {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -61,7 +59,18 @@ function TopMenu() {
       >
         {titles.map((title) => {
           return (
-            <MenuButton key={uuidv4()} route={title.route} title={title.name} />
+            <NavLink
+              to={title.route}
+              style={({ isActive }) => {
+                return {
+                  color: isActive ? "#4C74AA" : "#FFF",
+                  fontSize: "22px",
+                  textDecoration: "none",
+                };
+              }}
+            >
+              {title.name.toUpperCase()}
+            </NavLink>
           );
         })}
       </Box>

@@ -114,6 +114,7 @@ function Cards({ cardsData, player, position }: IProps) {
           ? styles.playerTwo
           : styles.playerFour
       }
+      
     >
       {(position === "right" || position === "bottom") && (
         <Typography>{player}</Typography>

@@ -84,6 +84,7 @@ function Game({ matchID }: IProps) {
     <Box
       alignItems={"center"}
       display={"flex"}
+      flex={1}
       flexDirection={"column"}
       justifyContent={"space-between"}
       position={"relative"}
@@ -103,8 +104,8 @@ function Game({ matchID }: IProps) {
       <Box
         alignItems={"center"}
         display={"flex"}
+        flex={1}
         justifyContent={"space-between"}
-        maxHeight={250}
         width={"100%"}
       >
         <Cards
@@ -119,9 +120,7 @@ function Game({ matchID }: IProps) {
           display={"flex"}
           flexDirection={"column"}
           gap={1}
-          height={"250px"}
           justifyContent={"center"}
-          width={"350px"}
         >
           <MiddleCards />
           <Next />
